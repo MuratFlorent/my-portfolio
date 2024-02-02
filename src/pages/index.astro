@@ -45,7 +45,7 @@ const projects = (await getCollection('work'))
 					alt="Florent Murat Light Developer, pour accompagner avec bienveillance vos projets web"
 					width="480"
 					height="620"
-					src="/assets/portrait2.jpeg"
+					src="/assets/portrait2	.jpeg"
 				/>
 			</header>
 
@@ -81,18 +81,35 @@ const projects = (await getCollection('work'))
 
 			<section class="section with-background bg-variant">
 				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Mentions</h3>
+					<h3>Mon univers
+					</h3>
 					<p>
-						I have been fortunate enough to receive praise for my work in several publications. Take
-						a look below to learn more.
+						A vous de voir si ça vous parle du développeur à l'humain.
 					</p>
 				</header>
 
 				<div class="gallery">
 					<Grid variant="small">
 						{
-							['Medium', 'BuzzFeed', 'The Next Web', 'awwwards.', 'TechCrunch'].map((brand) => (
-								<li class="mention-card">
+							[
+								<img src="/assets/letItBe/love.png" alt="love" loading="lazy" decoding="async" />,
+								<img src="/assets/letItBe/php.png" alt="php" loading="lazy" decoding="async" />,
+								<img src="/assets/letItBe/astro_logo_icon.png" alt="Astro" loading="lazy" decoding="async" />,
+								<img src="/assets/letItBe/bienveillance.png" alt="bienveillance" loading="lazy" decoding="async" />,
+								<img src="/assets/letItBe/Cloud-icon.svg.png" alt="Cloud" loading="lazy" decoding="async" />,
+								<img src="/assets/letItBe/docker_icon.png" alt="docker" loading="lazy" decoding="async" />,
+								<img src="/assets/letItBe/lumière.png" alt="light" loading="lazy" decoding="async" />,
+								<img src="/assets/letItBe/git.png" alt="Git" loading="lazy" decoding="async" />,
+								<img src="/assets/letItBe/htmlcssjs.png" alt="htmlCssJs" loading="lazy" decoding="async" />,
+								<img src="/assets/letItBe/spirituel.png" alt="spirit" loading="lazy" decoding="async" />,
+								<img src="/assets/letItBe/linux.png" alt="linux" loading="lazy" decoding="async" />,
+								<img src="/assets/letItBe/terminal-logo.png" alt="shell" loading="lazy" decoding="async" />,
+								<img src="/assets/letItBe/sylius-logo.png" alt="Sylius" loading="lazy" decoding="async" />,
+								<img src="/assets/letItBe/symfony_logo_icon.png" alt="Symfony" loading="lazy" decoding="async" />,
+								<img src="/assets/letItBe/life-flower.png" alt="Fleur de vie" loading="lazy" decoding="async" />,
+								<img src="/assets/letItBe/database.png" alt="Database" loading="lazy" decoding="async" />,
+							].map((brand) => (
+								<li class="">
 									<p>{brand}</p>
 								</li>
 							))
