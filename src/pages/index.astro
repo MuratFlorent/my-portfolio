@@ -45,80 +45,95 @@ const projects = (await getCollection('work'))
 					alt="Florent Murat Light Developer, pour accompagner avec bienveillance vos projets web"
 					width="480"
 					height="620"
-					src="/assets/portrait2	.jpeg"
+					src="/assets/portrait2.jpeg"
 				/>
+
 			</header>
-
 			<Skills />
-		</div>
-
-		<main class="wrapper stack gap-20 lg:gap-48">
-			<section class="section with-background with-cta">
-				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Mes projets, ma vie...</h3>
-					<p>Une présentation de quelques unes de mes expériences, qui m'ont amenées tellement, autant sur le plan professionnel qu'humain.</p>
-				</header>
-
-				<div class="gallery">
-					<Grid variant="offset">
-						{
-							projects.map((project) => (
-								<li>
-									<PortfolioPreview project={project} />
-								</li>
-							))
-						}
-					</Grid>
-				</div>
-
-				<div class="cta">
-					<CallToAction href="/work/">
-						Découvrir
-						<Icon icon="arrow-right" size="1.2em" />
-					</CallToAction>
-				</div>
-			</section>
 
 			<section class="section with-background bg-variant">
 				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Mon univers
-					</h3>
-					<p>
-						Développement Intuition Conscience
-					</p>
+					<h4>Financez l'élaboration de votre site tout en vous formant !</h4>
+					<p class="formation">En collaboration avec notre centre de formation, nous pouvons débloquer des crédits de formation auxquels vous avez droit (tels que les CPF) et avancer ensemble dans un beau projet de construction et de prise en main de votre interface.</p>
+					<div class="img-center">
+						<img
+						alt="Florent Murat Light Developer, pour accompagner avec bienveillance vos projets web"
+						 src="/assets/letItBe/eveil_et_science.jpeg" alt="eveilEtScience" loading="lazy" decoding="async" />,
+					</div>
+					<CallToAction href="mailto:florentmurat@ymail.com">
+						Pour plus de renseignements
+						<Icon icon="pencil-line" size="1.2em" />
+					</CallToAction>
 				</header>
-
-				<div class="gallery">
-					<Grid variant="small">
-						{
-							[
-								<img src="/assets/letItBe/love.png" alt="love" loading="lazy" decoding="async" />,
-								<img src="/assets/letItBe/php.png" alt="php" loading="lazy" decoding="async" />,
-								<img src="/assets/letItBe/astro_logo_icon.png" alt="Astro" loading="lazy" decoding="async" />,
-								<img src="/assets/letItBe/bienveillance.png" alt="bienveillance" loading="lazy" decoding="async" />,
-								<img src="/assets/letItBe/Cloud-icon.svg.png" alt="Cloud" loading="lazy" decoding="async" />,
-								<img src="/assets/letItBe/docker_icon.png" alt="docker" loading="lazy" decoding="async" />,
-								<img src="/assets/letItBe/lumière.png" alt="light" loading="lazy" decoding="async" />,
-								<img src="/assets/letItBe/git.png" alt="Git" loading="lazy" decoding="async" />,
-								<img src="/assets/letItBe/htmlcssjs.png" alt="htmlCssJs" loading="lazy" decoding="async" />,
-								<img src="/assets/letItBe/spirituel.png" alt="spirit" loading="lazy" decoding="async" />,
-								<img src="/assets/letItBe/linux.png" alt="linux" loading="lazy" decoding="async" />,
-								<img src="/assets/letItBe/terminal-logo.png" alt="shell" loading="lazy" decoding="async" />,
-								<img src="/assets/letItBe/sylius-logo.png" alt="Sylius" loading="lazy" decoding="async" />,
-								<img src="/assets/letItBe/symfony_logo_icon.png" alt="Symfony" loading="lazy" decoding="async" />,
-								<img src="/assets/letItBe/life-flower.png" alt="Fleur de vie" loading="lazy" decoding="async" />,
-								<img src="/assets/letItBe/database.png" alt="Database" loading="lazy" decoding="async" />,
-							].map((brand) => (
-								<li class="">
-									<p>{brand}</p>
-								</li>
-							))
-						}
-					</Grid>
-				</div>
 			</section>
-		</main>
 
+			<main class="wrapper stack gap-20 lg:gap-48">
+				<section class="section with-background with-cta">
+					<header class="section-header stack gap-2 lg:gap-4">
+						<h3>Mes projets, ma vie...</h3>
+						<p>Une présentation de quelques unes de mes expériences, qui m'ont amenées tellement, autant sur le plan professionnel qu'humain.</p>
+					</header>
+
+					<div class="gallery">
+						<Grid variant="offset">
+							{
+								projects.map((project) => (
+									<li>
+										<PortfolioPreview project={project} />
+									</li>
+								))
+							}
+						</Grid>
+					</div>
+
+					<div class="cta">
+						<CallToAction href="/work/">
+							Découvrir
+							<Icon icon="arrow-right" size="1.2em" />
+						</CallToAction>
+					</div>
+				</section>
+
+				<section class="section with-background bg-variant">
+					<header class="section-header stack gap-2 lg:gap-4">
+						<h3>Mon univers
+						</h3>
+						<p>
+							Développement Intuition Conscience
+						</p>
+					</header>
+
+					<div class="gallery">
+						<Grid variant="small">
+							{
+								[
+									<img src="/assets/letItBe/love.png" alt="love" loading="lazy" decoding="async" />,
+									<img src="/assets/letItBe/php.png" alt="php" loading="lazy" decoding="async" />,
+									<img src="/assets/letItBe/astro_logo_icon.png" alt="Astro" loading="lazy" decoding="async" />,
+									<img src="/assets/letItBe/bienveillance.png" alt="bienveillance" loading="lazy" decoding="async" />,
+									<img src="/assets/letItBe/Cloud-icon.svg.png" alt="Cloud" loading="lazy" decoding="async" />,
+									<img src="/assets/letItBe/docker_icon.png" alt="docker" loading="lazy" decoding="async" />,
+									<img src="/assets/letItBe/lumière.png" alt="light" loading="lazy" decoding="async" />,
+									<img src="/assets/letItBe/git.png" alt="Git" loading="lazy" decoding="async" />,
+									<img src="/assets/letItBe/htmlcssjs.png" alt="htmlCssJs" loading="lazy" decoding="async" />,
+									<img src="/assets/letItBe/spirituel.png" alt="spirit" loading="lazy" decoding="async" />,
+									<img src="/assets/letItBe/linux.png" alt="linux" loading="lazy" decoding="async" />,
+									<img src="/assets/letItBe/terminal-logo.png" alt="shell" loading="lazy" decoding="async" />,
+									<img src="/assets/letItBe/sylius-logo.png" alt="Sylius" loading="lazy" decoding="async" />,
+									<img src="/assets/letItBe/symfony_logo_icon.png" alt="Symfony" loading="lazy" decoding="async" />,
+									<img src="/assets/letItBe/life-flower.png" alt="Fleur de vie" loading="lazy" decoding="async" />,
+									<img src="/assets/letItBe/database.png" alt="Database" loading="lazy" decoding="async" />,
+								].map((brand) => (
+									<li class="">
+										<p>{brand}</p>
+									</li>
+								))
+							}
+						</Grid>
+					</div>
+				</section>
+			</main>
+		</div>
 		<ContactCTA />
 	</div>
 </BaseLayout>
@@ -141,6 +156,18 @@ const projects = (await getCollection('work'))
 		object-position: center;
 		border-radius: 1.5rem;
 		box-shadow: var(--shadow-md);
+	}
+
+	.img-center {
+		margin-top: 1.5rem;
+	}
+
+	.img-center img {
+		width: 120rem;
+	}
+
+	p.formation {
+		padding: 1.2rem;
 	}
 
 	@media (min-width: 50em) {
