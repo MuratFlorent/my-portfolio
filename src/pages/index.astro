@@ -53,14 +53,14 @@ const projects = (await getCollection('work'))
 
 
 
-			<section class="section with-background bg-variant">
+			<section class="section with-background bg-variant formation">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h4>Financez l'élaboration de votre site tout en vous formant !</h4>
 					<p class="formation gap-2 lg:gap-4">En collaboration avec notre centre de formation, nous pouvons débloquer des crédits de formation auxquels vous avez droit (tels que les CPF) et avancer ensemble dans un beau projet de construction et de prise en main de votre interface.</p>
-					<div class="img-center">
+					<div class="img-center mb-4">
 						<img
 							alt="Florent Murat Light Developer, pour accompagner avec bienveillance vos projets web"
-							 src="/assets/letItBe/eveil_et_science.jpeg" alt="eveilEtScience" loading="lazy" decoding="async" />,
+							 src="/assets/letItBe/eveil_et_science.jpeg" alt="eveilEtScience" loading="lazy" decoding="async" />
 					</div>
 
 				<div class="cta">
@@ -165,7 +165,7 @@ const projects = (await getCollection('work'))
 	}
 
 	.img-center {
-		margin-top: 1.5rem;
+		margin:1.5rem 0;
 	}
 
 	.img-center img {
@@ -196,7 +196,21 @@ const projects = (await getCollection('work'))
 			object-fit: cover;
 		}
 	}
+	@media (max-width: 50em) {
+		.formation h4{
+			max-width: 20ch;
+			font-size: var(--text-xl);
+		}
 
+		.formation p{
+			max-width: 31ch;
+		}
+
+		.formation img{
+			max-width: 18rem;
+ 		   padding-right: 1em;;
+		}
+	}
 	/* ====================================================== */
 
 	.section {
