@@ -19,7 +19,7 @@ import Skills from '../components/Skills.astro';
 // Content Fetching: List four most recent work projects
 const projects = (await getCollection('work'))
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-	.slice(0, 4);
+	.slice(0, 5);
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
@@ -31,7 +31,7 @@ const projects = (await getCollection('work'))
 			<header class="hero">
 				<Hero
 					title="Florent Murat"
-					tagline="Passionné par le développement web alternatif, accompagnateur de vos projet web, à votre écoute avec bienveillance."
+					tagline="Passionné par le développement web qui oeuvre pour la transition, accompagnateur de vos projets, à votre écoute avec bienveillance."
 					align="center"
 				>
 					<div class="roles">
@@ -50,27 +50,6 @@ const projects = (await getCollection('work'))
 
 			</header>
 			<Skills />
-
-
-
-			<section class="section with-background bg-variant formation">
-				<header class="section-header stack gap-2 lg:gap-4">
-					<h4>Financez l'élaboration de votre site tout en vous formant !</h4>
-					<p class="formation gap-2 lg:gap-4">En collaboration avec notre centre de formation, nous pouvons débloquer des crédits de formation auxquels vous avez droit (tels que les CPF) et avancer ensemble dans un beau projet de construction et de prise en main de votre interface.</p>
-					<div class="img-center mb-4">
-						<img
-							alt="Florent Murat Light Developer, pour accompagner avec bienveillance vos projets web"
-							 src="/assets/letItBe/eveil_et_science.jpeg" alt="eveilEtScience" loading="lazy" decoding="async" />
-					</div>
-
-				<div class="cta">
-					<CallToAction href="mailto:florentmurat@ymail.com">
-						Pour plus de renseignements
-						<Icon icon="pencil-line" size="1.2em" />
-					</CallToAction>
-				</div>
-				</header>
-			</section>
 
 			<main class="wrapper stack gap-20 lg:gap-48">
 
@@ -119,16 +98,17 @@ const projects = (await getCollection('work'))
 									<img src="/assets/letItBe/bienveillance.png" alt="bienveillance" loading="lazy" decoding="async" />,
 									<img src="/assets/letItBe/Cloud-icon.svg.png" alt="Cloud" loading="lazy" decoding="async" />,
 									<img src="/assets/letItBe/docker_icon.png" alt="docker" loading="lazy" decoding="async" />,
+									<img src="/assets/letItBe/logo-WordPress.jpg" alt="Database" loading="lazy" decoding="async" />,
 									<img src="/assets/letItBe/lumière.png" alt="light" loading="lazy" decoding="async" />,
 									<img src="/assets/letItBe/git.png" alt="Git" loading="lazy" decoding="async" />,
 									<img src="/assets/letItBe/htmlcssjs.png" alt="htmlCssJs" loading="lazy" decoding="async" />,
 									<img src="/assets/letItBe/spirituel.png" alt="spirit" loading="lazy" decoding="async" />,
 									<img src="/assets/letItBe/linux.png" alt="linux" loading="lazy" decoding="async" />,
 									<img src="/assets/letItBe/terminal-logo.png" alt="shell" loading="lazy" decoding="async" />,
+									<img src="/assets/letItBe/vipassana.png_large" alt="Database" loading="lazy" decoding="async" />,
 									<img src="/assets/letItBe/sylius-logo.png" alt="Sylius" loading="lazy" decoding="async" />,
 									<img src="/assets/letItBe/symfony_logo_icon.png" alt="Symfony" loading="lazy" decoding="async" />,
 									<img src="/assets/letItBe/life-flower.png" alt="Fleur de vie" loading="lazy" decoding="async" />,
-									<img src="/assets/letItBe/database.png" alt="Database" loading="lazy" decoding="async" />,
 								].map((brand) => (
 									<li class="">
 										<p>{brand}</p>
@@ -137,6 +117,26 @@ const projects = (await getCollection('work'))
 							}
 						</Grid>
 					</div>
+				</section>
+
+
+				<section class="section with-background bg-variant formation">
+					<header class="section-header stack gap-2 lg:gap-4">
+						<h4>Financez l'élaboration de votre site tout en vous formant !</h4>
+						<p class="formation gap-2 lg:gap-4">En collaboration avec notre centre de formation, nous pouvons débloquer des crédits de formation auxquels vous avez droit (tels que les CPF) et avancer ensemble dans un beau projet de construction et de prise en main de votre interface.</p>
+						<div class="img-center mb-4">
+							<img
+								alt="Florent Murat Light Developer, pour accompagner avec bienveillance vos projets web"
+								src="/assets/letItBe/eveil_et_science.jpeg" alt="eveilEtScience" loading="lazy" decoding="async" />
+						</div>
+
+						<div class="cta">
+							<CallToAction href="mailto:florentmurat@ymail.com">
+								Pour plus de renseignements
+								<Icon icon="pencil-line" size="1.2em" />
+							</CallToAction>
+						</div>
+					</header>
 				</section>
 			</main>
 		</div>
