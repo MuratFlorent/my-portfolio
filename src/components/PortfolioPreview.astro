@@ -9,7 +9,9 @@ const { data, slug } = Astro.props.project;
 ---
 
 <a class="card" href={`/work/${slug}`}>
-	<span class="title">{data.title}</span>
+  <span class={`title ${data.status === 'in_progress' ? 'highlight-title' : ''}`} data-status={data.status}>
+    {data.title}
+  </span>
 	<img src={data.img} alt={data.img_alt || ''} loading="lazy" decoding="async" />
 </a>
 

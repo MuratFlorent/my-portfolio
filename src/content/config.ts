@@ -11,6 +11,7 @@ export const collections = {
 			img: z.string(),
 			img_alt: z.string().optional(),
 			href: z.string().optional(),
+			status: z.enum(['in_progress', 'finish']).optional(),
 		}),
 	}),
 };

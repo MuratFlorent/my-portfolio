@@ -297,5 +297,31 @@ h5 {
 	}
 }
 
+.title {
+	transition: background-color 0.3s ease; /* Pour une transition en douceur */
+}
+
+.highlight-title {
+	background-color: rgba(255, 215, 0, 0.6);  /* Couleur dorée avec un effet transparent */
+	padding: 0 5px;
+	font-weight: bold;
+}
+
+/* Si le projet est terminé, il peut être en vert */
+.title[data-status="finish"] {
+	background-color: rgba(0, 255, 0, 0.6);  /* Couleur verte avec un effet transparent */
+	padding: 0 5px;
+	font-weight: bold;
+}
+
+.title[data-status="in_progress"]:hover {
+	background-color: rgba(255, 215, 0, 0.29);  /* Couleur dorée plus marquée au survol */
+}
+
+/* Effet au survol des projets finis, couleur plus accentuée */
+.title[data-status="finish"]:hover {
+	background-color: rgba(116, 211, 255, 0.29);  /* Vert plus accentué au survol */
+}
+
 
 
