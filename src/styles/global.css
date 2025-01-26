@@ -290,10 +290,10 @@ h5 {
 }
 @media (max-width: 50em) {
 	.formation p {
-		max-width: 24ch !important;
+		max-width: 31ch !important;
 	}
 	.formation h4 {
-		max-width: 15ch !important;
+		max-width: 19ch !important;
 	}
 }
 
@@ -324,4 +324,9 @@ h5 {
 }
 
 
+@media (max-width: 50em) {
 
+	.tags[data-astro-cid-qwekciqp] {
+		flex-direction: column;
+	}
+}
