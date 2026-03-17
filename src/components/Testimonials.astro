@@ -76,18 +76,18 @@ import Icon from './Icon.astro';
 	.testimonial-card {
 		display: flex;
 		flex-direction: column;
-		padding: 2rem;
-		background: var(--gradient-subtle);
+		padding: 2.5rem;
+		background: var(--gray-999);
 		border: 1px solid var(--gray-800);
-		border-radius: 1.5rem;
+		border-radius: var(--radius-md);
 		box-shadow: var(--shadow-sm);
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		transition: transform var(--theme-transition), box-shadow var(--theme-transition), border-color var(--theme-transition);
 		position: relative;
 	}
 
 	.testimonial-card:hover {
 		transform: translateY(-5px);
-		box-shadow: var(--shadow-md);
+		box-shadow: var(--glow-accent);
 		border-color: var(--accent-regular);
 	}
 

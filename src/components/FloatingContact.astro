@@ -200,15 +200,15 @@ import Icon from './Icon.astro';
 		background: var(--gradient-accent-orange);
 		color: white;
 		border: none;
-		border-radius: 99rem;
+		border-radius: var(--radius-full);
 		box-shadow: var(--shadow-lg);
 		cursor: pointer;
-		transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+		transition: transform var(--theme-transition-slow), box-shadow var(--theme-transition);
 	}
 
 	.fab:hover {
 		transform: scale(1.05) translateY(-5px);
-		box-shadow: 0 15px 30px var(--accent-overlay);
+		box-shadow: var(--glow-accent-strong);
 	}
 
 	.fab-text {
@@ -248,12 +248,13 @@ import Icon from './Icon.astro';
 		width: 95%;
 		max-width: 800px;
 		margin: 2rem auto;
-		border-radius: 1.5rem;
+		border-radius: var(--radius-lg);
 		position: relative;
 		overflow-y: auto;
 		max-height: 90vh;
 		box-shadow: var(--shadow-lg);
 		border: 1px solid var(--gray-800);
+		transition: transform var(--theme-transition-slow);
 	}
 
 	.close-button {
@@ -265,14 +266,20 @@ import Icon from './Icon.astro';
 		align-items: center;
 		gap: 0.5rem;
 		padding: 0.5rem 1rem;
-		border-radius: 99rem;
+		border-radius: var(--radius-full);
 		border: 1px solid var(--gray-800);
 		background: var(--gray-999_40);
 		backdrop-filter: blur(4px);
 		color: var(--gray-200);
 		cursor: pointer;
 		font-weight: 500;
-		transition: all 0.2s ease;
+		transition: all var(--theme-transition);
+	}
+
+	.close-button:hover {
+		background: var(--gray-900);
+		color: var(--gray-0);
+		border-color: var(--accent-regular);
 	}
 
 	.modal-content {
@@ -384,17 +391,22 @@ import Icon from './Icon.astro';
 		background: var(--gradient-accent-orange);
 		color: white;
 		border: none;
-		border-radius: 99rem;
-		font-size: var(--text-md);
-		font-weight: 600;
+		border-radius: var(--radius-full);
+		font-size: var(--text-lg);
+		font-weight: 700;
 		cursor: pointer;
-		transition: transform 0.2s ease;
+		transition: transform var(--theme-transition), box-shadow var(--theme-transition);
 		margin-top: 1rem;
 	}
 
 	.submit-btn:hover {
 		transform: translateY(-2px);
-		box-shadow: var(--shadow-md);
+		box-shadow: var(--glow-accent);
+	}
+
+	.submit-btn:focus-visible {
+		outline: 3px solid var(--accent-regular);
+		outline-offset: 4px;
 	}
 
 	@media (min-width: 50em) {
