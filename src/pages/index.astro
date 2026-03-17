@@ -13,6 +13,7 @@ import Pill from '../components/Pill.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
 import ProjectModal from '../components/ProjectModal.astro';
 import ScrollSpy from '../components/ScrollSpy.astro';
+import Testimonials from '../components/Testimonials.astro';
 
 // Page section components
 import ContactCTA from '../components/ContactCTA.astro';
@@ -43,6 +44,7 @@ const projects = (await getCollection('work'))
 						<Pill><Icon icon="code" size="1.33em" /> Développeur web</Pill>
 						<Pill><Icon icon="strategy" size="1.33em" /> Formateur</Pill>
 						<Pill><Icon icon="heart" size="1.33em" /> Accompagnement sur mesure</Pill>
+						<Pill><Icon icon="whatsapp-logo" size="1.33em" /> WhatsApp dispo</Pill>
 					</div>
 
 					<div class="hero-ctas">
@@ -157,6 +159,7 @@ const projects = (await getCollection('work'))
 									{ id: 'transmission', label: 'Transmission', icon: 'strategy', description: 'Partager le savoir pour favoriser l’autonomie.' },
 									{ id: 'outillage', label: 'Outillage', icon: 'terminal', description: 'Maîtrise des outils modernes pour une efficacité maximale.' },
 									{ id: 'cloud', label: 'Cloud & DevOps', icon: 'cloud', description: 'Infrastructure solide et déploiements automatisés.' },
+									{ id: 'whatsapp', label: 'WhatsApp', icon: 'whatsapp-logo', description: 'Un canal direct et fluide pour échanger sur vos besoins.' },
 									{ id: 'conscience', label: 'Conscience', icon: 'eye', description: 'Une présence attentive à chaque étape du développement.' },
 									{ id: 'automatisation', label: 'Automatisation', icon: 'magic-wand', description: 'Optimiser les processus pour libérer du temps créatif.' },
 								].map((item) => (
@@ -180,24 +183,57 @@ const projects = (await getCollection('work'))
 					</div>
 				</section>
 
+				<Testimonials />
 
-				<section id="formation" class="section bg-variant formation">
-					<header class="section-header stack gap-2 lg:gap-4">
-						<h4>Financez l'élaboration de votre site tout en vous formant !</h4>
-						<p class="formation gap-2 lg:gap-4">En collaboration avec notre centre de formation, nous pouvons débloquer des crédits de formation auxquels vous avez droit (tels que les CPF) et avancer ensemble dans un beau projet de construction et de prise en main de votre interface.</p>
-						<div class="img-center mb-4">
-							<img
-								alt="Florent Murat Light Developer, pour accompagner avec bienveillance vos projets web"
-								src="/assets/letItBe/eveil_et_science.jpeg" alt="eveilEtScience" loading="lazy" decoding="async" />
-						</div>
+				<section id="formation" class="section formation-premium bg-variant">
+					<div class="formation-container stack gap-8 lg:gap-12">
+						<header class="formation-header stack gap-4">
+							<div class="badge-accent">Formation & Accompagnement</div>
+							<h3>Financez votre projet tout en montant en compétences</h3>
+							<p class="intro-text">
+								En collaboration avec notre centre de formation partenaire, 
+								débloquez vos crédits de formation (CPF, OPCO) pour construire votre projet 
+								digital tout en apprenant à le maîtriser de A à Z.
+							</p>
+						</header>
 
-						<div class="cta">
-							<CallToAction href="mailto:murat.light.developer@gmail.com">
-								Pour plus de renseignements
-								<Icon icon="pencil-line" size="1.2em" />
-							</CallToAction>
+						<div class="formation-content-grid">
+							<div class="formation-image">
+								<img
+									alt="Florent Murat - Formation et transmission de savoir-faire"
+									src="/assets/letItBe/eveil_et_science.jpeg" 
+									loading="lazy" 
+									decoding="async" 
+								/>
+								<div class="image-caption">
+									<Icon icon="strategy" size="1.2em" />
+									<span>Apprentissage concret sur votre propre projet</span>
+								</div>
+							</div>
+
+							<div class="formation-details stack gap-6">
+								<div class="benefit-item stack gap-2">
+									<h4><Icon icon="rocket-launch" size="1.2em" gradient /> Autonomie réelle</h4>
+									<p>Ne soyez plus dépendant de prestataires pour chaque petite modification. Apprenez à gérer votre interface en toute confiance.</p>
+								</div>
+								<div class="benefit-item stack gap-2">
+									<h4><Icon icon="code" size="1.2em" gradient /> Expertise sur mesure</h4>
+									<p>WordPress, SEO, structuration de données ou automatisation : le programme s'adapte à vos besoins réels et à votre niveau.</p>
+								</div>
+								<div class="benefit-item stack gap-2">
+									<h4><Icon icon="heart" size="1.2em" gradient /> Financement facilité</h4>
+									<p>Bénéficiez d'un accompagnement pour les démarches administratives liées au financement de votre formation.</p>
+								</div>
+
+								<div class="cta-wrapper">
+									<CallToAction href="mailto:murat.light.developer@gmail.com">
+										En savoir plus sur la formation
+										<Icon icon="arrow-right" size="1.2em" />
+									</CallToAction>
+								</div>
+							</div>
 						</div>
-					</header>
+					</div>
 				</section>
 			</main>
 		</div>
@@ -605,6 +641,114 @@ const projects = (await getCollection('work'))
 	@media (min-width: 50em) {
 		.projects .gallery {
 			margin-top: 2rem;
+		}
+	}
+
+	/* Formation Premium Styles */
+	.formation-premium {
+		margin-top: 3rem;
+		padding: 4rem 1.5rem;
+		background: var(--gradient-subtle);
+		border-radius: 2rem;
+		border: 1px solid var(--gray-800);
+	}
+
+	.formation-header {
+		text-align: center;
+		max-width: 60ch;
+		margin-inline: auto;
+	}
+
+	.badge-accent {
+		display: inline-block;
+		align-self: center;
+		padding: 0.4rem 1.2rem;
+		background: var(--accent-overlay);
+		color: var(--accent-regular);
+		border-radius: 99rem;
+		font-weight: 700;
+		font-size: var(--text-sm);
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+	}
+
+	.formation-premium h3 {
+		font-size: var(--text-3xl);
+		color: var(--gray-0);
+	}
+
+	.intro-text {
+		font-size: var(--text-lg);
+		color: var(--gray-300);
+	}
+
+	.formation-content-grid {
+		display: grid;
+		gap: 3rem;
+	}
+
+	.formation-image {
+		position: relative;
+		border-radius: 1.5rem;
+		overflow: hidden;
+		box-shadow: var(--shadow-md);
+	}
+
+	.formation-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.image-caption {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding: 1.5rem;
+		background: linear-gradient(transparent, rgba(0,0,0,0.8));
+		color: white;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: var(--text-sm);
+	}
+
+	.benefit-item h4 {
+		font-size: var(--text-xl);
+		color: var(--gray-0);
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.benefit-item p {
+		color: var(--gray-400);
+	}
+
+	.cta-wrapper {
+		margin-top: 1rem;
+	}
+
+	@media (min-width: 50em) {
+		.formation-premium {
+			padding: 6rem 4rem;
+			margin-top: 5rem;
+			border-radius: 4rem;
+		}
+
+		.formation-header h3 {
+			font-size: var(--text-5xl);
+		}
+
+		.formation-content-grid {
+			grid-template-columns: 1fr 1fr;
+			align-items: center;
+			gap: 5rem;
+		}
+
+		.formation-image {
+			aspect-ratio: 4 / 3;
 		}
 	}
 </style>

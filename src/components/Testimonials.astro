@@ -1,0 +1,140 @@
+---
+import Icon from './Icon.astro';
+---
+
+<section id="testimonials" class="section testimonials bg-variant">
+	<header class="section-header stack gap-2 lg:gap-4">
+		<h3>Avis clients</h3>
+		<p>Ce qu'ils disent de notre collaboration et de l'approche Light Developer.</p>
+	</header>
+
+	<div class="gallery">
+		<div class="testimonial-grid">
+			<article class="testimonial-card">
+				<div class="quote-icon">
+					<Icon icon="chat-circle-dots" size="2rem" gradient />
+				</div>
+				<p class="quote">"Florent a su comprendre les enjeux de notre projet avec une finesse rare. Son approche 'Light Developer' n'est pas qu'un mot, c'est une réalité dans la clarté qu'il apporte."</p>
+				<div class="author">
+					<p class="name">Marie L.</p>
+					<p class="role">Directrice Marketing, Green Solutions</p>
+				</div>
+				<div class="project-context">
+					<span>Refonte E-commerce & SEO</span>
+				</div>
+			</article>
+
+			<article class="testimonial-card">
+				<div class="quote-icon">
+					<Icon icon="chat-circle-dots" size="2rem" gradient />
+				</div>
+				<p class="quote">"Un développeur qui écoute vraiment, ça change tout. La formation qu'il a dispensée à mon équipe nous a permis d'être autonomes sur notre nouvel outil très rapidement."</p>
+				<div class="author">
+					<p class="name">Thomas B.</p>
+					<p class="role">Fondateur, Artisan Digital</p>
+				</div>
+				<div class="project-context">
+					<span>Formation & Accompagnement</span>
+				</div>
+			</article>
+
+			<article class="testimonial-card">
+				<div class="quote-icon">
+					<Icon icon="chat-circle-dots" size="2rem" gradient />
+				</div>
+				<p class="quote">"Rigueur technique et humanité. Les automatisations mises en place nous font gagner un temps précieux chaque jour. Je recommande vivement son expertise."</p>
+				<div class="author">
+					<p class="name">Sophie D.</p>
+					<p class="role">Chef de projet, Innov'Art</p>
+				</div>
+				<div class="project-context">
+					<span>Automatisation métier</span>
+				</div>
+			</article>
+		</div>
+	</div>
+</section>
+
+<style>
+	.testimonials {
+		padding-bottom: 5rem;
+	}
+
+	.testimonial-grid {
+		display: grid;
+		gap: 2rem;
+		grid-template-columns: 1fr;
+	}
+
+	@media (min-width: 50em) {
+		.testimonial-grid {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 2.5rem;
+		}
+	}
+
+	.testimonial-card {
+		display: flex;
+		flex-direction: column;
+		padding: 2rem;
+		background: var(--gradient-subtle);
+		border: 1px solid var(--gray-800);
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-sm);
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		position: relative;
+	}
+
+	.testimonial-card:hover {
+		transform: translateY(-5px);
+		box-shadow: var(--shadow-md);
+		border-color: var(--accent-regular);
+	}
+
+	.quote-icon {
+		margin-bottom: 1.5rem;
+		opacity: 0.5;
+	}
+
+	.quote {
+		font-style: italic;
+		font-size: var(--text-md);
+		color: var(--gray-200);
+		line-height: 1.6;
+		margin-bottom: 2rem;
+		flex-grow: 1;
+	}
+
+	.author {
+		margin-bottom: 1rem;
+	}
+
+	.name {
+		font-weight: 700;
+		color: var(--gray-0);
+		font-size: var(--text-base);
+		margin-bottom: 0.2rem;
+	}
+
+	.role {
+		font-size: var(--text-sm);
+		color: var(--gray-400);
+	}
+
+	.project-context {
+		font-size: var(--text-xs);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: var(--accent-regular);
+		font-weight: 600;
+		border-top: 1px solid var(--gray-800);
+		padding-top: 1rem;
+		margin-top: auto;
+	}
+
+	@media (max-width: 50em) {
+		.section-header {
+			max-width: 100%;
+		}
+	}
+</style>
