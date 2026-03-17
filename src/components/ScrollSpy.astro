@@ -1,0 +1,146 @@
+---
+import Icon from './Icon.astro';
+
+interface Section {
+    id: string;
+    label: string;
+    icon: string;
+}
+
+const sections: Section[] = [
+    { id: 'accueil', label: 'Accueil', icon: 'sun' },
+    { id: 'solutions', label: 'Solutions', icon: 'magic-wand' },
+    { id: 'projets', label: 'Projets', icon: 'rocket-launch' },
+    { id: 'univers', label: 'Univers', icon: 'heart' },
+    { id: 'formation', label: 'Formation', icon: 'strategy' },
+    { id: 'contact', label: 'Contact', icon: 'paper-plane-tilt' },
+];
+---
+
+<nav class="scroll-spy" aria-label="Navigation rapide">
+    <ul class="stack gap-4">
+        {sections.map((section) => (
+            <li>
+                <a href={`#${section.id}`} class="spy-link" data-section={section.id}>
+                    <span class="spy-label">{section.label}</span>
+                    <span class="spy-dot"></span>
+                </a>
+            </li>
+        ))}
+    </ul>
+</nav>
+
+<script>
+    const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -70% 0px',
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                document.querySelectorAll('.spy-link').forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('data-section') === id);
+                });
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('section[id], header[id]').forEach(section => {
+        observer.observe(section);
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('.spy-link').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
+
+<style>
+    .scroll-spy {
+        position: fixed;
+        right: 2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 100;
+        display: none;
+    }
+
+    @media (min-width: 75em) {
+        .scroll-spy {
+            display: block;
+        }
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        align-items: flex-end;
+    }
+
+    .spy-link {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        text-decoration: none;
+        color: var(--gray-400);
+        transition: all 0.3s ease;
+    }
+
+    .spy-label {
+        font-size: var(--text-sm);
+        font-weight: 500;
+        opacity: 0;
+        transform: translateX(10px);
+        transition: all 0.3s ease;
+        background: var(--gray-999_40);
+        backdrop-filter: blur(4px);
+        padding: 0.2rem 0.6rem;
+        border-radius: 0.4rem;
+        border: 1px solid var(--gray-800);
+        white-space: nowrap;
+    }
+
+    .spy-dot {
+        width: 10px;
+        height: 10px;
+        background: var(--gray-700);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+
+    .spy-link:hover .spy-label {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .spy-link:hover .spy-dot {
+        background: var(--accent-regular);
+        transform: scale(1.2);
+    }
+
+    .spy-link.active .spy-dot {
+        background: var(--accent-regular);
+        transform: scale(1.5);
+        border-color: var(--accent-light);
+        box-shadow: 0 0 10px var(--accent-overlay);
+    }
+
+    .spy-link.active .spy-label {
+        color: var(--accent-regular);
+        font-weight: 700;
+    }
+</style>

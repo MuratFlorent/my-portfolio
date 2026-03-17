@@ -11,6 +11,8 @@ import Hero from '../components/Hero.astro';
 import Icon from '../components/Icon.astro';
 import Pill from '../components/Pill.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
+import ProjectModal from '../components/ProjectModal.astro';
+import ScrollSpy from '../components/ScrollSpy.astro';
 
 // Page section components
 import ContactCTA from '../components/ContactCTA.astro';
@@ -26,9 +28,12 @@ const projects = (await getCollection('work'))
 ---
 
 <BaseLayout>
+	<ProjectModal id="project-modal" />
+	<ProjectModal id="universe-modal" />
+	<ScrollSpy />
 	<div class="stack gap-20 lg:gap-48">
 		<div class="wrapper stack gap-8 lg:gap-20">
-			<header class="hero">
+			<header id="accueil" class="hero">
 				<Hero
 					title="Développement web sur mesure, SEO et automatisation"
 					tagline="Des solutions digitales adaptées à votre projet. Une approche humaine, claire et pensée selon vos besoins réels."
@@ -67,7 +72,7 @@ const projects = (await getCollection('work'))
 
 			</header>
 
-			<section class="section solutions bg-variant">
+			<section id="solutions" class="section solutions bg-variant">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Solutions personnalisées</h3>
 					<p>Que vous ayez besoin d'une présence en ligne complète ou d'un outil métier spécifique, je conçois des solutions adaptées à vos enjeux.</p>
@@ -110,10 +115,10 @@ const projects = (await getCollection('work'))
 			</section>
 
 			<main class="wrapper stack gap-20 lg:gap-48">
-				<section class="section with-cta">
+				<section id="projets" class="section projects with-cta">
 					<header class="section-header stack gap-2 lg:gap-4">
 						<h3>Mes projets, ma vie...</h3>
-						<p>Une présentation de quelques unes de mes expériences, qui m'ont amenées tellement, autant sur le plan professionnel qu'humain.</p>
+						<p>Une sélection de mes réalisations les plus marquantes, alliant expertise technique et approche humaine.</p>
 					</header>
 
 					<div class="gallery">
@@ -136,48 +141,47 @@ const projects = (await getCollection('work'))
 					</div>
 				</section>
 
-				<section class="section with-background bg-variant">
+				<section id="univers" class="section with-background bg-variant universe">
 					<header class="section-header stack gap-2 lg:gap-4">
-						<h3>Mon univers
-						</h3>
-						<p>
-							Développement Bienveillance Conscience
-						</p>
+						<h3>Mon univers</h3>
+						<p>Découvrez les piliers et les outils qui animent ma démarche de Light Developer.</p>
 					</header>
 
 					<div class="gallery">
 						<Grid variant="small">
 							{
 								[
-									<img src="/assets/letItBe/love.png" alt="love" loading="lazy" decoding="async" />,
-									<img src="/assets/letItBe/php.png" alt="php" loading="lazy" decoding="async" />,
-									<img src="/assets/letItBe/astro_logo_icon.png" alt="Astro" loading="lazy" decoding="async" />,
-									<img src="/assets/letItBe/bienveillance.png" alt="bienveillance" loading="lazy" decoding="async" />,
-									<img src="/assets/letItBe/Cloud-icon.svg.png" alt="Cloud" loading="lazy" decoding="async" />,
-									<img src="/assets/letItBe/docker_icon.png" alt="docker" loading="lazy" decoding="async" />,
-									<img src="/assets/letItBe/logo-WordPress.jpg" alt="Wordpress" loading="lazy" decoding="async" />,
-									<img src="/assets/letItBe/lumière.png" alt="light" loading="lazy" decoding="async" />,
-									<img src="/assets/letItBe/git.png" alt="Git" loading="lazy" decoding="async" />,
-									<img src="/assets/letItBe/htmlcssjs.png" alt="htmlCssJs" loading="lazy" decoding="async" />,
-									<img src="/assets/letItBe/spirituel.png" alt="spirit" loading="lazy" decoding="async" />,
-									<img src="/assets/letItBe/linux.png" alt="linux" loading="lazy" decoding="async" />,
-									<img src="/assets/letItBe/terminal-logo.png" alt="shell" loading="lazy" decoding="async" />,
-									<img src="/assets/letItBe/vipassana.png_large" alt="vipassane" loading="lazy" decoding="async" />,
-									<img src="/assets/letItBe/sylius-logo.png" alt="Sylius" loading="lazy" decoding="async" />,
-									<img src="/assets/letItBe/symfony_logo_icon.png" alt="Symfony" loading="lazy" decoding="async" />,
-									<img src="/assets/letItBe/life-flower.png" alt="Fleur de vie" loading="lazy" decoding="async" />,
-								].map((brand) => (
-									<li class="">
-										<p>{brand}</p>
+									{ id: 'bienveillance', label: 'Bienveillance', icon: 'heart', description: 'Une approche humaine centrée sur l’écoute et l’empathie.' },
+									{ id: 'technique', label: 'Rigueur technique', icon: 'code', description: 'Un code propre, maintenable et performant.' },
+									{ id: 'clarté', label: 'Clarté', icon: 'sun', description: 'Apporter de la lumière et de la transparence sur chaque projet.' },
+									{ id: 'transmission', label: 'Transmission', icon: 'strategy', description: 'Partager le savoir pour favoriser l’autonomie.' },
+									{ id: 'outillage', label: 'Outillage', icon: 'terminal', description: 'Maîtrise des outils modernes pour une efficacité maximale.' },
+									{ id: 'cloud', label: 'Cloud & DevOps', icon: 'cloud', description: 'Infrastructure solide et déploiements automatisés.' },
+									{ id: 'conscience', label: 'Conscience', icon: 'eye', description: 'Une présence attentive à chaque étape du développement.' },
+									{ id: 'automatisation', label: 'Automatisation', icon: 'magic-wand', description: 'Optimiser les processus pour libérer du temps créatif.' },
+								].map((item) => (
+									<li class="universe-item" data-universe-id={item.id} data-universe-data={JSON.stringify(item)}>
+										<div class="universe-card">
+											<Icon icon={item.icon as any} color="var(--accent-regular)" size="2.5rem" gradient />
+											<p>{item.label}</p>
+											<div class="universe-tooltip">{item.description}</div>
+										</div>
 									</li>
 								))
 							}
 						</Grid>
 					</div>
+
+					<div class="cta">
+						<button class="explore-universe-btn" id="open-universe-modal">
+							Explorer mon univers complet
+							<Icon icon="arrow-right" size="1.2em" />
+						</button>
+					</div>
 				</section>
 
 
-				<section class="section bg-variant formation">
+				<section id="formation" class="section bg-variant formation">
 					<header class="section-header stack gap-2 lg:gap-4">
 						<h4>Financez l'élaboration de votre site tout en vous formant !</h4>
 						<p class="formation gap-2 lg:gap-4">En collaboration avec notre centre de formation, nous pouvons débloquer des crédits de formation auxquels vous avez droit (tels que les CPF) et avancer ensemble dans un beau projet de construction et de prise en main de votre interface.</p>
@@ -197,9 +201,48 @@ const projects = (await getCollection('work'))
 				</section>
 			</main>
 		</div>
-		<ContactCTA />
+		<ContactCTA id="contact" />
 	</div>
 </BaseLayout>
+
+<script>
+	// Logic for Universe Modal
+	const openUniverseBtn = document.getElementById('open-universe-modal');
+	const universeModal = document.getElementById('universe-modal') as HTMLDialogElement;
+
+	if (openUniverseBtn && universeModal) {
+		openUniverseBtn.addEventListener('click', () => {
+			const modalTitle = universeModal.querySelector('.modal-title');
+			const modalDescription = universeModal.querySelector('.modal-description');
+			const modalSolution = universeModal.querySelector('.modal-solution-content');
+			const modalImageWrapper = universeModal.querySelector('.image-wrapper');
+			const modalHeader = universeModal.querySelector('.modal-header');
+
+			if (modalTitle) modalTitle.textContent = "Mon Univers Complet";
+			if (modalDescription) modalDescription.textContent = "Un aperçu détaillé de mes outils, de ma philosophie et de mes passions.";
+			
+			if (modalSolution) {
+				modalSolution.innerHTML = `
+					<div class="stack gap-4">
+						<p>En tant que <strong>Light Developer</strong>, mon approche repose sur trois piliers : la Technique, la Bienveillance et la Clarté.</p>
+						<p>Je combine l'excellence technique (PHP, Symfony, Astro) avec une écoute profonde des besoins humains pour créer des solutions qui ont du sens.</p>
+						<ul class="stack gap-2">
+							<li><strong>Développement :</strong> WordPress, Sylius, Symfony, Astro.</li>
+							<li><strong>Mindset :</strong> Écoute, clarté, transmission, présence.</li>
+							<li><strong>Outils :</strong> Terminal, Linux, Docker, Cloud.</li>
+						</ul>
+					</div>
+				`;
+			}
+
+			// Masquer l'image pour le modal univers ou mettre une image par défaut
+			if (modalImageWrapper) (modalImageWrapper as HTMLElement).style.display = 'none';
+			if (modalHeader) (modalHeader as HTMLElement).style.setProperty('grid-template-columns', '1fr');
+
+			universeModal.showModal();
+		});
+	}
+</script>
 
 <style>
 	.hero {
@@ -359,6 +402,76 @@ const projects = (await getCollection('work'))
 		color: var(--gray-0);
 	}
 
+	/* Univers section specific styles */
+	.universe-card {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 1.5rem;
+		background: var(--gradient-subtle);
+		border: 1px solid var(--gray-800);
+		border-radius: 1rem;
+		text-align: center;
+		transition: all 0.3s ease;
+		cursor: help;
+	}
+
+	.universe-card:hover {
+		transform: scale(1.05);
+		border-color: var(--accent-regular);
+		box-shadow: 0 5px 15px var(--accent-overlay);
+	}
+
+	.universe-card p {
+		margin-top: 0.75rem;
+		font-weight: 500;
+		color: var(--gray-200);
+	}
+
+	.universe-tooltip {
+		position: absolute;
+		bottom: 100%;
+		left: 50%;
+		transform: translateX(-50%) translateY(-10px);
+		background: var(--gray-0);
+		color: white;
+		padding: 0.5rem 1rem;
+		border-radius: 0.5rem;
+		font-size: var(--text-sm);
+		width: 200px;
+		opacity: 0;
+		pointer-events: none;
+		transition: all 0.3s ease;
+		z-index: 20;
+		box-shadow: var(--shadow-md);
+	}
+
+	.universe-card:hover .universe-tooltip {
+		opacity: 1;
+		transform: translateX(-50%) translateY(-20px);
+	}
+
+	.explore-universe-btn {
+		display: flex;
+		align-items: center;
+		gap: 0.8em;
+		padding: 0.8rem 1.6rem;
+		color: var(--accent-text-over);
+		background: var(--gradient-accent-orange);
+		border: none;
+		border-radius: 999rem;
+		font-size: var(--text-md);
+		cursor: pointer;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+		box-shadow: var(--shadow-md);
+	}
+
+	.explore-universe-btn:hover {
+		transform: scale(1.05);
+		box-shadow: var(--shadow-lg);
+	}
+
 	.service-card p {
 		font-size: var(--text-sm);
 		color: var(--gray-400);
@@ -455,14 +568,14 @@ const projects = (await getCollection('work'))
 			text-align: left;
 		}
 
-		.gallery {
-			grid-area: gallery;
-		}
-
-		.cta {
-			grid-area: cta;
-		}
+	.gallery {
+		grid-area: gallery;
 	}
+
+	.cta {
+		grid-area: cta;
+	}
+}
 
 	/* ====================================================== */
 
@@ -483,6 +596,15 @@ const projects = (await getCollection('work'))
 		.mention-card {
 			border-radius: 1.5rem;
 			height: 9.5rem;
+		}
+	}
+	.projects .gallery {
+		margin-top: 1rem;
+	}
+
+	@media (min-width: 50em) {
+		.projects .gallery {
+			margin-top: 2rem;
 		}
 	}
 </style>
