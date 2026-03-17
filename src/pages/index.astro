@@ -30,26 +30,84 @@ const projects = (await getCollection('work'))
 		<div class="wrapper stack gap-8 lg:gap-20">
 			<header class="hero">
 				<Hero
-					title="Florent Murat"
-					tagline="Passionné par le développement web qui oeuvre pour la transition, accompagnateur de vos projets, à votre écoute avec bienveillance."
-					align="center"
+					title="Développement web sur mesure, SEO et automatisation"
+					tagline="Des solutions digitales adaptées à votre projet. Une approche humaine, claire et pensée selon vos besoins réels."
+					align="start"
 				>
 					<div class="roles">
-						<Pill><Icon icon="code" size="1.33em" /> Web Developer</Pill>
+						<Pill><Icon icon="code" size="1.33em" /> Développeur web</Pill>
 						<Pill><Icon icon="strategy" size="1.33em" /> Formateur</Pill>
-						<Pill><Icon icon="heart" size="1.33em" /> Accompagnement </Pill>
+						<Pill><Icon icon="heart" size="1.33em" /> Accompagnement sur mesure</Pill>
+					</div>
+
+					<div class="hero-ctas">
+						<CallToAction href="/work/">
+							Mes projets
+							<Icon icon="arrow-right" size="1.2em" />
+						</CallToAction>
+						<CallToAction href="mailto:murat.light.developer@gmail.com">
+							Me contacter
+							<Icon icon="paper-plane-tilt" size="1.2em" />
+						</CallToAction>
 					</div>
 				</Hero>
 
-				<img
-					alt="Florent Murat Light Developer, pour accompagner avec bienveillance vos projets web"
-					width="480"
-					height="620"
-					src="/assets/portrait2.jpeg"
-				/>
+				<div class="hero-image-container">
+					<img
+						alt="Florent Murat Light Developer, pour accompagner avec bienveillance vos projets web"
+						width="480"
+						height="620"
+						src="/assets/portrait2.jpeg"
+					/>
+					<div class="image-overlay">
+						<p class="overlay-title">Florent Murat — Light Developer</p>
+						<p class="overlay-text">Développeur web, formateur et accompagnant de projets sur mesure.</p>
+					</div>
+				</div>
 
 			</header>
-			<Skills />
+
+			<section class="section solutions bg-variant">
+				<header class="section-header stack gap-2 lg:gap-4">
+					<h3>Solutions personnalisées</h3>
+					<p>Que vous ayez besoin d'une présence en ligne complète ou d'un outil métier spécifique, je conçois des solutions adaptées à vos enjeux.</p>
+				</header>
+
+				<div class="gallery">
+					<Grid variant="small">
+						<li class="service-card">
+							<Icon icon="code" color="var(--accent-regular)" size="2.5rem" gradient />
+							<h4>Sites & refontes</h4>
+							<p>Développement de sites vitrines et applicatifs modernes, optimisés et sur mesure.</p>
+						</li>
+						<li class="service-card">
+							<Icon icon="cpu" color="var(--accent-regular)" size="2.5rem" gradient />
+							<h4>Plugins & modules</h4>
+							<p>Extension des fonctionnalités de vos outils existants (WordPress, Sylius, etc.).</p>
+						</li>
+						<li class="service-card">
+							<Icon icon="magic-wand" color="var(--accent-regular)" size="2.5rem" gradient />
+							<h4>Automatisations</h4>
+							<p>Gain de productivité via des scripts et outils connectés pour vos processus métier.</p>
+						</li>
+						<li class="service-card">
+							<Icon icon="rocket-launch" color="var(--accent-regular)" size="2.5rem" gradient />
+							<h4>SEO & Performance</h4>
+							<p>Optimisation technique pour un référencement naturel durable et une rapidité exemplaire.</p>
+						</li>
+						<li class="service-card">
+							<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
+							<h4>Formation</h4>
+							<p>Transmission de savoir-faire technique pour monter en compétence en toute autonomie.</p>
+						</li>
+						<li class="service-card">
+							<Icon icon="users-three" color="var(--accent-regular)" size="2.5rem" gradient />
+							<h4>Accompagnement</h4>
+							<p>Conseil stratégique et suivi humain tout au long de la vie de votre projet digital.</p>
+						</li>
+					</Grid>
+				</div>
+			</section>
 
 			<main class="wrapper stack gap-20 lg:gap-48">
 				<section class="section with-cta">
@@ -148,19 +206,78 @@ const projects = (await getCollection('work'))
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 2rem;
+		gap: 3rem;
 	}
 
 	.roles {
-		display: none;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		justify-content: center;
 	}
 
-	.hero img {
+	.hero-ctas {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		justify-content: center;
+		margin-top: 1rem;
+	}
+
+	.hero-image-container {
+		position: relative;
+		overflow: hidden;
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-md);
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
+
+	.hero-image-container:hover {
+		transform: scale(1.02);
+		box-shadow: 0 0 20px var(--accent-overlay);
+	}
+
+	.hero-image-container img {
+		display: block;
+		width: 100%;
+		height: auto;
 		aspect-ratio: 5 / 4;
 		object-fit: cover;
 		object-position: center;
-		border-radius: 1.5rem;
-		box-shadow: var(--shadow-md);
+		transition: transform 0.5s ease;
+	}
+
+	.hero-image-container:hover img {
+		transform: scale(1.05);
+	}
+
+	.image-overlay {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		padding: 2rem;
+		background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%);
+		opacity: 0;
+		transition: opacity 0.4s ease;
+		color: white;
+		pointer-events: none;
+	}
+
+	.hero-image-container:hover .image-overlay {
+		opacity: 1;
+	}
+
+	.overlay-title {
+		font-size: var(--text-lg);
+		font-weight: bold;
+		margin-bottom: 0.25rem;
+	}
+
+	.overlay-text {
+		font-size: var(--text-sm);
+		opacity: 0.9;
 	}
 
 	.img-center {
@@ -180,19 +297,25 @@ const projects = (await getCollection('work'))
 			display: grid;
 			grid-template-columns: 6fr 4fr;
 			padding-inline: 2.5rem;
-			gap: 3.75rem;
+			gap: 5rem;
+			align-items: center;
 		}
 
 		.roles {
 			margin-top: 0.5rem;
-			display: flex;
-			gap: 0.5rem;
+			justify-content: flex-start;
 		}
 
-		.hero img {
-			aspect-ratio: 3 / 4;
+		.hero-ctas {
+			justify-content: flex-start;
+		}
+
+		.hero-image-container {
 			border-radius: 4.5rem;
-			object-fit: cover;
+		}
+
+		.hero-image-container img {
+			aspect-ratio: 3 / 4;
 		}
 	}
 	@media (max-width: 50em) {
@@ -210,6 +333,56 @@ const projects = (await getCollection('work'))
  		   padding-right: 1em;;
 		}
 	}
+
+	.service-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		padding: 2rem;
+		background: var(--gradient-subtle);
+		border: 1px solid var(--gray-800);
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-sm);
+		transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+		gap: 1rem;
+	}
+
+	.service-card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 10px 30px var(--accent-overlay);
+		border-color: var(--accent-regular);
+	}
+
+	.service-card h4 {
+		font-size: var(--text-lg);
+		color: var(--gray-0);
+	}
+
+	.service-card p {
+		font-size: var(--text-sm);
+		color: var(--gray-400);
+		line-height: 1.5;
+	}
+
+	.solutions {
+		margin-top: 2rem;
+	}
+
+	@media (min-width: 50em) {
+		.solutions {
+			margin-top: 0;
+		}
+
+		.service-card {
+			padding: 2.5rem;
+		}
+
+		.service-card h4 {
+			font-size: var(--text-xl);
+		}
+	}
+
 	/* ====================================================== */
 
 	.section {
