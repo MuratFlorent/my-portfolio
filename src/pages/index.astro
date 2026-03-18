@@ -43,16 +43,16 @@ const projects = (await getCollection('work'))
 				>
 					<div class="roles">
 						<Pill href="/about" ariaLabel="Découvrir mon approche">
-							<Icon icon="terminal-window" size="1.33em" /> Développeur web
+							<Icon icon="code" size="1.33em" /> Développeur web
 						</Pill>
 						<Pill href="/formation" ariaLabel="Voir la section formation">
-							<Icon icon="pencil-line" size="1.33em" /> Formateur
+							<Icon icon="graduation-cap" size="1.33em" /> Formateur
 						</Pill>
-						<Pill href="#contact" ariaLabel="Parler de votre projet">
-							<Icon icon="users-three" size="1.33em" /> Accompagnement sur mesure
+						<Pill href="#contact" ariaLabel="Parler de votre projet" id="open-quote-pill">
+							<Icon icon="users" size="1.33em" /> Accompagnement sur mesure
 						</Pill>
-						<Pill href="https://wa.me/?text=Bonjour%20Florent%2C%20j%27aimerais%20parler%20de%20mon%20projet." target="_blank" rel="noopener" ariaLabel="Discuter sur WhatsApp">
-							<Icon icon="whatsapp-logo" size="1.33em" /> WhatsApp dispo
+						<Pill href="tel:+33682027290" ariaLabel="Appeler Florent Murat">
+							<Icon icon="phone" size="1.33em" /> Rendez-vous téléphonique
 						</Pill>
 					</div>
 
@@ -279,6 +279,19 @@ const projects = (await getCollection('work'))
 			universeModal.showModal();
 		});
 	}
+
+	const openQuotePill = document.getElementById('open-quote-pill');
+	if (openQuotePill) {
+		openQuotePill.addEventListener('click', (e) => {
+			e.preventDefault();
+			window.dispatchEvent(new CustomEvent('open-contact', {
+				detail: {
+					tab: 'quote',
+					message: "Bonjour, je souhaiterais discuter d'un accompagnement sur mesure pour mon projet..."
+				}
+			}));
+		});
+	}
 </script>
 
 <style>
@@ -290,10 +303,18 @@ const projects = (await getCollection('work'))
 	}
 
 	.roles {
-		display: flex;
-		flex-wrap: wrap;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
 		gap: 0.5rem;
-		justify-content: center;
+		width: 100%;
+	}
+
+	@media (min-width: 50em) {
+		.roles {
+			display: flex;
+			flex-wrap: wrap;
+			width: auto;
+		}
 	}
 
 	.hero-ctas {

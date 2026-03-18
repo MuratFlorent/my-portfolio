@@ -31,7 +31,7 @@ const { href, target, ariaLabel, rel } = Astro.props as Props;
 		font-weight: 550;
 		line-height: 1.35;
 		white-space: nowrap;
-		text-decoration: none;
+		text-decoration: none !important;
 		box-shadow: var(--shadow-sm);
 		transition: transform var(--theme-transition), box-shadow var(--theme-transition), background-color var(--theme-transition);
 	}
@@ -48,8 +48,8 @@ const { href, target, ariaLabel, rel } = Astro.props as Props;
 	}
 
 	.pill:hover {
-		transform: translateY(-2px);
-		box-shadow: var(--glow-accent);
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-md), var(--glow-accent);
 	}
 
 	.pill:focus-visible {
