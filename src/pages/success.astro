@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Contact from '../components/ContactCTA.astro';
+import Icon from '../components/Icon.astro';
+---
+
+<BaseLayout title="Message envoyé | Florent Murat" description="Votre message a bien été envoyé.">
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-8 text-center">
+			<div class="success-header stack gap-4">
+				<div class="icon-circle">
+					<Icon icon="magic-wand" size="3rem" />
+				</div>
+				<h1>C'est envoyé !</h1>
+				<p class="tagline">Merci pour votre message. Je reviens vers vous très rapidement pour échanger sur votre projet.</p>
+			</div>
+			
+			<div class="actions">
+				<a href="/" class="back-home">
+					<Icon icon="arrow-left" size="1.2em" />
+					Retour à l'accueil
+				</a>
+			</div>
+		</main>
+		<Contact />
+	</div>
+</BaseLayout>
+
+<style>
+	main {
+		padding-top: 10rem;
+		padding-bottom: 5rem;
+		min-height: 60vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.success-header h1 {
+		font-size: var(--text-5xl);
+		color: var(--gray-0);
+	}
+
+	.tagline {
+		font-size: var(--text-xl);
+		color: var(--gray-300);
+		max-width: 40ch;
+		margin: 0 auto;
+	}
+
+	.icon-circle {
+		width: 6rem;
+		height: 6rem;
+		background: var(--gradient-accent-orange);
+		color: white;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0 auto 1rem;
+		box-shadow: var(--glow-accent);
+	}
+
+	.back-home {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--accent-regular);
+		text-decoration: none;
+		font-weight: 600;
+		font-size: var(--text-lg);
+		transition: color var(--theme-transition);
+	}
+
+	.back-home:hover {
+		color: var(--accent-light);
+	}
+
+	@media (max-width: 50em) {
+		.success-header h1 {
+			font-size: var(--text-3xl);
+		}
+		.tagline {
+			font-size: var(--text-lg);
+		}
+	}
+</style>

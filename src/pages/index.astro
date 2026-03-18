@@ -41,10 +41,18 @@ const projects = (await getCollection('work'))
 					align="start"
 				>
 					<div class="roles">
-						<Pill><Icon icon="code" size="1.33em" /> Développeur web</Pill>
-						<Pill><Icon icon="strategy" size="1.33em" /> Formateur</Pill>
-						<Pill><Icon icon="heart" size="1.33em" /> Accompagnement sur mesure</Pill>
-						<Pill><Icon icon="whatsapp-logo" size="1.33em" /> WhatsApp dispo</Pill>
+						<Pill href="/about" ariaLabel="Découvrir mon approche">
+							<Icon icon="terminal-window" size="1.33em" /> Développeur web
+						</Pill>
+						<Pill href="#formation" ariaLabel="Voir la section formation">
+							<Icon icon="pencil-line" size="1.33em" /> Formateur
+						</Pill>
+						<Pill href="#contact" ariaLabel="Parler de votre projet">
+							<Icon icon="users-three" size="1.33em" /> Accompagnement sur mesure
+						</Pill>
+						<Pill href="https://wa.me/?text=Bonjour%20Florent%2C%20j%27aimerais%20parler%20de%20mon%20projet." target="_blank" rel="noopener" ariaLabel="Discuter sur WhatsApp">
+							<Icon icon="whatsapp-logo" size="1.33em" /> WhatsApp dispo
+						</Pill>
 					</div>
 
 					<div class="hero-ctas">
