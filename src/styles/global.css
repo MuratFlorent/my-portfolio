@@ -56,13 +56,33 @@
 	--text-xs: 0.75rem;
 	--text-sm: 0.875rem;
 	--text-base: 1rem;
-	--text-md: 1.125rem;
-	--text-lg: 1.25rem;
-	--text-xl: 1.625rem;
-	--text-2xl: 2.125rem;
-	--text-3xl: 2.625rem;
-	--text-4xl: 3.5rem;
-	--text-5xl: 4.5rem;
+	--text-md: 1.1rem; /* Légère réduction */
+	--text-lg: 1.2rem; /* Légère réduction */
+	--text-xl: 1.35rem; /* Réduit de 1.375rem */
+	--text-2xl: 1.55rem; /* Réduit de 1.625rem */
+	--text-3xl: 1.75rem; /* Réduit de 1.875rem */
+	--text-4xl: 2.1rem; /* Réduit de 2.25rem */
+	--text-5xl: 2.5rem; /* Réduit de 2.75rem */
+
+	@media (min-width: 50em) {
+		--text-xl: 1.45rem; /* Réduit de 1.5rem */
+		--text-2xl: 1.75rem; /* Réduit de 1.875rem */
+		--text-3xl: 2rem; /* Réduit de 2.25rem */
+		--text-4xl: 2.5rem; /* Réduit de 2.75rem */
+		--text-5xl: 3.25rem; /* Réduit de 3.5rem */
+	}
+
+	@media (min-width: 80em) {
+		/* Laptop 14" / Desktop standard */
+		--text-4xl: 2.75rem; /* Réduit de 3.25rem - Très important pour 14" */
+		--text-5xl: 3.75rem; /* Réduit de 4.25rem */
+	}
+
+	@media (min-width: 100em) {
+		/* Très grands écrans seulement */
+		--text-4xl: 3.5rem; /* Réduit de 4rem */
+		--text-5xl: 4.5rem; /* Réduit de 5rem */
+	}
 
 	/* Fonts */
 	--font-system: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
@@ -162,10 +182,11 @@ h2,
 h3,
 h4,
 h5 {
-	line-height: 1.1;
+	line-height: 1.15;
 	font-family: var(--font-brand);
 	font-weight: 600;
 	color: var(--gray-100);
+	letter-spacing: -0.01em;
 }
 
 h1 {

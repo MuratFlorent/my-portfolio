@@ -349,9 +349,9 @@ const projects = (await getCollection('work'))
 	}
 
 	.overlay-title {
-		font-size: var(--text-xl);
+		font-size: var(--text-lg);
 		font-weight: bold;
-		margin-bottom: 0.5rem;
+		margin-bottom: 0.25rem;
 		transform: translateY(10px);
 		transition: transform var(--theme-transition-slow);
 	}
@@ -361,8 +361,9 @@ const projects = (await getCollection('work'))
 	}
 
 	.overlay-text {
-		font-size: var(--text-md);
+		font-size: var(--text-sm);
 		opacity: 0.9;
+		line-height: 1.4;
 		transform: translateY(10px);
 		transition: transform var(--theme-transition-slow) 0.1s;
 	}
@@ -387,8 +388,8 @@ const projects = (await getCollection('work'))
 		.hero {
 			display: grid;
 			grid-template-columns: 6fr 4fr;
-			padding-inline: 2.5rem;
-			gap: 5rem;
+			padding-inline: 1.5rem;
+			gap: 3rem;
 			align-items: center;
 		}
 
@@ -402,11 +403,22 @@ const projects = (await getCollection('work'))
 		}
 
 		.hero-image-container {
-			border-radius: 4.5rem;
+			border-radius: 3rem;
 		}
 
 		.hero-image-container img {
 			aspect-ratio: 3 / 4;
+		}
+	}
+
+	@media (min-width: 80em) {
+		.hero {
+			padding-inline: 2.5rem;
+			gap: 5rem;
+		}
+
+		.hero-image-container {
+			border-radius: 4.5rem;
 		}
 	}
 	@media (max-width: 50em) {
@@ -459,7 +471,7 @@ const projects = (await getCollection('work'))
 	}
 
 	.service-card p {
-		font-size: var(--text-base);
+		font-size: var(--text-sm);
 		color: var(--gray-300);
 		line-height: 1.5;
 	}
@@ -493,7 +505,13 @@ const projects = (await getCollection('work'))
 		margin-top: 0.75rem;
 		font-weight: 600;
 		color: var(--gray-0);
-		font-size: var(--text-md);
+		font-size: var(--text-sm);
+	}
+
+	@media (min-width: 50em) {
+		.universe-card p {
+			font-size: var(--text-md);
+		}
 	}
 
 	.universe-tooltip {
@@ -536,16 +554,23 @@ const projects = (await getCollection('work'))
 		display: flex;
 		align-items: center;
 		gap: 0.8rem;
-		padding: 1.2rem 2.5rem;
+		padding: 0.8rem 2rem;
 		background: transparent;
 		color: var(--accent-regular);
 		border: 2px solid var(--accent-regular);
 		border-radius: var(--radius-full);
-		font-size: var(--text-lg);
+		font-size: var(--text-md);
 		font-weight: bold;
 		cursor: pointer;
 		transition: all var(--theme-transition);
 		margin: 2rem auto 0;
+	}
+
+	@media (min-width: 50em) {
+		.explore-universe-btn {
+			padding: 1.2rem 2.5rem;
+			font-size: var(--text-lg);
+		}
 	}
 
 	.explore-universe-btn:hover {
@@ -561,7 +586,7 @@ const projects = (await getCollection('work'))
 	}
 
 	.service-card p {
-		font-size: var(--text-base);
+		font-size: var(--text-sm);
 		color: var(--gray-300);
 		line-height: 1.5;
 	}
@@ -611,17 +636,28 @@ const projects = (await getCollection('work'))
 		--hero-bg: var(--bg-image-subtle-1);
 	}
 
-	.section-header {
-		justify-self: center;
-		text-align: center;
-		max-width: 60ch;
+	.section-header p {
 		font-size: var(--text-md);
 		color: var(--gray-300);
+		max-width: 65ch;
+		margin-inline: auto;
+	}
+
+	.section-header {
+		text-align: center;
+	}
+
+	@media (min-width: 50em) {
+		.section-header p {
+			font-size: var(--text-lg);
+		}
 	}
 
 	.section-header h3 {
-		font-size: var(--text-3xl);
+		font-size: var(--text-2xl);
 		margin-bottom: 0.5rem;
+		line-height: 1.2;
+		letter-spacing: -0.01em;
 	}
 
 	@media (min-width: 50em) {
@@ -637,16 +673,17 @@ const projects = (await getCollection('work'))
 
 		.section-header {
 			grid-area: header;
-			font-size: var(--text-lg);
+			justify-self: center;
+			text-align: center;
 		}
 
 		.section-header h3 {
-			font-size: var(--text-4xl);
+			font-size: var(--text-3xl);
 		}
 
 		.with-cta .section-header {
-			justify-self: flex-start;
-			text-align: left;
+			justify-self: center;
+			text-align: center;
 		}
 
 		.gallery {
@@ -657,6 +694,12 @@ const projects = (await getCollection('work'))
 			grid-area: cta;
 			align-self: center;
 			justify-self: flex-end;
+		}
+	}
+
+	@media (min-width: 80em) {
+		.section-header h3 {
+			font-size: var(--text-4xl);
 		}
 	}
 
@@ -724,15 +767,27 @@ const projects = (await getCollection('work'))
 	}
 
 	.formation-header h3 {
-		font-size: var(--text-3xl);
+		font-size: var(--text-2xl);
 		color: var(--gray-0);
 		margin-bottom: 1rem;
 	}
 
+	@media (min-width: 50em) {
+		.formation-header h3 {
+			font-size: var(--text-3xl);
+		}
+	}
+
+	@media (min-width: 80em) {
+		.formation-header h3 {
+			font-size: var(--text-4xl);
+		}
+	}
+
 	.intro-text {
-		font-size: var(--text-lg);
+		font-size: var(--text-md);
 		color: var(--gray-300);
-		line-height: 1.6;
+		line-height: 1.5;
 	}
 
 	.formation-content-grid {
@@ -776,14 +831,15 @@ const projects = (await getCollection('work'))
 		display: flex;
 		align-items: center;
 		gap: 0.75rem;
-		font-size: var(--text-lg);
-		margin-bottom: 0.5rem;
+		font-size: var(--text-md);
+		margin-bottom: 0.25rem;
 		color: var(--gray-0);
 	}
 
 	.benefit-item p {
 		color: var(--gray-300);
-		line-height: 1.6;
+		line-height: 1.5;
+		font-size: var(--text-sm);
 	}
 
 	.cta-wrapper {
