@@ -2,62 +2,86 @@
 import Icon from './Icon.astro';
 ---
 
-<section id="testimonials" class="section testimonials bg-variant">
-	<header class="section-header stack gap-2 lg:gap-4">
-		<h3>Avis clients</h3>
-		<p>Ce qu'ils disent de notre collaboration et de l'approche Light Developer.</p>
-	</header>
+<section id="testimonials" class="section testimonials">
+	<div class="testimonials-bg"></div>
+	<div class="container stack gap-12 lg:gap-20">
+		<header class="section-header stack gap-4 centered">
+			<div class="badge-accent mx-auto">Témoignages</div>
+			<h3>Ce que disent mes clients</h3>
+			<p class="max-w-2xl mx-auto">La réussite de vos projets est ma meilleure récompense. Voici quelques retours d'expérience.</p>
+		</header>
 
-	<div class="gallery">
-		<div class="testimonial-grid">
-			<article class="testimonial-card">
-				<div class="quote-icon">
-					<Icon icon="chat-circle-dots" size="2rem" gradient />
-				</div>
-				<p class="quote">"Florent a su comprendre les enjeux de notre projet avec une finesse rare. Son approche 'Light Developer' n'est pas qu'un mot, c'est une réalité dans la clarté qu'il apporte."</p>
-				<div class="author">
-					<p class="name">Marie L.</p>
-					<p class="role">Directrice Marketing, Green Solutions</p>
-				</div>
-				<div class="project-context">
-					<span>Refonte E-commerce & SEO</span>
-				</div>
-			</article>
+		<div class="gallery">
+			<div class="testimonial-grid">
+				<article class="testimonial-card">
+					<div class="quote-icon">
+						<Icon icon="chat-circle-dots" size="2rem" gradient />
+					</div>
+					<p class="quote">"Florent a su comprendre les enjeux de notre projet avec une finesse rare. Son approche 'Light Developer' n'est pas qu'un mot, c'est une réalité dans la clarté qu'il apporte."</p>
+					<div class="author-info">
+						<div class="author-details">
+							<p class="name">Marie L.</p>
+							<p class="role">Directrice Marketing, Green Solutions</p>
+						</div>
+					</div>
+					<div class="project-tag">
+						<span>Refonte E-commerce & SEO</span>
+					</div>
+				</article>
 
-			<article class="testimonial-card">
-				<div class="quote-icon">
-					<Icon icon="chat-circle-dots" size="2rem" gradient />
-				</div>
-				<p class="quote">"Un développeur qui écoute vraiment, ça change tout. La formation qu'il a dispensée à mon équipe nous a permis d'être autonomes sur notre nouvel outil très rapidement."</p>
-				<div class="author">
-					<p class="name">Thomas B.</p>
-					<p class="role">Fondateur, Artisan Digital</p>
-				</div>
-				<div class="project-context">
-					<span>Formation & Accompagnement</span>
-				</div>
-			</article>
+				<article class="testimonial-card">
+					<div class="quote-icon">
+						<Icon icon="chat-circle-dots" size="2rem" gradient />
+					</div>
+					<p class="quote">"Un développeur qui écoute vraiment, ça change tout. La formation qu'il a dispensée à mon équipe nous a permis d'être autonomes sur notre nouvel outil très rapidement."</p>
+					<div class="author-info">
+						<div class="author-details">
+							<p class="name">Thomas B.</p>
+							<p class="role">Fondateur, Artisan Digital</p>
+						</div>
+					</div>
+					<div class="project-tag">
+						<span>Formation & Accompagnement</span>
+					</div>
+				</article>
 
-			<article class="testimonial-card">
-				<div class="quote-icon">
-					<Icon icon="chat-circle-dots" size="2rem" gradient />
-				</div>
-				<p class="quote">"Rigueur technique et humanité. Les automatisations mises en place nous font gagner un temps précieux chaque jour. Je recommande vivement son expertise."</p>
-				<div class="author">
-					<p class="name">Sophie D.</p>
-					<p class="role">Chef de projet, Innov'Art</p>
-				</div>
-				<div class="project-context">
-					<span>Automatisation métier</span>
-				</div>
-			</article>
+				<article class="testimonial-card">
+					<div class="quote-icon">
+						<Icon icon="chat-circle-dots" size="2rem" gradient />
+					</div>
+					<p class="quote">"Rigueur technique et humanité. Les automatisations mises en place nous font gagner un temps précieux chaque jour. Je recommande vivement son expertise."</p>
+					<div class="author-info">
+						<div class="author-details">
+							<p class="name">Sophie D.</p>
+							<p class="role">Chef de projet, Innov'Art</p>
+						</div>
+					</div>
+					<div class="project-tag">
+						<span>Automatisation métier</span>
+					</div>
+				</article>
+			</div>
 		</div>
 	</div>
 </section>
 
 <style>
 	.testimonials {
-		padding-bottom: 5rem;
+		padding: 8rem 0;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.testimonials-bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: radial-gradient(circle at 20% 50%, var(--accent-overlay) 0%, transparent 40%),
+		            radial-gradient(circle at 80% 80%, var(--accent-overlay) 0%, transparent 40%);
+		z-index: -1;
+		opacity: 0.5;
 	}
 
 	.testimonial-grid {
@@ -76,44 +100,51 @@ import Icon from './Icon.astro';
 	.testimonial-card {
 		display: flex;
 		flex-direction: column;
-		padding: 2.5rem;
-		background: var(--gray-999);
+		padding: 3rem;
+		background: var(--gray-999_40);
 		border: 1px solid var(--gray-800);
-		border-radius: var(--radius-md);
+		border-radius: 1.5rem;
 		box-shadow: var(--shadow-sm);
-		transition: transform var(--theme-transition), box-shadow var(--theme-transition), border-color var(--theme-transition);
+		transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+		backdrop-filter: blur(10px);
 		position: relative;
+		height: 100%;
 	}
 
 	.testimonial-card:hover {
-		transform: translateY(-5px);
+		transform: translateY(-10px);
 		box-shadow: var(--glow-accent);
 		border-color: var(--accent-regular);
+		background: var(--gray-999);
 	}
 
 	.quote-icon {
-		margin-bottom: 1.5rem;
-		opacity: 0.5;
+		margin-bottom: 2rem;
+		opacity: 0.8;
 	}
 
 	.quote {
 		font-style: italic;
 		font-size: var(--text-md);
-		color: var(--gray-200);
-		line-height: 1.6;
-		margin-bottom: 2rem;
+		color: var(--gray-100);
+		line-height: 1.7;
+		margin-bottom: 2.5rem;
 		flex-grow: 1;
+		position: relative;
 	}
 
-	.author {
-		margin-bottom: 1rem;
+	.author-info {
+		margin-bottom: 1.5rem;
+		display: flex;
+		align-items: center;
+		gap: 1rem;
 	}
 
 	.name {
 		font-weight: 700;
 		color: var(--gray-0);
 		font-size: var(--text-base);
-		margin-bottom: 0.2rem;
+		margin-bottom: 0.1rem;
 	}
 
 	.role {
@@ -121,20 +152,27 @@ import Icon from './Icon.astro';
 		color: var(--gray-400);
 	}
 
-	.project-context {
+	.project-tag {
 		font-size: var(--text-xs);
 		text-transform: uppercase;
-		letter-spacing: 0.05em;
+		letter-spacing: 0.1em;
 		color: var(--accent-regular);
-		font-weight: 600;
+		font-weight: 700;
+		padding-top: 1.2rem;
 		border-top: 1px solid var(--gray-800);
-		padding-top: 1rem;
 		margin-top: auto;
 	}
 
-	@media (max-width: 50em) {
-		.section-header {
-			max-width: 100%;
-		}
+	.centered {
+		text-align: center;
+		margin-inline: auto;
+	}
+
+	.mx-auto {
+		margin-inline: auto;
+	}
+
+	.max-w-2xl {
+		max-width: 65ch;
 	}
 </style>
