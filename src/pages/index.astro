@@ -33,8 +33,8 @@ const projects = (await getCollection('work'))
 	<ProjectModal id="project-modal" />
 	<UniverseModal id="universe-modal" />
 	<ScrollSpy />
-	<div class="stack gap-20 lg:gap-48">
-		<div class="wrapper stack gap-8 lg:gap-20">
+	<div class="stack gap-15 lg:gap-20">
+		<div class="wrapper stack gap-8 lg:gap-12">
 			<header id="accueil" class="hero">
 				<Hero
 					title="Sites web sur mesure et visibilité sur Google"
@@ -136,30 +136,33 @@ const projects = (await getCollection('work'))
 				</div>
 			</section>
 
-			<main class="wrapper stack gap-20 lg:gap-48">
+			<main class="wrapper stack gap-15 lg:gap-30">
 				<section id="projets" class="section projects">
-					<header class="section-header stack gap-2 lg:gap-4 centered">
-						<h2>Projets réalisés</h2>
-						<p class="max-w-2xl mx-auto">Une sélection de mes réalisations les plus marquantes, alliant expertise technique et approche humaine.</p>
-					</header>
+					<div class="container stack gap-12 lg:gap-16">
+						<header class="section-header stack gap-4 centered">
+							<div class="badge-accent mx-auto">Réalisations</div>
+							<h2>Projets réalisés</h2>
+							<p class="max-w-2xl mx-auto">Une sélection de mes réalisations les plus marquantes, alliant expertise technique et approche humaine.</p>
+						</header>
 
-					<div class="gallery">
-						<Grid variant="offset">
-							{
-								projects.map((project) => (
-									<li>
-										<PortfolioPreview project={project} />
-									</li>
-								))
-							}
-						</Grid>
-					</div>
+						<div class="gallery">
+							<Grid>
+								{
+									projects.map((project) => (
+										<li>
+											<PortfolioPreview project={project} />
+										</li>
+									))
+								}
+							</Grid>
+						</div>
 
-					<div class="cta centered">
-						<CallToAction href="/work/">
-							Explorer toutes les réalisations
-							<Icon icon="arrow-right" size="1.2em" />
-						</CallToAction>
+						<div class="cta centered">
+							<CallToAction href="/work/">
+								Explorer toutes les réalisations
+								<Icon icon="arrow-right" size="1.2em" />
+							</CallToAction>
+						</div>
 					</div>
 				</section>
 
@@ -927,15 +930,32 @@ const projects = (await getCollection('work'))
 		}
 	}
 	.projects .gallery {
-		margin-top: 1rem;
+		margin-top: 0;
+	}
+
+	.projects .container {
+		max-width: 85rem;
+		margin-inline: auto;
+		width: 100%;
+		padding-inline: 1.5rem;
 	}
 
 	@media (min-width: 50em) {
 		.projects {
-			margin-top: -2rem;
+			margin-top: 4rem;
+			display: block; /* Désactive le grid parent pour utiliser le container centré */
 		}
 		.projects .gallery {
-			margin-top: 1.5rem;
+			margin-top: 2rem;
+		}
+		.projects .container {
+			padding-inline: 2.5rem;
+		}
+	}
+
+	@media (min-width: 80em) {
+		.projects .gallery {
+			margin-top: 3rem;
 		}
 	}
 

@@ -210,18 +210,18 @@ h5 {
 }
 
 .section {
-	padding-block: 5rem;
+	padding-block: 4rem;
 }
 
 @media (min-width: 50em) {
 	.section {
-		padding-block: 8rem;
+		padding-block: 6rem;
 	}
 }
 
 .section-header {
 	max-width: 60ch;
-	margin-bottom: 3rem;
+	margin-bottom: 2rem;
 }
 
 .section-header h3 {
@@ -282,13 +282,13 @@ h5 {
 	gap: 3.75rem;
 }
 .gap-20 {
-	gap: 5rem;
+	gap: 4rem;
 }
 .gap-30 {
-	gap: 7.5rem;
+	gap: 6rem;
 }
 .gap-48 {
-	gap: 12rem;
+	gap: 8rem;
 }
 
 @media (min-width: 50em) {
@@ -308,13 +308,13 @@ h5 {
 		gap: 3.75rem;
 	}
 	.lg\:gap-20 {
-		gap: 5rem;
+		gap: 4rem;
 	}
 	.lg\:gap-30 {
-		gap: 7.5rem;
+		gap: 6rem;
 	}
 .lg\:gap-48 {
-		gap: 12rem;
+		gap: 8rem;
 	}
 }
 
