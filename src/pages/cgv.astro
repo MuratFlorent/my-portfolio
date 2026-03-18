@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<BaseLayout title="CGV | Light Developer" description="Conditions Générales de Vente des prestations Light Developer.">
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-8">
+			<Hero title="Conditions Générales de Vente" tagline="Règles encadrant nos collaborations professionnelles." align="start" />
+			
+			<section class="legal-content stack gap-4">
+				<h3>Objet</h3>
+				<p>Les présentes CGV régissent les relations contractuelles entre Florent Murat et ses clients pour les prestations de développement web, SEO, formation et conseil.</p>
+
+				<h3>Prestations</h3>
+				<p>Toute prestation fait l'objet d'un devis préalable accepté par le client. Le contenu de la mission est détaillé dans ce devis.</p>
+
+				<h3>Tarifs et Paiement</h3>
+				<p>Les prix sont exprimés en Euros. Le paiement s'effectue selon les modalités définies au devis (généralement acompte de 30% à la commande).</p>
+			</section>
+		</main>
+	</div>
+</BaseLayout>
+
+<style>
+	.legal-content {
+		max-width: 65ch;
+		margin-inline: auto;
+		line-height: 1.6;
+		color: var(--gray-300);
+	}
+	h3 {
+		color: var(--gray-0);
+		margin-top: 2rem;
+	}
+</style>

@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<BaseLayout title="Politique de Confidentialité | Light Developer" description="Politique de confidentialité et protection des données.">
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-8">
+			<Hero title="Politique de Confidentialité" tagline="Votre vie privée est importante pour nous." align="start" />
+			
+			<section class="legal-content stack gap-4">
+				<h3>Collecte des données</h3>
+				<p>Les données collectées via les formulaires de contact (nom, email, message) sont utilisées uniquement pour répondre à vos demandes professionnelles.</p>
+
+				<h3>Utilisation des données</h3>
+				<p>Vos données ne sont jamais cédées, vendues ou louées à des tiers. Elles sont conservées pour une durée maximale de 3 ans après le dernier contact.</p>
+
+				<h3>Vos droits</h3>
+				<p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données personnelles. Pour l'exercer, contactez-nous par email.</p>
+			</section>
+		</main>
+	</div>
+</BaseLayout>
+
+<style>
+	.legal-content {
+		max-width: 65ch;
+		margin-inline: auto;
+		line-height: 1.6;
+		color: var(--gray-300);
+	}
+	h3 {
+		color: var(--gray-0);
+		margin-top: 2rem;
+	}
+</style>

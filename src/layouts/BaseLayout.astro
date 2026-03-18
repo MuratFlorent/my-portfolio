@@ -7,6 +7,7 @@ import MainHead from '../components/MainHead.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import FloatingContact from '../components/FloatingContact.astro';
+import CookieBanner from '../components/CookieBanner.astro';
 
 interface Props {
 	title?: string | undefined;
@@ -18,7 +19,7 @@ const { title, description } = Astro.props;
 
 <html lang="fr">
 	<head>
-			<MainHead title={title} description={description} />
+			<MainHead title={title || Astro.props.title} description={description || Astro.props.description} />
 			<script type="application/ld+json">
 				{
 					"@context": "https://schema.org",
@@ -47,6 +48,7 @@ const { title, description } = Astro.props;
 			<Footer />
 		</div>
 		<FloatingContact />
+		<CookieBanner />
 
 		<script>
 			// Add “loaded” class once the document has completely loaded.
@@ -132,7 +134,7 @@ const { title, description } = Astro.props;
 				/* Deactivate custom backgrounds for high contrast users. */
 				.backgrounds {
 					background: none;
-					background-blend-mode: none;
+					background-blend-mode: normal;
 					--bg-gradient-size: none;
 				}
 			}

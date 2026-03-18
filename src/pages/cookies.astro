@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<BaseLayout title="Gestion des Cookies | Light Developer" description="Informations sur l'utilisation des cookies sur le site.">
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-8">
+			<Hero title="Politique des Cookies" tagline="Comment nous utilisons les traceurs sur notre site." align="start" />
+			
+			<section class="legal-content stack gap-4">
+				<h3>Qu'est-ce qu'un cookie ?</h3>
+				<p>Un cookie est un petit fichier texte stocké sur votre terminal lors de la consultation d'un site web.</p>
+
+				<h3>Utilisation des cookies</h3>
+				<p>Nous utilisons des cookies techniques nécessaires au bon fonctionnement du site et des cookies d'analyse anonymisés pour améliorer votre expérience.</p>
+
+				<h3>Consentement</h3>
+				<p>Vous pouvez à tout moment modifier vos préférences via la bannière de cookies ou les réglages de votre navigateur.</p>
+			</section>
+		</main>
+	</div>
+</BaseLayout>
+
+<style>
+	.legal-content {
+		max-width: 65ch;
+		margin-inline: auto;
+		line-height: 1.6;
+		color: var(--gray-300);
+	}
+	h3 {
+		color: var(--gray-0);
+		margin-top: 2rem;
+	}
+</style>

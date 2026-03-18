@@ -23,7 +23,7 @@ import Skills from '../components/Skills.astro';
 // Content Fetching: List four most recent work projects
 const projects = (await getCollection('work'))
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-	.slice(0, 6);
+	.slice(0, 4);
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
@@ -72,7 +72,7 @@ const projects = (await getCollection('work'))
 					<img
 						alt="Florent Murat - Développeur web freelance spécialisé en création de site sur mesure et SEO"
 						width="480"
-						height="620"
+						height="600"
 						src="/assets/portrait2.jpeg"
 						loading="eager"
 						decoding="async"
@@ -137,10 +137,10 @@ const projects = (await getCollection('work'))
 			</section>
 
 			<main class="wrapper stack gap-20 lg:gap-48">
-				<section id="projets" class="section projects with-cta">
-					<header class="section-header stack gap-2 lg:gap-4">
+				<section id="projets" class="section projects">
+					<header class="section-header stack gap-2 lg:gap-4 centered">
 						<h2>Projets réalisés</h2>
-						<p>Une sélection de mes réalisations les plus marquantes, alliant expertise technique et approche humaine.</p>
+						<p class="max-w-2xl mx-auto">Une sélection de mes réalisations les plus marquantes, alliant expertise technique et approche humaine.</p>
 					</header>
 
 					<div class="gallery">
@@ -155,9 +155,9 @@ const projects = (await getCollection('work'))
 						</Grid>
 					</div>
 
-					<div class="cta">
+					<div class="cta centered">
 						<CallToAction href="/work/">
-							Découvrir
+							Explorer toutes les réalisations
 							<Icon icon="arrow-right" size="1.2em" />
 						</CallToAction>
 					</div>
@@ -210,13 +210,13 @@ const projects = (await getCollection('work'))
 				<Testimonials />
 				<section id="faq" class="section faq-section">
 					<div class="container stack gap-12 lg:gap-20">
-						<header class="section-header stack gap-4 centered">
-							<div class="badge-accent mx-auto">FAQ</div>
-							<h2>Questions fréquentes</h2>
-							<p class="max-w-2xl mx-auto">Tout ce qu'il faut savoir sur la création de sites web sur mesure, l'optimisation SEO et l'automatisation.</p>
-						</header>
-						<div class="faq-grid stack gap-4">
-							<details class="faq-item">
+							<header class="section-header stack gap-4 centered">
+								<div class="badge-accent mx-auto">FAQ</div>
+								<h2>Questions fréquentes</h2>
+								<p class="max-w-2xl mx-auto">Tout ce qu'il faut savoir sur la création de sites web sur mesure, l'optimisation SEO et l'automatisation.</p>
+							</header>
+							<div class="faq-grid">
+								<details class="faq-item">
 								<summary>Pourquoi choisir un site web sur mesure ?</summary>
 								<div class="faq-content">
 									<p>Un site sur mesure s’adapte aux besoins spécifiques de votre activité. Contrairement aux templates génériques, il permet d’optimiser la performance, le référencement naturel (SEO) et l'expérience utilisateur pour une efficacité maximale.</p>
@@ -684,7 +684,7 @@ const projects = (await getCollection('work'))
 
 	/* Universe Section Styles */
 	.universe {
-		padding: 4rem 0;
+		padding: 3rem 0;
 		position: relative;
 		overflow: hidden;
 	}
@@ -707,7 +707,7 @@ const projects = (await getCollection('work'))
 	}
 
 	.universe-card-inner {
-		padding: 2.5rem;
+		padding: 2rem;
 		background: var(--gray-999_40);
 		border: 1px solid var(--gray-800);
 		border-radius: 1.5rem;
@@ -721,10 +721,10 @@ const projects = (await getCollection('work'))
 	}
 
 	.universe-card-inner:hover {
-		transform: translateY(-8px);
+		transform: translateY(-6px);
 		border-color: var(--accent-regular);
-		background: var(--gray-999);
-		box-shadow: var(--glow-accent);
+		background: var(--gradient-subtle);
+		box-shadow: var(--shadow-md), var(--glow-accent);
 	}
 
 	.icon-box {
@@ -931,8 +931,11 @@ const projects = (await getCollection('work'))
 	}
 
 	@media (min-width: 50em) {
+		.projects {
+			margin-top: -2rem;
+		}
 		.projects .gallery {
-			margin-top: 2rem;
+			margin-top: 1.5rem;
 		}
 	}
 
@@ -1072,12 +1075,22 @@ const projects = (await getCollection('work'))
 	}
 
 	.faq-section {
-		padding: 4rem 0;
+		padding: 3rem 0;
 	}
 
 	.faq-grid {
-		max-width: 800px;
+		max-width: 1000px;
 		margin: 0 auto;
+		display: grid;
+		gap: 1.5rem;
+		grid-template-columns: 1fr;
+	}
+
+	@media (min-width: 50em) {
+		.faq-grid {
+			grid-template-columns: 1fr 1fr;
+			align-items: start;
+		}
 	}
 
 	.faq-item {

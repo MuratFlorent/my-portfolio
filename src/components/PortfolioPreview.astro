@@ -21,20 +21,20 @@ const { data, id } = Astro.props.project;
 		// mais pour l'instant on se base sur le schema
 	})}
 >
-	<div class="card-image-container">
+	<span class="card-image-container">
 		<img src={data.img} alt={data.img_alt || ''} loading="lazy" decoding="async" />
-		<div class="card-overlay">
-			<div class="tags-container">
+		<span class="card-overlay">
+			<span class="tags-container">
 				{data.tags.slice(0, 3).map((tag) => (
 					<span class="tag">{tag}</span>
 				))}
-			</div>
-			<div class="details">
+			</span>
+			<span class="details">
 				<span class="category">{data.status === 'in_progress' ? 'En cours' : 'Projet terminé'}</span>
 				<h3 class="title">{data.title}</h3>
-			</div>
-		</div>
-	</div>
+			</span>
+		</span>
+	</span>
 </button>
 
 <script>
@@ -97,8 +97,8 @@ const { data, id } = Astro.props.project;
 	}
 
 	.card:hover {
-		transform: translateY(-8px) scale(1.02);
-		box-shadow: var(--glow-accent-strong);
+		transform: translateY(-6px) scale(1.03);
+		box-shadow: var(--shadow-lg), var(--glow-accent);
 		border-color: var(--accent-regular);
 	}
 
@@ -108,6 +108,7 @@ const { data, id } = Astro.props.project;
 	}
 
 	.card-image-container {
+		display: block;
 		position: relative;
 		aspect-ratio: 16 / 10;
 		overflow: hidden;
@@ -133,13 +134,15 @@ const { data, id } = Astro.props.project;
 		padding: 1.5rem;
 		background: linear-gradient(
 			to bottom,
-			rgba(0, 0, 0, 0.4) 0%,
+			rgba(0, 0, 0, 0.2) 0%,
 			transparent 30%,
 			transparent 60%,
-			rgba(0, 0, 0, 0.8) 100%
+			rgba(0, 0, 0, 0.6) 100%
 		);
-		opacity: 0.9;
-		transition: opacity 0.4s ease;
+		backdrop-filter: brightness(1.1);
+		opacity: 0.8;
+		transition: all 0.4s ease;
+		pointer-events: none;
 	}
 
 	.card:hover .card-overlay {
@@ -193,7 +196,7 @@ const { data, id } = Astro.props.project;
 		font-size: var(--text-lg);
 		color: white;
 		margin: 0;
-		font-family: var(--font-brand);
+ 	font-family: var(--font-brand), system-ui, sans-serif;
 		line-height: 1.2;
 		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 	}
