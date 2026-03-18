@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+import Icon from '../components/Icon.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+const title = "Développeur Web Freelance | Florent Murat - Light Developer";
+const description = "Développeur web freelance avec plus de 10 ans d'expérience. Accompagnement humain et expertise technique pour vos projets web sur mesure, SEO et automatisation.";
+---
+
+<BaseLayout title={title} description={description}>
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-16">
+			<Hero
+				title="Développeur web freelance"
+				tagline="Une expertise technique de plus de 10 ans au service de vos projets les plus ambitieux."
+				align="start"
+			/>
+
+			<section class="content stack gap-8">
+				<h2>Florent Murat — Light Developer</h2>
+				<p>
+					Basé dans le sud de la France, j'accompagne des entrepreneurs, des associations et des entreprises partout en France dans la création de solutions digitales performantes. Mon approche se distingue par un équilibre constant entre la <strong>rigueur technique</strong> et l'<strong>écoute humaine</strong>.
+				</p>
+				
+				<div class="expertise-grid">
+					<div class="expertise-card">
+						<h3>10+ Ans d'expérience</h3>
+						<p>Une solide connaissance des langages du web et des enjeux métier.</p>
+					</div>
+					<div class="expertise-card">
+						<h3>Accompagnement de A à Z</h3>
+						<p>De la définition du besoin jusqu'à la mise en ligne et la maintenance.</p>
+					</div>
+					<div class="expertise-card">
+						<h3>Formation & Transmission</h3>
+						<p>Plus qu'un développeur, je suis un partenaire qui vous aide à comprendre vos outils.</p>
+					</div>
+				</div>
+
+				<h2>Pourquoi travailler avec un freelance ?</h2>
+				<p>
+					Collaborer avec un <strong>développeur web freelance</strong>, c'est choisir un interlocuteur unique, réactif et pleinement investi dans votre réussite. Je ne vends pas de solutions génériques, je conçois des outils qui servent réellement votre croissance.
+				</p>
+				<p>
+					Que vous ayez besoin d'un site sur mesure, d'une expertise SEO ou d'automatiser vos processus numériques, je mets tout mon savoir-faire au service de votre vision.
+				</p>
+
+				<div class="cta-center">
+					<CallToAction href="/#contact">
+						Parlons de votre idée
+						<Icon icon="paper-plane-tilt" size="1.2em" />
+					</CallToAction>
+				</div>
+			</section>
+		</main>
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.content {
+		max-width: 800px;
+		margin: 0 auto;
+		line-height: 1.6;
+		font-size: var(--text-lg);
+		color: var(--gray-300);
+	}
+
+	h2 {
+		font-size: var(--text-2xl);
+		color: var(--gray-0);
+		margin-top: 2rem;
+	}
+
+	.expertise-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1.5rem;
+		margin-block: 2rem;
+	}
+
+	.expertise-card {
+		background: var(--gray-999_40);
+		border: 1px solid var(--gray-800);
+		border-radius: var(--radius-md);
+		padding: 1.5rem;
+		text-align: center;
+	}
+
+	.expertise-card h3 {
+		font-size: var(--text-lg);
+		color: var(--accent-regular);
+		margin-bottom: 0.5rem;
+	}
+
+	.cta-center {
+		display: flex;
+		justify-content: center;
+		margin-top: 2rem;
+	}
+
+	@media (min-width: 50em) {
+		h2 {
+			font-size: var(--text-3xl);
+		}
+	}
+</style>

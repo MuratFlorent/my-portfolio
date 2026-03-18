@@ -16,10 +16,30 @@ interface Props {
 const { title, description } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="fr">
 	<head>
-		<MainHead title={title} description={description} />
-	</head>
+			<MainHead title={title} description={description} />
+			<script type="application/ld+json">
+				{
+					"@context": "https://schema.org",
+					"@type": "ProfessionalService",
+					"name": "Light Developer",
+					"description": "Développement web sur mesure, SEO et automatisation",
+					"url": "https://lightdeveloper.fr",
+					"telephone": "+33682027290",
+					"areaServed": "France",
+					"founder": {
+						"@type": "Person",
+						"name": "Florent Murat"
+					},
+					"address": {
+						"@type": "PostalAddress",
+						"addressLocality": "Sud de la France",
+						"addressCountry": "FR"
+					}
+				}
+			</script>
+		</head>
 	<body>
 		<div class="stack backgrounds">
 			<Nav />

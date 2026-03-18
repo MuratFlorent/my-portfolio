@@ -7,16 +7,31 @@ interface Props {
 }
 
 const {
-	title = 'Florent Murat | Sites web sur mesure et visibilité sur Google',
-	description = 'Développeur web et formateur, je conçois des solutions digitales sur mesure pour améliorer votre présence en ligne et attirer les bons clients.',
+	title = 'Développeur web freelance – création de sites sur mesure, SEO et automatisation | Light Developer',
+	description = 'Développeur web freelance spécialisé en création de sites sur mesure, optimisation SEO et automatisations. Une approche humaine et technique pour des projets performants.',
 } = Astro.props;
 ---
 
 <meta charset="UTF-8" />
-<meta name="description" property="og:description" content={description} />
+<title>{title}</title>
+<meta name="description" content={description} />
 <meta name="viewport" content="width=device-width" />
 <meta name="generator" content={Astro.generator} />
-<title>{title}</title>
+<meta name="robots" content="index, follow" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL('/og-image.jpg', Astro.url)} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL('/og-image.jpg', Astro.url)} />
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />

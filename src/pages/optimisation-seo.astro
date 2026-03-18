@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+import Icon from '../components/Icon.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+const title = "Optimisation SEO et Visibilité Google | Light Developer";
+const description = "Boostez le référencement naturel de votre site web. Optimisation technique, contenu stratégique et SEO local pour attirer plus de clients qualifiés.";
+---
+
+<BaseLayout title={title} description={description}>
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-16">
+			<Hero
+				title="Optimisation SEO"
+				tagline="Améliorez votre positionnement sur Google et attirez un trafic qualifié durablement."
+				align="start"
+			/>
+
+			<section class="content stack gap-8">
+				<h2>Le SEO : un levier de croissance incontournable</h2>
+				<p>
+					Apparaître en première page de Google ne doit rien au hasard. C'est le résultat d'une stratégie de <strong>Référencement Naturel (SEO)</strong> bien exécutée. Mon approche combine technique, contenu et expérience utilisateur pour plaire aux algorithmes tout en restant pertinent pour vos visiteurs.
+				</p>
+				
+				<h2>Mes piliers pour votre visibilité</h2>
+				<div class="piliers-grid">
+					<div class="pilier">
+						<div class="icon-header">
+							<Icon icon="terminal" size="1.5rem" gradient />
+							<h3>SEO Technique</h3>
+						</div>
+						<p>Structure du code, vitesse de chargement (Core Web Vitals), indexation et compatibilité mobile.</p>
+					</div>
+					<div class="pilier">
+						<div class="icon-header">
+							<Icon icon="pencil-line" size="1.5rem" gradient />
+							<h3>Contenu & Mots-clés</h3>
+						</div>
+						<p>Audit sémantique et optimisation éditoriale pour répondre précisément aux questions de vos prospects.</p>
+					</div>
+					<div class="pilier">
+						<div class="icon-header">
+							<Icon icon="magic-wand" size="1.5rem" gradient />
+							<h3>Optimisation IA (GEO)</h3>
+						</div>
+						<p>Préparation de votre contenu pour les moteurs de recherche de nouvelle génération basés sur l'IA.</p>
+					</div>
+				</div>
+
+				<h2>Une visibilité durable</h2>
+				<p>
+					Contrairement à la publicité payante qui s'arrête dès que le budget est épuisé, le SEO construit un actif durable. Un site bien optimisé continue d'attirer des clients potentiels jour après jour, mois après mois.
+				</p>
+				<p>
+					Que vous soyez un entrepreneur local cherchant du <strong>SEO local</strong> ou une entreprise nationale, j'adapte ma stratégie pour maximiser votre retour sur investissement.
+				</p>
+
+				<div class="cta-center">
+					<CallToAction href="/#contact">
+						Analyser mon référencement
+						<Icon icon="paper-plane-tilt" size="1.2em" />
+					</CallToAction>
+				</div>
+			</section>
+		</main>
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.content {
+		max-width: 800px;
+		margin: 0 auto;
+		line-height: 1.6;
+		font-size: var(--text-lg);
+		color: var(--gray-300);
+	}
+
+	h2 {
+		font-size: var(--text-2xl);
+		color: var(--gray-0);
+		margin-top: 2rem;
+	}
+
+	.piliers-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+		margin-block: 2rem;
+	}
+
+	.pilier {
+		background: var(--gray-999_40);
+		border: 1px solid var(--gray-800);
+		border-radius: var(--radius-md);
+		padding: 1.5rem;
+	}
+
+	.icon-header {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.pilier h3 {
+		font-size: var(--text-lg);
+		color: var(--gray-0);
+	}
+
+	.cta-center {
+		display: flex;
+		justify-content: center;
+		margin-top: 2rem;
+	}
+
+	@media (min-width: 50em) {
+		h2 {
+			font-size: var(--text-3xl);
+		}
+		.piliers-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+</style>

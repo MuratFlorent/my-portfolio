@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+import Icon from '../components/Icon.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+const title = "Automatisation Web et Gain de Temps | Light Developer";
+const description = "Optimisez vos processus métier. Automatisation de tâches répétitives, connexion d'outils et scripts sur mesure pour libérer votre temps et votre créativité.";
+---
+
+<BaseLayout title={title} description={description}>
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-16">
+			<Hero
+				title="Automatisation Web"
+				tagline="Libérez-vous des tâches répétitives et concentrez-vous sur l'essentiel de votre activité."
+				align="start"
+			/>
+
+			<section class="content stack gap-8">
+				<h2>L'automatisation : votre assistant digital 24h/24</h2>
+				<p>
+					Combien de temps passez-vous chaque semaine à copier-coller des données, à envoyer les mêmes emails ou à synchroniser manuellement vos outils ? L'<strong>automatisation web</strong> permet de déléguer ces tâches à des scripts intelligents, réduisant ainsi les erreurs humaines et boostant votre productivité.
+				</p>
+				
+				<div class="use-cases">
+					<div class="case">
+						<Icon icon="magic-wand" size="2rem" gradient />
+						<h3>Synchronisation d'outils</h3>
+						<p>Connectez votre CRM, votre site web et vos outils de facturation pour un flux de données fluide.</p>
+					</div>
+					<div class="case">
+						<Icon icon="terminal" size="2rem" gradient />
+						<h3>Scripts sur mesure</h3>
+						<p>Développement de solutions spécifiques pour traiter des fichiers, extraire des données ou générer des rapports.</p>
+					</div>
+					<div class="case">
+						<Icon icon="strategy" size="2rem" gradient />
+						<h3>Workflows intelligents</h3>
+						<p>Créez des chaînes d'actions automatiques déclenchées par des événements précis (ex: une nouvelle commande).</p>
+					</div>
+				</div>
+
+				<h2>Gagnez en sérénité</h2>
+				<p>
+					Automatiser ne signifie pas déshumaniser. Au contraire, en supprimant les tâches rébarbatives, vous et votre équipe retrouvez du temps pour le conseil, la création et la relation client.
+				</p>
+				<p>
+					Mon rôle est d'analyser vos processus actuels et de vous proposer les solutions techniques les plus simples et efficaces pour <strong>gagner du temps</strong> au quotidien.
+				</p>
+
+				<div class="cta-center">
+					<CallToAction href="/#contact">
+						Automatiser mes processus
+						<Icon icon="paper-plane-tilt" size="1.2em" />
+					</CallToAction>
+				</div>
+			</section>
+		</main>
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.content {
+		max-width: 800px;
+		margin: 0 auto;
+		line-height: 1.6;
+		font-size: var(--text-lg);
+		color: var(--gray-300);
+	}
+
+	h2 {
+		font-size: var(--text-2xl);
+		color: var(--gray-0);
+		margin-top: 2rem;
+	}
+
+	.use-cases {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+		margin-block: 3rem;
+	}
+
+	.case {
+		background: var(--gray-999_40);
+		border: 1px solid var(--gray-800);
+		border-radius: var(--radius-md);
+		padding: 2rem;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.cta-center {
+		display: flex;
+		justify-content: center;
+		margin-top: 2rem;
+	}
+
+	@media (min-width: 50em) {
+		h2 {
+			font-size: var(--text-3xl);
+		}
+	}
+</style>

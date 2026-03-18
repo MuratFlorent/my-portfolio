@@ -42,7 +42,7 @@ const projects = (await getCollection('work'))
 					align="start"
 				>
 					<div class="roles">
-						<Pill href="/about" ariaLabel="Découvrir mon approche">
+						<Pill href="/developpeur-web-freelance" ariaLabel="Découvrir mon approche">
 							<Icon icon="code" size="1.33em" /> Développeur web
 						</Pill>
 						<Pill href="/formation" ariaLabel="Voir la section formation">
@@ -62,18 +62,20 @@ const projects = (await getCollection('work'))
 							<Icon icon="arrow-right" size="1.2em" />
 						</CallToAction>
 						<CallToAction href="mailto:murat.light.developer@gmail.com">
-							Me contacter
+							Discutons de votre projet
 							<Icon icon="paper-plane-tilt" size="1.2em" />
 						</CallToAction>
 					</div>
 				</Hero>
 
-				<div class="hero-image-container">
+					<div class="hero-image-container">
 					<img
-						alt="Florent Murat Light Developer, pour accompagner avec bienveillance vos projets web"
+						alt="Florent Murat - Développeur web freelance spécialisé en création de site sur mesure et SEO"
 						width="480"
 						height="620"
 						src="/assets/portrait2.jpeg"
+						loading="eager"
+						decoding="async"
 					/>
 					<div class="image-overlay">
 						<p class="overlay-title">Florent Murat — Light Developer</p>
@@ -86,16 +88,18 @@ const projects = (await getCollection('work'))
 			<section id="solutions" class="section solutions">
 				<div class="solutions-bg"></div>
 				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Solutions personnalisées</h3>
+					<h2>Solutions personnalisées</h2>
 					<p>Que vous ayez besoin d'une présence en ligne complète ou d'un outil métier spécifique, je conçois des solutions adaptées à vos enjeux.</p>
 				</header>
 
 				<div class="gallery">
 					<Grid variant="small">
 						<li class="service-card">
-							<Icon icon="code" color="var(--accent-regular)" size="2.5rem" gradient />
-							<h4>Sites & refontes</h4>
-							<p>Création de sites vitrines et applicatifs modernes, optimisés pour votre activité.</p>
+							<a href="/creation-site-web-sur-mesure" class="service-link">
+								<Icon icon="code" color="var(--accent-regular)" size="2.5rem" gradient />
+								<h4>Sites & refontes</h4>
+								<p>Création de sites vitrines et applicatifs modernes, optimisés pour votre activité.</p>
+							</a>
 						</li>
 						<li class="service-card">
 							<Icon icon="cpu" color="var(--accent-regular)" size="2.5rem" gradient />
@@ -103,14 +107,18 @@ const projects = (await getCollection('work'))
 							<p>Extension des capacités de vos outils existants (WordPress, Sylius, etc.) via des plugins spécifiques.</p>
 						</li>
 						<li class="service-card">
-							<Icon icon="magic-wand" color="var(--accent-regular)" size="2.5rem" gradient />
-							<h4>Automatisations & gain de temps</h4>
-							<p>Optimisation de vos processus métier via des scripts et outils connectés pour gagner en productivité.</p>
+							<a href="/automatisation-web" class="service-link">
+								<Icon icon="magic-wand" color="var(--accent-regular)" size="2.5rem" gradient />
+								<h4>Automatisations & gain de temps</h4>
+								<p>Optimisation de vos processus métier via des scripts et outils connectés pour gagner en productivité.</p>
+							</a>
 						</li>
 						<li class="service-card">
-							<Icon icon="rocket-launch" color="var(--accent-regular)" size="2.5rem" gradient />
-							<h4>Visibilité sur Google</h4>
-							<p>Amélioration de votre référencement naturel (SEO) pour attirer durablement de nouveaux clients.</p>
+							<a href="/optimisation-seo" class="service-link">
+								<Icon icon="rocket-launch" color="var(--accent-regular)" size="2.5rem" gradient />
+								<h4>Visibilité sur Google</h4>
+								<p>Amélioration de votre référencement naturel (SEO) pour attirer durablement de nouveaux clients.</p>
+							</a>
 						</li>
 						<li class="service-card">
 							<a href="/formation" class="service-link">
@@ -131,7 +139,7 @@ const projects = (await getCollection('work'))
 			<main class="wrapper stack gap-20 lg:gap-48">
 				<section id="projets" class="section projects with-cta">
 					<header class="section-header stack gap-2 lg:gap-4">
-						<h3>Mes projets, ma vie...</h3>
+						<h2>Projets réalisés</h2>
 						<p>Une sélection de mes réalisations les plus marquantes, alliant expertise technique et approche humaine.</p>
 					</header>
 
@@ -158,9 +166,11 @@ const projects = (await getCollection('work'))
 			<section id="univers" class="section universe">
 				<div class="container stack gap-12 lg:gap-20">
 					<header class="section-header stack gap-4 centered">
-						<div class="badge-accent mx-auto">Mon univers</div>
-						<h3>Une vision globale de la création digitale</h3>
-						<p class="max-w-2xl mx-auto">Découvrez les piliers, les valeurs et les outils qui animent ma démarche de Light Developer.</p>
+						<div class="badge-accent mx-auto">Mon approche</div>
+						<h2>Expertise & Valeurs</h2>
+						<p class="max-w-2xl mx-auto">
+							Développeur web freelance avec plus de 10 ans d'expérience, j'accompagne mes clients dans la création de solutions digitales performantes et humaines.
+						</p>
 					</header>
 	
 					<div class="gallery">
@@ -198,13 +208,47 @@ const projects = (await getCollection('work'))
 			</section>
 
 				<Testimonials />
-
+				<section id="faq" class="section faq-section">
+					<div class="container stack gap-12 lg:gap-20">
+						<header class="section-header stack gap-4 centered">
+							<div class="badge-accent mx-auto">FAQ</div>
+							<h2>Questions fréquentes</h2>
+							<p class="max-w-2xl mx-auto">Tout ce qu'il faut savoir sur la création de sites web sur mesure, l'optimisation SEO et l'automatisation.</p>
+						</header>
+						<div class="faq-grid stack gap-4">
+							<details class="faq-item">
+								<summary>Pourquoi choisir un site web sur mesure ?</summary>
+								<div class="faq-content">
+									<p>Un site sur mesure s’adapte aux besoins spécifiques de votre activité. Contrairement aux templates génériques, il permet d’optimiser la performance, le référencement naturel (SEO) et l'expérience utilisateur pour une efficacité maximale.</p>
+								</div>
+							</details>
+							<details class="faq-item">
+								<summary>Comment améliorer la visibilité d'un site sur Google ?</summary>
+								<div class="faq-content">
+									<p>La visibilité sur Google repose sur plusieurs piliers : une optimisation SEO technique rigoureuse, un contenu pertinent répondant aux intentions de recherche, des performances de chargement élevées et une structure sémantique claire.</p>
+								</div>
+							</details>
+							<details class="faq-item">
+								<summary>Qu'est-ce que l'optimisation pour les IA (GEO) ?</summary>
+								<div class="faq-content">
+									<p>Le GEO (Generative Engine Optimization) consiste à structurer et optimiser votre contenu pour qu'il soit facilement compris et cité par les moteurs de recherche assistés par intelligence artificielle (comme ChatGPT, Perplexity ou Google Search Generative Experience).</p>
+								</div>
+							</details>
+							<details class="faq-item">
+								<summary>Quels sont les délais pour la création d'un site sur mesure ?</summary>
+								<div class="faq-content">
+									<p>Les délais varient selon la complexité du projet. En général, il faut compter entre 4 et 8 semaines pour une solution complète, incluant la conception, le développement technique et l'optimisation pour le référencement naturel.</p>
+								</div>
+							</details>
+						</div>
+					</div>
+				</section>
 				<section id="formation" class="section formation-premium">
 					<div class="formation-bg"></div>
 					<div class="formation-container stack gap-12 lg:gap-16">
 						<header class="section-header stack gap-4 centered">
 							<div class="badge-accent mx-auto">Formation & Accompagnement</div>
-							<h3>Créez un site performant et visible sur Google</h3>
+							<h2>Formation et accompagnement</h2>
 							<p class="max-w-2xl mx-auto">
 								Bâtissez votre projet (WordPress, SEO, Design) tout en apprenant à le maîtriser. 
 								Profitez d'un financement (CPF, OPCO) via notre centre partenaire certifié AFI.
@@ -229,6 +273,15 @@ const projects = (await getCollection('work'))
 								<div class="feature-item">
 									<div class="icon-circle">
 										<Icon icon="rocket-launch" size="1.5rem" gradient />
+									</div>
+ 								<div class="feature-text stack gap-1">
+										<h4>Expertise de 10+ ans</h4>
+										<p>Une expérience solide acquise sur plus de 50 projets web réussis.</p>
+									</div>
+								</div>
+								<div class="feature-item">
+									<div class="icon-circle">
+										<Icon icon="strategy" size="1.5rem" gradient />
 									</div>
 									<div class="feature-text stack gap-1">
 										<h4>Autonomie réelle</h4>
@@ -1016,6 +1069,60 @@ const projects = (await getCollection('work'))
 
 	.cta-group {
 		margin-top: 1rem;
+	}
+
+	.faq-section {
+		padding: 4rem 0;
+	}
+
+	.faq-grid {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
+	.faq-item {
+		background: var(--gray-999_40);
+		border: 1px solid var(--gray-800);
+		border-radius: var(--radius-md);
+		padding: 1rem 1.5rem;
+		cursor: pointer;
+		transition: all var(--theme-transition);
+	}
+
+	.faq-item:hover {
+		border-color: var(--accent-regular);
+		background: var(--gray-999);
+	}
+
+	.faq-item summary {
+		font-weight: 700;
+		color: var(--gray-0);
+		padding: 0.5rem 0;
+		list-style: none;
+		position: relative;
+		padding-right: 2rem;
+	}
+
+	.faq-item summary::after {
+		content: '+';
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		color: var(--accent-regular);
+		font-size: 1.5rem;
+		transition: transform var(--theme-transition);
+	}
+
+	.faq-item[open] summary::after {
+		transform: translateY(-50%) rotate(45deg);
+	}
+
+	.faq-content {
+		padding-top: 1rem;
+		color: var(--gray-300);
+		line-height: 1.6;
+		font-size: var(--text-md);
 	}
 
 	@media (min-width: 50em) {

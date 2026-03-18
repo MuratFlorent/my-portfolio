@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+import Icon from '../components/Icon.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+const title = "Refonte de site web | Modernisation et performance | Light Developer";
+const description = "Donnez un second souffle à votre site web. Améliorez votre image de marque, vos performances techniques et votre visibilité sur Google grâce à une refonte stratégique.";
+---
+
+<BaseLayout title={title} description={description}>
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-16">
+			<Hero
+				title="Refonte de site web"
+				tagline="Transformez votre site actuel en un outil de conversion moderne et performant."
+				align="start"
+			/>
+
+			<section class="content stack gap-8">
+				<h2>Pourquoi envisager une refonte ?</h2>
+				<p>
+					Un site web qui a quelques années peut devenir un frein à votre croissance : design daté, lenteurs de chargement, mauvaise expérience sur mobile ou référencement naturel en baisse. La refonte n'est pas qu'un simple changement esthétique, c'est une <strong>mise à jour stratégique</strong> de votre présence numérique.
+				</p>
+				
+				<div class="card-grid">
+					<div class="card">
+						<h3>Modernisation visuelle</h3>
+						<p>Alignez votre site avec votre identité actuelle et les standards de design modernes (UI/UX).</p>
+					</div>
+					<div class="card">
+						<h3>Optimisation technique</h3>
+						<p>Migration vers des technologies plus rapides (Core Web Vitals) et sécurisées.</p>
+					</div>
+					<div class="card">
+						<h3>Boost SEO</h3>
+						<p>Restructuration sémantique pour regagner des positions sur Google et attirer de nouveaux prospects.</p>
+					</div>
+				</div>
+
+				<h2>Mon processus de refonte</h2>
+				<p>
+					Chaque projet de refonte commence par un audit de l'existant. Nous analysons ce qui fonctionne, ce qui doit être amélioré, et nous définissons ensemble les nouveaux objectifs.
+				</p>
+				<p>
+					L'un des points cruciaux de mon approche est la <strong>préservation de votre référencement actuel</strong>. Je mets en place les redirections nécessaires pour ne perdre aucun acquis historique tout en préparant le terrain pour une croissance future.
+				</p>
+
+				<div class="cta-center">
+					<CallToAction href="/#contact">
+						Étudier mon projet de refonte
+						<Icon icon="paper-plane-tilt" size="1.2em" />
+					</CallToAction>
+				</div>
+			</section>
+		</main>
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.content {
+		max-width: 800px;
+		margin: 0 auto;
+		line-height: 1.6;
+		font-size: var(--text-lg);
+		color: var(--gray-300);
+	}
+
+	h2 {
+		font-size: var(--text-2xl);
+		color: var(--gray-0);
+		margin-top: 2rem;
+	}
+
+	.card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1.5rem;
+		margin-block: 2rem;
+	}
+
+	.card {
+		background: var(--gray-999_40);
+		border: 1px solid var(--gray-800);
+		border-radius: var(--radius-md);
+		padding: 1.5rem;
+	}
+
+	.card h3 {
+		font-size: var(--text-lg);
+		color: var(--accent-regular);
+		margin-bottom: 0.5rem;
+	}
+
+	.cta-center {
+		display: flex;
+		justify-content: center;
+		margin-top: 2rem;
+	}
+
+	@media (min-width: 50em) {
+		h2 {
+			font-size: var(--text-3xl);
+		}
+	}
+</style>
