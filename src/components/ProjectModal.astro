@@ -71,6 +71,9 @@ const { id } = Astro.props;
 		const id = modal.id;
 		const closeBtn = modal.querySelector('[data-close-modal]');
 		const ctaBtn = modal.querySelector(`#${id}-cta`);
+
+		// Force closed on load
+		if ((modal as HTMLDialogElement).open) (modal as HTMLDialogElement).close();
 		
 		closeBtn?.addEventListener('click', () => {
 			(modal as HTMLDialogElement).close();
@@ -112,6 +115,7 @@ const { id } = Astro.props;
 
 <style>
 	.project-modal {
+		display: none;
 		border: none;
 		padding: 0;
 		background: transparent;
@@ -121,6 +125,11 @@ const { id } = Astro.props;
 		height: 100%;
 		position: fixed;
 		inset: 0;
+		z-index: 1000;
+	}
+
+	.project-modal[open] {
+		display: block;
 	}
 
 	.project-modal::backdrop {

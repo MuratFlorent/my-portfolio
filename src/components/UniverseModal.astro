@@ -157,6 +157,9 @@ const universeItems = [
 		const welcomeScreen = modal.querySelector('#welcome-screen');
 		const closeBtn = modal.querySelector('[data-close-modal]');
 
+		// Force closed on load
+		if ((modal as HTMLDialogElement).open) (modal as HTMLDialogElement).close();
+
 		navItems.forEach(item => {
 			item.addEventListener('click', () => {
 				const id = (item as HTMLElement).dataset.id;
@@ -190,6 +193,7 @@ const universeItems = [
 
 <style>
 	.universe-modal {
+		display: none;
 		border: none;
 		padding: 0;
 		background: transparent;
@@ -199,6 +203,11 @@ const universeItems = [
 		height: 100%;
 		position: fixed;
 		inset: 0;
+		z-index: 1000;
+	}
+
+	.universe-modal[open] {
+		display: block;
 	}
 
 	.universe-modal::backdrop {
