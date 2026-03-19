@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
 
 interface Props {
 	project: CollectionEntry<'work'>;
@@ -17,8 +18,6 @@ const { data, id } = Astro.props.project;
 		status: data.status === 'in_progress' ? 'En cours' : 'Projet terminé',
 		tags: data.tags,
 		description: data.description,
-		// On pourrait extraire plus de données si le markdown était parsé ici, 
-		// mais pour l'instant on se base sur le schema
 	})}
 >
 	<span class="card-image-container">
@@ -30,8 +29,13 @@ const { data, id } = Astro.props.project;
 				))}
 			</span>
 			<span class="details">
-				<span class="category">{data.status === 'in_progress' ? 'En cours' : 'Projet terminé'}</span>
-				<h3 class="title">{data.title}</h3>
+				<span class="details-content">
+					<span class="category">{data.status === 'in_progress' ? 'En cours' : 'Projet terminé'}</span>
+					<h3 class="title">{data.title}</h3>
+				</span>
+				<span class="open-icon">
+					<Icon icon="plus" size="1.2rem" />
+				</span>
 			</span>
 		</span>
 	</span>
@@ -131,7 +135,7 @@ const { data, id } = Astro.props.project;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		padding: 1.25rem;
+		padding: 1rem;
 		background: linear-gradient(
 			to bottom,
 			rgba(0, 0, 0, 0.1) 0%,
@@ -155,11 +159,17 @@ const { data, id } = Astro.props.project;
 	}
 
 	.tags-container {
-		display: flex;
+		display: none;
 		flex-wrap: wrap;
 		gap: 0.5rem;
 		transform: translateY(-5px);
 		transition: transform 0.4s ease;
+	}
+
+	@media (min-width: 50em) {
+		.tags-container {
+			display: flex;
+		}
 	}
 
 	.card:hover .tags-container {
@@ -181,34 +191,64 @@ const { data, id } = Astro.props.project;
 	}
 
 	.details {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
 		transform: translateY(5px);
 		transition: transform 0.4s ease;
-		background: rgba(0, 0, 0, 0.3);
-		backdrop-filter: blur(4px);
-		padding: 0.75rem;
+		background: rgba(0, 0, 0, 0.4);
+		backdrop-filter: blur(8px);
+		padding: 0.75rem 1rem;
 		border-radius: var(--radius-sm);
 		border-left: 3px solid var(--accent-regular);
 		margin-top: auto;
 	}
 
+	.details-content {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.open-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.2rem;
+		height: 2.2rem;
+		border-radius: 50%;
+		background: var(--accent-regular);
+		color: white;
+		transition: all 0.3s ease;
+		flex-shrink: 0;
+		box-shadow: 0 2px 8px rgba(var(--accent-regular-rgb), 0.3);
+	}
+
+	.card:hover .open-icon {
+		transform: rotate(90deg) scale(1.1);
+		background: var(--accent-light);
+	}
+
 	.card:hover .details {
 		transform: translateY(0);
-		background: rgba(0, 0, 0, 0.5);
+		background: rgba(0, 0, 0, 0.6);
 		border-left-color: var(--accent-light);
 	}
 
 	.category {
 		display: block;
-		font-size: 0.7rem;
+		font-size: 0.65rem;
 		color: var(--accent-light);
 		font-weight: 700;
 		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		margin-bottom: 0.2rem;
+		letter-spacing: 0.05em;
+		opacity: 0.9;
 	}
 
 	.title {
-		font-size: var(--text-md);
+		font-size: var(--text-sm);
 		color: white;
 		margin: 0;
 		font-family: var(--font-brand), system-ui, sans-serif;
@@ -230,13 +270,24 @@ const { data, id } = Astro.props.project;
 			font-size: var(--text-lg);
 		}
 
+		.category {
+			font-size: 0.7rem;
+			letter-spacing: 0.1em;
+		}
+
 		.tag {
 			padding: 0.3rem 0.9rem;
 			font-size: var(--text-sm);
 		}
 
 		.details {
-			padding: 1rem;
+			padding: 1.25rem;
+			gap: 1.5rem;
+		}
+
+		.open-icon {
+			width: 2.5rem;
+			height: 2.5rem;
 		}
 	}
 </style>

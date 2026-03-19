@@ -49,4 +49,5 @@ export const iconPaths = {
 	'graduation-cap': `<path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M224 104v64a8 8 0 0 1-8 8H40a8 8 0 0 1-8-8v-64l96-48ZM32 104l96 48 96-48M128 152v64"/>`,
 	users: `<path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M160 80a40 40 0 1 1-40-40 40 40 0 0 1 40 40Zm40 128a56 56 0 0 0-112 0m24-112a32 32 0 1 1-32-32 32 32 0 0 1 32 32Zm24 112a48 48 0 0 0-96 0"/>`,
 	phone: `<path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="m88 48 32 32-24 24a104.2 104.2 0 0 0 48 48l24-24 32 32-24 24a31.9 31.9 0 0 1-45.2 0L88 141.2A111.9 111.9 0 0 1 42.8 96a31.9 31.9 0 0 1 0-45.2Z"/>`,
+	plus: `<path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M40 128h176m-88-88v176"/>`,
 };
