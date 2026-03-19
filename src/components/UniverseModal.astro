@@ -294,6 +294,7 @@ const universeItems = [
 		transition: all 0.2s ease;
 		font-size: var(--text-sm);
 		font-weight: 500;
+		flex-shrink: 0;
 	}
 
 	.nav-item:hover {
@@ -332,6 +333,7 @@ const universeItems = [
 		overflow-y: auto;
 		position: relative;
 		background: radial-gradient(circle at 100% 0%, var(--accent-overlay) 0%, transparent 40%);
+		-webkit-overflow-scrolling: touch;
 	}
 
 	.content-welcome, .content-detail {
@@ -420,6 +422,7 @@ const universeItems = [
 		color: var(--gray-400);
 		line-height: 1.8;
 		max-width: 60ch;
+		word-wrap: break-word;
 	}
 
 	.quote-box {
@@ -438,31 +441,29 @@ const universeItems = [
 	/* Responsive */
 	@media (max-width: 50em) {
 		.modal-container {
-			height: 95vh;
-			margin: 2.5vh auto;
-			border-radius: 1.5rem;
+			height: 100vh;
+			width: 100vw;
+			margin: 0;
+			border-radius: 0;
+			border: none;
 		}
 
 		.modal-inner {
 			grid-template-columns: 1fr;
 			grid-template-rows: auto 1fr;
+			height: 100%;
 		}
 
 		.modal-sidebar {
-			padding: 1.5rem;
-			gap: 1.5rem;
+			padding: 1rem;
+			gap: 1rem;
 			border-right: none;
 			border-bottom: 1px solid var(--gray-800);
+			padding-top: 3.5rem;
 		}
 
 		.sidebar-header {
-			flex-direction: row;
-			align-items: center;
-		}
-
-		.logo-placeholder {
-			width: 40px;
-			height: 40px;
+			display: none; /* Cache le header de la sidebar pour gagner de la place */
 		}
 
 		.universe-nav {
@@ -470,6 +471,8 @@ const universeItems = [
 			overflow-x: auto;
 			padding-bottom: 0.5rem;
 			scrollbar-width: none;
+			gap: 0.5rem;
+			mask-image: linear-gradient(to right, black 85%, transparent 100%);
 		}
 
 		.universe-nav::-webkit-scrollbar {
@@ -477,39 +480,41 @@ const universeItems = [
 		}
 
 		.nav-item {
-			white-space: nowrap;
-			padding: 0.6rem 1rem;
+			padding: 0.5rem 0.75rem;
 		}
 
 		.nav-item span {
-			display: none; /* Icon only on mobile to save space */
+			display: none;
 		}
 
 		.nav-item.active span {
-			display: inline; /* Show label for active item */
+			display: inline;
 		}
 		
 		.modal-main-content {
-			padding: 2rem 1.5rem;
+			padding: 1.5rem 1rem;
 		}
 
 		.content-detail h3 {
-			font-size: var(--text-2xl);
+			font-size: var(--text-xl);
 		}
 
 		.description-large {
-			font-size: var(--text-lg);
+			font-size: var(--text-md);
 		}
 
 		.details-text {
-			font-size: var(--text-md);
+			font-size: var(--text-sm);
+			max-width: 100%;
 		}
 
 		.close-modal-btn {
 			position: absolute;
-			top: 1rem;
-			right: 1rem;
-			padding: 0.5rem;
+			top: 0.75rem;
+			left: 0.75rem;
+			z-index: 10;
+			padding: 0.5rem 1rem;
+			font-size: var(--text-xs);
 		}
 
 		.close-modal-btn span {

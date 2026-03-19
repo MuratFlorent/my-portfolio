@@ -272,6 +272,13 @@ import Icon from './Icon.astro';
 		z-index: 100;
 	}
 
+	@media (max-width: 50em) {
+		.floating-contact {
+			bottom: 5rem; /* Remonte le bouton sur mobile pour éviter la barre browser */
+			right: 1.5rem;
+		}
+	}
+
 	.fab {
 		display: flex;
 		align-items: center;
