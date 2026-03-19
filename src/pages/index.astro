@@ -220,27 +220,51 @@ const projects = (await getCollection('work'))
 					</header>
 					<div class="faq-grid">
 						<details class="faq-item">
-							<summary>Pourquoi choisir un site web sur mesure ?</summary>
+							<summary>Pourquoi choisir un site web sur mesure plutôt qu'un CMS générique ?</summary>
 							<div class="faq-content">
-								<p>Un site sur mesure s’adapte aux besoins spécifiques de votre activité. Contrairement aux templates génériques, il permet d’optimiser la performance, le référencement naturel (SEO) et l'expérience utilisateur pour une efficacité maximale.</p>
+								<p>Un site sur mesure s’adapte aux besoins spécifiques de votre activité sans les lourdeurs techniques des thèmes pré-faits. Cela permet une optimisation maximale de la performance (Core Web Vitals), un meilleur SEO technique et une expérience utilisateur unique qui renforce votre image de marque.</p>
 							</div>
 						</details>
 						<details class="faq-item">
-							<summary>Comment améliorer la visibilité d'un site sur Google ?</summary>
+							<summary>Quelle est la différence entre SEO (Google) et GEO (IA) ?</summary>
 							<div class="faq-content">
-								<p>La visibilité sur Google repose sur plusieurs piliers : une optimisation SEO technique rigoureuse, un contenu pertinent répondant aux intentions de recherche, des performances de chargement élevées et une structure sémantique claire.</p>
+								<p>Le SEO classique vise les moteurs de recherche traditionnels comme Google. Le GEO (Generative Engine Optimization) est une approche plus récente consistant à optimiser votre contenu pour qu'il soit cité par les IA génératives (ChatGPT, Perplexity, Google SGE). Je combine ces deux approches pour maximiser votre visibilité future.</p>
 							</div>
 						</details>
 						<details class="faq-item">
-							<summary>Qu'est-ce que l'optimisation pour les IA (GEO) ?</summary>
+							<summary>Comment mesurez-vous le retour sur investissement (ROI) de mon projet ?</summary>
 							<div class="faq-content">
-								<p>Le GEO (Generative Engine Optimization) consiste à structurer et optimiser votre contenu pour qu'il soit facilement compris et cité par les moteurs de recherche assistés par intelligence artificielle (comme ChatGPT, Perplexity ou Google Search Generative Experience).</p>
+								<p>Au-delà du design, nous définissons des indicateurs clés (KPI) : augmentation du taux de conversion, amélioration du temps de chargement, gain de positions sur des mots-clés stratégiques ou encore automatisation de tâches répétitives. Un site performant doit être un levier de croissance mesurable.</p>
 							</div>
 						</details>
 						<details class="faq-item">
-							<summary>Quels sont les délais pour la création d'un site sur mesure ?</summary>
+							<summary>Proposez-vous un accompagnement après la mise en ligne ?</summary>
 							<div class="faq-content">
-								<p>Les délais varient selon la complexité du projet. En général, il faut compter entre 4 et 8 semaines pour une solution complète, incluant la conception, le développement technique et l'optimisation pour le référencement naturel.</p>
+								<p>Oui, je propose des contrats de maintenance pour assurer la sécurité, les mises à jour et l'évolution continue de votre site. Mon objectif est d'être un partenaire technique sur le long terme pour que votre outil web reste performant et sécurisé face aux nouvelles normes du web.</p>
+							</div>
+						</details>
+						<details class="faq-item">
+							<summary>Est-ce que mon site sera accessible et éco-conçu ?</summary>
+							<div class="faq-content">
+								<p>Absolument. Je respecte les standards d'accessibilité (RGAA) pour que votre contenu soit consultable par tous. De plus, un code propre et optimisé réduit l'empreinte carbone de votre site (éco-conception) tout en améliorant radicalement sa vitesse de chargement.</p>
+							</div>
+						</details>
+						<details class="faq-item">
+							<summary>Puis-je gérer mon contenu en autonomie après le développement ?</summary>
+							<div class="faq-content">
+								<p>C'est une priorité. Je mets en place des interfaces d'administration intuitives (CMS Headless ou WordPress optimisé) et je fournis une formation personnalisée. Vous restez maître de vos textes et images sans avoir besoin de connaissances techniques approfondies.</p>
+							</div>
+						</details>
+						<details class="faq-item">
+							<summary>Pourquoi travailler avec un freelance expert plutôt qu'une agence ?</summary>
+							<div class="faq-content">
+								<p>Travailler avec moi, c'est bénéficier d'un interlocuteur unique, d'une communication directe et d'une grande réactivité. Mon approche est globale : je ne me contente pas de coder, je vous conseille sur la stratégie, le SEO et l'expérience utilisateur avec une agilité que les grosses structures n'ont pas toujours.</p>
+							</div>
+						</details>
+						<details class="faq-item">
+							<summary>Quels sont les délais types pour un projet complet ?</summary>
+							<div class="faq-content">
+								<p>Selon la complexité, un projet web sur mesure prend généralement entre 4 et 8 semaines. Ce délai inclut les phases de stratégie, design, développement technique, tests rigoureux et optimisation pour le lancement.</p>
 							</div>
 						</details>
 					</div>
@@ -1328,17 +1352,17 @@ const projects = (await getCollection('work'))
 	}
 
 	.faq-grid {
-		max-width: 1000px;
+		max-width: 1200px;
 		margin: 0 auto;
 		display: grid;
-		gap: 1.25rem;
+		gap: 1.5rem;
 		grid-template-columns: 1fr;
 	}
 
 	@media (min-width: 64em) {
 		.faq-grid {
 			grid-template-columns: 1fr 1fr;
-			gap: 2rem;
+			gap: 2.5rem;
 			align-items: start;
 		}
 	}
