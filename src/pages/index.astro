@@ -61,14 +61,14 @@ const projects = (await getCollection('work'))
 							Mes projets
 							<Icon icon="arrow-right" size="1.2em" />
 						</CallToAction>
-						<CallToAction href="mailto:murat.light.developer@gmail.com">
+						<CallToAction href="#contact" id="hero-contact-cta">
 							Discutons de votre projet
 							<Icon icon="paper-plane-tilt" size="1.2em" />
 						</CallToAction>
 					</div>
 				</Hero>
 
-				<div class="hero-image-container">
+   	<div class="hero-image-container">
 					<img
 						alt="Florent Murat - Développeur web freelance spécialisé en création de site sur mesure et SEO"
 						width="1365"
@@ -76,6 +76,7 @@ const projects = (await getCollection('work'))
 						src="/assets/portrait2.jpeg"
 						loading="eager"
 						decoding="async"
+						style="object-position: 50% 20%; transform: scale(1.15);"
 					/>
 					<div class="image-overlay">
 						<p class="overlay-title">Florent Murat — Light Developer</p>
@@ -363,16 +364,24 @@ const projects = (await getCollection('work'))
 	}
 
 	const openQuotePill = document.getElementById('open-quote-pill');
+	const heroContactCta = document.getElementById('hero-contact-cta');
+
+	const triggerContact = (e: Event, message: string = "Bonjour, je souhaiterais discuter d'un accompagnement sur mesure pour mon projet...") => {
+		e.preventDefault();
+		window.dispatchEvent(new CustomEvent('open-contact', {
+			detail: {
+				tab: 'quote',
+				message: message
+			}
+		}));
+	};
+
 	if (openQuotePill) {
-		openQuotePill.addEventListener('click', (e) => {
-			e.preventDefault();
-			window.dispatchEvent(new CustomEvent('open-contact', {
-				detail: {
-					tab: 'quote',
-					message: "Bonjour, je souhaiterais discuter d'un accompagnement sur mesure pour mon projet..."
-				}
-			}));
-		});
+		openQuotePill.addEventListener('click', (e) => triggerContact(e));
+	}
+
+	if (heroContactCta) {
+		heroContactCta.addEventListener('click', (e) => triggerContact(e));
 	}
 </script>
 

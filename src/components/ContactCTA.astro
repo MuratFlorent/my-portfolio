@@ -9,11 +9,25 @@ import Icon from './Icon.astro';
 		<p><Icon icon="mail-box" color="var(--accent-regular)" size="2.5rem" gradient />murat.light.developer@gmail.com</p>
 		<p><Icon icon="phone-call" color="var(--accent-regular)" size="2.5rem" gradient /> 06 82 02 72 90 </p> 
 	</div>
-	<CallToAction href="mailto:murat.light.developer@gmail.com">
+	<CallToAction href="#contact" id="main-contact-cta">
 		Envoyez-moi un message
 		<Icon icon="paper-plane-tilt" size="1.2em" />
 	</CallToAction>
 </aside>
+
+<script>
+	const mainContactCta = document.getElementById('main-contact-cta');
+	if (mainContactCta) {
+		mainContactCta.addEventListener('click', (e) => {
+			e.preventDefault();
+			window.dispatchEvent(new CustomEvent('open-contact', {
+				detail: {
+					tab: 'quick'
+				}
+			}));
+		});
+	}
+</script>
 
 <style>
 	aside {

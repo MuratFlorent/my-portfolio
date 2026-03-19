@@ -64,7 +64,7 @@ import CallToAction from '../components/CallToAction.astro';
 				</div>
 			</section>
 
-			<section class="section funding">
+			<section id="financement" class="section funding">
 				<div class="section-shell">
 					<div class="funding-container stack gap-8">
 						<div class="funding-content stack gap-4">
@@ -84,7 +84,7 @@ import CallToAction from '../components/CallToAction.astro';
 							</p>
 						</div>
 						<div class="cta-center centered">
-							<CallToAction href="#contact">
+							<CallToAction href="#contact" id="funding-contact-cta">
 								Vérifier mon éligibilité
 								<Icon icon="paper-plane-tilt" size="1.2em" />
 							</CallToAction>
@@ -97,6 +97,22 @@ import CallToAction from '../components/CallToAction.astro';
 		<ContactCTA id="contact" />
 	</div>
 </BaseLayout>
+
+<script>
+	const fundingContactCta = document.getElementById('funding-contact-cta');
+	if (fundingContactCta) {
+		fundingContactCta.addEventListener('click', (e) => {
+			e.preventDefault();
+			window.dispatchEvent(new CustomEvent('open-contact', {
+				detail: {
+					tab: 'quote',
+					projectType: 'formation',
+					message: "Bonjour, je souhaiterais vérifier mon éligibilité pour une formation sur mon projet..."
+				}
+			}));
+		});
+	}
+</script>
 
 <style>
 	.hero .section-shell {

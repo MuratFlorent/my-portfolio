@@ -56,8 +56,8 @@ import Icon from './Icon.astro';
 						<input type="text" id="quick-activity" name="activity" placeholder="Nom de votre entreprise ou domaine" />
 					</div>
 					<div class="field">
-						<label for="quick-message">Votre message</label>
-						<textarea id="quick-message" name="message" rows="4" placeholder="Comment puis-je vous aider ?" required></textarea>
+						<label for="captcha-quick" id="label-captcha-quick">Vérification : </label>
+						<input type="number" id="captcha-quick" name="captcha" placeholder="Résultat" required />
 					</div>
 					<button type="submit" class="submit-btn">
 						Envoyer mon message
@@ -129,10 +129,9 @@ import Icon from './Icon.astro';
 					</div>
 
 					<div class="field">
-						<label for="quote-message">Objectifs & Fonctionnalités souhaitées</label>
-						<textarea id="quote-message" name="message" rows="4" placeholder="Décrivez votre projet en quelques lignes..." required></textarea>
+						<label for="captcha-quote" id="label-captcha-quote">Vérification : </label>
+						<input type="number" id="captcha-quote" name="captcha" placeholder="Résultat" required />
 					</div>
-
 					<button type="submit" class="submit-btn">
 						Demander mon devis personnalisé
 						<Icon icon="magic-wand" size="1.2em" />
@@ -254,12 +253,34 @@ import Icon from './Icon.astro';
 		modal.showModal();
 	});
 
+	// Captcha Logic
+	let captchaValue = 0;
+	const captchaLabels = modal.querySelectorAll('[id^="label-captcha-"]');
+	
+	function generateCaptcha() {
+		const a = Math.floor(Math.random() * 10) + 1;
+		const b = Math.floor(Math.random() * 10) + 1;
+		captchaValue = a + b;
+		captchaLabels.forEach(label => {
+			(label as HTMLElement).textContent = `Vérification : ${a} + ${b} = ?`;
+		});
+	}
+
+	generateCaptcha();
+
 	// Form Submission logic
 	modal?.querySelectorAll('form').forEach(form => {
 		form.addEventListener('submit', (e) => {
+			const captchaInput = form.querySelector('input[name="captcha"]') as HTMLInputElement;
+			if (parseInt(captchaInput.value) !== captchaValue) {
+				e.preventDefault();
+				alert("Le résultat du calcul est incorrect. Veuillez réessayer.");
+				generateCaptcha();
+				captchaInput.value = "";
+				captchaInput.focus();
+				return;
+			}
 			// We let the form submit naturally to Netlify's action URL
-			// But we could also use fetch here if we wanted an AJAX submission
-			// For now, let's keep it simple and reliable with standard POST
 		});
 	});
 </script>

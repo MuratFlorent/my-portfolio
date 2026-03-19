@@ -3,11 +3,11 @@ import Icon from './Icon.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import type { iconPaths } from './IconPaths';
 
-/** Main menu items */
 const textLinks: { label: string; href: string }[] = [
-	{ label: 'Home', href: '/' },
-	{ label: 'Work', href: '/work/' },
-	{ label: 'About', href: '/about/' },
+	{ label: 'Accueil', href: '/' },
+	{ label: 'Réalisations', href: '/work/' },
+	{ label: 'Financement', href: '/formation/#financement' },
+	{ label: 'Devis Gratuit', href: '#devis' },
 ];
 
 /** Icon links to social media — edit these with links to your profiles! */
@@ -139,6 +139,22 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 
 			// Toggle menu visibility when the menu button is clicked.
 			btn.addEventListener('click', () => setExpanded(menu.hidden));
+
+			// Devis Link Trigger
+			const devisLinks = document.querySelectorAll('a[href="#devis"]');
+			devisLinks.forEach(link => {
+				link.addEventListener('click', (e) => {
+					e.preventDefault();
+					window.dispatchEvent(new CustomEvent('open-contact', {
+						detail: {
+							tab: 'quote',
+							message: "Bonjour, je souhaiterais obtenir un devis gratuit pour mon projet..."
+						}
+					}));
+					// Fermer le menu mobile si ouvert sur mobile
+					if (window.innerWidth < 800) setExpanded(false);
+				});
+			});
 
 			// Hide menu button for large screens.
 			const handleViewports = (e: MediaQueryList | MediaQueryListEvent) => {
