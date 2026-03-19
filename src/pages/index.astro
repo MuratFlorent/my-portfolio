@@ -34,8 +34,8 @@ const projects = (await getCollection('work'))
 	<UniverseModal id="universe-modal" />
 	<ScrollSpy />
 	<div class="stack gap-12 lg:gap-16">
-		<div class="wrapper stack gap-8 lg:gap-10">
-			<header id="accueil" class="hero">
+		<header id="accueil" class="hero section">
+			<div class="section-shell">
 				<Hero
 					title="Sites web sur mesure et visibilité sur Google"
 					tagline="Je conçois des solutions digitales adaptées à votre projet pour améliorer votre présence en ligne et attirer les bons clients."
@@ -68,7 +68,7 @@ const projects = (await getCollection('work'))
 					</div>
 				</Hero>
 
-					<div class="hero-image-container">
+				<div class="hero-image-container">
 					<img
 						alt="Florent Murat - Développeur web freelance spécialisé en création de site sur mesure et SEO"
 						width="1365"
@@ -82,92 +82,91 @@ const projects = (await getCollection('work'))
 						<p class="overlay-text">Développeur web, formateur et accompagnant de projets sur mesure.</p>
 					</div>
 				</div>
+			</div>
+		</header>
 
-			</header>
-
-			<section id="solutions" class="section solutions">
-				<div class="solutions-bg"></div>
+		<section id="solutions" class="section solutions">
+			<div class="solutions-bg"></div>
+			<div class="section-shell">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h2>Solutions personnalisées</h2>
 					<p>Que vous ayez besoin d'une présence en ligne complète ou d'un outil métier spécifique, je conçois des solutions adaptées à vos enjeux.</p>
 				</header>
 
-				<div class="gallery">
-					<Grid variant="small">
-						<li class="service-card">
-							<a href="/creation-site-web-sur-mesure" class="service-link">
-								<Icon icon="code" color="var(--accent-regular)" size="2.5rem" gradient />
-								<h4>Sites & refontes</h4>
-								<p>Création de sites vitrines et applicatifs modernes, optimisés pour votre activité.</p>
-							</a>
-						</li>
-						<li class="service-card">
-							<Icon icon="cpu" color="var(--accent-regular)" size="2.5rem" gradient />
-							<h4>Fonctionnalités sur mesure</h4>
-							<p>Extension des capacités de vos outils existants (WordPress, Sylius, etc.) via des plugins spécifiques.</p>
-						</li>
-						<li class="service-card">
-							<a href="/automatisation-web" class="service-link">
-								<Icon icon="magic-wand" color="var(--accent-regular)" size="2.5rem" gradient />
-								<h4>Automatisations & gain de temps</h4>
-								<p>Optimisation de vos processus métier via des scripts et outils connectés pour gagner en productivité.</p>
-							</a>
-						</li>
-						<li class="service-card">
-							<a href="/optimisation-seo" class="service-link">
-								<Icon icon="rocket-launch" color="var(--accent-regular)" size="2.5rem" gradient />
-								<h4>Visibilité sur Google</h4>
-								<p>Amélioration de votre référencement naturel (SEO) pour attirer durablement de nouveaux clients.</p>
-							</a>
-						</li>
-						<li class="service-card">
-							<a href="/formation" class="service-link">
-								<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
-								<h4>Formation & transmission</h4>
-								<p>Apprenez à maîtriser vos outils numériques pour monter en compétence en toute autonomie.</p>
-							</a>
-						</li>
-						<li class="service-card">
-							<Icon icon="users-three" color="var(--accent-regular)" size="2.5rem" gradient />
-							<h4>Accompagnement projet</h4>
-							<p>Conseil stratégique et suivi humain tout au long de la vie de votre projet digital.</p>
-						</li>
-					</Grid>
+				<div class="service-grid">
+					<li class="service-card">
+						<a href="/creation-site-web-sur-mesure" class="service-link">
+							<Icon icon="code" color="var(--accent-regular)" size="2.5rem" gradient />
+							<h4>Sites & refontes</h4>
+							<p>Création de sites vitrines et applicatifs modernes, optimisés pour votre activité.</p>
+						</a>
+					</li>
+					<li class="service-card">
+						<Icon icon="cpu" color="var(--accent-regular)" size="2.5rem" gradient />
+						<h4>Fonctionnalités sur mesure</h4>
+						<p>Extension des capacités de vos outils existants (WordPress, Sylius, etc.) via des plugins spécifiques.</p>
+					</li>
+					<li class="service-card">
+						<a href="/automatisation-web" class="service-link">
+							<Icon icon="magic-wand" color="var(--accent-regular)" size="2.5rem" gradient />
+							<h4>Automatisations & gain de temps</h4>
+							<p>Optimisation de vos processus métier via des scripts and outils connectés pour gagner en productivité.</p>
+						</a>
+					</li>
+					<li class="service-card">
+						<a href="/optimisation-seo" class="service-link">
+							<Icon icon="rocket-launch" color="var(--accent-regular)" size="2.5rem" gradient />
+							<h4>Visibilité sur Google</h4>
+							<p>Amélioration de votre référencement naturel (SEO) pour attirer durablement de nouveaux clients.</p>
+						</a>
+					</li>
+					<li class="service-card">
+						<a href="/formation" class="service-link">
+							<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
+							<h4>Formation & transmission</h4>
+							<p>Apprenez à maîtriser vos outils numériques pour monter en compétence en toute autonomie.</p>
+						</a>
+					</li>
+					<li class="service-card">
+						<Icon icon="users-three" color="var(--accent-regular)" size="2.5rem" gradient />
+						<h4>Accompagnement projet</h4>
+						<p>Conseil stratégique et suivi humain tout au long de la vie de votre projet digital.</p>
+					</li>
 				</div>
-			</section>
+			</div>
+		</section>
 
-			<main class="wrapper stack gap-12 lg:gap-24">
-				<section id="projets" class="section projects" style="padding-top: 1rem;">
-					<div class="container stack gap-10 lg:gap-12">
-						<header class="section-header stack gap-4 centered">
-							<div class="badge-accent mx-auto">Réalisations</div>
-							<h2>Projets réalisés</h2>
-							<p class="max-w-2xl mx-auto">Une sélection de mes réalisations les plus marquantes, alliant expertise technique et approche humaine.</p>
-						</header>
+		<main class="stack gap-12 lg:gap-24">
+			<section id="projets" class="section grid-projets" style="padding-top: 1rem;">
+				<div class="section-shell stack gap-10 lg:gap-12">
+					<header class="section-header stack gap-4 lg:align-start centered px-4">
+						<div class="badge-accent mx-auto lg:mx-0">Réalisations</div>
+						<h2 class="lg:text-left">Projets réalisés</h2>
+						<p class="max-w-2xl mx-auto lg:mx-0 lg:text-left">Une sélection de mes réalisations les plus marquantes, alliant expertise technique et approche humaine.</p>
+					</header>
 
-						<div class="gallery">
-							<Grid>
-								{
-									projects.map((project) => (
-										<li>
-											<PortfolioPreview project={project} />
-										</li>
-									))
-								}
-							</Grid>
-						</div>
-
-						<div class="cta centered">
+					<div class="gallery px-4 md:px-0">
+						<Grid variant="projects">
+							{
+								projects.map((project) => (
+									<li class="project-item">
+										<PortfolioPreview project={project} />
+									</li>
+								))
+							}
+						</Grid>
+						<div class="cta-inline lg:projects-cta">
 							<CallToAction href="/work/">
-								Explorer toutes les réalisations
+								Toutes les réalisations
 								<Icon icon="arrow-right" size="1.2em" />
 							</CallToAction>
 						</div>
 					</div>
-				</section>
+				</div>
+			</section>
 
 			<section id="univers" class="section universe">
-					<div class="container stack gap-10 lg:gap-15">
+				<div class="section-shell stack gap-10 lg:gap-15">
 					<header class="section-header stack gap-4 centered">
 						<div class="badge-accent mx-auto">Mon approche</div>
 						<h2>Expertise & Valeurs</h2>
@@ -175,7 +174,7 @@ const projects = (await getCollection('work'))
 							Développeur web freelance avec plus de 10 ans d'expérience, j'accompagne mes clients dans la création de solutions digitales performantes et humaines.
 						</p>
 					</header>
-	
+
 					<div class="gallery">
 						<div class="universe-grid">
 							{
@@ -200,7 +199,7 @@ const projects = (await getCollection('work'))
 							}
 						</div>
 					</div>
-	
+
 					<div class="cta centered">
 						<button class="explore-universe-btn" id="open-universe-modal">
 							<span>Explorer mon univers complet</span>
@@ -210,118 +209,121 @@ const projects = (await getCollection('work'))
 				</div>
 			</section>
 
-				<Testimonials />
-				<section id="faq" class="section faq-section">
-					<div class="container stack gap-10 lg:gap-15">
-							<header class="section-header stack gap-4 centered">
-								<div class="badge-accent mx-auto">FAQ</div>
-								<h2>Questions fréquentes</h2>
-								<p class="max-w-2xl mx-auto">Tout ce qu'il faut savoir sur la création de sites web sur mesure, l'optimisation SEO et l'automatisation.</p>
-							</header>
-							<div class="faq-grid">
-								<details class="faq-item">
-								<summary>Pourquoi choisir un site web sur mesure ?</summary>
-								<div class="faq-content">
-									<p>Un site sur mesure s’adapte aux besoins spécifiques de votre activité. Contrairement aux templates génériques, il permet d’optimiser la performance, le référencement naturel (SEO) et l'expérience utilisateur pour une efficacité maximale.</p>
-								</div>
-							</details>
-							<details class="faq-item">
-								<summary>Comment améliorer la visibilité d'un site sur Google ?</summary>
-								<div class="faq-content">
-									<p>La visibilité sur Google repose sur plusieurs piliers : une optimisation SEO technique rigoureuse, un contenu pertinent répondant aux intentions de recherche, des performances de chargement élevées et une structure sémantique claire.</p>
-								</div>
-							</details>
-							<details class="faq-item">
-								<summary>Qu'est-ce que l'optimisation pour les IA (GEO) ?</summary>
-								<div class="faq-content">
-									<p>Le GEO (Generative Engine Optimization) consiste à structurer et optimiser votre contenu pour qu'il soit facilement compris et cité par les moteurs de recherche assistés par intelligence artificielle (comme ChatGPT, Perplexity ou Google Search Generative Experience).</p>
-								</div>
-							</details>
-							<details class="faq-item">
-								<summary>Quels sont les délais pour la création d'un site sur mesure ?</summary>
-								<div class="faq-content">
-									<p>Les délais varient selon la complexité du projet. En général, il faut compter entre 4 et 8 semaines pour une solution complète, incluant la conception, le développement technique et l'optimisation pour le référencement naturel.</p>
-								</div>
-							</details>
-						</div>
-					</div>
-				</section>
-				<section id="formation" class="section formation-premium">
-					<div class="formation-bg"></div>
-					<div class="formation-container stack gap-12 lg:gap-16">
-						<header class="section-header stack gap-4 centered">
-							<div class="badge-accent mx-auto">Formation & Accompagnement</div>
-							<h2>Formation et accompagnement</h2>
-							<p class="max-w-2xl mx-auto">
-								Bâtissez votre projet (WordPress, SEO, Design) tout en apprenant à le maîtriser. 
-								Profitez d'un financement (CPF, OPCO) via notre centre partenaire certifié AFI.
-							</p>
-						</header>
+			<Testimonials />
 
-						<div class="formation-content-grid">
-							<div class="formation-image-wrapper">
-								<img
-									alt="Florent Murat - Formation et transmission de savoir-faire"
-									src="/assets/letItBe/eveil_et_science.jpeg" 
-									loading="lazy" 
-									decoding="async" 
-								/>
-								<div class="image-badge">
-									<Icon icon="strategy" size="1.2em" />
-									<span>Apprentissage concret</span>
+			<section id="faq" class="section faq-section">
+				<div class="section-shell stack gap-10 lg:gap-15">
+					<header class="section-header stack gap-4 centered">
+						<div class="badge-accent mx-auto">FAQ</div>
+						<h2>Questions fréquentes</h2>
+						<p class="max-w-2xl mx-auto">Tout ce qu'il faut savoir sur la création de sites web sur mesure, l'optimisation SEO et l'automatisation.</p>
+					</header>
+					<div class="faq-grid">
+						<details class="faq-item">
+							<summary>Pourquoi choisir un site web sur mesure ?</summary>
+							<div class="faq-content">
+								<p>Un site sur mesure s’adapte aux besoins spécifiques de votre activité. Contrairement aux templates génériques, il permet d’optimiser la performance, le référencement naturel (SEO) et l'expérience utilisateur pour une efficacité maximale.</p>
+							</div>
+						</details>
+						<details class="faq-item">
+							<summary>Comment améliorer la visibilité d'un site sur Google ?</summary>
+							<div class="faq-content">
+								<p>La visibilité sur Google repose sur plusieurs piliers : une optimisation SEO technique rigoureuse, un contenu pertinent répondant aux intentions de recherche, des performances de chargement élevées et une structure sémantique claire.</p>
+							</div>
+						</details>
+						<details class="faq-item">
+							<summary>Qu'est-ce que l'optimisation pour les IA (GEO) ?</summary>
+							<div class="faq-content">
+								<p>Le GEO (Generative Engine Optimization) consiste à structurer et optimiser votre contenu pour qu'il soit facilement compris et cité par les moteurs de recherche assistés par intelligence artificielle (comme ChatGPT, Perplexity ou Google Search Generative Experience).</p>
+							</div>
+						</details>
+						<details class="faq-item">
+							<summary>Quels sont les délais pour la création d'un site sur mesure ?</summary>
+							<div class="faq-content">
+								<p>Les délais varient selon la complexité du projet. En général, il faut compter entre 4 et 8 semaines pour une solution complète, incluant la conception, le développement technique et l'optimisation pour le référencement naturel.</p>
+							</div>
+						</details>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<section id="formation" class="section formation-premium">
+			<div class="formation-bg"></div>
+			<div class="section-shell">
+				<div class="stack gap-12 lg:gap-16">
+					<header class="section-header stack gap-4 centered">
+						<div class="badge-accent mx-auto">Formation & Accompagnement</div>
+						<h2>Formation et accompagnement</h2>
+						<p class="max-w-2xl mx-auto">
+							Bâtissez votre projet (WordPress, SEO, Design) tout en apprenant à le maîtriser. 
+							Profitez d'un financement (CPF, OPCO) via notre centre partenaire certifié AFI.
+						</p>
+					</header>
+
+					<div class="formation-content-grid">
+						<div class="formation-image-wrapper">
+							<img
+								alt="Florent Murat - Formation et transmission de savoir-faire"
+								src="/assets/letItBe/eveil_et_science.jpeg" 
+								loading="lazy" 
+								decoding="async" 
+							/>
+							<div class="image-badge">
+								<Icon icon="strategy" size="1.2em" />
+								<span>Apprentissage concret</span>
+							</div>
+						</div>
+
+						<div class="formation-features stack gap-8">
+							<div class="feature-item">
+								<div class="icon-circle">
+									<Icon icon="rocket-launch" size="1.5rem" gradient />
+								</div>
+								<div class="feature-text stack gap-1">
+									<h4>Expertise de 10+ ans</h4>
+									<p>Une expérience solide acquise sur plus de 50 projets web réussis.</p>
+								</div>
+							</div>
+							<div class="feature-item">
+								<div class="icon-circle">
+									<Icon icon="strategy" size="1.5rem" gradient />
+								</div>
+								<div class="feature-text stack gap-1">
+									<h4>Autonomie réelle</h4>
+									<p>Ne soyez plus dépendant. Apprenez à gérer votre interface et vos contenus en toute confiance.</p>
+								</div>
+							</div>
+							<div class="feature-item">
+								<div class="icon-circle">
+									<Icon icon="code" size="1.5rem" gradient />
+								</div>
+								<div class="feature-text stack gap-1">
+									<h4>Expertise sur mesure</h4>
+									<p>Le programme s'adapte à votre projet : WordPress, SEO ou structuration de données.</p>
+								</div>
+							</div>
+							<div class="feature-item">
+								<div class="icon-circle">
+									<Icon icon="heart" size="1.5rem" gradient />
+								</div>
+								<div class="feature-text stack gap-1">
+									<h4>Financement facilité</h4>
+									<p>Accompagnement administratif pour vos dossiers CPF, OPCO ou Pôle Emploi.</p>
 								</div>
 							</div>
 
-							<div class="formation-features stack gap-8">
-								<div class="feature-item">
-									<div class="icon-circle">
-										<Icon icon="rocket-launch" size="1.5rem" gradient />
-									</div>
- 								<div class="feature-text stack gap-1">
-										<h4>Expertise de 10+ ans</h4>
-										<p>Une expérience solide acquise sur plus de 50 projets web réussis.</p>
-									</div>
-								</div>
-								<div class="feature-item">
-									<div class="icon-circle">
-										<Icon icon="strategy" size="1.5rem" gradient />
-									</div>
-									<div class="feature-text stack gap-1">
-										<h4>Autonomie réelle</h4>
-										<p>Ne soyez plus dépendant. Apprenez à gérer votre interface et vos contenus en toute confiance.</p>
-									</div>
-								</div>
-								<div class="feature-item">
-									<div class="icon-circle">
-										<Icon icon="code" size="1.5rem" gradient />
-									</div>
-									<div class="feature-text stack gap-1">
-										<h4>Expertise sur mesure</h4>
-										<p>Le programme s'adapte à votre projet : WordPress, SEO ou structuration de données.</p>
-									</div>
-								</div>
-								<div class="feature-item">
-									<div class="icon-circle">
-										<Icon icon="heart" size="1.5rem" gradient />
-									</div>
-									<div class="feature-text stack gap-1">
-										<h4>Financement facilité</h4>
-										<p>Accompagnement administratif pour vos dossiers CPF, OPCO ou Pôle Emploi.</p>
-									</div>
-								</div>
-
-								<div class="cta-group">
-									<CallToAction href="/formation">
-										Découvrir l'offre de formation
-										<Icon icon="arrow-right" size="1.2em" />
-									</CallToAction>
-								</div>
+							<div class="cta-group">
+								<CallToAction href="/formation">
+									Découvrir l'offre de formation
+									<Icon icon="arrow-right" size="1.2em" />
+								</CallToAction>
 							</div>
 						</div>
 					</div>
-				</section>
-			</main>
-		</div>
+				</div>
+			</div>
+		</section>
 		<ContactCTA id="contact" />
 	</div>
 </BaseLayout>
@@ -359,18 +361,51 @@ const projects = (await getCollection('work'))
 		text-align: center;
 	}
 
-	.roles {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 0.5rem;
-		width: 100%;
+	@media (min-width: 50em) {
+		.hero .section-shell {
+			display: grid;
+			grid-template-columns: 6fr 4fr;
+			gap: 3.75rem;
+			align-items: center;
+		}
+
+		.hero {
+			text-align: left;
+		}
+
+		.roles {
+			justify-content: flex-start !important;
+		}
+
+		.hero-ctas {
+			justify-content: flex-start !important;
+		}
 	}
 
-	@media (min-width: 50em) {
+	.roles {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		width: 100%;
+		align-items: stretch; /* Largeur cohérente en mobile */
+	}
+
+	@media (min-width: 36em) {
+		.roles {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 0.75rem;
+		}
+	}
+
+	@media (min-width: 60em) {
 		.roles {
 			display: flex;
+			flex-direction: row;
 			flex-wrap: wrap;
 			width: auto;
+			justify-content: center;
+			gap: 0.75rem;
 		}
 	}
 
@@ -396,6 +431,13 @@ const projects = (await getCollection('work'))
 		border-radius: var(--radius-md);
 		box-shadow: var(--shadow-md);
 		transition: transform var(--theme-transition-slow), box-shadow var(--theme-transition);
+		margin-top: 2rem;
+	}
+
+	@media (min-width: 50em) {
+		.hero-image-container {
+			margin-top: 0;
+		}
 	}
 
 	.hero-image-container:hover {
@@ -521,6 +563,45 @@ const projects = (await getCollection('work'))
 		.formation img{
 			max-width: 18rem;
  		   padding-right: 1em;;
+		}
+	}
+
+	@media (max-width: 50em) {
+		.formation-premium .badge-accent {
+			margin-inline: auto;
+		}
+
+		.formation-image-wrapper {
+			max-width: 100%;
+			margin-inline: auto;
+		}
+
+		.formation-image-wrapper img {
+			aspect-ratio: 16 / 9;
+		}
+	}
+
+	.service-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
+		list-style: none;
+		padding: 0;
+	}
+
+	@media (min-width: 40em) {
+		.service-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 64em) {
+		.service-grid {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 2rem;
 		}
 	}
 
@@ -809,8 +890,11 @@ const projects = (await getCollection('work'))
 	/* ====================================================== */
 
 	.section {
-		display: grid;
-		gap: 2rem;
+		display: block;
+	}
+
+	.grid-projets {
+		display: block;
 	}
 
 	.with-background {
@@ -881,39 +965,123 @@ const projects = (await getCollection('work'))
 	}
 
 	@media (min-width: 50em) {
-		.section {
-			grid-template-columns: repeat(4, 1fr);
-			grid-template-areas: 'header header header header' 'gallery gallery gallery gallery';
-			gap: 5rem;
+		.grid-projets {
+			display: block;
 		}
 
-		.section.with-cta {
-			grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery';
+		.lg\:align-start {
+			align-items: flex-start;
+			text-align: left;
+		}
+
+		.lg\:text-left {
+			text-align: left;
+		}
+
+		.lg\:mx-0 {
+			margin-inline: 0;
 		}
 
 		.section-header {
-			grid-area: header;
-			justify-self: center;
-			text-align: center;
+			text-align: left;
+			margin-inline: 0;
 		}
 
-		.section-header h3 {
-			font-size: var(--text-3xl);
+		.cta-inline {
+			display: flex;
+			justify-content: center;
+			margin-top: 2rem;
+			grid-column: 1 / -1;
 		}
 
-		.with-cta .section-header {
-			justify-self: center;
-			text-align: center;
+		.lg\:projects-cta {
+			display: flex;
+			justify-content: center;
+			margin-top: 2.5rem;
 		}
+	}
 
+	/* Ajustement spécifique pour la section projets avec le nouveau layout */
+	@media (min-width: 60em) {
 		.gallery {
-			grid-area: gallery;
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 3.5rem;
+			align-items: center;
 		}
 
-		.cta {
-			grid-area: cta;
-			align-self: center;
-			justify-self: flex-end;
+		.gallery :global(.grid) {
+			grid-column: 1 / -1;
+		}
+
+		.cta-inline {
+			grid-column: 2;
+			justify-content: flex-end;
+			margin-top: 0;
+		}
+	}
+
+	@media (min-width: 85em) {
+		.gallery {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 4rem;
+		}
+
+		.cta-inline {
+			grid-column: 3;
+		}
+	}
+
+	.link-explorer {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.75rem;
+		color: var(--gray-300);
+		text-decoration: none;
+		font-size: var(--text-md);
+		font-weight: 600;
+		padding: 0.5rem 0;
+		position: relative;
+		transition: color var(--theme-transition);
+	}
+
+	.link-explorer span {
+		position: relative;
+	}
+
+	.link-explorer span::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: -2px;
+		width: 100%;
+		height: 2px;
+		background: var(--accent-regular);
+		transform: scaleX(0);
+		transform-origin: right;
+		transition: transform 0.4s cubic-bezier(0.5, 0, 0, 1);
+	}
+
+	.link-explorer:hover {
+		color: var(--accent-regular);
+	}
+
+	.link-explorer:hover span::after {
+		transform: scaleX(1);
+		transform-origin: left;
+	}
+
+	.link-explorer :global(svg) {
+		transition: transform 0.4s cubic-bezier(0.5, 0, 0, 1);
+	}
+
+	.link-explorer:hover :global(svg) {
+		transform: translateX(5px);
+	}
+
+	@media (min-width: 50em) {
+		.link-explorer {
+			font-size: var(--text-lg);
 		}
 	}
 
@@ -989,18 +1157,35 @@ const projects = (await getCollection('work'))
 		}
 	}
 
-	/* Formation Premium Styles */
 	.formation-premium {
-		padding-block: 5rem;
+		position: relative;
+		overflow: hidden;
 	}
 
-	.formation-container {
-		background: var(--gray-999);
+	.formation-bg {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		background: radial-gradient(circle at 80% 50%, var(--accent-overlay) 0%, transparent 60%);
+		z-index: -1;
+		opacity: 0.4;
+	}
+
+	.formation-premium .section-shell > .stack {
+		background: var(--gray-999_40);
+		backdrop-filter: blur(10px);
 		border: 1px solid var(--gray-800);
 		border-radius: var(--radius-lg);
-		padding: 2.5rem;
+		padding: 2rem;
 		box-shadow: var(--shadow-sm);
-		overflow: hidden;
+	}
+
+	@media (min-width: 50em) {
+		.formation-premium .section-shell > .stack {
+			padding: 4rem;
+		}
 	}
 
 	.badge-accent {
@@ -1016,41 +1201,16 @@ const projects = (await getCollection('work'))
 		width: fit-content;
 	}
 
-	/* --- Formation Section --- */
-
-	.formation-premium {
-		position: relative;
-		overflow: hidden;
-		padding-block: 5rem;
-	}
-
-	.formation-bg {
-		position: absolute;
-		top: 0;
-		right: 0;
-		width: 100%;
-		height: 100%;
-		background: radial-gradient(circle at 80% 50%, var(--accent-overlay) 0%, transparent 50%);
-		z-index: -1;
-		opacity: 0.3;
-	}
-
-	.formation-container {
-		background: var(--gray-999_40);
-		backdrop-filter: blur(10px);
-		border: 1px solid var(--gray-800);
-		border-radius: var(--radius-lg);
-		padding: 2.5rem;
-	}
-
 	.formation-content-grid {
 		display: grid;
 		gap: 2.5rem;
 		grid-template-columns: 1fr;
 		align-items: center;
+		width: 100%;
+		max-width: 100%;
 	}
 
-	@media (min-width: 55em) {
+	@media (min-width: 64em) {
 		.formation-content-grid {
 			grid-template-columns: 45fr 55fr;
 			gap: 4rem;
@@ -1158,14 +1318,14 @@ const projects = (await getCollection('work'))
 		max-width: 1000px;
 		margin: 0 auto;
 		display: grid;
-		gap: 1rem;
+		gap: 1.25rem;
 		grid-template-columns: 1fr;
 	}
 
-	@media (min-width: 45em) {
+	@media (min-width: 64em) {
 		.faq-grid {
 			grid-template-columns: 1fr 1fr;
-			gap: 1.5rem;
+			gap: 2rem;
 			align-items: start;
 		}
 	}

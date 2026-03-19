@@ -216,9 +216,19 @@ h5 {
 	padding-block: 4rem;
 }
 
+.section-shell {
+	width: 100%;
+	max-width: 83rem;
+	margin-inline: auto;
+	padding-inline: var(--padding-inline);
+}
+
 @media (min-width: 50em) {
 	.section {
 		padding-block: 6rem;
+	}
+	.section-shell {
+		padding-inline: var(--padding-inline-lg);
 	}
 }
 
