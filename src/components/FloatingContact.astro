@@ -267,7 +267,7 @@ import Icon from './Icon.astro';
 <style>
 	.floating-contact {
 		position: fixed;
-		bottom: 2rem;
+		bottom: 8rem; /* Remonté pour être au-dessus du footer (padding 4rem + contenu) */
 		right: 2rem;
 		z-index: 100;
 	}
@@ -305,10 +305,14 @@ import Icon from './Icon.astro';
 
 	@media (max-width: 50em) {
 		.fab-text {
-			display: none;
+			display: block;
+			font-size: var(--text-xs);
+			max-width: 8ch;
+			line-height: 1;
+			text-align: left;
 		}
 		.fab {
-			padding: 1rem;
+			padding: 0.75rem 1rem;
 		}
 	}
 
