@@ -19,7 +19,14 @@ export const collections = {
 			services: z.array(z.string()).optional(),
 			stack: z.array(z.string()).optional(),
 			highlights: z.array(z.string()).optional(),
-			gallery: z.array(z.string()).optional(),
+			gallery: z.array(z.union([
+				z.string(),
+				z.object({
+					src: z.string(),
+					alt: z.string().optional(),
+					label: z.string().optional(),
+				})
+			])).optional(),
 			heroImage: z.string().optional(),
 			client: z.string().optional(),
 			year: z.number().optional(),
