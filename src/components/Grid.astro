@@ -37,6 +37,12 @@ const { variant } = Astro.props;
 		}
 	}
 
+	@media (min-width: 75em) {
+		.grid.projects {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
 	@media (min-width: 90em) {
 		.grid {
 			grid-template-columns: repeat(3, 1fr);

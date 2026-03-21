@@ -5,6 +5,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 import ContactCTA from '../components/ContactCTA.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
+import ReferenceCard from '../components/ReferenceCard.astro';
 import Hero from '../components/Hero.astro';
 import Grid from '../components/Grid.astro';
 import ProjectModal from '../components/ProjectModal.astro';
@@ -12,6 +13,33 @@ import ProjectModal from '../components/ProjectModal.astro';
 const projects = (await getCollection('work'))
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
 	.filter((project) => project.data.img.includes('/assets/projects/'));
+
+const extraReferences = [
+	{
+		title: 'HelloRSE',
+		role: 'Développeur Full Stack',
+		period: '2022 - 2023',
+		tags: ['Symfony', 'Sylius', 'DevOps', 'E-commerce'],
+		description: 'Développement et maintenance d’une plateforme e-commerce sous Sylius / Symfony, avec mise en place d’outils DevOps, CI/CD, GitLab, Ansible et participation à un environnement technique orienté performance et déploiement.',
+		image: '/assets/hello-rse.jpg'
+	},
+	{
+		title: 'Famileo',
+		role: 'Développeur Full Stack',
+		period: '2020 - 2022',
+		tags: ['Symfony', 'Sylius', 'International', 'E-commerce'],
+		description: 'Développement et évolution d’une boutique en ligne sous Symfony / Sylius, gestion des comptes utilisateurs et accompagnement du déploiement international dans un contexte produit structuré.',
+		image: '/assets/VIGNETTE_FAMILEO.png'
+	},
+	{
+		title: 'Tediber',
+		role: 'Développeur back-end Symfony / Sylius',
+		period: '2018 - 2020',
+		tags: ['Symfony', 'Sylius', 'ERP', 'Logistique'],
+		description: 'Création et migration d’un ERP logistique sous Symfony vers Sylius, avec développement de solutions e-commerce et gestion des commandes dans un cadre exigeant et orienté métier.',
+		image: '/assets/logo-tediber.jpg'
+	}
+];
 ---
 
 <BaseLayout
@@ -35,7 +63,110 @@ const projects = (await getCollection('work'))
 					))
 				}
 			</Grid>
+
+			<section class="section references">
+				<header class="section-header stack gap-4 lg:align-start px-4">
+					<div class="badge-accent">Expériences salariées</div>
+					<h2 class="lg:text-left">Références complémentaires</h2>
+					<p class="max-w-2xl lg:text-left">
+						Quelques expériences marquantes en environnement produit, e-commerce et développement full stack.
+					</p>
+				</header>
+
+				<div class="gallery">
+					<Grid variant="small">
+						{
+							extraReferences.map((ref) => (
+								<li>
+									<ReferenceCard 
+										title={ref.title}
+										image={ref.image}
+										period={ref.period}
+										role={ref.role}
+										description={ref.description}
+										tags={ref.tags}
+									/>
+								</li>
+							))
+						}
+					</Grid>
+				</div>
+			</section>
 		</main>
 		<ContactCTA />
 	</div>
 </BaseLayout>
+
+<style>
+	.section {
+		display: grid;
+		gap: 2rem;
+	}
+
+	.section-header {
+		justify-self: center;
+		text-align: center;
+		max-width: 50rem;
+		font-size: var(--text-md);
+		color: var(--gray-300);
+	}
+
+	.badge-accent {
+		display: inline-block;
+		padding: 0.25rem 0.75rem;
+		background: var(--accent-subtle-overlay);
+		color: var(--accent-regular);
+		border-radius: var(--radius-full);
+		font-size: var(--text-sm);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		width: fit-content;
+		margin: 0 auto;
+	}
+
+	h2 {
+		font-size: var(--text-2xl);
+		color: var(--gray-0);
+	}
+
+	@media (min-width: 50em) {
+		.section {
+			grid-template-columns: repeat(4, 1fr);
+			grid-template-areas: 'header header header header' 'gallery gallery gallery gallery';
+			gap: 3rem;
+		}
+
+		.section-header {
+			grid-area: header;
+			justify-self: start;
+			text-align: left;
+		}
+
+		.badge-accent {
+			margin: 0;
+		}
+
+		.gallery {
+			grid-area: gallery;
+		}
+
+		h2 {
+			font-size: var(--text-4xl);
+		}
+	}
+
+	.references .gallery {
+		margin-top: 1rem;
+	}
+
+	.references li {
+		list-style: none;
+	}
+
+	@media (min-width: 50em) {
+		.references {
+			margin-top: 4rem;
+		}
+	}
+</style>
