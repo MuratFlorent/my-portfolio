@@ -40,7 +40,7 @@ import Icon from './Icon.astro';
 					<p class="hidden">
 						<label>Ne pas remplir si vous êtes humain : <input name="bot-field" /></label>
 					</p>
-					<input type="hidden" name="source-project" id="quick-source-project" value="Direct" />
+					<input type="hidden" name="source" id="quick-source-project" value="Direct" />
 					<div class="form-grid">
 						<div class="field">
 							<label for="quick-name">Nom complet</label>
@@ -56,9 +56,10 @@ import Icon from './Icon.astro';
 						<input type="text" id="quick-activity" name="activity" placeholder="Nom de votre entreprise ou domaine" />
 					</div>
 					<div class="field">
-						<label for="captcha-quick" id="label-captcha-quick">Vérification : </label>
-						<input type="number" id="captcha-quick" name="captcha" placeholder="Résultat" required />
+						<label for="quick-message">Votre message</label>
+						<textarea id="quick-message" name="message" placeholder="Parlez-moi brièvement de votre besoin" required rows="3"></textarea>
 					</div>
+					<div data-netlify-recaptcha="true"></div>
 					<button type="submit" class="submit-btn">
 						Envoyer mon message
 						<Icon icon="paper-plane-tilt" size="1.2em" />
@@ -79,7 +80,7 @@ import Icon from './Icon.astro';
 					<p class="hidden">
 						<label>Ne pas remplir si vous êtes humain : <input name="bot-field" /></label>
 					</p>
-					<input type="hidden" name="source-project" id="quote-source-project" value="Direct" />
+					<input type="hidden" name="source" id="quote-source-project" value="Direct" />
 					<div class="form-grid">
 						<div class="field">
 							<label for="quote-name">Nom complet</label>
@@ -129,9 +130,10 @@ import Icon from './Icon.astro';
 					</div>
 
 					<div class="field">
-						<label for="captcha-quote" id="label-captcha-quote">Vérification : </label>
-						<input type="number" id="captcha-quote" name="captcha" placeholder="Résultat" required />
+						<label for="quote-message">Détails de votre demande</label>
+						<textarea id="quote-message" name="message" placeholder="Dites-m'en plus sur votre projet..." required rows="4"></textarea>
 					</div>
+					<div data-netlify-recaptcha="true"></div>
 					<button type="submit" class="submit-btn">
 						Demander mon devis personnalisé
 						<Icon icon="magic-wand" size="1.2em" />
@@ -240,7 +242,7 @@ import Icon from './Icon.astro';
 		
 		if (message) {
 			const activeTextarea = modal.querySelector('.tab-panel.active textarea') as HTMLTextAreaElement;
-			if (activeTextarea) activeTextarea.value = message;
+			if (activeTextarea && message) activeTextarea.value = message;
 		}
 
 		if (source) {
@@ -253,33 +255,9 @@ import Icon from './Icon.astro';
 		modal.showModal();
 	});
 
-	// Captcha Logic
-	let captchaValue = 0;
-	const captchaLabels = modal.querySelectorAll('[id^="label-captcha-"]');
-	
-	function generateCaptcha() {
-		const a = Math.floor(Math.random() * 10) + 1;
-		const b = Math.floor(Math.random() * 10) + 1;
-		captchaValue = a + b;
-		captchaLabels.forEach(label => {
-			(label as HTMLElement).textContent = `Vérification : ${a} + ${b} = ?`;
-		});
-	}
-
-	generateCaptcha();
-
 	// Form Submission logic
 	modal?.querySelectorAll('form').forEach(form => {
-		form.addEventListener('submit', (e) => {
-			const captchaInput = form.querySelector('input[name="captcha"]') as HTMLInputElement;
-			if (parseInt(captchaInput.value) !== captchaValue) {
-				e.preventDefault();
-				alert("Le résultat du calcul est incorrect. Veuillez réessayer.");
-				generateCaptcha();
-				captchaInput.value = "";
-				captchaInput.focus();
-				return;
-			}
+		form.addEventListener('submit', () => {
 			// We let the form submit naturally to Netlify's action URL
 		});
 	});

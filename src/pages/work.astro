@@ -40,6 +40,23 @@ const extraReferences = [
 		image: '/assets/logo-tediber.jpg'
 	}
 ];
+
+const collaborations = [
+	{
+		title: 'Vibressence',
+		activity: 'Sonothérapie',
+		tags: ['Wix', 'CSS', 'JS'],
+		description: 'Refonte de la page d’accueil, amélioration du menu sticky, travail de design custom, optimisation SEO / GEO et accompagnement sur la visibilité et le référencement.',
+		image: '/assets/collab/Vibressence.png'
+	},
+	{
+		title: 'Atelier Arbre Bleu',
+		activity: 'Architecte paysagiste',
+		tags: ['Statamic', 'SEO', 'Refresh UX'],
+		description: 'Refonte ciblée de certaines pages, optimisation SEO, rafraîchissement global et nettoyage du projet pour améliorer la lisibilité et la présentation du site.',
+		image: '/assets/collab/atelier_arbre_bleu.png'
+	}
+];
 ---
 
 <BaseLayout
@@ -65,7 +82,7 @@ const extraReferences = [
 			</Grid>
 
 			<section class="section references">
-				<header class="section-header stack gap-4 lg:align-start px-4">
+				<header class="section-header stack gap-4 lg:align-start">
 					<div class="badge-accent">Expériences salariées</div>
 					<h2 class="lg:text-left">Références complémentaires</h2>
 					<p class="max-w-2xl lg:text-left">
@@ -92,6 +109,35 @@ const extraReferences = [
 					</Grid>
 				</div>
 			</section>
+
+			<section class="section collaborations">
+				<header class="section-header stack gap-4 lg:align-start">
+					<div class="badge-accent">Accompagnements</div>
+					<h2 class="lg:text-left">Autres collaborations</h2>
+					<p class="max-w-2xl lg:text-left">
+						Quelques interventions ciblées en refonte, optimisation et accompagnement digital.
+					</p>
+				</header>
+
+				<div class="gallery">
+					<Grid variant="small">
+						{
+							collaborations.map((collab) => (
+								<li>
+									<ReferenceCard 
+										title={collab.title}
+										image={collab.image}
+										period={collab.activity}
+										role=""
+										description={collab.description}
+										tags={collab.tags}
+									/>
+								</li>
+							))
+						}
+					</Grid>
+				</div>
+			</section>
 		</main>
 		<ContactCTA />
 	</div>
@@ -99,16 +145,17 @@ const extraReferences = [
 
 <style>
 	.section {
-		display: grid;
+		display: flex;
+		flex-direction: column;
 		gap: 2rem;
 	}
 
 	.section-header {
-		justify-self: center;
 		text-align: center;
 		max-width: 50rem;
 		font-size: var(--text-md);
 		color: var(--gray-300);
+		margin-inline: auto;
 	}
 
 	.badge-accent {
@@ -132,23 +179,17 @@ const extraReferences = [
 
 	@media (min-width: 50em) {
 		.section {
-			grid-template-columns: repeat(4, 1fr);
-			grid-template-areas: 'header header header header' 'gallery gallery gallery gallery';
 			gap: 3rem;
 		}
 
 		.section-header {
-			grid-area: header;
-			justify-self: start;
+			margin-inline: 0;
 			text-align: left;
+			align-items: flex-start;
 		}
 
 		.badge-accent {
 			margin: 0;
-		}
-
-		.gallery {
-			grid-area: gallery;
 		}
 
 		h2 {

@@ -5,6 +5,7 @@ import type { iconPaths } from './IconPaths';
 
 const textLinks: { label: string; href: string }[] = [
 	{ label: 'Accueil', href: '/' },
+	{ label: 'Mon approche', href: '/approche' },
 	{ label: 'Réalisations', href: '/work/' },
 	{ label: 'Financement', href: '/formation/#financement' },
 	{ label: 'Devis Gratuit', href: '#devis' },
@@ -22,19 +23,19 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 		<a href="/" class="site-title">
 			<img
 				alt="Florent Murat Light Developer"
-				width="160"
-				height="64"
+				width="789"
+				height="316"
 				src="/assets/logo/logo3.png"
 			/>
 		</a>
-		<menu-button>
+		<div class="menu-button-container">
 			<template>
 				<button class="menu-button" aria-expanded="false">
 					<span class="sr-only">Menu</span>
 					<Icon icon="list" />
 				</button>
 			</template>
-		</menu-button>
+		</div>
 	</div>
 	<noscript>
 		<ul class="nav-items">
@@ -117,13 +118,11 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 </nav>
 
 <script>
-	class MenuButton extends HTMLElement {
-		constructor() {
-			super();
-
+	class MenuButton {
+		constructor(container: HTMLElement) {
 			// Inject menu toggle button when JS runs.
-			this.appendChild(this.querySelector('template')!.content.cloneNode(true));
-			const btn = this.querySelector('button')!;
+			container.appendChild(container.querySelector('template')!.content.cloneNode(true));
+			const btn = container.querySelector('button')!;
 
 			// Hide menu (shown by default to support no-JS browsers).
 			const menu = document.getElementById('menu-content')!;
@@ -166,14 +165,18 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 			mediaQueries.addEventListener('change', handleViewports);
 		}
 	}
-	customElements.define('menu-button', MenuButton);
+
+	const container = document.querySelector('.menu-button-container') as HTMLElement;
+	if (container) {
+		new MenuButton(container);
+	}
 </script>
 
 <style>
 	nav {
 		z-index: 9999;
 		position: relative;
-		font-family: var(--font-brand);
+		font-family: var(--font-brand), sans-serif;
 		font-weight: 500;
 		margin-bottom: 3.5rem;
 	}

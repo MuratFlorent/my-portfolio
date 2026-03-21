@@ -21,9 +21,9 @@ const { title, role, period, tags, description, image } = Astro.props;
 		<div class="header">
 			<div class="title-row">
 				<h3>{title}</h3>
-				<span class="period">{period}</span>
+				{period && <span class="period">{period}</span>}
 			</div>
-			<p class="role">{role}</p>
+			{role && <p class="role">{role}</p>}
 		</div>
 		<div class="tags-container">
 			{tags.map((tag) => (
@@ -122,7 +122,7 @@ const { title, role, period, tags, description, image } = Astro.props;
 		line-height: 1.5;
 		margin-top: 0.5rem;
 		display: -webkit-box;
-		-webkit-line-clamp: 3;
+		-webkit-line-clamp: 4;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 	}

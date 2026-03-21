@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+import Icon from '../components/Icon.astro';
+import Pill from '../components/Pill.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+const title = "Mon approche | Florent Murat - Light Developer";
+const description = "Découvrez l'approche de Florent Murat : une expertise technique au service de solutions web sur mesure, humaines et durables.";
+---
+
+<BaseLayout title={title} description={description}>
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-16">
+			<Hero
+				title="Développer sur mesure, avec exigence et bienveillance"
+				tagline="Je conçois des solutions digitales adaptées aux besoins réels de chaque projet, avec une approche à la fois technique, humaine et progressive."
+				align="start"
+			/>
+
+			<div class="content stack gap-16">
+				<section class="stack gap-4">
+					<div class="badge-accent">Parcours</div>
+					<h2>Un parcours technique devenu une approche plus humaine</h2>
+					<p>
+						Je viens du développement web full stack, avec plusieurs années d’expérience sur des environnements e-commerce, plateformes sur mesure, outils métier et architectures basées notamment sur PHP, Symfony et Sylius. Au fil du temps, cette base technique s’est enrichie d’une conviction plus profonde : la qualité d’un projet ne dépend pas seulement de sa technologie, mais de la justesse de sa conception, de son usage et de la relation construite autour.
+					</p>
+				</section>
+
+				<section class="stack gap-4">
+					<div class="badge-accent">Entrepreneuriat</div>
+					<h2>Le choix de l’entrepreneuriat</h2>
+					<p>
+						Après différentes expériences en entreprise, j’ai choisi de développer Light Developer pour retrouver une manière plus libre, plus directe et plus sur mesure d’accompagner les projets. Ce choix me permet de travailler au plus près des besoins réels, de proposer des réponses adaptées, et de garder une relation plus simple, plus claire et plus humaine avec les personnes que j’accompagne.
+					</p>
+				</section>
+
+				<section class="stack gap-4">
+					<div class="badge-accent">Réalisations</div>
+					<h2>Ce que j’aime construire</h2>
+					<p>
+						J’aime développer des solutions utiles, lisibles et évolutives : sites web, refontes, modules spécifiques, automatisations, interfaces métier, outils orientés e-commerce ou réservation. Je peux travailler avec WordPress lorsqu’il est pertinent, mas aussi sur des approches plus sur mesure, full stack, no-code ou hybrides, selon le contexte du projet. Je ne cherche pas à imposer une technologie, mais à choisir la bonne réponse.
+					</p>
+				</section>
+
+				<section class="stack gap-10">
+					<div class="stack gap-4">
+						<div class="badge-accent">Valeurs</div>
+						<h2>Une approche fondée sur la clarté, l’écoute et le sur-mesure</h2>
+						<p>
+							La bienveillance, l’écoute, la clarté et le sens du sur-mesure occupent une place centrale dans ma façon de travailler. Je crois à une technique exigeante, mais accessible. À des projets bien pensés, mais jamais déconnectés de l’humain. Et à l’idée qu’un bon outil doit aussi aider les personnes à mieux comprendre, mieux décider et gagner en autonomie.
+						</p>
+					</div>
+
+					<div class="values-grid">
+						{[
+							{ icon: 'heart', label: 'Bienveillance' },
+							{ icon: 'sun', label: 'Clarté' },
+							{ icon: 'users', label: 'Sur mesure' },
+							{ icon: 'rocket-launch', label: 'Innovation utile' },
+							{ icon: 'graduation-cap', label: 'Autonomie' },
+							{ icon: 'chat-circle-dots', label: 'Présence / écoute' }
+						].map((item) => (
+							<div class="value-card">
+								<Icon icon={item.icon as any} color="var(--accent-regular)" size="2rem" gradient />
+								<p>{item.label}</p>
+							</div>
+						))}
+					</div>
+				</section>
+
+				<section class="stack gap-4">
+					<div class="badge-accent">Transmission</div>
+					<h2>Transmettre, former, rendre autonome</h2>
+					<p>
+						Au-delà du développement, j’aime aussi accompagner les personnes dans la compréhension de leurs outils. La formation et la transmission font partie intégrante de mon approche : aider à reprendre la main, à progresser, à gagner en autonomie, à mieux utiliser les outils du web et à intégrer de nouvelles pratiques, y compris avec l’aide de l’IA quand cela a du sens.
+					</p>
+				</section>
+
+				<section class="stack gap-4">
+					<div class="badge-accent">Aujourd’hui</div>
+					<h2>Conclusion</h2>
+					<p>
+						Aujourd’hui, avec Light Developer, je cherche à relier technique, utilité, exigence et sensibilité. Créer des outils plus vivants, plus adaptés, plus clairs. Et accompagner des projets qui ont besoin à la fois de structure, d’innovation et d’une vraie qualité de présence.
+					</p>
+				</section>
+
+				<section class="cta-section stack gap-8">
+					<div class="cta-content stack gap-4">
+						<h2>Parlons de votre projet</h2>
+						<p>
+							Création, refonte, sur mesure, optimisation, accompagnement ou formation : si votre projet a besoin d’une approche claire, humaine et bien pensée, nous pouvons en parler.
+						</p>
+					</div>
+					<div class="cta-buttons">
+						<CallToAction href="/#contact">
+							Me contacter
+							<Icon icon="paper-plane-tilt" size="1.2em" />
+						</CallToAction>
+						<CallToAction href="/work/">
+							Voir mes projets
+							<Icon icon="arrow-right" size="1.2em" />
+						</CallToAction>
+						<CallToAction href="/formation/">
+							Découvrir les formations
+							<Icon icon="graduation-cap" size="1.2em" />
+						</CallToAction>
+					</div>
+				</section>
+			</div>
+		</main>
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.content {
+		max-width: 800px;
+		margin-inline: auto;
+		line-height: 1.6;
+		font-size: var(--text-lg);
+		color: var(--gray-300);
+		width: 100%;
+	}
+
+	h2 {
+		font-size: var(--text-2xl);
+		color: var(--gray-0);
+	}
+
+	.badge-accent {
+		display: inline-block;
+		padding: 0.25rem 0.75rem;
+		background: var(--accent-subtle-overlay);
+		color: var(--accent-regular);
+		border-radius: var(--radius-full);
+		font-size: var(--text-sm);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		width: fit-content;
+	}
+
+	.values-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem;
+		margin-top: 1rem;
+	}
+
+	@media (min-width: 40em) {
+		.values-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	.value-card {
+		background: var(--gray-999_40);
+		border: 1px solid var(--gray-800);
+		border-radius: var(--radius-md);
+		padding: 1.5rem;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
+		transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
+	}
+
+	.value-card:hover {
+		transform: translateY(-4px);
+		border-color: var(--accent-regular);
+	}
+
+	.value-card p {
+		margin: 0;
+		font-weight: 600;
+		color: var(--gray-100);
+	}
+
+	.cta-section {
+		background: var(--gray-999_40);
+		border: 1px solid var(--gray-800);
+		border-radius: 1.5rem;
+		padding: 3rem;
+		text-align: center;
+		margin-top: 4rem;
+	}
+
+	.cta-content h2 {
+		margin: 0;
+	}
+
+	.cta-buttons {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1rem;
+	}
+
+	@media (min-width: 50em) {
+		h2 {
+			font-size: var(--text-3xl);
+		}
+
+		.cta-section {
+			padding: 5rem;
+		}
+	}
+</style>
