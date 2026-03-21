@@ -15,9 +15,17 @@ const { data, id } = Astro.props.project;
 	data-project-data={JSON.stringify({
 		title: data.title,
 		img: data.img,
-		status: data.status === 'in_progress' ? 'En cours' : 'Projet terminé',
+		status: data.status === 'finish' ? 'Projet terminé' : 'En cours',
 		tags: data.tags,
 		description: data.description,
+		highlights: data.highlights,
+		stack: data.stack,
+		gallery: data.gallery,
+		services: data.services,
+		client: data.client,
+		year: data.year,
+		href: data.href,
+		slug: id
 	})}
 >
 	<span class="card-image-container">
@@ -58,6 +66,8 @@ const { data, id } = Astro.props.project;
 				const modalStack = modal.querySelector('.modal-stack-list');
 				const modalResult = modal.querySelector('.modal-result');
 				const modalSolution = modal.querySelector('.modal-solution-content');
+				const modalGallery = modal.querySelector('.modal-gallery-grid');
+				const modalLink = modal.querySelector('.modal-project-link') as HTMLAnchorElement;
 
 				if (modalImage) modalImage.src = data.img;
 				if (modalTitle) modalTitle.textContent = data.title;
@@ -68,13 +78,38 @@ const { data, id } = Astro.props.project;
 					modalTags.innerHTML = data.tags.map((tag: string) => `<span class="tag">${tag}</span>`).join('');
 				}
 
-				// Pour la démo, on remplit ces champs avec des valeurs par défaut 
-				// car ils ne sont pas encore dans le frontmatter
-				if (modalStack) {
+				if (modalStack && data.stack) {
+					modalStack.innerHTML = data.stack.map((item: string) => `<span class="tag">${item}</span>`).join('');
+				} else if (modalStack) {
 					modalStack.innerHTML = data.tags.map((tag: string) => `<span class="tag">${tag}</span>`).join('');
 				}
-				if (modalResult) modalResult.textContent = "Projet livré avec succès, répondant à toutes les attentes techniques et fonctionnelles.";
-				if (modalSolution) modalSolution.innerHTML = "<p>Mise en place d'une architecture robuste et évolutive, optimisée pour la performance et l'expérience utilisateur.</p>";
+
+				if (modalResult && data.highlights) {
+					modalResult.innerHTML = `<ul class="highlights-list">${data.highlights.map((h: string) => `<li>${h}</li>`).join('')}</ul>`;
+				} else if (modalResult) {
+					modalResult.textContent = "Projet livré avec succès, répondant à toutes les attentes techniques et fonctionnelles.";
+				}
+
+				if (modalSolution && data.services) {
+					modalSolution.innerHTML = `<ul class="services-list">${data.services.map((s: string) => `<li>${s}</li>`).join('')}</ul>`;
+				} else if (modalSolution) {
+					modalSolution.innerHTML = "<p>Mise en place d'une architecture robuste et évolutive, optimisée pour la performance et l'expérience utilisateur.</p>";
+				}
+
+				if (modalGallery && data.gallery) {
+					modalGallery.innerHTML = data.gallery.slice(0, 3).map((img: string) => `
+						<div class="gallery-item">
+							<img src="${img}" alt="Capture d'écran du projet" loading="lazy" />
+						</div>
+					`).join('');
+				} else if (modalGallery) {
+					modalGallery.innerHTML = '';
+				}
+
+				if (modalLink) {
+					modalLink.href = `/work/${data.slug}`;
+					modalLink.style.display = 'flex';
+				}
 
 				modal.showModal();
 			}

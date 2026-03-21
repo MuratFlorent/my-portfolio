@@ -36,23 +36,32 @@ const { id } = Astro.props;
 					</section>
 					
 					<section>
-						<h3><Icon icon="magic-wand" size="1.2em" /> Solution apportée</h3>
+						<h3><Icon icon="magic-wand" size="1.2em" /> Services & Solution</h3>
 						<div class="modal-solution-content"></div>
+					</section>
+
+					<section>
+						<h3><Icon icon="strategy" size="1.2em" /> Aperçu Galerie</h3>
+						<div class="modal-gallery-grid"></div>
 					</section>
 				</div>
 
 				<aside class="side-info stack gap-6">
 					<section class="stack gap-2">
-						<h3><Icon icon="code" size="1.2em" /> Technologies utilisées</h3>
+						<h3><Icon icon="code" size="1.2em" /> Stack Technique</h3>
 						<div class="modal-stack-list"></div>
 					</section>
 
 					<section class="stack gap-2">
-						<h3><Icon icon="rocket-launch" size="1.2em" /> Bénéfices & Résultat</h3>
-						<p class="modal-result"></p>
+						<h3><Icon icon="rocket-launch" size="1.2em" /> Points clés</h3>
+						<div class="modal-result"></div>
 					</section>
 
-					<div class="modal-cta">
+					<div class="modal-cta stack gap-4">
+						<a href="" class="modal-project-link cta-button secondary">
+							Voir l'étude de cas complète
+							<Icon icon="arrow-right" size="1.2em" />
+						</a>
 						<button id={`${id}-cta`} class="cta-button">
 							Discuter d'un projet similaire
 							<Icon icon="paper-plane-tilt" size="1.2em" />
@@ -296,6 +305,46 @@ const { id } = Astro.props;
 	.cta-button:hover {
 		transform: translateY(-2px);
 		box-shadow: var(--glow-accent);
+	}
+
+	.modal-result :global(ul), .modal-solution-content :global(ul) {
+		margin: 0;
+		padding-left: 1.5rem;
+		list-style-type: disc;
+	}
+
+	.modal-result :global(li), .modal-solution-content :global(li) {
+		margin-bottom: 0.5rem;
+		color: var(--gray-300);
+	}
+
+	.modal-gallery-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+		gap: 1rem;
+		margin-top: 0.5rem;
+	}
+
+	.gallery-item {
+		border-radius: 0.5rem;
+		overflow: hidden;
+		aspect-ratio: 16 / 9;
+		border: 1px solid var(--gray-800);
+	}
+
+	.gallery-item img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.cta-button.secondary {
+		background: var(--gray-800);
+		color: var(--gray-0);
+	}
+
+	.cta-button.secondary:hover {
+		background: var(--gray-700);
 	}
 
 	@media (min-width: 50em) {
