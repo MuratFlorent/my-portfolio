@@ -218,7 +218,6 @@ import Icon from './Icon.astro';
 	conditionalFields.forEach(field => (field as HTMLElement).style.display = 'none');
 
 	// Ensure modal is closed on page load (Astro fix for some hydration issues)
-	// We do this twice with a small delay for extra safety
 	const forceClose = () => {
 		if (modal && modal.open) {
 			modal.close();
@@ -228,9 +227,46 @@ import Icon from './Icon.astro';
 	setTimeout(forceClose, 100);
 	setTimeout(forceClose, 500);
 
+	// Global delegation for all quote CTA buttons
+	// This captures clicks on elements that might be added dynamically or
+	// where the script would otherwise need to be re-attached (Astro View Transitions)
+	function setupGlobalCtaDelegation() {
+		document.addEventListener('click', (e) => {
+			const target = e.target as HTMLElement;
+			const btn = target.closest('.quote-cta-button, [href="#contact"], [href="/#contact"]') as HTMLAnchorElement | HTMLButtonElement;
+			
+			if (btn) {
+				const href = btn.getAttribute('href');
+				// On intercepte si c'est une ancre interne vers contact, ou si le bouton n'a pas de href (bouton pur)
+				// ou s'il a explicitement la classe quote-cta-button
+				if (btn.classList.contains('quote-cta-button') || 
+					(href && (href === '#contact' || href === '/#contact' || href.endsWith('/#contact')))) {
+					
+					e.preventDefault();
+					e.stopPropagation();
+					
+					const tab = btn.getAttribute('data-tab') || 'quote';
+					const projectType = btn.getAttribute('data-project-type');
+					const message = btn.getAttribute('data-message');
+					const source = btn.getAttribute('data-source') || btn.innerText.trim() || 'Global Delegation';
+
+					window.dispatchEvent(new CustomEvent('open-contact', {
+						detail: {
+							tab,
+							projectType,
+							message,
+							source
+						}
+					}));
+				}
+			}
+		}, { capture: true }); // Capture phase to ensure we intercept before other listeners
+	}
+	
+	setupGlobalCtaDelegation();
+	
 	// External Trigger Support (for ProjectModal)
 	window.addEventListener('open-contact', (e: any) => {
-		if (modal.open) return;
 		const { tab, projectType, message, source } = e.detail || {};
 		
 		if (tab) setActiveTab(tab);
@@ -242,7 +278,17 @@ import Icon from './Icon.astro';
 		
 		if (message) {
 			const activeTextarea = modal.querySelector('.tab-panel.active textarea') as HTMLTextAreaElement;
-			if (activeTextarea && message) activeTextarea.value = message;
+			if (activeTextarea) activeTextarea.value = message;
+		} else {
+			// Default messages if none provided
+			const activeTextarea = modal.querySelector('.tab-panel.active textarea') as HTMLTextAreaElement;
+			if (activeTextarea) {
+				if (tab === 'quote') {
+					activeTextarea.value = 'Je souhaite obtenir un devis gratuit pour mon projet.';
+				} else {
+					activeTextarea.value = ''; // Clear for quick contact or let it be
+				}
+			}
 		}
 
 		if (source) {
@@ -252,7 +298,9 @@ import Icon from './Icon.astro';
 			if (quoteSource) quoteSource.value = source;
 		}
 		
-		modal.showModal();
+		if (!modal.open) {
+			modal.showModal();
+		}
 	});
 
 	// Form Submission logic

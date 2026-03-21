@@ -52,7 +52,13 @@ const projects = (await getCollection('work'))
 						<Pill href="/formation" ariaLabel="Voir la section formation">
 							<Icon icon="graduation-cap" size="1.33em" /> Formateur
 						</Pill>
-						<Pill href="#contact" ariaLabel="Parler de votre projet" id="open-quote-pill">
+						<Pill 
+							href="#contact" 
+							ariaLabel="Parler de votre projet" 
+							class="quote-cta-button"
+							data-tab="quote"
+							data-message="Bonjour, je souhaiterais un accompagnement sur mesure pour mon projet."
+						>
 							<Icon icon="users" size="1.33em" /> Accompagnement sur mesure
 						</Pill>
 						<Pill href="tel:+33682027290" ariaLabel="Appeler Florent Murat">
@@ -65,7 +71,12 @@ const projects = (await getCollection('work'))
 							Voir mes réalisations
 							<Icon icon="arrow-right" size="1.2em" />
 						</CallToAction>
-						<CallToAction href="#contact" id="hero-contact-cta">
+						<CallToAction 
+							href="#contact" 
+							class="quote-cta-button"
+							data-tab="quote"
+							data-message="Bonjour, je souhaiterais obtenir un devis gratuit pour mon projet."
+						>
 							Obtenir un devis gratuit
 							<Icon icon="paper-plane-tilt" size="1.2em" />
 						</CallToAction>
@@ -341,29 +352,29 @@ const projects = (await getCollection('work'))
 	const openQuotePill = document.getElementById('open-quote-pill');
 	const heroContactCta = document.getElementById('hero-contact-cta');
 
-	const triggerContact = (e: Event, message: string = "Bonjour, je souhaiterais discuter d'un accompagnement sur mesure pour mon projet...") => {
+	const triggerContact = (e: Event, source: string = 'Page Accueil', message: string = "Bonjour, je souhaiterais discuter d'un accompagnement sur mesure pour mon projet...") => {
 		e.preventDefault();
 		window.dispatchEvent(new CustomEvent('open-contact', {
 			detail: {
 				tab: 'quote',
+				source: source,
 				message: message
 			}
 		}));
 	};
 
 	if (openQuotePill) {
-		openQuotePill.addEventListener('click', (e) => triggerContact(e));
+		openQuotePill.addEventListener('click', (e) => triggerContact(e, 'Pill Accompagnement'));
 	}
 
 	if (heroContactCta) {
-		heroContactCta.addEventListener('click', (e) => triggerContact(e));
+		heroContactCta.addEventListener('click', (e) => triggerContact(e, 'Hero Page Accueil', 'Je souhaite obtenir un devis gratuit pour mon projet.'));
 	}
 </script>
-
-<style>
-	.hero {
-		display: flex;
-		flex-direction: column;
+	<style>
+		.hero {
+			display: flex;
+			flex-direction: column;
 		align-items: center;
 		gap: 2rem;
 		text-align: center;
@@ -975,7 +986,7 @@ const projects = (await getCollection('work'))
 
 	.badge-accent {
 		display: inline-block;
-		padding: 0.25rem 1rem;
+		padding: 0.4rem 1.25rem;
 		border-radius: 99rem;
 		background: var(--accent-overlay);
 		color: var(--accent-regular);
@@ -984,7 +995,8 @@ const projects = (await getCollection('work'))
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
 		border: 1px solid var(--accent-regular);
-		margin-bottom: 0.5rem;
+		margin-top: 1.5rem;
+		margin-bottom: 0.75rem;
 	}
 
 	@media (min-width: 50em) {
@@ -1200,6 +1212,8 @@ const projects = (await getCollection('work'))
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 		width: fit-content;
+		margin-top: 1.5rem;
+		margin-bottom: 0.75rem;
 	}
 
 	.formation-content-grid {

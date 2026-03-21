@@ -1,12 +1,18 @@
 ---
 interface Props {
 	href: string;
+	class?: string;
+	id?: string;
+	'data-tab'?: string;
+	'data-project-type'?: string;
+	'data-message'?: string;
+	'data-source'?: string;
 }
 
-const { href } = Astro.props;
+const { href, class: className, id, ...rest } = Astro.props;
 ---
 
-<a href={href}><slot /></a>
+<a href={href} class={className} id={id} {...rest}><slot /></a>
 
 <style>
 	a {

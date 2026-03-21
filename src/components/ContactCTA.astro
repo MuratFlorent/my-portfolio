@@ -9,25 +9,17 @@ import Icon from './Icon.astro';
 		<p><Icon icon="mail-box" color="var(--accent-regular)" size="2.5rem" gradient />murat.light.developer@gmail.com</p>
 		<p><Icon icon="phone-call" color="var(--accent-regular)" size="2.5rem" gradient /> 06 82 02 72 90 </p> 
 	</div>
-	<CallToAction href="#contact" id="main-contact-cta">
+	<CallToAction 
+		href="#contact" 
+		class="quote-cta-button"
+		data-tab="quote"
+		data-source="ContactCTA Footer"
+		data-message="Bonjour, je souhaiterais obtenir un devis gratuit pour mon projet."
+	>
 		Demander un devis gratuit
 		<Icon icon="paper-plane-tilt" size="1.2em" />
 	</CallToAction>
 </aside>
-
-<script>
-	const mainContactCta = document.getElementById('main-contact-cta');
-	if (mainContactCta) {
-		mainContactCta.addEventListener('click', (e) => {
-			e.preventDefault();
-			window.dispatchEvent(new CustomEvent('open-contact', {
-				detail: {
-					tab: 'quick'
-				}
-			}));
-		});
-	}
-</script>
 
 <style>
 	aside {

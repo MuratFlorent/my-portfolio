@@ -3,12 +3,18 @@ import Icon from './Icon.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import type { iconPaths } from './IconPaths';
 
-const textLinks: { label: string; href: string }[] = [
+const textLinks: { label: string; href: string; class?: string; 'data-tab'?: string; 'data-message'?: string }[] = [
 	{ label: 'Accueil', href: '/' },
 	{ label: 'Réalisations', href: '/work/' },
-	{ label: 'Formation', href: '/formation' },
-	{ label: 'Financement', href: '/formation/#financement' },
-	{ label: 'Devis Gratuit', href: '#devis' },
+	{ label: 'Mon approche', href: '/approche' },
+	{ label: 'Formation', href: '/formation-financement' },
+	{ 
+		label: 'Devis Gratuit', 
+		href: '#contact', 
+		class: 'quote-cta-button',
+		'data-tab': 'quote',
+		'data-message': 'Bonjour, je souhaiterais obtenir un devis gratuit pour mon projet.'
+	},
 ];
 
 /** Icon links to social media — edit these with links to your profiles! */
@@ -41,12 +47,13 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 	<noscript>
 		<ul class="nav-items">
 			{
-				textLinks.map(({ label, href }) => (
+				textLinks.map(({ label, href, class: className }) => (
 					<li>
 						<a
 							aria-current={Astro.url.pathname === href}
 							class:list={[
 								'link',
+								className,
 								{
 									active:
 										Astro.url.pathname === href ||
@@ -79,12 +86,13 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 	<div id="menu-content" hidden>
 		<ul class="nav-items">
 			{
-				textLinks.map(({ label, href }) => (
+				textLinks.map(({ label, href, class: className }) => (
 					<li>
 						<a
 							aria-current={Astro.url.pathname === href}
 							class:list={[
 								'link',
+								className,
 								{
 									active:
 										Astro.url.pathname === href ||

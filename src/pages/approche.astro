@@ -94,7 +94,13 @@ const description = "Découvrez l'approche de Florent Murat : une expertise tech
 						</p>
 					</div>
 					<div class="cta-buttons">
-						<CallToAction href="/#contact">
+						<CallToAction 
+							href="#contact" 
+							id="approche-contact-cta" 
+							class="quote-cta-button"
+							data-tab="quick"
+							data-message="Bonjour, je souhaiterais échanger avec vous suite à la lecture de votre approche."
+						>
 							Me contacter
 							<Icon icon="paper-plane-tilt" size="1.2em" />
 						</CallToAction>
@@ -114,6 +120,22 @@ const description = "Découvrez l'approche de Florent Murat : une expertise tech
 	</div>
 </BaseLayout>
 
+<script>
+	const approcheCta = document.getElementById('approche-contact-cta');
+	if (approcheCta) {
+		approcheCta.addEventListener('click', (e) => {
+			e.preventDefault();
+			window.dispatchEvent(new CustomEvent('open-contact', {
+				detail: {
+					tab: 'quote',
+					source: 'Page Approche',
+					message: 'Bonjour, j\'ai consulté votre approche et je souhaiterais discuter de mon projet avec vous.'
+				}
+			}));
+		});
+	}
+</script>
+
 <style>
 	.content {
 		max-width: 800px;
@@ -131,7 +153,7 @@ const description = "Découvrez l'approche de Florent Murat : une expertise tech
 
 	.badge-accent {
 		display: inline-block;
-		padding: 0.25rem 0.75rem;
+		padding: 0.4rem 1rem;
 		background: var(--accent-subtle-overlay);
 		color: var(--accent-regular);
 		border-radius: var(--radius-full);
@@ -140,6 +162,8 @@ const description = "Découvrez l'approche de Florent Murat : une expertise tech
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 		width: fit-content;
+		margin-top: 1.5rem;
+		margin-bottom: 0.75rem;
 	}
 
 	.values-grid {

@@ -4,13 +4,19 @@ interface Props {
 	target?: string;
 	ariaLabel?: string;
 	rel?: string;
+	id?: string;
+	class?: string;
+	'data-tab'?: string;
+	'data-project-type'?: string;
+	'data-message'?: string;
+	'data-source'?: string;
 }
-const { href, target, ariaLabel, rel } = Astro.props as Props;
+const { href, target, ariaLabel, rel, id, class: className, ...rest } = Astro.props as Props;
 ---
 {href ? (
-	<a class="pill" href={href} target={target} rel={rel} aria-label={ariaLabel}><slot /></a>
+	<a id={id} class:list={["pill", className]} href={href} target={target} rel={rel} aria-label={ariaLabel} {...rest}><slot /></a>
 ) : (
-	<div class="pill" role="button"><slot /></div>
+	<div id={id} class:list={["pill", className]} role="button" {...rest}><slot /></div>
 )}
 
 <style>

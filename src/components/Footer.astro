@@ -7,7 +7,7 @@ const currentYear = new Date().getFullYear();
 	<div class="group">
 		<p>&copy; {currentYear} Florent Murat — Light Developer</p>
 		<p class="emails">
-			<a href="mailto:murat.light.developer@gmail.com?cc=julienblondin.lightdeveloper@gmail.com">murat.light.developer@gmail.com</a>
+			<a href="mailto:murat.light.developer@gmail.com?cc=julienblondin.lightdeveloper@gmail.com" id="main-email-link">murat.light.developer@gmail.com</a>
 			<span class="sep">|</span>
 			<a href="mailto:julienblondin.lightdeveloper@gmail.com">Relation clientèle : julienblondin.lightdeveloper@gmail.com</a>
 		</p>
@@ -25,6 +25,22 @@ const currentYear = new Date().getFullYear();
 		</p>
 	</div>
 </footer>
+
+<script>
+	// Force l'ouverture du mailto avec CC au clic sur l'email principal
+	const emailLink = document.getElementById('main-email-link');
+	if (emailLink) {
+		emailLink.addEventListener('click', (e) => {
+			// Sur certains navigateurs mobiles, le mailto simple peut ne pas prendre le CC correctement
+			// En réassignant window.location, on force l'interprétation par le client mail par défaut
+			e.preventDefault();
+			const href = emailLink.getAttribute('href');
+			if (href) {
+				window.location.href = href;
+			}
+		});
+	}
+</script>
 <style>
 	footer {
 		display: flex;

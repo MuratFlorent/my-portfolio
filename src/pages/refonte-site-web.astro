@@ -48,7 +48,14 @@ const description = "Donnez un second souffle à votre site web. Améliorez votr
 				</p>
 
 				<div class="cta-center">
-					<CallToAction href="/#contact">
+					<CallToAction 
+						href="#contact" 
+						class="quote-cta-button"
+						data-tab="quote"
+						data-project-type="refonte"
+						data-source="Page Refonte"
+						data-message="Je souhaite étudier la refonte de mon site web actuel."
+					>
 						Étudier mon projet de refonte
 						<Icon icon="paper-plane-tilt" size="1.2em" />
 					</CallToAction>
@@ -62,21 +69,22 @@ const description = "Donnez un second souffle à votre site web. Améliorez votr
 <style>
 	.content {
 		max-width: 800px;
+		width: 100%;
 		margin: 0 auto;
 		line-height: 1.6;
-		font-size: var(--text-lg);
+		font-size: var(--text-base);
 		color: var(--gray-300);
 	}
 
 	h2 {
-		font-size: var(--text-2xl);
+		font-size: var(--text-xl);
 		color: var(--gray-0);
 		margin-top: 2rem;
 	}
 
 	.card-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		grid-template-columns: 1fr;
 		gap: 1.5rem;
 		margin-block: 2rem;
 	}
@@ -101,8 +109,21 @@ const description = "Donnez un second souffle à votre site web. Améliorez votr
 	}
 
 	@media (min-width: 50em) {
+		.content {
+			font-size: var(--text-lg);
+		}
+
 		h2 {
 			font-size: var(--text-3xl);
+		}
+
+		.card-grid {
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 2rem;
+		}
+
+		.card {
+			padding: 2rem;
 		}
 	}
 </style>

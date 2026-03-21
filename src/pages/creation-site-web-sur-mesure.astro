@@ -54,7 +54,14 @@ const description = "Besoin d'un site web unique, ultra-rapide et optimisé pour
 				</p>
                 
                 <div class="cta-center">
-                    <CallToAction href="/#contact">
+                    <CallToAction 
+						href="#contact" 
+						class="quote-cta-button"
+						data-tab="quote"
+						data-project-type="creation"
+						data-source="Page Création sur mesure"
+						data-message="Je souhaite obtenir un devis personnalisé pour la création de mon site web."
+					>
                         Obtenir mon devis personnalisé
                         <Icon icon="paper-plane-tilt" size="1.2em" />
                     </CallToAction>
@@ -68,41 +75,42 @@ const description = "Besoin d'un site web unique, ultra-rapide et optimisé pour
 <style>
 	.content {
 		max-width: 800px;
+		width: 100%;
 		margin: 0 auto;
 		line-height: 1.6;
-		font-size: var(--text-lg);
+		font-size: var(--text-base);
 		color: var(--gray-300);
 	}
 
 	h2 {
-		font-size: var(--text-2xl);
+		font-size: var(--text-xl);
 		color: var(--gray-0);
 		margin-top: 2rem;
 	}
 
 	h3 {
-		font-size: var(--text-xl);
+		font-size: var(--text-lg);
 		color: var(--gray-0);
 		margin-bottom: 0.5rem;
 	}
 
 	.grid-benefits {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: 2rem;
-		margin-block: 3rem;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+		margin-block: 2rem;
 	}
 
 	.benefit-card {
 		background: var(--gray-999_40);
 		border: 1px solid var(--gray-800);
 		border-radius: var(--radius-md);
-		padding: 2rem;
+		padding: 1.5rem;
 		text-align: center;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 1rem;
+		gap: 0.75rem;
 	}
 
     .cta-center {
@@ -112,8 +120,27 @@ const description = "Besoin d'un site web unique, ultra-rapide et optimisé pour
     }
 
 	@media (min-width: 50em) {
+		.content {
+			font-size: var(--text-lg);
+		}
+
 		h2 {
 			font-size: var(--text-3xl);
+		}
+
+		h3 {
+			font-size: var(--text-xl);
+		}
+
+		.grid-benefits {
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 2rem;
+			margin-block: 3rem;
+		}
+
+		.benefit-card {
+			padding: 2rem;
+			gap: 1rem;
 		}
 	}
 </style>

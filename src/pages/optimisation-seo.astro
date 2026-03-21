@@ -57,8 +57,15 @@ const description = "Dominez les moteurs de recherche et soyez cité par les IA.
 					Que vous soyez un entrepreneur local cherchant du <strong>SEO local</strong> ou une entreprise nationale, j'adapte ma stratégie pour maximiser votre retour sur investissement.
 				</p>
 
-				<div class="cta-center">
-					<CallToAction href="/#contact">
+					<div class="cta-center">
+					<CallToAction 
+						href="#contact" 
+						class="quote-cta-button"
+						data-tab="quote"
+						data-project-type="seo"
+						data-source="Page SEO"
+						data-message="Je souhaite une analyse gratuite de mon site pour améliorer mon référencement."
+					>
 						Analyser mon site gratuitement
 						<Icon icon="paper-plane-tilt" size="1.2em" />
 					</CallToAction>
@@ -72,14 +79,15 @@ const description = "Dominez les moteurs de recherche et soyez cité par les IA.
 <style>
 	.content {
 		max-width: 800px;
+		width: 100%;
 		margin: 0 auto;
 		line-height: 1.6;
-		font-size: var(--text-lg);
+		font-size: var(--text-base);
 		color: var(--gray-300);
 	}
 
 	h2 {
-		font-size: var(--text-2xl);
+		font-size: var(--text-xl);
 		color: var(--gray-0);
 		margin-top: 2rem;
 	}
@@ -117,11 +125,21 @@ const description = "Dominez les moteurs de recherche et soyez cité par les IA.
 	}
 
 	@media (min-width: 50em) {
+		.content {
+			font-size: var(--text-lg);
+		}
+
 		h2 {
 			font-size: var(--text-3xl);
 		}
+
 		.piliers-grid {
 			grid-template-columns: repeat(3, 1fr);
+			gap: 2rem;
+		}
+
+		.pilier {
+			padding: 2rem;
 		}
 	}
 </style>

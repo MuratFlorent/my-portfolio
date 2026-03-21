@@ -122,7 +122,14 @@ const { dedicatedPage, brand, messages } = afiContent;
 							</div>
 						</div>
 						<div class="cta-wrapper">
-							<CallToAction href={dedicatedPage.sections.find(s => s.type === 'preform')?.ctaUrl}>
+							<CallToAction 
+								href="#contact" 
+								class="quote-cta-button"
+								data-tab="quote"
+								data-project-type="formation"
+								data-source="Page Formation"
+								data-message="Je souhaite obtenir des informations sur les formations et les possibilités de financement."
+							>
 								{dedicatedPage.sections.find(s => s.type === 'preform')?.ctaLabel}
 								<Icon icon="paper-plane-tilt" size="1.2em" />
 							</CallToAction>
@@ -314,7 +321,7 @@ const { dedicatedPage, brand, messages } = afiContent;
 	}
 
 	.training-card {
-		padding: 3.5rem;
+		padding: 2rem;
 		background: var(--gray-999);
 		border: 1px solid var(--gray-800);
 		border-radius: var(--radius-lg);
@@ -324,6 +331,12 @@ const { dedicatedPage, brand, messages } = afiContent;
 		transition: all var(--theme-transition-slow);
 		position: relative;
 		overflow: hidden;
+	}
+
+	@media (min-width: 50em) {
+		.training-card {
+			padding: 3.5rem;
+		}
 	}
 
 	.training-card::before {
@@ -377,7 +390,7 @@ const { dedicatedPage, brand, messages } = afiContent;
 
 	/* Preform Section */
 	.preform-container {
-		padding: 3rem;
+		padding: 1.5rem;
 		background: var(--gray-999_40);
 		backdrop-filter: blur(15px);
 		border-radius: var(--radius-lg);
@@ -401,7 +414,7 @@ const { dedicatedPage, brand, messages } = afiContent;
 
 	.badge-accent {
 		display: inline-block;
-		padding: 0.25rem 1rem;
+		padding: 0.4rem 1.25rem;
 		background: var(--accent-subtle-overlay);
 		color: var(--accent-regular);
 		border-radius: var(--radius-full);
@@ -409,6 +422,8 @@ const { dedicatedPage, brand, messages } = afiContent;
 		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
+		margin-top: 1.5rem;
+		margin-bottom: 0.75rem;
 	}
 
 	.mx-auto {
