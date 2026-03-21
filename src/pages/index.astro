@@ -16,6 +16,9 @@ import UniverseModal from '../components/UniverseModal.astro';
 import ScrollSpy from '../components/ScrollSpy.astro';
 import Testimonials from '../components/Testimonials.astro';
 
+// AFI Data
+import afiContent from '../../docs/lightdeveloper-afi-pack/afi-content.lightdeveloper.json';
+
 // Page section components
 import ContactCTA from '../components/ContactCTA.astro';
 import Skills from '../components/Skills.astro';
@@ -213,143 +216,114 @@ const projects = (await getCollection('work'))
 
 			<Testimonials />
 
-			<section id="faq" class="section faq-section">
-				<div class="section-shell stack gap-10 lg:gap-15">
+			<section id="formation" class="section formation-new">
+				<div class="section-shell stack gap-10 lg:gap-12">
 					<header class="section-header stack gap-4 centered">
-						<div class="badge-accent mx-auto">FAQ</div>
-						<h2>Questions fréquentes</h2>
-						<p class="max-w-2xl mx-auto">Tout ce qu'il faut savoir sur la création de sites web sur mesure, l'optimisation SEO et l'automatisation.</p>
+						<div class="badge-accent mx-auto">{afiContent.homeSection.eyebrow}</div>
+						<h2>{afiContent.homeSection.title}</h2>
+						<p class="max-w-2xl mx-auto">{afiContent.homeSection.intro}</p>
 					</header>
-					<div class="faq-grid">
-						<details class="faq-item">
-							<summary>Pourquoi choisir un site web sur mesure plutôt qu'un CMS générique ?</summary>
-							<div class="faq-content">
-								<p>Un site sur mesure s’adapte aux besoins spécifiques de votre activité sans les lourdeurs techniques des thèmes pré-faits. Cela permet une optimisation maximale de la performance (Core Web Vitals), un meilleur SEO technique et une expérience utilisateur unique qui renforce votre image de marque.</p>
+
+					<div class="formation-image-main">
+						<img src="/assets/afi/afi-home-columns.png" alt="Accompagnement AFI formation" class="home-afi-img" />
+					</div>
+
+					<div class="formation-grid">
+						{afiContent.homeSection.cards.map((card) => (
+							<div class="formation-card">
+								<div class="formation-card-content stack gap-4">
+									<h4>{card.title}</h4>
+									<p>{card.description}</p>
+									<div class="card-cta">
+										<a href={card.ctaUrl} target="_blank" rel="noopener noreferrer" class="link-explorer">
+											<span>{card.ctaLabel}</span>
+											<Icon icon="arrow-right" size="1.2em" />
+										</a>
+									</div>
+								</div>
 							</div>
-						</details>
-						<details class="faq-item">
-							<summary>Quelle est la différence entre SEO (Google) et GEO (IA) ?</summary>
-							<div class="faq-content">
-								<p>Le SEO classique vise les moteurs de recherche traditionnels comme Google. Le GEO (Generative Engine Optimization) est une approche plus récente consistant à optimiser votre contenu pour qu'il soit cité par les IA génératives (ChatGPT, Perplexity, Google SGE). Je combine ces deux approches pour maximiser votre visibilité future.</p>
+						))}
+					</div>
+
+					<div class="highlights-row">
+						{afiContent.homeSection.highlights.map((highlight) => (
+							<div class="highlight-item">
+								<Icon icon="check-circle" size="1.2em" color="var(--accent-regular)" />
+								<span>{highlight}</span>
 							</div>
-						</details>
-						<details class="faq-item">
-							<summary>Comment mesurez-vous le retour sur investissement (ROI) de mon projet ?</summary>
-							<div class="faq-content">
-								<p>Au-delà du design, nous définissons des indicateurs clés (KPI) : augmentation du taux de conversion, amélioration du temps de chargement, gain de positions sur des mots-clés stratégiques ou encore automatisation de tâches répétitives. Un site performant doit être un levier de croissance mesurable.</p>
-							</div>
-						</details>
-						<details class="faq-item">
-							<summary>Proposez-vous un accompagnement après la mise en ligne ?</summary>
-							<div class="faq-content">
-								<p>Oui, je propose des contrats de maintenance pour assurer la sécurité, les mises à jour et l'évolution continue de votre site. Mon objectif est d'être un partenaire technique sur le long terme pour que votre outil web reste performant et sécurisé face aux nouvelles normes du web.</p>
-							</div>
-						</details>
-						<details class="faq-item">
-							<summary>Est-ce que mon site sera accessible et éco-conçu ?</summary>
-							<div class="faq-content">
-								<p>Absolument. Je respecte les standards d'accessibilité (RGAA) pour que votre contenu soit consultable par tous. De plus, un code propre et optimisé réduit l'empreinte carbone de votre site (éco-conception) tout en améliorant radicalement sa vitesse de chargement.</p>
-							</div>
-						</details>
-						<details class="faq-item">
-							<summary>Puis-je gérer mon contenu en autonomie après le développement ?</summary>
-							<div class="faq-content">
-								<p>C'est une priorité. Je mets en place des interfaces d'administration intuitives (CMS Headless ou WordPress optimisé) et je fournis une formation personnalisée. Vous restez maître de vos textes et images sans avoir besoin de connaissances techniques approfondies.</p>
-							</div>
-						</details>
-						<details class="faq-item">
-							<summary>Pourquoi travailler avec un freelance expert plutôt qu'une agence ?</summary>
-							<div class="faq-content">
-								<p>Travailler avec moi, c'est bénéficier d'un interlocuteur unique, d'une communication directe et d'une grande réactivité. Mon approche est globale : je ne me contente pas de coder, je vous conseille sur la stratégie, le SEO et l'expérience utilisateur avec une agilité que les grosses structures n'ont pas toujours.</p>
-							</div>
-						</details>
-						<details class="faq-item">
-							<summary>Quels sont les délais types pour un projet complet ?</summary>
-							<div class="faq-content">
-								<p>Selon la complexité, un projet web sur mesure prend généralement entre 4 et 8 semaines. Ce délai inclut les phases de stratégie, design, développement technique, tests rigoureux et optimisation pour le lancement.</p>
-							</div>
-						</details>
+						))}
+					</div>
+
+					<div class="cta centered">
+						<CallToAction href="/formation-financement">
+							Découvrir l'accompagnement complet
+							<Icon icon="graduation-cap" size="1.2em" />
+						</CallToAction>
 					</div>
 				</div>
 			</section>
-		</main>
 
-		<section id="formation" class="section formation-premium">
-			<div class="formation-bg"></div>
-			<div class="section-shell">
-				<div class="stack gap-12 lg:gap-16">
-					<header class="section-header stack gap-4 centered">
-						<div class="badge-accent mx-auto">Formation & Accompagnement</div>
-						<h2>Formation et accompagnement</h2>
-						<p class="max-w-2xl mx-auto">
-							Bâtissez votre projet (WordPress, SEO, Design) tout en apprenant à le maîtriser. 
-							Profitez d'un financement (CPF, OPCO) via notre centre partenaire certifié AFI.
-						</p>
-					</header>
-
-					<div class="formation-content-grid">
-						<div class="formation-image-wrapper">
-							<img
-								alt="Florent Murat - Formation et transmission de savoir-faire"
-								src="/assets/letItBe/eveil_et_science.jpeg" 
-								loading="lazy" 
-								decoding="async" 
-							/>
-							<div class="image-badge">
-								<Icon icon="strategy" size="1.2em" />
-								<span>Apprentissage concret</span>
-							</div>
+		<section id="faq" class="section faq-section">
+			<div class="section-shell stack gap-10 lg:gap-15">
+				<header class="section-header stack gap-4 centered">
+					<div class="badge-accent mx-auto">FAQ</div>
+					<h2>Questions fréquentes</h2>
+					<p class="max-w-2xl mx-auto">Tout ce qu'il faut savoir sur la création de sites web sur mesure, l'optimisation SEO et l'automatisation.</p>
+				</header>
+				<div class="faq-grid">
+					<details class="faq-item">
+						<summary>Pourquoi choisir un site web sur mesure plutôt qu'un CMS générique ?</summary>
+						<div class="faq-content">
+							<p>Un site sur mesure s’adapte aux besoins spécifiques de votre activité sans les lourdeurs techniques des thèmes pré-faits. Cela permet une optimisation maximale de la performance (Core Web Vitals), un meilleur SEO technique et une expérience utilisateur unique qui renforce votre image de marque.</p>
 						</div>
-
-						<div class="formation-features stack gap-8">
-							<div class="feature-item">
-								<div class="icon-circle">
-									<Icon icon="rocket-launch" size="1.5rem" gradient />
-								</div>
-								<div class="feature-text stack gap-1">
-									<h4>Expertise de 10+ ans</h4>
-									<p>Une expérience solide acquise sur plus de 50 projets web réussis.</p>
-								</div>
-							</div>
-							<div class="feature-item">
-								<div class="icon-circle">
-									<Icon icon="strategy" size="1.5rem" gradient />
-								</div>
-								<div class="feature-text stack gap-1">
-									<h4>Autonomie réelle</h4>
-									<p>Ne soyez plus dépendant. Apprenez à gérer votre interface et vos contenus en toute confiance.</p>
-								</div>
-							</div>
-							<div class="feature-item">
-								<div class="icon-circle">
-									<Icon icon="code" size="1.5rem" gradient />
-								</div>
-								<div class="feature-text stack gap-1">
-									<h4>Expertise sur mesure</h4>
-									<p>Le programme s'adapte à votre projet : WordPress, SEO ou structuration de données.</p>
-								</div>
-							</div>
-							<div class="feature-item">
-								<div class="icon-circle">
-									<Icon icon="heart" size="1.5rem" gradient />
-								</div>
-								<div class="feature-text stack gap-1">
-									<h4>Financement facilité</h4>
-									<p>Accompagnement administratif pour vos dossiers CPF, OPCO ou Pôle Emploi.</p>
-								</div>
-							</div>
-
-							<div class="cta-group">
-								<CallToAction href="/formation">
-									Découvrir l'offre de formation
-									<Icon icon="arrow-right" size="1.2em" />
-								</CallToAction>
-							</div>
+					</details>
+					<details class="faq-item">
+						<summary>Quelle est la différence entre SEO (Google) et GEO (IA) ?</summary>
+						<div class="faq-content">
+							<p>Le SEO classique vise les moteurs de recherche traditionnels comme Google. Le GEO (Generative Engine Optimization) est une approche plus récente consistant à optimiser votre contenu pour qu'il soit cité par les IA génératives (ChatGPT, Perplexity, Google SGE). Je combine ces deux approches pour maximiser votre visibilité future.</p>
 						</div>
-					</div>
+					</details>
+					<details class="faq-item">
+						<summary>Comment mesurez-vous le retour sur investissement (ROI) de mon projet ?</summary>
+						<div class="faq-content">
+							<p>Au-delà du design, nous définissons des indicateurs clés (KPI) : augmentation du taux de conversion, amélioration du temps de chargement, gain de positions sur des mots-clés stratégiques ou encore automatisation de tâches répétitives. Un site performant doit être un levier de croissance mesurable.</p>
+						</div>
+					</details>
+					<details class="faq-item">
+						<summary>Proposez-vous un accompagnement après la mise en ligne ?</summary>
+						<div class="faq-content">
+							<p>Oui, je propose des contrats de maintenance pour assurer la sécurité, les mises à jour et l'évolution continue de votre site. Mon objectif est d'être un partenaire technique sur le long terme pour que votre outil web reste performant et sécurisé face aux nouvelles normes du web.</p>
+						</div>
+					</details>
+					<details class="faq-item">
+						<summary>Est-ce que mon site sera accessible et éco-conçu ?</summary>
+						<div class="faq-content">
+							<p>Absolument. Je respecte les standards d'accessibilité (RGAA) pour que votre contenu soit consultable par tous. De plus, un code propre et optimisé réduit l'empreinte carbone de votre site (éco-conception) tout en améliorant radicalement sa vitesse de chargement.</p>
+						</div>
+					</details>
+					<details class="faq-item">
+						<summary>Puis-je gérer mon contenu en autonomie après le développement ?</summary>
+						<div class="faq-content">
+							<p>C'est une priorité. Je mets en place des interfaces d'administration intuitives (CMS Headless ou WordPress optimisé) et je fournis une formation personnalisée. Vous restez maître de vos textes et images sans avoir besoin de connaissances techniques approfondies.</p>
+						</div>
+					</details>
+					<details class="faq-item">
+						<summary>Pourquoi travailler avec un freelance expert plutôt qu'une agence ?</summary>
+						<div class="faq-content">
+							<p>Travailler avec moi, c'est bénéficier d'un interlocuteur unique, d'une communication directe et d'une grande réactivité. Mon approche est globale : je ne me contente pas de coder, je vous conseille sur la stratégie, le SEO et l'expérience utilisateur avec une agilité que les grosses structures n'ont pas toujours.</p>
+						</div>
+					</details>
+					<details class="faq-item">
+						<summary>Quels sont les délais types pour un projet complet ?</summary>
+						<div class="faq-content">
+							<p>Selon la complexité, un projet web sur mesure prend généralement entre 4 et 8 semaines. Ce délai inclut les phases de stratégie, design, développement technique, tests rigoureux et optimisation pour le lancement.</p>
+						</div>
+					</details>
 				</div>
 			</div>
 		</section>
+		</main>
+
 		<ContactCTA id="contact" />
 	</div>
 </BaseLayout>
@@ -1210,35 +1184,9 @@ const projects = (await getCollection('work'))
 		}
 	}
 
+	/* Formation Premium Old - Deprecated but keeping some vars if needed */
 	.formation-premium {
-		position: relative;
-		overflow: hidden;
-	}
-
-	.formation-bg {
-		position: absolute;
-		top: 0;
-		right: 0;
-		width: 100%;
-		height: 100%;
-		background: radial-gradient(circle at 80% 50%, var(--accent-overlay) 0%, transparent 60%);
-		z-index: -1;
-		opacity: 0.4;
-	}
-
-	.formation-premium .section-shell > .stack {
-		background: var(--gray-999_40);
-		backdrop-filter: blur(10px);
-		border: 1px solid var(--gray-800);
-		border-radius: var(--radius-lg);
-		padding: 2rem;
-		box-shadow: var(--shadow-sm);
-	}
-
-	@media (min-width: 50em) {
-		.formation-premium .section-shell > .stack {
-			padding: 4rem;
-		}
+		display: none;
 	}
 
 	.badge-accent {
@@ -1361,6 +1309,99 @@ const projects = (await getCollection('work'))
 
 	.cta-group {
 		margin-top: 1rem;
+	}
+
+	.formation-new {
+		padding-block: 5rem;
+		position: relative;
+	}
+
+	.formation-image-main {
+		margin-bottom: 2rem;
+		border-radius: 1.5rem;
+		overflow: hidden;
+		box-shadow: var(--shadow-lg);
+	}
+
+	.home-afi-img {
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+		display: block;
+	}
+
+	.formation-grid {
+		display: grid;
+		gap: 1.5rem;
+		grid-template-columns: 1fr;
+	}
+
+	@media (min-width: 40em) {
+		.formation-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 64em) {
+		.formation-grid {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 2rem;
+		}
+	}
+
+	.formation-card {
+		background: var(--gray-999_40);
+		border: 1px solid var(--gray-800);
+		border-radius: 1.5rem;
+		padding: 2.5rem;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+		backdrop-filter: blur(10px);
+	}
+
+	.formation-card:hover {
+		transform: translateY(-8px);
+		border-color: var(--accent-regular);
+		box-shadow: var(--shadow-md), var(--glow-accent);
+	}
+
+	.formation-card h4 {
+		font-size: var(--text-lg);
+		color: var(--gray-0);
+	}
+
+	.formation-card p {
+		font-size: var(--text-sm);
+		color: var(--gray-300);
+		line-height: 1.6;
+	}
+
+	.highlights-row {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1.5rem 3rem;
+		margin-top: 2rem;
+		padding: 1.5rem;
+		background: var(--gray-999_40);
+		border-radius: var(--radius-md);
+	}
+
+	.highlight-item {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		font-size: var(--text-sm);
+		font-weight: 600;
+		color: var(--gray-200);
+	}
+
+	@media (min-width: 50em) {
+		.formation-new {
+			padding-block: 8rem;
+		}
 	}
 
 	.faq-section {

@@ -1,0 +1,232 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+import Icon from '../components/Icon.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+// AFI Data
+import afiContent from '../../docs/lightdeveloper-afi-pack/afi-content.lightdeveloper.json';
+
+const { dedicatedPage, brand, messages } = afiContent;
+---
+
+<BaseLayout
+	title={dedicatedPage.seoTitle}
+	description={dedicatedPage.seoDescription}
+>
+	<div class="stack gap-15 lg:gap-30">
+		<main class="stack gap-15 lg:gap-24">
+			<header class="hero section">
+				<div class="section-shell">
+					<Hero
+						title={dedicatedPage.sections.find(s => s.type === 'hero')?.title}
+						tagline={dedicatedPage.sections.find(s => s.type === 'hero')?.text}
+						align="start"
+					>
+						<div class="brand-info">
+							<img src={`/assets/afi/afi06-logo.gif`} alt={brand.name} class="afi-logo" />
+							<p>{messages.positioningLong}</p>
+						</div>
+					</Hero>
+					<div class="hero-image-container">
+						<img
+							alt="Accompagnement formation AFI"
+							width="800"
+							height="600"
+							src={`/assets/afi/afi-home-hero.png`}
+							class="hero-img"
+						/>
+					</div>
+				</div>
+			</header>
+
+			<section class="section trainings-section">
+				<div class="section-shell stack gap-12">
+					<header class="section-header stack gap-4 centered">
+						<div class="badge-accent mx-auto">Nos Formations</div>
+						<h2>Formations certifiées</h2>
+					</header>
+
+					<div class="trainings-grid">
+						{dedicatedPage.sections.find(s => s.type === 'trainings')?.items?.map((item) => (
+							<div class="training-card">
+								<div class="training-card-content stack gap-4">
+									<Icon icon="strategy" size="2.5rem" color="var(--accent-regular)" gradient />
+									<h3>{item.title}</h3>
+									<p>{item.description}</p>
+									<div class="card-cta">
+										<CallToAction href={item.url}>
+											Détails de la formation
+											<Icon icon="arrow-right" size="1.2em" />
+										</CallToAction>
+									</div>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<section class="section preform-section bg-variant">
+				<div class="section-shell">
+					<div class="preform-container stack gap-8 centered">
+						<div class="preform-content stack gap-4">
+							<h2>{dedicatedPage.sections.find(s => s.type === 'preform')?.title}</h2>
+							<p class="max-w-2xl mx-auto">
+								{dedicatedPage.sections.find(s => s.type === 'preform')?.text}
+							</p>
+							<p class="note">
+								{messages.fundingNote}
+							</p>
+						</div>
+						<div class="cta-center">
+							<CallToAction href={dedicatedPage.sections.find(s => s.type === 'preform')?.ctaUrl}>
+								{dedicatedPage.sections.find(s => s.type === 'preform')?.ctaLabel}
+								<Icon icon="paper-plane-tilt" size="1.2em" />
+							</CallToAction>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<ContactCTA id="contact" />
+	</div>
+</BaseLayout>
+
+<style>
+	.hero .section-shell {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2.5rem;
+		text-align: center;
+	}
+
+	.brand-info {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		align-items: center;
+		margin-top: 1.5rem;
+	}
+
+	.afi-logo {
+		height: 60px;
+		width: auto;
+		filter: grayscale(0.2);
+		transition: filter var(--theme-transition);
+	}
+
+	.afi-logo:hover {
+		filter: grayscale(0);
+	}
+
+	.hero-image-container {
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		box-shadow: var(--shadow-lg);
+	}
+
+	.hero-img {
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+	}
+
+	@media (min-width: 55em) {
+		.hero .section-shell {
+			display: grid;
+			grid-template-columns: 6fr 4fr;
+			gap: 3.75rem;
+			text-align: left;
+		}
+
+		.brand-info {
+			align-items: flex-start;
+		}
+	}
+
+	.trainings-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+	}
+
+	@media (min-width: 50em) {
+		.trainings-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	.training-card {
+		padding: 3rem;
+		background: var(--gray-999_40);
+		border: 1px solid var(--gray-800);
+		border-radius: 2rem;
+		backdrop-filter: blur(10px);
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.training-card:hover {
+		transform: translateY(-8px);
+		border-color: var(--accent-regular);
+		box-shadow: var(--shadow-md), var(--glow-accent);
+	}
+
+	.training-card h3 {
+		font-size: var(--text-2xl);
+		color: var(--gray-0);
+	}
+
+	.preform-container {
+		padding: 3rem;
+		background: var(--gray-999_40);
+		backdrop-filter: blur(10px);
+		border-radius: 3rem;
+		border: 1px solid var(--gray-800);
+		width: 100%;
+		max-width: 85rem;
+		margin-inline: auto;
+	}
+
+	@media (min-width: 50em) {
+		.preform-container {
+			padding: 5rem;
+		}
+	}
+
+	.note {
+		font-style: italic;
+		font-size: var(--text-sm);
+		color: var(--gray-400);
+	}
+
+	.bg-variant {
+		background: var(--gradient-subtle);
+		padding-block: 5rem;
+	}
+
+	@media (min-width: 50em) {
+		.bg-variant {
+			padding-block: 8rem;
+			border-radius: 4rem;
+		}
+	}
+
+	.centered {
+		text-align: center;
+	}
+
+	.mx-auto {
+		margin-inline: auto;
+	}
+
+	.max-w-2xl {
+		max-width: 65ch;
+	}
+</style>

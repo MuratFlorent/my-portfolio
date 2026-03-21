@@ -154,13 +154,13 @@ const { id } = Astro.props;
 
 	.modal-container {
 		background: var(--gray-999);
-		width: 95%;
+		width: calc(100% - 2rem);
 		max-width: 1000px;
-		margin: 2rem auto;
+		margin: 1rem auto;
 		border-radius: 1.5rem;
 		position: relative;
 		overflow-y: auto;
-		max-height: 90vh;
+		max-height: calc(100vh - 2rem);
 		box-shadow: var(--shadow-lg);
 		border: 1px solid var(--gray-800);
 		animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -173,8 +173,9 @@ const { id } = Astro.props;
 
 	.close-button {
 		position: sticky;
-		top: 1.5rem;
-		left: 1.5rem;
+		top: 1rem;
+		left: 1rem;
+		margin-bottom: -2.5rem; /* Réduire l'espace pris par le bouton sticky */
 		z-index: 10;
 		display: flex;
 		align-items: center;
@@ -196,7 +197,8 @@ const { id } = Astro.props;
 	}
 
 	.modal-content {
-		padding: 1.5rem;
+		padding: 1rem;
+		padding-top: 4rem; /* Espace pour le bouton close sticky */
 	}
 
 	.modal-header {
@@ -230,8 +232,9 @@ const { id } = Astro.props;
 	}
 
 	.modal-title {
-		font-size: var(--text-2xl);
+		font-size: var(--text-xl);
 		color: var(--gray-0);
+		word-break: break-word;
 	}
 
 	.modal-tags {
@@ -282,18 +285,17 @@ const { id } = Astro.props;
 
 	.cta-button {
 		display: flex;
-		padding: 0.8rem 1.6rem;
-		gap: 0.8rem;
+		padding: 0.8rem 1.2rem;
+		gap: 0.6rem;
 		color: var(--accent-text-over);
 		text-decoration: none;
-		line-height: 1.1;
+		line-height: 1.2;
 		border-radius: 999rem;
 		overflow: hidden;
 		background: var(--gradient-accent-orange);
 		box-shadow: var(--shadow-md);
-		white-space: nowrap;
 		border: 0;
-		font-size: var(--text-md);
+		font-size: var(--text-sm);
 		font-weight: 600;
 		cursor: pointer;
 		transition: transform var(--theme-transition), box-shadow var(--theme-transition);
@@ -348,8 +350,20 @@ const { id } = Astro.props;
 	}
 
 	@media (min-width: 50em) {
+		.modal-container {
+			margin: 2rem auto;
+			max-height: 90vh;
+			width: 95%;
+		}
+
 		.modal-content {
 			padding: 3rem;
+		}
+
+		.close-button {
+			top: 1.5rem;
+			left: 1.5rem;
+			margin-bottom: 0;
 		}
 
 		.modal-header {
@@ -363,6 +377,11 @@ const { id } = Astro.props;
 
 		.modal-title {
 			font-size: var(--text-4xl);
+		}
+
+		.cta-button {
+			font-size: var(--text-md);
+			padding: 0.8rem 1.6rem;
 		}
 	}
 </style>
