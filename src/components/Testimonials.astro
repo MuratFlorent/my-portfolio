@@ -4,11 +4,12 @@ import Icon from './Icon.astro';
 
 <section id="testimonials" class="section testimonials">
 	<div class="testimonials-bg"></div>
-	<div class="container stack gap-12 lg:gap-20">
+	<div class="section-shell stack gap-12 lg:gap-20">
 		<header class="section-header stack gap-4 centered">
 			<div class="badge-accent mx-auto">Témoignages</div>
 			<h2>Avis clients</h2>
 			<p class="max-w-2xl mx-auto">La réussite de vos projets est ma meilleure récompense. Voici quelques retours d'expérience.</p>
+			<p class="preview-notice">Ces témoignages sont des exemples de preview. De vrais avis Google arriveront très prochainement !</p>
 		</header>
 
 		<div class="gallery">
@@ -67,9 +68,15 @@ import Icon from './Icon.astro';
 
 <style>
 	.testimonials {
-		padding: 8rem 0;
+		padding: 4rem 0;
 		position: relative;
 		overflow: hidden;
+	}
+
+	@media (min-width: 50em) {
+		.testimonials {
+			padding: 6rem 0;
+		}
 	}
 
 	.testimonials-bg {
@@ -82,6 +89,10 @@ import Icon from './Icon.astro';
 		            radial-gradient(circle at 80% 80%, var(--accent-overlay) 0%, transparent 40%);
 		z-index: -1;
 		opacity: 0.5;
+	}
+
+	.section-header {
+		margin-bottom: 0;
 	}
 
 	.testimonial-grid {
@@ -161,6 +172,15 @@ import Icon from './Icon.astro';
 		padding-top: 1.2rem;
 		border-top: 1px solid var(--gray-800);
 		margin-top: auto;
+	}
+
+	.preview-notice {
+		font-size: var(--text-sm);
+		color: var(--accent-regular);
+		font-style: italic;
+		margin-top: 1rem;
+		max-width: 40ch;
+		margin-inline: auto;
 	}
 
 	.centered {
