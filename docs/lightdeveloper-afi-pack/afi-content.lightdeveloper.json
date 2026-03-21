@@ -21,26 +21,26 @@
     "fundingNote": "Selon le profil et l’avancement du dossier, certaines démarches de financement peuvent être préparées en amont via un questionnaire de pré-formation."
   },
   "homeSection": {
-    "eyebrow": "Formation & accompagnement",
-    "title": "Se former tout en faisant avancer son projet",
-    "intro": "Une autre façon d’avancer : apprendre à mieux piloter son site, sa visibilité et ses outils, tout en construisant une base solide pour la suite.",
+    "eyebrow": "Formation & Coaching",
+    "title": "Maîtrisez vos outils pour booster votre business",
+    "intro": "Devenez autonome sur votre site et votre visibilité. Des formations concrètes pour transformer votre présence web en levier de croissance.",
     "cards": [
       {
-        "title": "WordPress, SEO & design intuitif",
-        "description": "Une formation pratique pour mieux structurer son site, améliorer sa visibilité sur Google et développer une interface plus claire et plus efficace.",
-        "ctaLabel": "Voir la formation",
+        "title": "WordPress & SEO Stratégique",
+        "description": "Dominez Google et maîtrisez WordPress. Une formation intensive pour allier performance technique et visibilité maximale.",
+        "ctaLabel": "Propulser mon site",
         "ctaUrl": "https://asso-formateur.fr/course/wordpress-seo-et-design-intuitif/"
       },
       {
-        "title": "Créer un site sans coder avec WordPress",
-        "description": "Une porte d’entrée plus accessible pour créer, gérer et faire évoluer un site WordPress sans passer par un développement plus complexe.",
-        "ctaLabel": "Découvrir la formation",
+        "title": "Création de Site sans coder",
+        "description": "Lancez votre activité rapidement avec un site professionnel que vous gérez de A à Z, sans aucune connaissance technique.",
+        "ctaLabel": "Devenir autonome",
         "ctaUrl": "https://asso-formateur.fr/course/creer-et-gerer-un-site-internet-sans-coder-avec-wordpress/"
       },
       {
-        "title": "Lancer un dossier de pré-formation",
-        "description": "Un questionnaire pour préparer la suite et cadrer les besoins avant de monter un accompagnement plus complet.",
-        "ctaLabel": "Remplir le questionnaire",
+        "title": "Financement & Inscription",
+        "description": "Vérifiez votre éligibilité (CPF, OPCO) et préparez votre dossier d'accompagnement en quelques clics.",
+        "ctaLabel": "Vérifier mon éligibilité",
         "ctaUrl": "https://asso-formateur.fr/questionnaire-de-pre-formation-apprenant/"
       }
     ],
