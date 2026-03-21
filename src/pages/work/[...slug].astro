@@ -36,26 +36,21 @@ const { Content } = await render(entry);
 			<header>
 				<div class="wrapper stack gap-2">
 					<a class="back-link" href="/work/"><Icon icon="arrow-left" /> Tous les projets</a>
-					<Hero title={entry.data.title} align="start">
-						<div class="details">
-								<div class="tags">
-									{entry.data.tags.map((t) => <Pill>{t}</Pill>)}
-								</div>
-							<p class="description">{entry.data.description}</p>
-						</div>
-					</Hero>
 				</div>
 			</header>
 			<main class="wrapper">
-				<div class="stack gap-10 content">
-					<div class="project-info-grid">
-						<div class="main-column stack gap-10">
-							{entry.data.img && (
-								<div class="hero-image-wrapper">
-									<img src={entry.data.img} alt={entry.data.img_alt || ''} />
+				<div class="stack gap-10 content-grid-full">
+					<div class="project-layout-grid">
+						<div class="main-column stack gap-8">
+							<Hero title={entry.data.title} align="start">
+								<div class="details">
+									<div class="tags">
+										{entry.data.tags.map((t) => <Pill>{t}</Pill>)}
+									</div>
+									<p class="description">{entry.data.description}</p>
 								</div>
-							)}
-							
+							</Hero>
+
 							<div class="prose content">
 								<Content />
 							</div>
@@ -82,56 +77,70 @@ const { Content } = await render(entry);
 							)}
 						</div>
 
-						<aside class="sidebar stack gap-8">
-							{entry.data.client && (
-								<section class="sidebar-section">
-									<h4>Client</h4>
-									<p>{entry.data.client}</p>
-								</section>
-							)}
-
-							{entry.data.year && (
-								<section class="sidebar-section">
-									<h4>Année</h4>
-									<p>{entry.data.year}</p>
-								</section>
-							)}
-
-							{entry.data.services && (
-								<section class="sidebar-section">
-									<h4>Services</h4>
-									<ul class="sidebar-list">
-										{entry.data.services.map(s => <li>{s}</li>)}
-									</ul>
-								</section>
-							)}
-
-							{entry.data.stack && (
-								<section class="sidebar-section">
-									<h4>Stack</h4>
-									<div class="stack-tags">
-										{entry.data.stack.map(s => <span class="stack-tag">{s}</span>)}
-									</div>
-								</section>
-							)}
-
-							{entry.data.highlights && (
-								<section class="sidebar-section">
-									<h4>Points clés</h4>
-									<ul class="sidebar-list highlights">
-										{entry.data.highlights.map(h => <li>{h}</li>)}
-									</ul>
-								</section>
-							)}
-
-							{entry.data.href && (
-								<div class="sidebar-cta">
-									<a href={entry.data.href} target="_blank" rel="noopener noreferrer" class="visit-link">
-										Visiter le site
-										<Icon icon="arrow-right" size="1.2em" />
-									</a>
+						<aside class="sidebar-column stack gap-8">
+							{entry.data.img && (
+								<div class="hero-image-wrapper">
+									<img src={entry.data.img} alt={entry.data.img_alt || ''} />
 								</div>
 							)}
+
+							<div class="sidebar stack gap-8">
+								<div class="sidebar-header">
+									<h4>Méta Projet</h4>
+								</div>
+								
+								<div class="sidebar-content-grid">
+									{entry.data.client && (
+										<section class="sidebar-section">
+											<h4>Client</h4>
+											<p>{entry.data.client}</p>
+										</section>
+									)}
+
+									{entry.data.year && (
+										<section class="sidebar-section">
+											<h4>Année</h4>
+											<p>{entry.data.year}</p>
+										</section>
+									)}
+								</div>
+
+								{entry.data.services && (
+									<section class="sidebar-section">
+										<h4>Services</h4>
+										<ul class="sidebar-list">
+											{entry.data.services.map(s => <li>{s}</li>)}
+										</ul>
+									</section>
+								)}
+
+								{entry.data.stack && (
+									<section class="sidebar-section">
+										<h4>Stack</h4>
+										<div class="stack-tags">
+											{entry.data.stack.map(s => <span class="stack-tag">{s}</span>)}
+										</div>
+									</section>
+								)}
+
+								{entry.data.highlights && (
+									<section class="sidebar-section">
+										<h4>Points clés</h4>
+										<ul class="sidebar-list highlights">
+											{entry.data.highlights.map(h => <li>{h}</li>)}
+										</ul>
+									</section>
+								)}
+
+								{entry.data.href && (
+									<div class="sidebar-cta">
+										<a href={entry.data.href} target="_blank" rel="noopener noreferrer" class="visit-link">
+											Visiter le site
+											<Icon icon="arrow-right" size="1.2em" />
+										</a>
+									</div>
+								)}
+							</div>
 						</aside>
 					</div>
 				</div>
@@ -143,8 +152,7 @@ const { Content } = await render(entry);
 
 <style>
 	header {
-		padding-bottom: 2.5rem;
-		border-bottom: 1px solid var(--gray-800);
+		padding-bottom: 1.5rem;
 	}
 
 	.back-link {
@@ -154,94 +162,70 @@ const { Content } = await render(entry);
 	.details {
 		display: flex;
 		flex-direction: column;
-		padding: 0.5rem;
+		padding: 0.5rem 0;
 		gap: 1.5rem;
-		justify-content: space-between;
-		align-items: center;
+		align-items: flex-start;
 	}
 
 	.tags {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.5rem;
-		justify-content: center;
 	}
 
 	.description {
 		font-size: var(--text-lg);
 		max-width: 54ch;
+		color: var(--gray-300);
 	}
 
-	.project-info-grid {
+	.project-layout-grid {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 2rem;
+		gap: 3rem;
 	}
 
 	.hero-image-wrapper img {
 		width: 100%;
 		border-radius: 1.5rem;
-		box-shadow: var(--shadow-sm);
+		box-shadow: var(--shadow-md);
 		border: 1px solid var(--gray-800);
+		object-fit: cover;
 	}
 
-	.content {
-		max-width: 65ch;
+	.content-grid-full {
+		width: 100%;
+	}
+
+	.main-column {
+		width: 100%;
+	}
+
+	.prose {
+		line-height: 1.6;
+		color: var(--gray-200);
 	}
 
 	.prose :global(h2) {
 		font-size: var(--text-2xl);
-		margin-top: 2rem;
+		margin-top: 2.5rem;
+		margin-bottom: 1rem;
+		color: var(--gray-0);
+	}
+
+	.prose :global(p) {
+		margin-bottom: 1.5rem;
 	}
 
 	.section-title {
 		font-size: var(--text-2xl);
+		margin-bottom: 1rem;
 	}
 
 	.gallery-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 		gap: 1.5rem;
-		transition: all 0.5s ease-in-out;
-	}
-
-	.gallery-item {
-		transition: transform 0.3s ease, opacity 0.3s ease;
-	}
-
-	.gallery-item.hidden-item {
-		display: none;
-	}
-
-	.gallery-item:hover {
-		transform: scale(1.02);
-		z-index: 2;
-	}
-
-	.gallery-container {
-		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
-		align-items: center;
-	}
-
-	.show-more-button {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		padding: 0.75rem 1.5rem;
-		background: var(--gray-800);
-		color: var(--gray-200);
-		border: 1px solid var(--gray-700);
-		border-radius: 99rem;
-		cursor: pointer;
-		font-weight: 600;
-		transition: all 0.2s ease;
-	}
-
-	.show-more-button:hover {
-		background: var(--gray-700);
-		color: var(--gray-0);
 	}
 
 	.gallery-item img {
@@ -250,28 +234,58 @@ const { Content } = await render(entry);
 		border: 1px solid var(--gray-800);
 		aspect-ratio: 16 / 9;
 		object-fit: cover;
+		transition: transform 0.3s ease;
+	}
+
+	.gallery-item:hover img {
+		transform: scale(1.02);
+	}
+
+	.sidebar-column {
+		width: 100%;
 	}
 
 	.sidebar {
 		background: var(--gray-999_40);
-		padding: 1.5rem;
+		padding: 2rem;
 		border-radius: 1.5rem;
 		border: 1px solid var(--gray-800);
 		height: fit-content;
-		width: 100%;
+		position: sticky;
+		top: 2rem;
+	}
+
+	.sidebar-header {
+		padding-bottom: 1rem;
+		border-bottom: 1px solid var(--gray-800);
+		margin-bottom: 1rem;
+	}
+
+	.sidebar-header h4 {
+		font-size: var(--text-md);
+		color: var(--gray-0);
+		font-weight: 700;
+	}
+
+	.sidebar-content-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1.5rem;
 	}
 
 	.sidebar-section h4 {
-		font-size: var(--text-sm);
+		font-size: var(--text-xs);
 		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		color: var(--gray-400);
+		letter-spacing: 0.12em;
+		color: var(--gray-500);
 		margin-bottom: 0.5rem;
+		font-weight: 600;
 	}
 
 	.sidebar-section p {
 		font-size: var(--text-md);
 		color: var(--gray-100);
+		font-weight: 500;
 	}
 
 	.sidebar-list {
@@ -281,82 +295,85 @@ const { Content } = await render(entry);
 	}
 
 	.sidebar-list li {
-		color: var(--gray-100);
-		margin-bottom: 0.25rem;
+		color: var(--gray-200);
+		margin-bottom: 0.4rem;
 		font-size: var(--text-md);
 	}
 
 	.sidebar-list.highlights li::before {
-		content: "•";
+		content: "→";
 		color: var(--accent-regular);
-		margin-right: 0.5rem;
+		margin-right: 0.6rem;
+		font-weight: bold;
 	}
 
 	.stack-tags {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.5rem;
+		gap: 0.6rem;
 	}
 
 	.stack-tag {
 		background: var(--gray-800);
-		color: var(--gray-200);
-		padding: 0.2rem 0.6rem;
+		color: var(--gray-100);
+		padding: 0.3rem 0.8rem;
 		border-radius: 0.5rem;
 		font-size: var(--text-xs);
+		border: 1px solid var(--gray-700);
 	}
 
 	.visit-link {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.5rem;
-		padding: 1rem;
+		gap: 0.75rem;
+		padding: 1rem 1.5rem;
 		background: var(--accent-regular);
 		color: white;
 		text-decoration: none;
-		border-radius: 0.75rem;
+		border-radius: 1rem;
 		font-weight: 700;
-		transition: all var(--theme-transition);
+		transition: all 0.3s ease;
+		box-shadow: 0 4px 12px rgba(var(--accent-regular-rgb), 0.3);
 	}
 
 	.visit-link:hover {
 		background: var(--accent-light);
-		transform: translateY(-2px);
-		box-shadow: var(--glow-accent);
+		transform: translateY(-3px);
+		box-shadow: 0 6px 20px rgba(var(--accent-regular-rgb), 0.4);
 	}
 
-	@media (min-width: 50em) {
+	@media (min-width: 64em) {
 		.back-link {
 			display: block;
-			align-self: flex-start;
+			margin-bottom: 2rem;
 		}
 
-		.details {
-			flex-direction: row;
-			gap: 2.5rem;
+		.project-layout-grid {
+			grid-template-columns: 1fr 400px;
+			gap: 5rem;
+			align-items: start;
 		}
 
-		.tags {
-			justify-content: flex-start;
+		.hero-image-wrapper {
+			margin-bottom: 2rem;
 		}
 
-		.project-info-grid {
-			grid-template-columns: 1.2fr 0.8fr;
-			gap: 4rem;
+		.sidebar-content-grid {
+			grid-template-columns: 1fr;
 		}
+	}
 
-		.sidebar {
-			padding: 2rem;
+	@media (min-width: 80em) {
+		.project-layout-grid {
+			grid-template-columns: 1fr 480px;
+			gap: 8rem;
 		}
+	}
 
-		.gallery-grid:not(.expanded) .gallery-item:nth-child(n+4) {
-			display: none;
-		}
-
-		.gallery-grid.expanded .gallery-item.hidden-item {
-			display: block;
-			animation: fadeIn 0.5s ease forwards;
+	@media (max-width: 50em) {
+		.sidebar-content-grid {
+			grid-template-columns: 1fr 1fr;
 		}
 	}
 
