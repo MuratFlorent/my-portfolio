@@ -43,9 +43,9 @@ const { dedicatedPage, brand, messages } = afiContent;
 
 			<section class="section trainings-section">
 				<div class="section-shell stack gap-12">
-					<header class="section-header stack gap-4 centered">
-						<div class="badge-accent mx-auto">Nos Formations</div>
-						<h2>Formations certifiées</h2>
+					<header class="section-header stack gap-4 lg:align-start">
+						<div class="badge-accent mx-auto lg:mx-0">Nos Formations</div>
+						<h2 class="lg:text-left">Formations certifiées</h2>
 					</header>
 
 					<div class="trainings-grid">
@@ -70,17 +70,17 @@ const { dedicatedPage, brand, messages } = afiContent;
 
 			<section class="section preform-section bg-variant">
 				<div class="section-shell">
-					<div class="preform-container stack gap-8 centered">
+					<div class="preform-container stack gap-8 lg:align-start">
 						<div class="preform-content stack gap-4">
-							<h2>{dedicatedPage.sections.find(s => s.type === 'preform')?.title}</h2>
-							<p class="max-w-2xl mx-auto">
+							<h2 class="lg:text-left">{dedicatedPage.sections.find(s => s.type === 'preform')?.title}</h2>
+							<p class="max-w-2xl mx-auto lg:mx-0 lg:text-left">
 								{dedicatedPage.sections.find(s => s.type === 'preform')?.text}
 							</p>
-							<p class="note">
+							<p class="note lg:text-left">
 								{messages.fundingNote}
 							</p>
 						</div>
-						<div class="cta-center">
+						<div class="cta-center lg:cta-left">
 							<CallToAction href={dedicatedPage.sections.find(s => s.type === 'preform')?.ctaUrl}>
 								{dedicatedPage.sections.find(s => s.type === 'preform')?.ctaLabel}
 								<Icon icon="paper-plane-tilt" size="1.2em" />
@@ -145,6 +145,24 @@ const { dedicatedPage, brand, messages } = afiContent;
 
 		.brand-info {
 			align-items: flex-start;
+		}
+
+		.lg\:align-start {
+			align-items: flex-start;
+			text-align: left;
+		}
+
+		.lg\:text-left {
+			text-align: left;
+		}
+
+		.lg\:mx-0 {
+			margin-inline: 0;
+		}
+
+		.lg\:cta-left {
+			display: flex;
+			justify-content: flex-start;
 		}
 	}
 
