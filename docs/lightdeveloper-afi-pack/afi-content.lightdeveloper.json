@@ -14,66 +14,66 @@
     "preTrainingForm": "https://asso-formateur.fr/questionnaire-de-pre-formation-apprenant/"
   },
   "messages": {
-    "positioningShort": "Se former tout en faisant avancer son projet digital, avec un accompagnement concret, humain et orienté autonomie.",
-    "positioningLong": "Light Developer propose aussi un accompagnement via la formation, pour aider les porteurs de projet à créer, reprendre en main ou faire évoluer leur présence en ligne avec des méthodes concrètes, des outils adaptés et une montée en autonomie progressive.",
-    "trainingSeoUx": "Formation complète pour maîtriser WordPress, le SEO et le design UX : installation, optimisation technique, création de contenu engageant, stratégie SEO avancée et marketing digital. Formation pratique sur site réel pour garantir autonomie et performance durable.",
-    "trainingNoCode": "Créer et gérer un site internet sans coder avec WordPress : une formation orientée autonomie, idéale pour les personnes qui veulent lancer, administrer et faire évoluer leur site sans dépendre d'une équipe technique.",
-    "fundingNote": "Selon le profil et l’avancement du dossier, certaines démarches de financement peuvent être préparées en amont via un questionnaire de pré-formation."
+    "positioningShort": "Apprenez à gérer votre projet digital par vous-même, avec un accompagnement simple, humain et concret.",
+    "positioningLong": "Light Developer vous aide à devenir autonome. Que vous souhaitiez créer, reprendre en main ou faire évoluer votre site, je vous accompagne avec des méthodes simples et des outils adaptés à votre niveau.",
+    "trainingSeoUx": "Maîtrisez WordPress et améliorez votre visibilité sur Google. Une formation pratique pour apprendre à créer du contenu qui attire des clients et à optimiser votre site sans technique complexe.",
+    "trainingNoCode": "Créez et gérez votre site internet sans aucune base en programmation. Une formation idéale pour lancer votre activité rapidement et rester maître de votre outil de travail.",
+    "fundingNote": "Selon votre profil, votre formation peut être financée. Nous pouvons vérifier ensemble votre éligibilité via un court questionnaire."
   },
   "homeSection": {
-    "eyebrow": "Formation & Coaching",
-    "title": "Maîtrisez vos outils pour booster votre business",
-    "intro": "Devenez autonome sur votre site et votre visibilité. Des formations concrètes pour transformer votre présence web en levier de croissance.",
+    "eyebrow": "Formation & Financement",
+    "title": "Financer & Maîtriser vos outils digitaux",
+    "intro": "Je vous accompagne pour apprendre à gérer votre site et améliorer votre visibilité par vous-même, avec des solutions de financement adaptées (CPF, OPCO).",
     "cards": [
       {
-        "title": "WordPress & SEO Stratégique",
-        "description": "Dominez Google et maîtrisez WordPress. Une formation intensive pour allier performance technique et visibilité maximale.",
+        "title": "Financement & Inscription",
+        "description": "Vérifiez votre éligibilité (CPF, OPCO) et préparez votre dossier d'accompagnement financier en quelques clics.",
+        "ctaLabel": "Vérifier mon éligibilité",
+        "ctaUrl": "https://asso-formateur.fr/questionnaire-de-pre-formation-apprenant/"
+      },
+      {
+        "title": "Maîtriser son site & Google",
+        "description": "Apprenez à utiliser WordPress et à améliorer votre positionnement sur Google pour attirer plus de clients, par une formation finançable.",
         "ctaLabel": "Propulser mon site",
         "ctaUrl": "https://asso-formateur.fr/course/wordpress-seo-et-design-intuitif/"
       },
       {
-        "title": "Création de Site sans coder",
-        "description": "Lancez votre activité rapidement avec un site professionnel que vous gérez de A à Z, sans aucune connaissance technique.",
+        "title": "Créer son site sans coder",
+        "description": "Lancez votre activité avec un site professionnel que vous apprendrez à gérer de A à Z via un accompagnement financé.",
         "ctaLabel": "Devenir autonome",
         "ctaUrl": "https://asso-formateur.fr/course/creer-et-gerer-un-site-internet-sans-coder-avec-wordpress/"
-      },
-      {
-        "title": "Financement & Inscription",
-        "description": "Vérifiez votre éligibilité (CPF, OPCO) et préparez votre dossier d'accompagnement en quelques clics.",
-        "ctaLabel": "Vérifier mon éligibilité",
-        "ctaUrl": "https://asso-formateur.fr/questionnaire-de-pre-formation-apprenant/"
       }
     ],
     "highlights": [
+      "Prise en charge CPF & OPCO possible",
       "Approche pratique sur cas réel",
       "Autonomie progressive",
-      "SEO, UX, contenu et structure",
-      "Possibilité de préparer un dossier en amont"
+      "Aide au montage du dossier financier"
     ]
   },
   "dedicatedPage": {
     "slug": "formation-financement",
-    "title": "Formation, accompagnement & montée en autonomie",
-    "seoTitle": "Formation WordPress, SEO, no-code et accompagnement projet | Light Developer",
-    "seoDescription": "Découvrez l’accompagnement formation proposé par Light Developer via l’AFI : WordPress, SEO, design UX, création de site sans coder et pré-formation.",
+    "title": "Financement & Formation : Votre montée en compétence",
+    "seoTitle": "Financement & Formation WordPress, SEO | Light Developer",
+    "seoDescription": "Découvrez comment financer votre formation WordPress et SEO avec Light Developer. Accompagnement pédagogique et aide au montage de dossier financier.",
     "sections": [
       {
         "type": "hero",
-        "title": "Apprendre, structurer, faire avancer son projet",
-        "text": "Au-delà du développement sur mesure, Light Developer peut aussi accompagner les porteurs de projet qui souhaitent gagner en autonomie, mieux comprendre leurs outils et bâtir une base solide pour leur présence en ligne."
+        "title": "Financez votre apprentissage digital",
+        "text": "Devenez autonome sur vos outils web grâce à un accompagnement sur mesure, souvent intégralement finançable par les dispositifs d'aide à la formation (CPF, OPCO)."
       },
       {
         "type": "trainings",
         "items": [
           {
-            "title": "WordPress, SEO et design intuitif",
+            "title": "Maîtriser WordPress & sa visibilité Google",
             "url": "https://asso-formateur.fr/course/wordpress-seo-et-design-intuitif/",
-            "description": "Formation complète pour maîtriser WordPress, le SEO et le design UX : installation, optimisation technique, création de contenu engageant, stratégie SEO avancée et marketing digital. Formation pratique sur site réel pour garantir autonomie et performance durable."
+            "description": "Apprenez à utiliser WordPress au quotidien et à attirer des clients grâce à un bon référencement naturel sur Google."
           },
           {
-            "title": "Créer et gérer un site internet sans coder avec WordPress",
+            "title": "Créer son site sans coder",
             "url": "https://asso-formateur.fr/course/creer-et-gerer-un-site-internet-sans-coder-avec-wordpress/",
-            "description": "Une formation orientée autonomie et prise en main, pensée pour celles et ceux qui veulent créer ou gérer un site sans partir sur un développement plus lourd."
+            "description": "Lancez votre site professionnel vous-même et apprenez à le gérer de A à Z en toute simplicité."
           }
         ]
       },

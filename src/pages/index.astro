@@ -41,34 +41,34 @@ const projects = (await getCollection('work'))
 		<header id="accueil" class="hero section">
 			<div class="section-shell">
    	<Hero
-					title="Votre Site Web sur Mesure : Performant, Visible et Unique"
-					tagline="Expert web avec plus de 10 ans d'expérience, je crée des solutions digitales qui boostent votre chiffre d'affaires et votre visibilité sur Google & IA."
+					title="Donnez vie à vos projets web avec un accompagnement sur mesure"
+					tagline="Création de sites vitrines, e-commerce et outils personnalisés : je transforme vos idées en solutions concrètes pour booster votre activité et votre visibilité sur Google."
 					align="start"
 				>
 					<div class="roles">
-						<Pill href="/approche" ariaLabel="Découvrir mon approche">
+						<Pill href="/approche" ariaLabel="Découvrir mon approche" class="expertise-pill">
 							<Icon icon="code" size="1.33em" /> Développeur web
 						</Pill>
-						<Pill href="/formation" ariaLabel="Voir la section formation">
-							<Icon icon="graduation-cap" size="1.33em" /> Formateur
+						<Pill href="/formation" ariaLabel="Voir la section formation et financement" class="expertise-pill">
+							<Icon icon="graduation-cap" size="1.33em" /> Formation & Financement
 						</Pill>
 						<Pill 
 							href="#contact" 
 							ariaLabel="Parler de votre projet" 
-							class="quote-cta-button"
+							class="expertise-pill quote-cta-button"
 							data-tab="quote"
 							data-message="Bonjour, je souhaiterais un accompagnement sur mesure pour mon projet."
 						>
 							<Icon icon="users" size="1.33em" /> Accompagnement sur mesure
 						</Pill>
-						<Pill href="tel:+33682027290" ariaLabel="Appeler Florent Murat">
+						<Pill href="tel:+33682027290" ariaLabel="Appeler Florent Murat" class="expertise-pill">
 							<Icon icon="phone" size="1.33em" /> Rendez-vous téléphonique
 						</Pill>
 					</div>
 
 					<div class="hero-ctas">
 						<CallToAction href="/work/">
-							Voir mes réalisations
+							Découvrir mes projets
 							<Icon icon="arrow-right" size="1.2em" />
 						</CallToAction>
 						<CallToAction 
@@ -77,7 +77,7 @@ const projects = (await getCollection('work'))
 							data-tab="quote"
 							data-message="Bonjour, je souhaiterais obtenir un devis gratuit pour mon projet."
 						>
-							Obtenir un devis gratuit
+							Estimer mon projet
 							<Icon icon="paper-plane-tilt" size="1.2em" />
 						</CallToAction>
 					</div>
@@ -91,11 +91,10 @@ const projects = (await getCollection('work'))
 						src="/assets/portrait2.jpeg"
 						loading="eager"
 						decoding="async"
-						style="object-position: 50% 20%; transform: scale(1.1);"
 					/>
 					<div class="image-overlay">
 						<p class="overlay-title">Florent Murat — Light Developer</p>
-						<p class="overlay-text">Développeur web, formateur et accompagnant de projets sur mesure.</p>
+						<p class="overlay-text">Je crée vos outils web et je vous accompagne pour réussir en ligne.</p>
 					</div>
 				</div>
 			</div>
@@ -105,48 +104,48 @@ const projects = (await getCollection('work'))
 			<div class="solutions-bg"></div>
 			<div class="section-shell">
 					<header class="section-header stack gap-2 lg:gap-4 lg:align-start">
-					<h2 class="lg:text-left">Solutions Digitales & Expertise</h2>
-					<p class="lg:text-left">Je conçois des outils pensés pour vos résultats : visibilité maximale sur Google et automatisation de votre croissance.</p>
+					<h2 class="lg:text-left">Ce que je peux créer pour vous</h2>
+					<p class="lg:text-left">Des solutions simples, efficaces et évolutives pour répondre à vos besoins concrets de développement.</p>
 				</header>
 
 				<ul class="service-grid">
 					<li class="service-card">
 						<a href="/creation-site-web-sur-mesure" class="service-link">
 							<Icon icon="code" color="var(--accent-regular)" size="2.5rem" gradient />
-							<h4>Sites & refontes</h4>
-							<p>Création de sites vitrines et applicatifs modernes, optimisés pour votre activité.</p>
+							<h4>Site Vitrine & E-commerce</h4>
+							<p>Présentez votre activité ou vendez vos produits avec un site professionnel, moderne et facile à gérer.</p>
 						</a>
 					</li>
 					<li class="service-card">
 						<Icon icon="cpu" color="var(--accent-regular)" size="2.5rem" gradient />
-						<h4>Fonctionnalités sur mesure</h4>
-						<p>Extension des capacités de vos outils existants (WordPress, Sylius, etc.) via des plugins spécifiques.</p>
+						<h4>Plateforme & Outils sur mesure</h4>
+						<p>Un besoin spécifique ? Je crée des outils personnalisés (espace client, gestion interne) adaptés à votre métier.</p>
 					</li>
 					<li class="service-card">
 						<a href="/automatisation-web" class="service-link">
 							<Icon icon="magic-wand" color="var(--accent-regular)" size="2.5rem" gradient />
-							<h4>Automatisations & gain de temps</h4>
-							<p>Optimisation de vos processus métier via des scripts and outils connectés pour gagner en productivité.</p>
+							<h4>Réservation & Rendez-vous</h4>
+							<p>Simplifiez la vie de vos clients avec des systèmes de prise de rendez-vous ou de réservation en ligne directs.</p>
 						</a>
 					</li>
 					<li class="service-card">
 						<a href="/optimisation-seo" class="service-link">
 							<Icon icon="rocket-launch" color="var(--accent-regular)" size="2.5rem" gradient />
-							<h4>SEO & GEO (Google & IA)</h4>
-							<p>Dominez les moteurs de recherche et soyez cité par les IA (ChatGPT, Perplexity) pour attirer plus de clients.</p>
+							<h4>Visibilité sur Google</h4>
+							<p>Améliorez votre positionnement pour attirer naturellement plus de clients locaux ou nationaux chaque jour.</p>
 						</a>
 					</li>
 					<li class="service-card">
 						<a href="/formation" class="service-link">
 							<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
-							<h4>Formation & transmission</h4>
-							<p>Apprenez à maîtriser vos outils numériques pour monter en compétence en toute autonomie.</p>
+							<h4>Accompagnement & Formation</h4>
+							<p>Je vous aide à comprendre vos outils et à devenir autonome pour piloter votre présence en ligne.</p>
 						</a>
 					</li>
 					<li class="service-card">
 						<Icon icon="users-three" color="var(--accent-regular)" size="2.5rem" gradient />
-						<h4>Accompagnement projet</h4>
-						<p>Conseil stratégique et suivi humain tout au long de la vie de votre projet digital.</p>
+						<h4>Conseil & Évolutions</h4>
+						<p>Besoin d'améliorer un site existant ou d'un avis d'expert ? Je vous accompagne sur la durée.</p>
 					</li>
 				</ul>
 			</div>
@@ -157,8 +156,8 @@ const projects = (await getCollection('work'))
 				<div class="section-shell stack gap-10 lg:gap-12">
 					<header class="section-header stack gap-4 lg:align-start px-4">
 						<div class="badge-accent mx-auto lg:mx-0">Réalisations</div>
-						<h2 class="lg:text-left">Projets réalisés</h2>
-						<p class="max-w-2xl mx-auto lg:mx-0 lg:text-left">Une sélection de mes réalisations les plus marquantes, alliant expertise technique et approche humaine.</p>
+						<h2 class="lg:text-left">Un aperçu de mes projets</h2>
+						<p class="max-w-2xl mx-auto lg:mx-0 lg:text-left">Découvrez des exemples concrets de sites et d’outils créés pour mes clients.</p>
 					</header>
 
 					<div class="gallery px-4 md:px-0">
@@ -172,10 +171,10 @@ const projects = (await getCollection('work'))
 							}
 						</Grid>
 						<div class="cta-inline lg:projects-cta">
-							<CallToAction href="/work/">
-								Toutes les réalisations
-								<Icon icon="arrow-right" size="1.2em" />
-							</CallToAction>
+ 						<CallToAction href="/work/">
+ 							Voir plus de projets
+ 							<Icon icon="arrow-right" size="1.2em" />
+ 						</CallToAction>
 						</div>
 					</div>
 				</div>
@@ -185,9 +184,9 @@ const projects = (await getCollection('work'))
 				<div class="section-shell stack gap-10 lg:gap-15">
 					<header class="section-header stack gap-4 lg:align-start">
 						<div class="badge-accent mx-auto lg:mx-0">Mon ADN</div>
-						<h2 class="lg:text-left">Pourquoi me choisir ?</h2>
+						<h2 class="lg:text-left">Pourquoi travailler avec moi ?</h2>
 						<p class="max-w-2xl mx-auto lg:mx-0 lg:text-left">
-							Bien plus qu'un simple prestataire, je me positionne comme votre partenaire technique pour transformer vos idées en succès mesurables et durables.
+							Plus qu’un développeur, je suis votre partenaire technique. Mon rôle est de vous rassurer et de construire avec vous des outils qui simplifient votre quotidien.
 						</p>
 					</header>
 
@@ -195,12 +194,12 @@ const projects = (await getCollection('work'))
 						<div class="universe-grid">
 							{
 								[
-									{ id: 'bienveillance', label: 'Bienveillance', icon: 'heart', description: 'Une approche humaine centrée sur l’écoute et l’empathie.' },
-									{ id: 'technique', label: 'Rigueur technique', icon: 'code', description: 'Un code propre, robuste et performant.' },
-									{ id: 'clarté', label: 'Clarté & pédagogie', icon: 'sun', description: 'Démystifier la technique pour vous donner une vision claire.' },
-									{ id: 'transmission', label: 'Transmission', icon: 'strategy', description: 'Partager le savoir pour favoriser votre autonomie.' },
-									{ id: 'outillage', label: 'Technologies', icon: 'terminal', description: 'Sélection des meilleurs outils pour répondre à vos besoins.' },
-									{ id: 'automatisation', label: 'Gain de temps', icon: 'magic-wand', description: 'Automatiser les tâches répétitives pour libérer votre créativité.' },
+									{ id: 'bienveillance', label: 'Écoute & Humain', icon: 'heart', description: 'Un accompagnement proche de vous pour comprendre vos vrais besoins.' },
+									{ id: 'technique', label: 'Travail soigné', icon: 'code', description: 'Des solutions robustes qui durent dans le temps.' },
+									{ id: 'clarté', label: 'Zéro Jargon', icon: 'sun', description: 'Je vous explique les choses simplement, sans mots compliqués.' },
+									{ id: 'transmission', label: 'Votre Autonomie', icon: 'strategy', description: 'Mon but est que vous soyez à l’aise avec vos outils.' },
+									{ id: 'outillage', label: 'Sur Mesure', icon: 'terminal', description: 'Je choisis les outils qui servent vraiment votre projet.' },
+									{ id: 'automatisation', label: 'Simplification', icon: 'magic-wand', description: 'Simplifier vos tâches pour vous faire gagner du temps.' },
 								].map((item) => (
 									<div class="universe-item" data-universe-id={item.id} data-universe-data={JSON.stringify(item)}>
 										<div class="universe-card-inner">
@@ -256,18 +255,20 @@ const projects = (await getCollection('work'))
 						))}
 					</div>
 
-					<div class="highlights-row">
+					<div class="highlights-container">
 						{afiContent.homeSection.highlights.map((highlight) => (
-							<div class="highlight-item">
-								<Icon icon="check-circle" size="1.2em" color="var(--accent-regular)" />
-								<span>{highlight}</span>
+							<div class="highlight-card">
+								<div class="highlight-icon">
+									<Icon icon="check-circle" size="1.2em" color="var(--accent-regular)" />
+								</div>
+								<span class="highlight-text">{highlight}</span>
 							</div>
 						))}
 					</div>
 
 					<div class="cta centered">
 						<CallToAction href="/formation-financement">
-							Découvrir l'accompagnement complet
+							Voir les solutions de financement
 							<Icon icon="graduation-cap" size="1.2em" />
 						</CallToAction>
 					</div>
@@ -315,7 +316,7 @@ const projects = (await getCollection('work'))
 					<details class="faq-item">
 						<summary>Puis-je gérer mon contenu en autonomie après le développement ?</summary>
 						<div class="faq-content">
-							<p>C'est une priorité. Je mets en place des interfaces d'administration intuitives (CMS Headless ou WordPress optimisé) et je fournis une formation personnalisée. Vous restez maître de vos textes et images sans avoir besoin de connaissances techniques approfondies.</p>
+							<p>C'est une priorité. Je mets en place des interfaces d'administration intuitives (CMS Headless ou WordPress optimisé) et je fournis une formation personnalisée. Vous restez maître de vos textes et images sans avoir besoin de connaissances techniques approfondies. Ces formations peuvent d'ailleurs être financées par votre CPF ou OPCO.</p>
 						</div>
 					</details>
 					<details class="faq-item">
@@ -407,7 +408,50 @@ const projects = (await getCollection('work'))
 		flex-direction: column;
 		gap: 0.75rem;
 		width: 100%;
-		align-items: stretch; /* Largeur cohérente en mobile */
+		align-items: stretch;
+	}
+
+	.expertise-pill {
+		background: var(--gray-999_40) !important;
+		border: 1px solid var(--gray-800) !important;
+		color: var(--gray-200) !important;
+		font-weight: 500 !important;
+		box-shadow: none !important;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.expertise-pill:hover {
+		background: var(--gray-900) !important;
+		border-color: var(--accent-regular) !important;
+		color: var(--gray-0) !important;
+		transform: translateY(-2px) !important;
+	}
+
+	/* Indicateur discret que c'est un bouton (petit trait en bas) */
+	.expertise-pill::after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		width: 0;
+		height: 2px;
+		background: var(--gradient-accent-orange);
+		transition: width 0.3s ease, left 0.3s ease;
+	}
+
+	.expertise-pill:hover::after,
+	.expertise-pill:focus-within::after {
+		width: 100%;
+		left: 0;
+	}
+
+	.expertise-pill:active {
+		transform: translateY(0) scale(0.98) !important;
+	}
+
+	.expertise-pill :global(svg) {
+		color: var(--accent-regular);
 	}
 
 	@media (min-width: 36em) {
@@ -470,10 +514,19 @@ const projects = (await getCollection('work'))
 		display: block;
 		width: 100%;
 		height: auto;
-		aspect-ratio: 5 / 4;
+		aspect-ratio: 1 / 1.1;
 		object-fit: cover;
-		object-position: center;
+		object-position: center 15%;
+		transform: scale(1.15);
 		transition: transform var(--theme-transition-slow);
+	}
+
+	@media (min-width: 30em) {
+		.hero-image-container img {
+			aspect-ratio: 5 / 4;
+			object-position: center 20%;
+			transform: scale(1.1);
+		}
 	}
 
 	.hero-image-container:hover img {
@@ -556,8 +609,10 @@ const projects = (await getCollection('work'))
 			border-radius: 3rem;
 		}
 
-		.hero-image-container img {
+	.hero-image-container img {
 			aspect-ratio: 3 / 4;
+			object-position: center 25%;
+			transform: scale(1.1);
 		}
 	}
 
@@ -1392,24 +1447,60 @@ const projects = (await getCollection('work'))
 		line-height: 1.6;
 	}
 
-	.highlights-row {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: 1.5rem 3rem;
+	.highlights-container {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem;
 		margin-top: 2rem;
-		padding: 1.5rem;
-		background: var(--gray-999_40);
-		border-radius: var(--radius-md);
 	}
 
-	.highlight-item {
+	@media (min-width: 48em) {
+		.highlights-container {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 1.5rem;
+		}
+	}
+
+	@media (min-width: 64em) {
+		.highlights-container {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+
+	.highlight-card {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+		padding: 1.25rem;
+		background: var(--gray-999_40);
+		border: 1px solid var(--gray-800);
+		border-radius: var(--radius-md);
+		transition: all var(--theme-transition);
+		height: 100%;
+	}
+
+	.highlight-card:hover {
+		border-color: var(--accent-regular);
+		background: var(--gray-999);
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.highlight-icon {
+		flex-shrink: 0;
 		display: flex;
 		align-items: center;
-		gap: 0.75rem;
+		justify-content: center;
+		width: 1.5rem;
+		height: 1.5rem;
+		color: var(--accent-regular);
+	}
+
+	.highlight-text {
 		font-size: var(--text-sm);
 		font-weight: 600;
 		color: var(--gray-200);
+		line-height: 1.4;
 	}
 
 	@media (min-width: 50em) {
