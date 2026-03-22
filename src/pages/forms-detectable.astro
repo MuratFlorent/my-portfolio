@@ -13,10 +13,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             method="POST" 
             data-netlify="true" 
             data-netlify-recaptcha="true"
-            netlify-honeypot="bot-field"
+            data-netlify-honeypot="bot-field"
             action="/merci"
         >
             <input type="hidden" name="form-name" value="contact-rapide" />
+            <p class="hidden">
+                <label>Ne pas remplir si vous êtes humain : <input name="bot-field" /></label>
+            </p>
             <label for="name-contact">Nom</label>
             <input type="text" name="name" id="name-contact" />
             <label for="email-contact">Email</label>
@@ -35,10 +38,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             method="POST" 
             data-netlify="true" 
             data-netlify-recaptcha="true"
-            netlify-honeypot="bot-field"
+            data-netlify-honeypot="bot-field"
             action="/merci-devis"
         >
             <input type="hidden" name="form-name" value="demande-devis" />
+            <p class="hidden">
+                <label>Ne pas remplir si vous êtes humain : <input name="bot-field" /></label>
+            </p>
             <label for="name-devis">Nom</label>
             <input type="text" name="name" id="name-devis" />
             <label for="email-devis">Email</label>
