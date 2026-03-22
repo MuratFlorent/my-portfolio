@@ -26,7 +26,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <label for="message-contact">Message</label>
             <textarea name="message" id="message-contact"></textarea>
             <input type="hidden" name="source" />
-            <div data-netlify-recaptcha="true"></div>
+            <div id="recaptcha-quick-static" data-netlify-recaptcha="true"></div>
         </form>
 
         <!-- Formulaire Demande de Devis -->
@@ -67,7 +67,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <label for="message-devis">Message</label>
             <textarea name="message" id="message-devis"></textarea>
             <input type="hidden" name="source" />
-            <div data-netlify-recaptcha="true"></div>
+            <div id="recaptcha-quote-static" data-netlify-recaptcha="true"></div>
         </form>
     </div>
 </BaseLayout>

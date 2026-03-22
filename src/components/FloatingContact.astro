@@ -60,7 +60,7 @@ import Icon from './Icon.astro';
 						<label for="quick-message">Votre message</label>
 						<textarea id="quick-message" name="message" placeholder="Parlez-moi brièvement de votre besoin" required rows="3"></textarea>
 					</div>
-					<div data-netlify-recaptcha="true"></div>
+					<div id="recaptcha-quick" data-netlify-recaptcha="true"></div>
 					<button type="submit" class="submit-btn">
 						Envoyer mon message
 						<Icon icon="paper-plane-tilt" size="1.2em" />
@@ -135,7 +135,7 @@ import Icon from './Icon.astro';
 						<label for="quote-message">Détails de votre demande</label>
 						<textarea id="quote-message" name="message" placeholder="Dites-m'en plus sur votre projet..." required rows="4"></textarea>
 					</div>
-					<div data-netlify-recaptcha="true"></div>
+					<div id="recaptcha-quote" data-netlify-recaptcha="true"></div>
 					<button type="submit" class="submit-btn">
 						Demander mon devis personnalisé
 						<Icon icon="magic-wand" size="1.2em" />
