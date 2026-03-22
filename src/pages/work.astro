@@ -5,18 +5,65 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 import ContactCTA from '../components/ContactCTA.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
+import ReferenceCard from '../components/ReferenceCard.astro';
 import Hero from '../components/Hero.astro';
 import Grid from '../components/Grid.astro';
+import ProjectModal from '../components/ProjectModal.astro';
 
-const projects = (await getCollection('work')).sort(
-	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
-);
+const projects = (await getCollection('work'))
+	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+	.filter((project) => project.data.img.includes('/assets/projects/'));
+
+const extraReferences = [
+	{
+		title: 'HelloRSE',
+		role: 'Développeur Full Stack',
+		period: '2022 - 2023',
+		tags: ['Symfony', 'Sylius', 'DevOps', 'E-commerce'],
+		description: 'Développement et maintenance d’une plateforme e-commerce sous Sylius / Symfony, avec mise en place d’outils DevOps, CI/CD, GitLab, Ansible et participation à un environnement technique orienté performance et déploiement.',
+		image: '/assets/hello-rse.jpg'
+	},
+	{
+		title: 'Famileo',
+		role: 'Développeur Full Stack',
+		period: '2020 - 2022',
+		tags: ['Symfony', 'Sylius', 'International', 'E-commerce'],
+		description: 'Développement et évolution d’une boutique en ligne sous Symfony / Sylius, gestion des comptes utilisateurs et accompagnement du déploiement international dans un contexte produit structuré.',
+		image: '/assets/VIGNETTE_FAMILEO.png'
+	},
+	{
+		title: 'Tediber',
+		role: 'Développeur back-end Symfony / Sylius',
+		period: '2018 - 2020',
+		tags: ['Symfony', 'Sylius', 'ERP', 'Logistique'],
+		description: 'Création et migration d’un ERP logistique sous Symfony vers Sylius, avec développement de solutions e-commerce et gestion des commandes dans un cadre exigeant et orienté métier.',
+		image: '/assets/logo-tediber.jpg'
+	}
+];
+
+const collaborations = [
+	{
+		title: 'Vibressence',
+		activity: 'Sonothérapie',
+		tags: ['Wix', 'CSS', 'JS'],
+		description: 'Refonte de la page d’accueil, amélioration du menu sticky, travail de design custom, optimisation SEO / GEO et accompagnement sur la visibilité et le référencement.',
+		image: '/assets/collab/Vibressence.png'
+	},
+	{
+		title: 'Atelier Arbre Bleu',
+		activity: 'Architecte paysagiste',
+		tags: ['Statamic', 'SEO', 'Refresh UX'],
+		description: 'Refonte ciblée de certaines pages, optimisation SEO, rafraîchissement global et nettoyage du projet pour améliorer la lisibilité et la présentation du site.',
+		image: '/assets/collab/atelier_arbre_bleu.png'
+	}
+];
 ---
 
 <BaseLayout
-	title="Mon parcours | Florent Murat"
-	description="Learn about Florent Murat most recent projects"
+	title="Projets & Réalisations | Florent Murat"
+	description="Découvrez les projets web sur mesure, optimisation SEO et automatisations réalisés par Florent Murat."
 >
+	<ProjectModal id="project-modal" />
 	<div class="stack gap-20">
 		<main class="wrapper stack gap-8">
 			<Hero
@@ -33,7 +80,134 @@ const projects = (await getCollection('work')).sort(
 					))
 				}
 			</Grid>
+
+			<section class="section references">
+				<header class="section-header stack gap-4 lg:align-start">
+					<div class="badge-accent">Expériences salariées</div>
+					<h2 class="lg:text-left">Références complémentaires</h2>
+					<p class="max-w-2xl lg:text-left">
+						Quelques expériences marquantes en environnement produit, e-commerce et développement full stack.
+					</p>
+				</header>
+
+				<div class="gallery">
+					<Grid variant="small">
+						{
+							extraReferences.map((ref) => (
+								<li>
+									<ReferenceCard 
+										title={ref.title}
+										image={ref.image}
+										period={ref.period}
+										role={ref.role}
+										description={ref.description}
+										tags={ref.tags}
+									/>
+								</li>
+							))
+						}
+					</Grid>
+				</div>
+			</section>
+
+			<section class="section collaborations">
+				<header class="section-header stack gap-4 lg:align-start">
+					<div class="badge-accent">Accompagnements</div>
+					<h2 class="lg:text-left">Autres collaborations</h2>
+					<p class="max-w-2xl lg:text-left">
+						Quelques interventions ciblées en refonte, optimisation et accompagnement digital.
+					</p>
+				</header>
+
+				<div class="gallery">
+					<Grid variant="small">
+						{
+							collaborations.map((collab) => (
+								<li>
+									<ReferenceCard 
+										title={collab.title}
+										image={collab.image}
+										period={collab.activity}
+										role=""
+										description={collab.description}
+										tags={collab.tags}
+									/>
+								</li>
+							))
+						}
+					</Grid>
+				</div>
+			</section>
 		</main>
 		<ContactCTA />
 	</div>
 </BaseLayout>
+
+<style>
+	.section {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.section-header {
+		text-align: center;
+		max-width: 50rem;
+		font-size: var(--text-md);
+		color: var(--gray-300);
+		margin-inline: auto;
+	}
+
+	.badge-accent {
+		display: inline-block;
+		padding: 0.4rem 1rem;
+		background: var(--accent-subtle-overlay);
+		color: var(--accent-regular);
+		border-radius: var(--radius-full);
+		font-size: var(--text-sm);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		width: fit-content;
+		margin: 1.5rem auto 0.75rem auto;
+	}
+
+	h2 {
+		font-size: var(--text-2xl);
+		color: var(--gray-0);
+	}
+
+	@media (min-width: 50em) {
+		.section {
+			gap: 3rem;
+		}
+
+		.section-header {
+			margin-inline: 0;
+			text-align: left;
+			align-items: flex-start;
+		}
+
+		.badge-accent {
+			margin: 1.5rem 0 0.75rem 0;
+		}
+
+		h2 {
+			font-size: var(--text-4xl);
+		}
+	}
+
+	.references .gallery {
+		margin-top: 1rem;
+	}
+
+	.references li {
+		list-style: none;
+	}
+
+	@media (min-width: 50em) {
+		.references {
+			margin-top: 4rem;
+		}
+	}
+</style>

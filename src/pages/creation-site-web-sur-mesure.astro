@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+import Icon from '../components/Icon.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+const title = "Création de Site Web sur Mesure & Performance | Light Developer";
+const description = "Besoin d'un site web unique, ultra-rapide et optimisé pour la conversion ? Expert en développement sur mesure pour booster votre business et votre ROI.";
+---
+
+<BaseLayout title={title} description={description}>
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-16">
+			<Hero
+				title="Création de sites web sur mesure"
+				tagline="Concevoir une solution digitale unique, pensée pour vos besoins et vos utilisateurs."
+				align="start"
+			/>
+
+			<section class="content stack gap-8">
+				<h2>Pourquoi choisir un site web sur mesure ?</h2>
+				<p>
+					Dans un monde numérique saturé, posséder un site web qui se démarque est essentiel. Contrairement aux solutions génériques "clés en main" (templates), le développement sur mesure permet une liberté totale de conception et une optimisation technique sans compromis.
+				</p>
+				<p>
+					Chaque ligne de code est écrite pour servir vos objectifs : performance éclair, expérience utilisateur (UX) fluide, et structure optimisée pour le référencement naturel (SEO).
+				</p>
+
+				<div class="grid-benefits">
+					<div class="benefit-card">
+						<Icon icon="rocket-launch" size="2rem" gradient />
+						<h3>Performance & Vitesse</h3>
+						<p>Un code léger et optimisé pour des temps de chargement records, essentiels pour le SEO et la conversion.</p>
+					</div>
+					<div class="benefit-card">
+						<Icon icon="code" size="2rem" gradient />
+						<h3>Évolutivité Totale</h3>
+						<p>Votre site grandit avec votre entreprise. Ajoutez des fonctionnalités spécifiques sans limites techniques.</p>
+					</div>
+					<div class="benefit-card">
+						<Icon icon="strategy" size="2rem" gradient />
+						<h3>Expérience Unique</h3>
+						<p>Un design et une ergonomie pensés exclusivement pour votre cible, renforçant votre image de marque.</p>
+					</div>
+				</div>
+
+				<h2>Mon approche du développement web</h2>
+				<p>
+					En tant que <strong>Light Developer</strong>, j'accompagne mes clients avec une approche humaine et transparente. Nous définissons ensemble les fonctionnalités clés : du site vitrine élégant à l'application métier complexe.
+				</p>
+				<p>
+					J'utilise des technologies modernes et robustes (Astro, WordPress sur mesure, PHP, JavaScript) pour garantir la pérennité de votre investissement digital.
+				</p>
+                
+                <div class="cta-center">
+                    <CallToAction 
+						href="#contact" 
+						class="quote-cta-button"
+						data-tab="quote"
+						data-project-type="creation"
+						data-source="Page Création sur mesure"
+						data-message="Je souhaite obtenir un devis personnalisé pour la création de mon site web."
+					>
+                        Obtenir mon devis personnalisé
+                        <Icon icon="paper-plane-tilt" size="1.2em" />
+                    </CallToAction>
+                </div>
+			</section>
+		</main>
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.content {
+		max-width: 800px;
+		width: 100%;
+		margin: 0 auto;
+		line-height: 1.6;
+		font-size: var(--text-base);
+		color: var(--gray-300);
+	}
+
+	h2 {
+		font-size: var(--text-xl);
+		color: var(--gray-0);
+		margin-top: 2rem;
+	}
+
+	h3 {
+		font-size: var(--text-lg);
+		color: var(--gray-0);
+		margin-bottom: 0.5rem;
+	}
+
+	.grid-benefits {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+		margin-block: 2rem;
+	}
+
+	.benefit-card {
+		background: var(--gray-999_40);
+		border: 1px solid var(--gray-800);
+		border-radius: var(--radius-md);
+		padding: 1.5rem;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+    .cta-center {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+	@media (min-width: 50em) {
+		.content {
+			font-size: var(--text-lg);
+		}
+
+		h2 {
+			font-size: var(--text-3xl);
+		}
+
+		h3 {
+			font-size: var(--text-xl);
+		}
+
+		.grid-benefits {
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 2rem;
+			margin-block: 3rem;
+		}
+
+		.benefit-card {
+			padding: 2rem;
+			gap: 1rem;
+		}
+	}
+</style>

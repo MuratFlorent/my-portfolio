@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<BaseLayout title="Gestion des Cookies | Light Developer" description="Informations sur l'utilisation des cookies sur le site.">
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-8">
+			<Hero title="Politique des Cookies" tagline="Comment nous utilisons les traceurs sur notre site." align="start" />
+			
+			<section class="legal-content stack gap-4">
+				<div class="legal-card">
+					<h3>Qu'est-ce qu'un cookie ?</h3>
+					<p>Un cookie est un petit fichier texte déposé sur votre terminal (ordinateur, tablette ou smartphone) lors de la visite d'un site grâce à votre logiciel de navigation. Il permet au site de mémoriser des informations sur votre visite, comme votre langue préférée et d'autres paramètres, afin de faciliter votre prochaine visite et de rendre le site plus utile pour vous.</p>
+				</div>
+
+				<div class="legal-card">
+					<h3>Type de cookies utilisés</h3>
+					<p>Nous utilisons deux catégories de cookies :</p>
+					<ul>
+						<li><strong>Cookies techniques :</strong> Ils sont indispensables au bon fonctionnement du site et ne peuvent pas être désactivés. Ils ne stockent aucune donnée personnelle.</li>
+						<li><strong>Cookies de mesure d'audience (anonymes) :</strong> Ils nous permettent d'analyser le trafic de manière globale et anonyme (via Netlify Analytics ou outils similaires sans pistage intrusif) afin d'améliorer la performance et l'ergonomie du site.</li>
+					</ul>
+				</div>
+
+				<div class="legal-card">
+					<h3>Vos choix concernant les cookies</h3>
+					<p>Lors de votre première visite, une bannière vous informe de la présence de cookies. Vous pouvez choisir de les accepter ou de les refuser. Les cookies techniques, nécessaires au fonctionnement, sont toujours actifs.</p>
+					<p>Vous pouvez également configurer votre navigateur pour bloquer les cookies :</p>
+					<ul>
+						<li><a href="https://support.google.com/chrome/answer/95647?hl=fr" target="_blank">Google Chrome</a></li>
+						<li><a href="https://support.mozilla.org/fr/kb/activer-desactiver-cookies-preferences" target="_blank">Mozilla Firefox</a></li>
+						<li><a href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac" target="_blank">Safari</a></li>
+						<li><a href="https://support.microsoft.com/fr-fr/windows/supprimer-et-g%C3%A9rer-les-cookies-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank">Microsoft Edge</a></li>
+					</ul>
+				</div>
+
+				<div class="legal-card">
+					<h3>Durée de conservation</h3>
+					<p>Les cookies ont une durée de vie limitée. Votre choix (consentement ou refus) est conservé pour une durée de 6 mois.</p>
+				</div>
+			</section>
+		</main>
+	</div>
+</BaseLayout>
+
+<style>
+	.legal-content {
+		max-width: 800px;
+		margin-inline: auto;
+		line-height: 1.6;
+		color: var(--gray-300);
+	}
+	.legal-card {
+		background: var(--gray-999_40);
+		border: 1px solid var(--gray-800);
+		border-radius: 1rem;
+		padding: 2.5rem;
+		margin-bottom: 2rem;
+	}
+	h3 {
+		color: var(--accent-light);
+		margin-top: 0;
+		margin-bottom: 1.5rem;
+		font-size: var(--text-xl);
+	}
+	ul {
+		margin-bottom: 1rem;
+		padding-left: 1.5rem;
+	}
+	li {
+		margin-bottom: 0.5rem;
+	}
+	a {
+		color: var(--accent-regular);
+		text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+</style>

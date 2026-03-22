@@ -1,16 +1,65 @@
-<div class="pill"><slot /></div>
+---
+interface Props {
+	href?: string;
+	target?: string;
+	ariaLabel?: string;
+	rel?: string;
+	id?: string;
+	class?: string;
+	'data-tab'?: string;
+	'data-project-type'?: string;
+	'data-message'?: string;
+	'data-source'?: string;
+}
+const { href, target, ariaLabel, rel, id, class: className, ...rest } = Astro.props as Props;
+---
+{href ? (
+	<a id={id} class:list={["pill", className]} href={href} target={target} rel={rel} aria-label={ariaLabel} {...rest}><slot /></a>
+) : (
+	<div id={id} class:list={["pill", className]} role="button" {...rest}><slot /></div>
+)}
 
 <style>
 	.pill {
-		display: flex;
-		padding: 0.5rem 1rem;
+		display: inline-flex;
+		align-items: center;
+		padding: 0.4rem 0.85rem;
 		gap: 0.5rem;
 		color: var(--accent-text-over);
-		border: 1px solid var(--accent-regular);
-		background-color: var(--accent-regular);
-		border-radius: 999rem;
-		font-size: var(--text-md);
+		border: 1px solid color-mix(in oklab, var(--accent-regular), transparent 20%);
+		background: linear-gradient(
+			to bottom right,
+			color-mix(in oklab, var(--accent-regular), black 6%),
+			var(--accent-regular)
+		);
+		border-radius: var(--radius-full);
+		font-size: var(--text-sm);
+		font-weight: 550;
 		line-height: 1.35;
 		white-space: nowrap;
+		text-decoration: none !important;
+		box-shadow: var(--shadow-sm);
+		transition: transform var(--theme-transition), box-shadow var(--theme-transition), background-color var(--theme-transition);
+	}
+
+	.pill :global(svg) {
+		flex: 0 0 auto;
+	}
+
+	@media (min-width: 50em) {
+		.pill {
+			padding: 0.5rem 1rem;
+			font-size: var(--text-md);
+		}
+	}
+
+	.pill:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-md), var(--glow-accent);
+	}
+
+	.pill:focus-visible {
+		outline: 2px solid color-mix(in oklab, var(--accent-regular), white 20%);
+		outline-offset: 2px;
 	}
 </style>

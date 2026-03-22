@@ -1,0 +1,436 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+import Icon from '../components/Icon.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+// AFI Data
+import afiContent from '../../docs/lightdeveloper-afi-pack/afi-content.lightdeveloper.json';
+
+const { dedicatedPage, brand, messages } = afiContent;
+---
+
+<BaseLayout
+	title={dedicatedPage.seoTitle}
+	description={dedicatedPage.seoDescription}
+>
+	<div class="stack gap-20 lg:gap-48">
+		<main class="stack gap-20 lg:gap-32">
+			<header class="hero section">
+				<div class="section-shell">
+					<div class="stack gap-8">
+						<Hero
+							title={dedicatedPage.sections.find(s => s.type === 'hero')?.title ?? ''}
+							tagline={dedicatedPage.sections.find(s => s.type === 'hero')?.text ?? ''}
+							align="start"
+						>
+							<div class="brand-info">
+								<img src={`/assets/afi/afi06-logo.gif`} alt={brand.name} class="afi-logo" />
+								<p class="brand-text">{messages.positioningLong}</p>
+							</div>
+						</Hero>
+					</div>
+					<div class="hero-image-container">
+						<img
+							alt="Accompagnement formation AFI"
+							width="800"
+							height="600"
+							src={`/assets/afi/afi-home-hero.png`}
+							class="hero-img"
+						/>
+					</div>
+				</div>
+			</header>
+
+			<section class="section funding-highlights">
+				<div class="section-shell">
+					<div class="funding-grid">
+						<div class="funding-card">
+							<div class="icon-wrapper">
+								<Icon icon="strategy" size="2rem" />
+							</div>
+							<div class="stack gap-2">
+								<h4>CPF & OPCO</h4>
+								<p>Prise en charge possible selon votre profil et votre situation professionnelle.</p>
+							</div>
+						</div>
+						<div class="funding-card highlight">
+							<div class="icon-wrapper">
+								<Icon icon="rocket-launch" size="2rem" />
+							</div>
+							<div class="stack gap-2">
+								<h4>Projet & Formation</h4>
+								<p>La formation sert directement à faire avancer votre projet concret en temps réel.</p>
+							</div>
+						</div>
+						<div class="funding-card">
+							<div class="icon-wrapper">
+								<Icon icon="chat-circle-dots" size="2rem" />
+							</div>
+							<div class="stack gap-2">
+								<h4>Accompagnement</h4>
+								<p>Aide au montage du dossier et orientation vers le bon dispositif de financement.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section trainings-section">
+				<div class="section-shell stack gap-12 lg:gap-20">
+					<header class="section-header stack gap-4 lg:align-start">
+						<div class="badge-accent mx-auto lg:mx-0">Catalogue</div>
+						<h2 class="lg:text-left">Formations certifiées</h2>
+						<p class="section-intro lg:text-left">Des parcours concrets pour maîtriser vos outils et gagner en autonomie.</p>
+					</header>
+
+					<div class="trainings-grid">
+						{dedicatedPage.sections.find(s => s.type === 'trainings')?.items?.map((item) => (
+							<div class="training-card">
+								<div class="training-card-content stack gap-6">
+									<div class="card-header stack gap-4">
+										<Icon icon="list" size="2.5rem" color="var(--accent-regular)" gradient />
+										<h3>{item.title}</h3>
+									</div>
+									<p>{item.description}</p>
+									<div class="card-cta">
+										<a href={item.url} class="btn-text">
+											Voir le programme complet
+											<Icon icon="arrow-right" size="1.2em" />
+										</a>
+									</div>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<section class="section preform-section">
+				<div class="section-shell">
+					<div class="preform-container stack gap-10 lg:flex-row lg:items-center">
+						<div class="preform-content stack gap-6 lg:flex-1">
+							<h2 class="lg:text-left">{dedicatedPage.sections.find(s => s.type === 'preform')?.title}</h2>
+							<div class="stack gap-4">
+								<p class="max-w-2xl mx-auto lg:mx-0 lg:text-left">
+									{dedicatedPage.sections.find(s => s.type === 'preform')?.text}
+								</p>
+								<p class="note lg:text-left">
+									{messages.fundingNote}
+								</p>
+							</div>
+						</div>
+						<div class="cta-wrapper">
+							<CallToAction 
+								href="#contact" 
+								class="quote-cta-button"
+								data-tab="quote"
+								data-project-type="formation"
+								data-source="Page Formation"
+								data-message="Je souhaite obtenir des informations sur les formations et les possibilités de financement."
+							>
+								{dedicatedPage.sections.find(s => s.type === 'preform')?.ctaLabel}
+								<Icon icon="paper-plane-tilt" size="1.2em" />
+							</CallToAction>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<ContactCTA id="contact" />
+	</div>
+</BaseLayout>
+
+<style>
+	.hero .section-shell {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 3rem;
+		text-align: center;
+	}
+
+	.brand-info {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		align-items: center;
+		margin-top: 2rem;
+		padding: 1.5rem;
+		background: var(--gray-999_40);
+		border-radius: var(--radius-md);
+		border: 1px solid var(--gray-800);
+		backdrop-filter: blur(10px);
+	}
+
+	.brand-text {
+		font-size: var(--text-md);
+		line-height: 1.6;
+		color: var(--gray-200);
+		max-width: 50ch;
+	}
+
+	.afi-logo {
+		height: 50px;
+		width: auto;
+		filter: grayscale(0.2);
+		transition: filter var(--theme-transition);
+	}
+
+	.afi-logo:hover {
+		filter: grayscale(0);
+	}
+
+	.hero-image-container {
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		box-shadow: var(--shadow-xl);
+		border: 1px solid var(--gray-800);
+	}
+
+	.hero-img {
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+		display: block;
+	}
+
+	/* Funding Highlights Section */
+	.funding-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+
+	.funding-card {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		padding: 2.5rem;
+		background: var(--gray-999);
+		border: 1px solid var(--gray-800);
+		border-radius: var(--radius-md);
+		transition: all var(--theme-transition-slow);
+	}
+
+	.funding-card.highlight {
+		background: var(--gradient-subtle);
+		border-color: var(--accent-regular);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.funding-card .icon-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 3.5rem;
+		height: 3.5rem;
+		background: var(--gray-900);
+		border-radius: 1rem;
+		color: var(--accent-regular);
+	}
+
+	.funding-card.highlight .icon-wrapper {
+		background: var(--accent-regular);
+		color: white;
+	}
+
+	.funding-card h4 {
+		font-size: var(--text-xl);
+		color: var(--gray-0);
+	}
+
+	.funding-card p {
+		font-size: var(--text-sm);
+		color: var(--gray-300);
+		line-height: 1.6;
+	}
+
+	/* Section Header Typography */
+	.section-header h2 {
+		font-size: var(--text-4xl);
+		color: var(--gray-0);
+		letter-spacing: -0.02em;
+	}
+
+	.section-intro {
+		font-size: var(--text-lg);
+		color: var(--gray-300);
+		max-width: 50ch;
+	}
+
+	@media (min-width: 55em) {
+		.hero .section-shell {
+			display: grid;
+			grid-template-columns: 1.1fr 0.9fr;
+			gap: 5rem;
+			text-align: left;
+			align-items: start;
+		}
+
+		.brand-info {
+			align-items: flex-start;
+			padding: 2rem;
+			margin-top: 2.5rem;
+		}
+
+		.funding-grid {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 2rem;
+		}
+
+		.lg\:flex-row {
+			flex-direction: row;
+		}
+
+		.lg\:items-center {
+			align-items: center;
+		}
+
+		.lg\:flex-1 {
+			flex: 1;
+		}
+
+		.lg\:align-start {
+			align-items: flex-start;
+			text-align: left;
+		}
+
+		.lg\:text-left {
+			text-align: left;
+		}
+
+		.lg\:mx-0 {
+			margin-inline: 0;
+		}
+	}
+
+	/* Trainings Grid */
+	.trainings-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2.5rem;
+	}
+
+	@media (min-width: 60em) {
+		.trainings-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	.training-card {
+		padding: 2rem;
+		background: var(--gray-999);
+		border: 1px solid var(--gray-800);
+		border-radius: var(--radius-lg);
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		transition: all var(--theme-transition-slow);
+		position: relative;
+		overflow: hidden;
+	}
+
+	@media (min-width: 50em) {
+		.training-card {
+			padding: 3.5rem;
+		}
+	}
+
+	.training-card::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 4px;
+		background: var(--gradient-accent);
+		opacity: 0;
+		transition: opacity var(--theme-transition);
+	}
+
+	.training-card:hover {
+		transform: translateY(-10px);
+		border-color: var(--accent-regular);
+		box-shadow: var(--shadow-lg);
+	}
+
+	.training-card:hover::before {
+		opacity: 1;
+	}
+
+	.training-card h3 {
+		font-size: var(--text-2xl);
+		color: var(--gray-0);
+		line-height: 1.2;
+	}
+
+	.training-card p {
+		color: var(--gray-300);
+		line-height: 1.7;
+	}
+
+	.btn-text {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--accent-regular);
+		font-weight: 700;
+		text-decoration: none;
+		font-size: var(--text-md);
+		transition: gap 0.2s ease;
+	}
+
+	.btn-text:hover {
+		gap: 0.75rem;
+		text-decoration: underline;
+	}
+
+	/* Preform Section */
+	.preform-container {
+		padding: 1.5rem;
+		background: var(--gray-999_40);
+		backdrop-filter: blur(15px);
+		border-radius: var(--radius-lg);
+		border: 1px solid var(--gray-800);
+		width: 100%;
+	}
+
+	@media (min-width: 50em) {
+		.preform-container {
+			padding: 5rem;
+		}
+	}
+
+	.note {
+		font-style: italic;
+		font-size: var(--text-sm);
+		color: var(--gray-400);
+		border-left: 2px solid var(--accent-regular);
+		padding-left: 1rem;
+	}
+
+	.badge-accent {
+		display: inline-block;
+		padding: 0.4rem 1.25rem;
+		background: var(--accent-subtle-overlay);
+		color: var(--accent-regular);
+		border-radius: var(--radius-full);
+		font-size: var(--text-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		margin-top: 1.5rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.mx-auto {
+		margin-inline: auto;
+	}
+
+	.max-w-2xl {
+		max-width: 65ch;
+	}
+</style>

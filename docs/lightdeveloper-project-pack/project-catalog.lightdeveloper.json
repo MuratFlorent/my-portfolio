@@ -1,0 +1,378 @@
+{
+  "a3plumes": {
+    "folder": "A3plumes",
+    "slug": "a3plumes",
+    "clientName": "A3Plumes",
+    "status": "in-progress",
+    "url": "",
+    "type": "Création from scratch",
+    "headline": "Plateforme e-learning sur mesure avec parcours progressifs, dashboard apprenant et logique de badges.",
+    "summary": "Projet en cours de finalisation pour une cliente avec front sur mesure, UX/UI personnalisée, paiement en ligne et module e-learning propriétaire.",
+    "problem": "Créer une plateforme propriétaire plus riche qu’un LMS générique, avec suivi par étapes, déblocages progressifs, dashboard personnel et expérience apprenante différenciante.",
+    "solution": "Conception d’un thème front sur mesure et d’un module e-learning custom WordPress avec dashboard apprenant, gestion d’étapes, badges, prise de notes, administration dynamique et espace personnel optimisé.",
+    "results": [
+      "Parcours pédagogique progressif et motivant",
+      "Dashboard apprenant et suivi d’avancement personnalisés",
+      "Base prête pour paiement en ligne et montée en charge"
+    ],
+    "services": [
+      "Développement sur mesure",
+      "UX/UI sur mesure",
+      "Module e-learning custom",
+      "Dashboard apprenant",
+      "Paiement en ligne"
+    ],
+    "stack": [
+      "WordPress custom",
+      "PHP",
+      "JavaScript",
+      "Dashboard admin",
+      "UX/UI sur mesure"
+    ],
+    "seoFocus": [
+      "plateforme e-learning sur mesure",
+      "module e-learning WordPress custom",
+      "dashboard apprenant",
+      "parcours de formation en ligne"
+    ],
+    "geoFocus": [
+      "France",
+      "remote"
+    ],
+    "hero": "slide_home_desing.png",
+    "homeCard": "module_maison_elearning_dashboard_custom_personnal.png",
+    "gallery": [
+      "slide_home_desing.png",
+      "ux_ui_sur_mesure_effet_de_fond.png",
+      "module_elearning_plugin_maison.png",
+      "module_elearning_etape_modale.png",
+      "module_maison_elearning_dashboard_custom_personnal.png",
+      "module_elearning_progession_account_perso.png",
+      "module_elearning_dynamique_prise_de note.png",
+      "module_elearning_admin_dynamic_creation.png",
+      "suivi_apprenant_admin_ekearning.png",
+      "module_elearning_badge_unlock.png",
+      "ux_ui_sur_mesure_footer_custom.png"
+    ]
+  },
+  "choreame": {
+    "folder": "Choreame",
+    "slug": "choreame",
+    "clientName": "Choréâme",
+    "status": "live",
+    "url": "https://choreame.fr/",
+    "type": "Refonte complète + plugin métier",
+    "headline": "Refonte du site et système de réservation multi-cours avec gestion des paiements, abonnés et statistiques.",
+    "summary": "Refonte complète du site de l’école de danse avec thème custom, UX/UI repensée, plugin de réservation de cours sur mesure et intégration Stripe/WooCommerce.",
+    "problem": "Fluidifier la réservation de cours et d’événements, gérer plusieurs formules par semaine, fiabiliser les paiements et donner de la visibilité à l’administration.",
+    "solution": "Développement d’un thème custom responsive et d’un module propriétaire de réservation multi-cours avec choix de formule, prépaiement, fiches élèves, statistiques, suivi administratif et connexions WooCommerce/Stripe.",
+    "results": [
+      "Parcours de réservation simplifié pour les élèves",
+      "Gestion administrative centralisée des abonnés et paiements",
+      "Base évolutive pour statistiques, relances et événements"
+    ],
+    "services": [
+      "Refonte site web",
+      "Plugin réservation sur mesure",
+      "WooCommerce",
+      "Stripe",
+      "Admin métier"
+    ],
+    "stack": [
+      "WordPress custom",
+      "WooCommerce",
+      "Stripe",
+      "PHP",
+      "JavaScript",
+      "UI/UX responsive"
+    ],
+    "seoFocus": [
+      "réservation de cours en ligne",
+      "plugin réservation sur mesure",
+      "site école de danse",
+      "paiement en ligne Stripe WooCommerce"
+    ],
+    "geoFocus": [
+      "France",
+      "Vence"
+    ],
+    "hero": "home_slider_custom_theme.png",
+    "homeCard": "plugin_custom_click_reservation_en_ligne.png",
+    "gallery": [
+      "home_slider_custom_theme.png",
+      "reservation_en_lign.png",
+      "plugin_custom_click_reservation_en_ligne.png",
+      "plugin_resa_custom_choix_formule.png",
+      "prepaiement_reservation_cours_en_ligne.png",
+      "reservation_listing_plugin_custom.png",
+      "page_stat_plugin_custom.png",
+      "fiche_eleve_custom_plugin_resa_cours.png"
+    ]
+  },
+  "ct91": {
+    "folder": "CT91",
+    "slug": "ct91",
+    "clientName": "Comité Territorial d’Escalade de l’Essonne",
+    "status": "live",
+    "url": "https://ct91.fr/",
+    "type": "Refonte complète + espace club custom",
+    "headline": "Refonte du site du comité avec réservation d’événements, espace club, documents partagés et billetterie.",
+    "summary": "Refonte complète du site du comité territorial avec thème custom, UX/UI modernisée, outils de réservation, cartographie des clubs et espace membre métier.",
+    "problem": "Moderniser la présence du comité, centraliser les inscriptions, valoriser les clubs/structures, et créer un espace club fonctionnel pour les échanges et documents officiels.",
+    "solution": "Mise en place d’un thème responsive sur mesure, d’un planning de réservation pour formations/concours, de cartes dynamiques des clubs, d’un espace club type admin LTE avec partage documentaire, billetterie et analytics SEO poussés.",
+    "results": [
+      "Site plus clair pour les clubs, licenciés et organisateurs",
+      "Réservations et événements mieux structurés",
+      "Espace documentaire et échanges adaptés aux besoins du comité"
+    ],
+    "services": [
+      "Refonte site web",
+      "Espace membre sur mesure",
+      "Réservation événementielle",
+      "Cartes dynamiques",
+      "Billetterie"
+    ],
+    "stack": [
+      "WordPress custom",
+      "PHP",
+      "MySQL",
+      "JavaScript/jQuery",
+      "AdminLTE",
+      "Analytics SEO"
+    ],
+    "seoFocus": [
+      "site comité territorial escalade",
+      "espace club sur mesure",
+      "réservation formation concours",
+      "billetterie événementielle"
+    ],
+    "geoFocus": [
+      "Essonne",
+      "Île-de-France",
+      "France"
+    ],
+    "hero": "slide_home.png",
+    "homeCard": "custom_espace_membre.png",
+    "gallery": [
+      "slide_home.png",
+      "carte_clubs_dynamique.png",
+      "info_dynamique_club_bloc.png",
+      "reservation_planning_evenement.png",
+      "reservation_evenement_modal_ux.png",
+      "custom_espace_membre.png",
+      "admin_panel_custom_sur_mesure_espace_membre.png",
+      "partage_espace_membre_automatique_document.png",
+      "rapport_document_partage_espace_membrepourcommite.png",
+      "custom_admin_doc_online.png",
+      "Capture d’écran du 2026-03-20 22-24-55.png"
+    ]
+  },
+  "la-moma-vence": {
+    "folder": "La Moma",
+    "slug": "la-moma-vence",
+    "clientName": "La Moma Vence",
+    "status": "live",
+    "url": "https://lamomavence.com/",
+    "type": "Refonte + réservation en ligne",
+    "headline": "Refonte du site avec thème custom, réservation en ligne, calendrier et paiement intégré.",
+    "summary": "Refonte complète du site avec amélioration de l’UX/UI, intégration de la réservation en ligne et simplification du parcours de paiement.",
+    "problem": "Moderniser l’image du lieu, rendre la réservation plus fluide et faciliter le paiement en ligne depuis une expérience plus premium.",
+    "solution": "Création d’un thème custom responsive, amélioration de la page d’accueil, intégration d’un module de réservation/calendrier et de paiements en ligne via WooCommerce/Stripe.",
+    "results": [
+      "Expérience de réservation plus fluide",
+      "Image plus premium et cohérente",
+      "Base SEO optimisée pour la visibilité locale"
+    ],
+    "services": [
+      "Refonte site web",
+      "Réservation en ligne",
+      "Paiement en ligne",
+      "UX/UI premium",
+      "SEO"
+    ],
+    "stack": [
+      "WordPress custom",
+      "WooCommerce",
+      "Stripe",
+      "Calendrier de réservation",
+      "SEO"
+    ],
+    "seoFocus": [
+      "site restaurant/lieu événementiel",
+      "réservation en ligne",
+      "paiement en ligne",
+      "refonte UX/UI"
+    ],
+    "geoFocus": [
+      "Vence",
+      "Alpes-Maritimes",
+      "France"
+    ],
+    "hero": "home_slide.png",
+    "homeCard": "resa_en_ligne_plugin_wp.png",
+    "gallery": [
+      "home_slide.png",
+      "accueil_page.png",
+      "resa_en_ligne_plugin_wp.png",
+      "paiement_resa_en_ligne.png"
+    ]
+  },
+  "la-suite-beaute": {
+    "folder": "La suite Beauté",
+    "slug": "la-suite-beaute",
+    "clientName": "La Suite Beauté",
+    "status": "live",
+    "url": "https://lasuitebeautebienetre.com/",
+    "type": "Refonte + réservation et cartes cadeaux",
+    "headline": "Refonte du site avec UX/UI plus premium, réservation et passerelle vers Kalendes.",
+    "summary": "Refonte complète avec thème custom, meilleure mise en valeur des services, réservation / cartes cadeaux et liaison avec la solution métier Kalendes.",
+    "problem": "Rendre le site plus séduisant, plus simple à parcourir et mieux relié à l’outil métier de réservation déjà utilisé.",
+    "solution": "Création d’un thème responsive sur mesure, optimisation de l’expérience utilisateur, intégration des parcours de réservation et redirections/API vers Kalendes pour la prise de rendez-vous et les cartes cadeaux.",
+    "results": [
+      "Image plus premium et plus claire",
+      "Réservation mieux intégrée",
+      "SEO et visibilité locale renforcés"
+    ],
+    "services": [
+      "Refonte site web",
+      "UX/UI sur mesure",
+      "Réservation en ligne",
+      "Cartes cadeaux",
+      "Connexion outil métier"
+    ],
+    "stack": [
+      "WordPress custom",
+      "API / redirection Kalendes",
+      "UX/UI responsive",
+      "SEO"
+    ],
+    "seoFocus": [
+      "institut beauté site web",
+      "réservation institut de beauté",
+      "carte cadeau en ligne",
+      "connexion Kalendes"
+    ],
+    "geoFocus": [
+      "France"
+    ],
+    "hero": "slide_home_them_custom.png",
+    "homeCard": "resa_mod_sur_mesure_custom.png",
+    "gallery": [
+      "slide_home_them_custom.png",
+      "ux_ui_experience_custom_theme.png",
+      "ux_ui_sur_mesure_custom.png",
+      "resa_mod_sur_mesure_custom.png",
+      "news_presentation_custom.png",
+      "api_call_redirect_reservation_kalendes.png"
+    ]
+  },
+  "spiruline-daqui": {
+    "folder": "Spiruline d'Aqui",
+    "slug": "spiruline-daqui",
+    "clientName": "Spiruline d'Aqui",
+    "status": "live",
+    "url": "https://spirulinedaqui.fr/",
+    "type": "Reprise après incident + refonte e-commerce + plugins métier",
+    "headline": "Sauvetage, refonte complète et développement de plugins premium sur mesure pour shipping, avis et parcours d’achat.",
+    "summary": "Reprise du site après hack, refonte complète responsive avec thème custom, UX panier optimisée, plugin shipping propriétaire, gestion transporteurs, avis premium et automatisations client/admin.",
+    "problem": "Sécuriser et reconstruire l’existant, améliorer l’expérience d’achat, gérer des règles transport complexes et proposer un e-commerce plus premium et plus autonome.",
+    "solution": "Refonte complète avec thème custom, personnalisation du front et du panier, plugin maison de calcul shipping dynamique, choix transporteur/point relais, intégrations WooCommerce/Stripe, gestion client/admin et module premium d’avis.",
+    "results": [
+      "Parcours e-commerce plus fluide et rassurant",
+      "Gestion transport/shipping sur mesure",
+      "Base SEO/GEO renforcée après reprise du site"
+    ],
+    "services": [
+      "Refonte e-commerce",
+      "Plugin shipping sur mesure",
+      "Mondial Relay / transporteurs",
+      "Avis premium custom",
+      "Automatisation admin/client"
+    ],
+    "stack": [
+      "WordPress custom",
+      "WooCommerce",
+      "Stripe",
+      "Plugin premium maison",
+      "Shipping dynamique",
+      "SEO/GEO"
+    ],
+    "seoFocus": [
+      "e-commerce sur mesure",
+      "plugin shipping WordPress custom",
+      "Mondial Relay carte interactive",
+      "site spiruline optimisé SEO"
+    ],
+    "geoFocus": [
+      "France"
+    ],
+    "hero": "home_sur_mesure_theme.png",
+    "homeCard": "custom_transporteur_choix_point_relay.png",
+    "gallery": [
+      "home_sur_mesure_theme.png",
+      "mise_en_avant_premium.png",
+      "custom_front_plugin.png",
+      "add_to_cart_custom_premium.png",
+      "footer_custom_carte_new_ux.png",
+      "custom_transporteur_choix_point_relay.png",
+      "custom_plugin_gestion_commande_transporteur.png",
+      "csutom_plugin_maison_gestion_commande.png",
+      "autonome_gestion_custom_client.png",
+      "custom_plugin_premium_avis.png",
+      "custom_shipping_parameter_sur_mesure.png",
+      "custom_plugin_calcul_automatisation_shipping.png",
+      "shipping_custom_plugin_compatible_multi_deliver.png",
+      "custom_plugin_automatic_admin_gestion_client.png"
+    ]
+  },
+  "universfascia": {
+    "folder": "univerfascia",
+    "slug": "universfascia",
+    "clientName": "UniversFascia",
+    "status": "in-progress",
+    "url": "",
+    "type": "Refonte complète orientée autonomie",
+    "headline": "Refonte avec thème custom, UX/UI optimisée, design sur mesure et logique d’autonomie client.",
+    "summary": "Refonte complète du site avec thème custom, optimisation UX/UI, éléments de design personnalisés et volonté forte de laisser au client une vraie autonomie de gestion.",
+    "problem": "Moderniser la présence en ligne tout en conservant une interface facile à administrer et une identité visuelle plus qualitative.",
+    "solution": "Création d’un thème responsive sur mesure, amélioration des parcours et du front, personnalisation de blocs clés comme le footer et certaines sections de contact / home, avec travail SEO/GEO en cours.",
+    "results": [
+      "Site plus lisible et plus cohérent visuellement",
+      "Front plus qualitatif et plus autonome à gérer",
+      "Base SEO/GEO prête à être poussée"
+    ],
+    "services": [
+      "Refonte site web",
+      "UX/UI sur mesure",
+      "Design front custom",
+      "Autonomie client",
+      "SEO/GEO"
+    ],
+    "stack": [
+      "WordPress custom",
+      "UI responsive",
+      "SEO/GEO",
+      "Front sur mesure"
+    ],
+    "seoFocus": [
+      "refonte site bien-être",
+      "thème custom responsive",
+      "site autonome à gérer",
+      "SEO GEO en cours"
+    ],
+    "geoFocus": [
+      "France"
+    ],
+    "hero": "home_slide_them_custom.png",
+    "homeCard": "custom_contact_page.png",
+    "gallery": [
+      "home_slide_them_custom.png",
+      "ux_ui_home_slide.png",
+      "custom_ux_ui_special_theme_front.png",
+      "uxu_ui_sur_mesure_custom_them.png",
+      "specil_ux_ui_experience_custom_them.png",
+      "custom_contact_page.png",
+      "custom_footer_special_design_sur_mesure.png"
+    ]
+  }
+}

@@ -5,68 +5,131 @@ const currentYear = new Date().getFullYear();
 
 <footer>
 	<div class="group">
-		<p>
-			Designed & Developed in Portland with <a href="https://astro.build/">Astro</a>
-			<Icon icon="rocket-launch" size="1.2em" />
+		<p>&copy; {currentYear} Florent Murat — Light Developer</p>
+		<p class="emails">
+			<a href="mailto:murat.light.developer@gmail.com?cc=julienblondin.lightdeveloper@gmail.com" id="main-email-link">murat.light.developer@gmail.com</a>
+			<span class="sep">|</span>
+			<a href="mailto:julienblondin.lightdeveloper@gmail.com">Relation clientèle : julienblondin.lightdeveloper@gmail.com</a>
 		</p>
-		<p>&copy; {currentYear} Florent Murat</p>
 	</div>
-	<p class="socials">
-		<a href="https://github.com/MuratFlorent"> GitHub</a>
-		<a href="https://www.linkedin.com/in/florent-murat-a1962810b/"> Linkedin</a>
-	</p>
+	<div class="footer-links stack gap-4">
+		<p class="socials">
+			<a href="https://github.com/MuratFlorent"> GitHub</a>
+			<a href="https://www.linkedin.com/in/florent-murat-a1962810b/"> Linkedin</a>
+		</p>
+		<p class="legal">
+			<a href="/mentions-legales">Mentions légales</a>
+			<a href="/politique-confidentialite">Confidentialité & RGPD</a>
+			<a href="/cgv">CGV</a>
+			<a href="/cookies">Cookies</a>
+		</p>
+	</div>
 </footer>
+
+<script>
+	// Force l'ouverture du mailto avec CC au clic sur l'email principal
+	const emailLink = document.getElementById('main-email-link');
+	if (emailLink) {
+		emailLink.addEventListener('click', (e) => {
+			// Sur certains navigateurs mobiles, le mailto simple peut ne pas prendre le CC correctement
+			// En réassignant window.location, on force l'interprétation par le client mail par défaut
+			e.preventDefault();
+			const href = emailLink.getAttribute('href');
+			if (href) {
+				window.location.href = href;
+			}
+		});
+	}
+</script>
 <style>
 	footer {
 		display: flex;
 		flex-direction: column;
 		gap: 3rem;
 		margin-top: auto;
-		padding: 3rem 2rem 3rem;
+		padding: 4rem 2rem;
 		text-align: center;
 		color: var(--gray-400);
 		font-size: var(--text-sm);
+		border-top: 1px solid var(--gray-800);
+		background: var(--gray-999_40);
+		backdrop-filter: blur(10px);
 	}
 
 	footer a {
 		color: var(--gray-400);
-		text-decoration: 1px solid underline transparent;
-		text-underline-offset: 0.25em;
-		transition: text-decoration-color var(--theme-transition);
+		text-decoration: none;
+		transition: color var(--theme-transition);
 	}
 
 	footer a:hover,
 	footer a:focus {
-		text-decoration-color: currentColor;
+		color: var(--accent-regular);
 	}
 
 	.group {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		gap: 1rem;
+		align-items: center;
 	}
 
-	.socials {
+	.emails {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		font-size: var(--text-xs);
+	}
+
+	.sep {
+		display: none;
+		color: var(--gray-800);
+	}
+
+	.footer-links {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.socials, .legal {
 		display: flex;
 		justify-content: center;
-		gap: 1rem;
+		gap: 1.5rem;
 		flex-wrap: wrap;
+	}
+
+	.legal {
+		font-size: var(--text-xs);
+		opacity: 0.8;
 	}
 
 	@media (min-width: 50em) {
 		footer {
 			flex-direction: row;
 			justify-content: space-between;
-			padding: 2.5rem 5rem;
+			padding: 4rem 5rem;
+			text-align: left;
 		}
 
 		.group {
-			flex-direction: row;
-			gap: 1rem;
-			flex-wrap: wrap;
+			align-items: flex-start;
 		}
 
-		.socials {
+		.emails {
+			flex-direction: row;
+			gap: 1rem;
+		}
+
+		.sep {
+			display: inline;
+		}
+
+		.footer-links {
+			align-items: flex-end;
+		}
+
+		.socials, .legal {
 			justify-content: flex-end;
 		}
 	}

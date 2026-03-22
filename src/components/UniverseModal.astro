@@ -1,0 +1,568 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+	id: string;
+}
+
+const { id } = Astro.props;
+
+const universeItems = [
+	{ 
+		id: 'bienveillance', 
+		label: 'Bienveillance', 
+		icon: 'heart', 
+		category: 'Philosophie',
+		description: 'Une approche humaine centrée sur l’écoute et l’empathie. Chaque projet est une aventure humaine avant d’être une ligne de code.',
+		details: 'Je crois fermement que la réussite d’un projet digital repose sur la qualité de la communication et la confiance mutuelle. Ma démarche est guidée par le respect de vos enjeux et une volonté sincère de vous voir réussir.'
+	},
+	{ 
+		id: 'technique', 
+		label: 'Rigueur technique', 
+		icon: 'code', 
+		category: 'Expertise',
+		description: 'Un code propre, robuste et performant. L’excellence technique au service de la pérennité de votre site.',
+		details: 'Le "Light Developer" cherche la solution la plus élégante et la plus légère. J’utilise les meilleurs standards du web (stack technique moderne) pour garantir que votre outil reste évolutif et rapide.'
+	},
+	{ 
+		id: 'clarté', 
+		label: 'Clarté & pédagogie', 
+		icon: 'sun', 
+		category: 'Philosophie',
+		description: 'Apporter de la lumière et de la transparence sur chaque projet. Démystifier la technique pour vous.',
+		details: 'Le web peut paraître complexe. Mon rôle est de rendre tout cela limpide pour vous. Pas de jargon inutile, juste des explications claires et une visibilité totale sur l’avancement de votre solution.'
+	},
+	{ 
+		id: 'transmission', 
+		label: 'Transmission', 
+		icon: 'strategy', 
+		category: 'Service',
+		description: 'Partager le savoir pour favoriser l’autonomie. Apprendre à pêcher plutôt que de donner un poisson.',
+		details: 'Ma casquette de formateur est indissociable de mon travail de développeur. Je vous accompagne pour que vous soyez maître de vos outils.'
+	},
+	{ 
+		id: 'outillage', 
+		label: 'Technologies utilisées', 
+		icon: 'terminal', 
+		category: 'Technique',
+		description: 'Maîtrise des outils modernes pour une efficacité maximale. Choisir le bon outil pour le bon besoin.',
+		details: 'De WordPress à Astro, de Git à Docker, je sélectionne avec soin l’écosystème technique le plus adapté à la taille et aux ambitions de votre projet (stack technique sur mesure).'
+	},
+	{ 
+		id: 'cloud', 
+		label: 'Cloud & Infrastructure', 
+		icon: 'cloud', 
+		category: 'Technique',
+		description: 'Infrastructure solide et déploiements automatisés. La sérénité d’un hébergement maîtrisé.',
+		details: 'La mise en ligne n’est pas une fin en soi. Je mets en place des environnements robustes (Cloud & DevOps) pour que votre site soit toujours performant et accessible.'
+	},
+	{ 
+		id: 'conscience', 
+		label: 'Conscience', 
+		icon: 'eye', 
+		category: 'Philosophie',
+		description: 'Une présence attentive à chaque étape du développement. Développer avec intention.',
+		details: 'Chaque choix technique a un impact (écologique, UX, accessibilité). Je travaille avec une conscience aiguë de ces responsabilités.'
+	},
+	{ 
+		id: 'automatisation', 
+		label: 'Gain de temps', 
+		icon: 'magic-wand', 
+		category: 'Expertise',
+		description: 'Optimiser vos processus pour libérer du temps créatif. Faire travailler les machines pour l’humain.',
+		details: 'Si une tâche est répétitive, elle peut être automatisée (automatisation et intégrations). Je crée des ponts entre vos outils pour vous faire gagner des heures de travail chaque semaine.'
+	}
+];
+---
+
+<dialog id={id} class="universe-modal">
+	<div class="modal-container">
+		<div class="modal-inner">
+			<aside class="modal-sidebar">
+				<div class="sidebar-header stack gap-4">
+					<div class="logo-placeholder">
+						<Icon icon="sun" size="2rem" gradient />
+					</div>
+					<div class="stack gap-1">
+						<h2>Mon Univers</h2>
+						<p class="subtitle">Light Developer</p>
+					</div>
+				</div>
+
+				<nav class="universe-nav">
+					{universeItems.map(item => (
+						<button class="nav-item" data-id={item.id}>
+							<Icon icon={item.icon as any} size="1.2em" />
+							<span>{item.label}</span>
+						</button>
+					))}
+				</nav>
+
+				<button class="close-modal-btn" data-close-modal>
+					<Icon icon="arrow-left" size="1.2em" />
+					<span>Retour au site</span>
+				</button>
+			</aside>
+
+			<main class="modal-main-content">
+				<div class="content-welcome active" id="welcome-screen">
+					<div class="stack gap-6 centered">
+						<div class="glow-icon">
+							<Icon icon="sun" size="4rem" gradient />
+						</div>
+						<h3 class="text-4xl">Explorez ma vision</h3>
+						<p class="max-w-md">Sélectionnez un pilier dans le menu pour découvrir ma philosophie, mon expertise et ma manière de vous accompagner.</p>
+						<div class="hint">
+							<Icon icon="arrow-right" size="1em" /> Utilisez le menu à gauche
+						</div>
+					</div>
+				</div>
+
+				{universeItems.map(item => (
+					<div class="content-detail" id={`detail-${item.id}`}>
+						<div class="detail-header stack gap-4">
+							<span class="category-tag">{item.category}</span>
+							<div class="title-with-icon">
+								<div class="icon-circle">
+									<Icon icon={item.icon as any} size="2rem" gradient />
+								</div>
+								<h3>{item.label}</h3>
+							</div>
+						</div>
+
+						<div class="detail-body stack gap-8">
+							<p class="description-large">{item.description}</p>
+							<div class="details-text">
+								{item.details}
+							</div>
+							
+							<div class="quote-box">
+								<Icon icon="chat-circle-dots" size="1.5rem" color="var(--accent-regular)" />
+								<p>C'est l'un des piliers qui définit mon approche de Light Developer au quotidien.</p>
+							</div>
+						</div>
+					</div>
+				))}
+			</main>
+		</div>
+	</div>
+</dialog>
+
+<script>
+	const modals = document.querySelectorAll('.universe-modal');
+
+	modals.forEach(modal => {
+		const navItems = modal.querySelectorAll('.nav-item');
+		const contents = modal.querySelectorAll('.content-detail');
+		const welcomeScreen = modal.querySelector('#welcome-screen');
+		const closeBtn = modal.querySelector('[data-close-modal]');
+
+		// Force closed on load
+		if ((modal as HTMLDialogElement).open) (modal as HTMLDialogElement).close();
+
+		navItems.forEach(item => {
+			item.addEventListener('click', () => {
+				const id = (item as HTMLElement).dataset.id;
+				
+				// Update active nav
+				navItems.forEach(i => i.classList.remove('active'));
+				item.classList.add('active');
+
+				// Show content
+				welcomeScreen?.classList.remove('active');
+				contents.forEach(content => {
+					content.classList.remove('active');
+					if (content.id === `detail-${id}`) {
+						content.classList.add('active');
+					}
+				});
+			});
+		});
+
+		closeBtn?.addEventListener('click', () => {
+			(modal as HTMLDialogElement).close();
+		});
+
+		modal.addEventListener('click', (e) => {
+			if (e.target === modal) {
+				(modal as HTMLDialogElement).close();
+			}
+		});
+	});
+</script>
+
+<style>
+	.universe-modal {
+		display: none;
+		border: none;
+		padding: 0;
+		background: transparent;
+		max-width: 100%;
+		max-height: 100vh;
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		inset: 0;
+		z-index: 1000;
+	}
+
+	.universe-modal[open] {
+		display: block;
+	}
+
+	.universe-modal::backdrop {
+		background: rgba(9, 11, 17, 0.85);
+		backdrop-filter: blur(12px);
+	}
+
+	.modal-container {
+		width: 95%;
+		max-width: 1100px;
+		height: 85dvh;
+		margin: 5dvh auto;
+		background: var(--gray-999);
+		border: 1px solid var(--gray-800);
+		border-radius: 2rem;
+		overflow: hidden;
+		box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+		animation: modalAppear 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+		position: relative;
+	}
+
+	@keyframes modalAppear {
+		from { opacity: 0; transform: scale(0.95) translateY(20px); }
+		to { opacity: 1; transform: scale(1) translateY(0); }
+	}
+
+	.modal-inner {
+		display: grid;
+		grid-template-columns: 300px 1fr;
+		height: 100%;
+	}
+
+	/* Sidebar */
+	.modal-sidebar {
+		background: var(--gray-999_40);
+		border-right: 1px solid var(--gray-800);
+		padding: 2.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+	}
+
+	.logo-placeholder {
+		width: 50px;
+		height: 50px;
+		background: var(--gray-800);
+		border-radius: 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.modal-sidebar h2 {
+		font-size: var(--text-xl);
+		color: var(--gray-0);
+	}
+
+	.subtitle {
+		color: var(--accent-regular);
+		font-weight: 700;
+		font-size: var(--text-xs);
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+	}
+
+	.universe-nav {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		flex-grow: 1;
+		overflow-y: auto;
+	}
+
+	.nav-item {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		padding: 0.8rem 1.2rem;
+		border-radius: 1rem;
+		border: 1px solid transparent;
+		background: transparent;
+		color: var(--gray-300);
+		cursor: pointer;
+		text-align: left;
+		transition: all 0.2s ease;
+		font-size: var(--text-sm);
+		font-weight: 500;
+		flex-shrink: 0;
+	}
+
+	.nav-item:hover {
+		background: var(--gray-800);
+		color: var(--gray-0);
+	}
+
+	.nav-item.active {
+		background: var(--accent-overlay);
+		border-color: var(--accent-regular);
+		color: var(--accent-light);
+	}
+
+	.close-modal-btn {
+		display: flex;
+		align-items: center;
+		gap: 0.8rem;
+		padding: 1rem;
+		border-radius: 1rem;
+		border: 1px solid var(--gray-800);
+		background: var(--gray-900);
+		color: var(--gray-300);
+		cursor: pointer;
+		font-weight: 600;
+		transition: all 0.2s ease;
+	}
+
+	.close-modal-btn:hover {
+		background: var(--gray-800);
+		color: var(--gray-0);
+	}
+
+	/* Main Content */
+	.modal-main-content {
+		padding: 4rem;
+		overflow-y: auto;
+		position: relative;
+		background: radial-gradient(circle at 100% 0%, var(--accent-overlay) 0%, transparent 40%);
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.content-welcome, .content-detail {
+		display: none;
+		animation: fadeIn 0.4s ease-out forwards;
+	}
+
+	.content-welcome.active, .content-detail.active {
+		display: block;
+	}
+
+	@keyframes fadeIn {
+		from { opacity: 0; transform: translateY(10px); }
+		to { opacity: 1; transform: translateY(0); }
+	}
+
+	.centered {
+		text-align: center;
+		margin-inline: auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.glow-icon {
+		padding: 2rem;
+		background: var(--accent-overlay);
+		border-radius: 50%;
+		margin-bottom: 1rem;
+		box-shadow: 0 0 40px var(--accent-overlay);
+	}
+
+	.hint {
+		margin-top: 2rem;
+		font-size: var(--text-sm);
+		color: var(--gray-400);
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.category-tag {
+		display: inline-block;
+		padding: 0.25rem 0.75rem;
+		background: var(--accent-regular);
+		color: var(--accent-text-over);
+		font-size: var(--text-xs);
+		font-weight: 700;
+		border-radius: 99rem;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		width: fit-content;
+	}
+
+	.title-with-icon {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+	}
+
+	.icon-circle {
+		width: 60px;
+		height: 60px;
+		background: var(--gray-800);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid var(--accent-regular);
+	}
+
+	.content-detail h3 {
+		font-size: var(--text-4xl);
+		color: var(--gray-0);
+	}
+
+	.description-large {
+		font-size: var(--text-xl);
+		color: var(--gray-200);
+		line-height: 1.4;
+		font-weight: 500;
+	}
+
+	.details-text {
+		font-size: var(--text-lg);
+		color: var(--gray-400);
+		line-height: 1.8;
+		max-width: 60ch;
+		word-wrap: break-word;
+	}
+
+	.quote-box {
+		padding: 2rem;
+		background: var(--gray-900);
+		border-left: 4px solid var(--accent-regular);
+		border-radius: 0 1rem 1rem 0;
+	}
+
+	.quote-box p {
+		font-style: italic;
+		color: var(--gray-200);
+		margin-top: 1rem;
+	}
+
+	/* Responsive */
+	@media (max-width: 50em) {
+		.modal-container {
+			height: 100dvh;
+			width: 100%;
+			margin: 0;
+			border-radius: 0;
+			border: none;
+			overflow-x: hidden;
+		}
+
+		.modal-inner {
+			display: flex;
+			flex-direction: column;
+			height: 100dvh;
+			width: 100%;
+			overflow-x: hidden;
+		}
+
+		.modal-sidebar {
+			padding: 0.75rem;
+			gap: 0.75rem;
+			border-right: none;
+			border-bottom: 1px solid var(--gray-800);
+			padding-top: 3.5rem;
+			flex-shrink: 0;
+		}
+
+		.sidebar-header {
+			display: none; /* Cache le header de la sidebar pour gagner de la place */
+		}
+
+		.universe-nav {
+			flex-direction: row;
+			overflow-x: auto;
+			padding: 0.25rem 0.5rem 0.5rem;
+			scrollbar-width: none;
+			gap: 0.5rem;
+			mask-image: linear-gradient(to right, black 85%, transparent 100%);
+			width: 100%;
+			max-width: 100%;
+		}
+
+		.universe-nav::-webkit-scrollbar {
+			display: none;
+		}
+
+		.nav-item {
+			padding: 0.5rem 0.75rem;
+		}
+
+		.nav-item span {
+			display: none;
+		}
+
+		.nav-item.active span {
+			display: inline;
+		}
+		
+		.modal-main-content {
+			padding: 1.5rem 1rem;
+			height: 100%;
+			width: 100%;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+
+		.detail-header {
+			gap: 0.75rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.icon-circle {
+			width: 45px;
+			height: 45px;
+			flex-shrink: 0;
+		}
+
+		.title-with-icon {
+			gap: 1rem;
+		}
+
+		.content-detail h3 {
+			font-size: var(--text-xl);
+			line-height: 1.2;
+		}
+
+		.description-large {
+			font-size: var(--text-md);
+			line-height: 1.5;
+		}
+
+		.details-text {
+			font-size: var(--text-sm);
+			max-width: 100%;
+			line-height: 1.6;
+		}
+
+		.detail-body {
+			gap: 1.5rem;
+			padding-bottom: 2rem;
+		}
+
+		.quote-box {
+			padding: 1.25rem;
+		}
+
+		.close-modal-btn {
+			position: absolute;
+			top: 0.75rem;
+			right: 0.75rem;
+			left: auto;
+			z-index: 10;
+			padding: 0.5rem;
+			width: 38px;
+			height: 38px;
+			justify-content: center;
+			border-radius: 50%;
+			background: var(--gray-800);
+			border: 1px solid var(--gray-700);
+		}
+
+		.close-modal-btn span {
+			display: none;
+		}
+	}
+</style>

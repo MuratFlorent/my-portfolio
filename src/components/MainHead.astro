@@ -7,16 +7,31 @@ interface Props {
 }
 
 const {
-	title = 'Florent Murat portfolio',
-	description = 'Un portfolio pour mettre la lumière sur Florent Murat Développeur',
+	title = 'Développeur Web Freelance – Sites sur Mesure, SEO & GEO | Light Developer',
+	description = 'Boostez votre présence en ligne avec un expert web : création de sites sur mesure, optimisation SEO/GEO et automatisation. Plus de 10 ans d\'expérience au service de votre croissance.',
 } = Astro.props;
 ---
 
 <meta charset="UTF-8" />
-<meta name="description" property="og:description" content={description} />
+<title>{title}</title>
+<meta name="description" content={description} />
 <meta name="viewport" content="width=device-width" />
 <meta name="generator" content={Astro.generator} />
-<title>{title}</title>
+<meta name="robots" content="index, follow" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL('/og-image.jpg', Astro.url)} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL('/og-image.jpg', Astro.url)} />
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<BaseLayout title="CGV | Light Developer" description="Conditions Générales de Vente des prestations Light Developer.">
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-8">
+			<Hero title="Conditions Générales de Vente" tagline="Règles encadrant nos collaborations professionnelles." align="start" />
+			
+			<section class="legal-content stack gap-4">
+				<div class="legal-card">
+					<h3>1. Objet</h3>
+					<p>Les présentes Conditions Générales de Vente (ci-après "CGV") ont pour objet de définir les droits et obligations de Florent Murat (ci-après "le Prestataire") et de ses clients (ci-après "le Client") dans le cadre des prestations de services proposées (développement web, SEO, formation, conseil).</p>
+				</div>
+
+				<div class="legal-card">
+					<h3>2. Commande et Devis</h3>
+					<p>Toute prestation fait l'objet d'un devis préalable, valable 30 jours à compter de sa date d'émission. La commande est considérée comme ferme et définitive à réception du devis signé avec la mention "Bon pour accord" et, le cas échéant, du versement de l'acompte prévu.</p>
+				</div>
+
+				<div class="legal-card">
+					<h3>3. Tarifs et Paiement</h3>
+					<p>Les prix des prestations sont ceux détaillés sur le devis. Ils sont libellés en euros (TVA non applicable, art. 293 B du CGI). Sauf mention contraire, les modalités de paiement sont les suivantes :</p>
+					<ul>
+						<li>30% d'acompte à la signature du devis</li>
+						<li>Le solde à la livraison de la prestation ou selon l'échéancier convenu</li>
+					</ul>
+					<p>Tout retard de paiement pourra donner lieu à des pénalités de retard exigibles sans rappel, au taux de 10% par an, ainsi qu'à une indemnité forfaitaire pour frais de recouvrement de 40€.</p>
+				</div>
+
+				<div class="legal-card">
+					<h3>4. Délais de livraison</h3>
+					<p>Les délais de livraison sont donnés à titre indicatif et dépendent de la réactivité du Client pour fournir les éléments nécessaires à la réalisation de la mission. Un retard ne peut donner lieu à l'annulation de la commande ou au paiement de dommages et intérêts.</p>
+				</div>
+
+				<div class="legal-card">
+					<h3>5. Propriété intellectuelle</h3>
+					<p>Le Prestataire cède au Client les droits d'utilisation des livrables réalisés dans le cadre de la mission, dès complet paiement du prix. Le Prestataire conserve toutefois le droit de citer la réalisation parmi ses références commerciales.</p>
+				</div>
+
+				<div class="legal-card">
+					<h3>6. Responsabilité</h3>
+					<p>Le Prestataire est tenu à une obligation de moyens et non de résultat. Sa responsabilité ne pourra être engagée en cas de force majeure ou de mauvaise utilisation des livrables par le Client. La responsabilité totale du Prestataire est limitée au montant HT payé par le Client pour la prestation concernée.</p>
+				</div>
+			</section>
+		</main>
+	</div>
+</BaseLayout>
+
+<style>
+	.legal-content {
+		max-width: 800px;
+		margin-inline: auto;
+		line-height: 1.6;
+		color: var(--gray-300);
+	}
+	.legal-card {
+		background: var(--gray-999_40);
+		border: 1px solid var(--gray-800);
+		border-radius: 1rem;
+		padding: 2.5rem;
+		margin-bottom: 2rem;
+	}
+	h3 {
+		color: var(--accent-light);
+		margin-top: 0;
+		margin-bottom: 1.5rem;
+		font-size: var(--text-xl);
+	}
+	ul {
+		margin-bottom: 1rem;
+		padding-left: 1.5rem;
+	}
+	li {
+		margin-bottom: 0.5rem;
+	}
+</style>

@@ -4,13 +4,19 @@ import Icon from './Icon.astro';
 ---
 
 <aside>
-	<h2>Commençons notre voyage ensemble...</h2>
+	<h2>Prêt à booster votre visibilité ?</h2>
 	<div class="roles">
 		<p><Icon icon="mail-box" color="var(--accent-regular)" size="2.5rem" gradient />murat.light.developer@gmail.com</p>
 		<p><Icon icon="phone-call" color="var(--accent-regular)" size="2.5rem" gradient /> 06 82 02 72 90 </p> 
 	</div>
-	<CallToAction href="mailto:murat.light.developer@gmail.com">
-		Envoyez-moi un message
+	<CallToAction 
+		href="#contact" 
+		class="quote-cta-button"
+		data-tab="quote"
+		data-source="ContactCTA Footer"
+		data-message="Bonjour, je souhaiterais obtenir un devis gratuit pour mon projet."
+	>
+		Demander un devis gratuit
 		<Icon icon="paper-plane-tilt" size="1.2em" />
 	</CallToAction>
 </aside>

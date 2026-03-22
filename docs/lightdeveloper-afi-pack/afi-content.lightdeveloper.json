@@ -1,0 +1,89 @@
+{
+  "sectionKey": "afi_financement",
+  "brand": {
+    "name": "AFI / Association des Formateurs Indépendants",
+    "logo": "assets/afi06-logo.gif",
+    "sourceCaptures": [
+      "assets/afi-home-hero.png",
+      "assets/afi-home-columns.png"
+    ]
+  },
+  "links": {
+    "formationSeoUx": "https://asso-formateur.fr/course/wordpress-seo-et-design-intuitif/",
+    "formationNoCode": "https://asso-formateur.fr/course/creer-et-gerer-un-site-internet-sans-coder-avec-wordpress/",
+    "preTrainingForm": "https://asso-formateur.fr/questionnaire-de-pre-formation-apprenant/"
+  },
+  "messages": {
+    "positioningShort": "Se former tout en faisant avancer son projet digital, avec un accompagnement concret, humain et orienté autonomie.",
+    "positioningLong": "Light Developer propose aussi un accompagnement via la formation, pour aider les porteurs de projet à créer, reprendre en main ou faire évoluer leur présence en ligne avec des méthodes concrètes, des outils adaptés et une montée en autonomie progressive.",
+    "trainingSeoUx": "Formation complète pour maîtriser WordPress, le SEO et le design UX : installation, optimisation technique, création de contenu engageant, stratégie SEO avancée et marketing digital. Formation pratique sur site réel pour garantir autonomie et performance durable.",
+    "trainingNoCode": "Créer et gérer un site internet sans coder avec WordPress : une formation orientée autonomie, idéale pour les personnes qui veulent lancer, administrer et faire évoluer leur site sans dépendre d'une équipe technique.",
+    "fundingNote": "Selon le profil et l’avancement du dossier, certaines démarches de financement peuvent être préparées en amont via un questionnaire de pré-formation."
+  },
+  "homeSection": {
+    "eyebrow": "Formation & Coaching",
+    "title": "Maîtrisez vos outils pour booster votre business",
+    "intro": "Devenez autonome sur votre site et votre visibilité. Des formations concrètes pour transformer votre présence web en levier de croissance.",
+    "cards": [
+      {
+        "title": "WordPress & SEO Stratégique",
+        "description": "Dominez Google et maîtrisez WordPress. Une formation intensive pour allier performance technique et visibilité maximale.",
+        "ctaLabel": "Propulser mon site",
+        "ctaUrl": "https://asso-formateur.fr/course/wordpress-seo-et-design-intuitif/"
+      },
+      {
+        "title": "Création de Site sans coder",
+        "description": "Lancez votre activité rapidement avec un site professionnel que vous gérez de A à Z, sans aucune connaissance technique.",
+        "ctaLabel": "Devenir autonome",
+        "ctaUrl": "https://asso-formateur.fr/course/creer-et-gerer-un-site-internet-sans-coder-avec-wordpress/"
+      },
+      {
+        "title": "Financement & Inscription",
+        "description": "Vérifiez votre éligibilité (CPF, OPCO) et préparez votre dossier d'accompagnement en quelques clics.",
+        "ctaLabel": "Vérifier mon éligibilité",
+        "ctaUrl": "https://asso-formateur.fr/questionnaire-de-pre-formation-apprenant/"
+      }
+    ],
+    "highlights": [
+      "Approche pratique sur cas réel",
+      "Autonomie progressive",
+      "SEO, UX, contenu et structure",
+      "Possibilité de préparer un dossier en amont"
+    ]
+  },
+  "dedicatedPage": {
+    "slug": "formation-financement",
+    "title": "Formation, accompagnement & montée en autonomie",
+    "seoTitle": "Formation WordPress, SEO, no-code et accompagnement projet | Light Developer",
+    "seoDescription": "Découvrez l’accompagnement formation proposé par Light Developer via l’AFI : WordPress, SEO, design UX, création de site sans coder et pré-formation.",
+    "sections": [
+      {
+        "type": "hero",
+        "title": "Apprendre, structurer, faire avancer son projet",
+        "text": "Au-delà du développement sur mesure, Light Developer peut aussi accompagner les porteurs de projet qui souhaitent gagner en autonomie, mieux comprendre leurs outils et bâtir une base solide pour leur présence en ligne."
+      },
+      {
+        "type": "trainings",
+        "items": [
+          {
+            "title": "WordPress, SEO et design intuitif",
+            "url": "https://asso-formateur.fr/course/wordpress-seo-et-design-intuitif/",
+            "description": "Formation complète pour maîtriser WordPress, le SEO et le design UX : installation, optimisation technique, création de contenu engageant, stratégie SEO avancée et marketing digital. Formation pratique sur site réel pour garantir autonomie et performance durable."
+          },
+          {
+            "title": "Créer et gérer un site internet sans coder avec WordPress",
+            "url": "https://asso-formateur.fr/course/creer-et-gerer-un-site-internet-sans-coder-avec-wordpress/",
+            "description": "Une formation orientée autonomie et prise en main, pensée pour celles et ceux qui veulent créer ou gérer un site sans partir sur un développement plus lourd."
+          }
+        ]
+      },
+      {
+        "type": "preform",
+        "title": "Préparer un dossier ou lancer la démarche",
+        "text": "Pour amorcer un accompagnement ou préparer une suite plus cadrée, un questionnaire de pré-formation peut servir de point de départ.",
+        "ctaLabel": "Questionnaire de pré-formation",
+        "ctaUrl": "https://asso-formateur.fr/questionnaire-de-pre-formation-apprenant/"
+      }
+    ]
+  }
+}

@@ -1,0 +1,588 @@
+---
+import Icon from './Icon.astro';
+---
+
+<div class="floating-contact">
+	<button id="fab-contact" class="fab" aria-label="Parlons de votre projet">
+		<Icon icon="chat-circle-dots" size="1.5rem" />
+		<span class="fab-text">Parlons de votre projet</span>
+	</button>
+</div>
+
+<dialog id="contact-modal" class="contact-modal">
+	<div class="modal-container">
+		<button class="close-button" aria-label="Fermer la modale" data-close-contact-modal>
+			<Icon icon="arrow-left" size="1.2em" />
+			<span>Retour</span>
+		</button>
+
+		<div class="modal-content stack gap-8">
+			<header class="modal-header-text stack gap-2">
+				<h2 class="modal-title">Lancez votre projet</h2>
+				<p>Choisissez l'option qui vous convient le mieux pour échanger sur vos besoins.</p>
+			</header>
+
+			<div class="contact-tabs">
+				<button class="tab-btn active" data-tab="quick">Contact rapide</button>
+				<button class="tab-btn" data-tab="quote">Demande de devis</button>
+			</div>
+
+			<div id="quick-contact-panel" class="tab-panel active">
+				<form 
+					name="contact-rapide" 
+					method="POST" 
+					data-netlify="true" 
+					netlify-honeypot="bot-field"
+					action="/success"
+					class="contact-form stack gap-4"
+				>
+					<input type="hidden" name="form-name" value="contact-rapide" />
+					<p class="hidden">
+						<label>Ne pas remplir si vous êtes humain : <input name="bot-field" /></label>
+					</p>
+					<input type="hidden" name="source" id="quick-source-project" value="Direct" />
+					<div class="form-grid">
+						<div class="field">
+							<label for="quick-name">Nom complet</label>
+							<input type="text" id="quick-name" name="name" placeholder="Votre nom" required />
+						</div>
+						<div class="field">
+							<label for="quick-email">Email</label>
+							<input type="email" id="quick-email" name="email" placeholder="votre@email.com" required />
+						</div>
+					</div>
+					<div class="field">
+						<label for="quick-activity">Structure / Activité</label>
+						<input type="text" id="quick-activity" name="activity" placeholder="Nom de votre entreprise ou domaine" />
+					</div>
+					<div class="field">
+						<label for="quick-message">Votre message</label>
+						<textarea id="quick-message" name="message" placeholder="Parlez-moi brièvement de votre besoin" required rows="3"></textarea>
+					</div>
+					<div data-netlify-recaptcha="true"></div>
+					<button type="submit" class="submit-btn">
+						Envoyer mon message
+						<Icon icon="paper-plane-tilt" size="1.2em" />
+					</button>
+				</form>
+			</div>
+
+			<div id="quote-contact-panel" class="tab-panel">
+				<form 
+					name="demande-devis" 
+					method="POST" 
+					data-netlify="true" 
+					netlify-honeypot="bot-field"
+					action="/success"
+					class="contact-form stack gap-6"
+				>
+					<input type="hidden" name="form-name" value="demande-devis" />
+					<p class="hidden">
+						<label>Ne pas remplir si vous êtes humain : <input name="bot-field" /></label>
+					</p>
+					<input type="hidden" name="source" id="quote-source-project" value="Direct" />
+					<div class="form-grid">
+						<div class="field">
+							<label for="quote-name">Nom complet</label>
+							<input type="text" id="quote-name" name="name" placeholder="Votre nom" required />
+						</div>
+						<div class="field">
+							<label for="quote-email">Email</label>
+							<input type="email" id="quote-email" name="email" placeholder="votre@email.com" required />
+						</div>
+					</div>
+					
+					<div class="form-grid">
+						<div class="field">
+							<label for="project-type">Type de projet</label>
+							<select id="project-type" name="projectType" required>
+								<option value="" disabled selected>Sélectionnez un type de besoin</option>
+								<option value="creation">Création de site web</option>
+								<option value="refonte">Amélioration / Refonte de site</option>
+								<option value="seo">Visibilité Google (SEO)</option>
+								<option value="ecommerce">Boutique en ligne (E-commerce)</option>
+								<option value="automation">Gain de temps (Automatisation)</option>
+								<option value="formation">Formation & Accompagnement</option>
+								<option value="autre">Autre projet sur mesure</option>
+							</select>
+						</div>
+						<div class="field">
+							<label for="budget">Budget indicatif</label>
+							<select id="budget" name="budget">
+								<option value="small">&lt; 1500€</option>
+								<option value="medium">1500€ - 5000€</option>
+								<option value="large">> 5000€</option>
+								<option value="unknown">Je ne sais pas encore</option>
+							</select>
+						</div>
+					</div>
+
+					<!-- Champs conditionnels (visibles via JS selon type de projet) -->
+					<div id="conditional-fields" class="stack gap-4">
+						<div class="field" data-condition="creation refonte ecommerce seo">
+							<label for="site-url">URL du site actuel (si existant)</label>
+							<input type="url" id="site-url" name="siteUrl" placeholder="https://..." />
+						</div>
+						<div class="field" data-condition="formation">
+							<label for="trainees">Nombre de personnes à former</label>
+							<input type="number" id="trainees" name="trainees" min="1" placeholder="1" />
+						</div>
+					</div>
+
+					<div class="field">
+						<label for="quote-message">Détails de votre demande</label>
+						<textarea id="quote-message" name="message" placeholder="Dites-m'en plus sur votre projet..." required rows="4"></textarea>
+					</div>
+					<div data-netlify-recaptcha="true"></div>
+					<button type="submit" class="submit-btn">
+						Demander mon devis personnalisé
+						<Icon icon="magic-wand" size="1.2em" />
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</dialog>
+
+<script>
+	const fab = document.getElementById('fab-contact');
+	const modal = document.getElementById('contact-modal') as HTMLDialogElement;
+	const closeBtn = modal?.querySelector('[data-close-contact-modal]');
+	const tabs = modal?.querySelectorAll('.tab-btn');
+	const panels = modal?.querySelectorAll('.tab-panel');
+	const projectTypeSelect = document.getElementById('project-type') as HTMLSelectElement;
+	const conditionalFields = document.querySelectorAll('#conditional-fields .field[data-condition]');
+
+	// Toggle Modal
+	fab?.addEventListener('click', (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+		modal.showModal();
+	});
+
+	closeBtn?.addEventListener('click', (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+		modal.close();
+	});
+
+	modal?.addEventListener('click', (e) => {
+		if (e.target === modal) {
+			modal.close();
+		}
+	});
+
+	// Tabs logic
+	function setActiveTab(target: string) {
+		tabs?.forEach(t => {
+			if ((t as HTMLElement).dataset.tab === target) {
+				t.classList.add('active');
+			} else {
+				t.classList.remove('active');
+			}
+		});
+
+		panels?.forEach(p => {
+			if (p.id === `${target}-contact-panel`) {
+				p.classList.add('active');
+			} else {
+				p.classList.remove('active');
+			}
+		});
+	}
+
+	tabs?.forEach(tab => {
+		tab.addEventListener('click', () => {
+			const target = (tab as HTMLElement).dataset.tab;
+			if (target) setActiveTab(target);
+		});
+	});
+
+	// Conditional fields logic
+	function updateConditionalFields(selectedType: string) {
+		conditionalFields.forEach(field => {
+			const conditions = (field as HTMLElement).dataset.condition?.split(' ') || [];
+			if (conditions.includes(selectedType)) {
+				(field as HTMLElement).style.display = 'block';
+			} else {
+				(field as HTMLElement).style.display = 'none';
+			}
+		});
+	}
+
+	projectTypeSelect?.addEventListener('change', (e) => {
+		updateConditionalFields((e.target as HTMLSelectElement).value);
+	});
+
+	// Initial hide conditional fields
+	conditionalFields.forEach(field => (field as HTMLElement).style.display = 'none');
+
+	// Ensure modal is closed on page load (Astro fix for some hydration issues)
+	const forceClose = () => {
+		if (modal && modal.open) {
+			modal.close();
+		}
+	};
+	forceClose();
+	setTimeout(forceClose, 100);
+	setTimeout(forceClose, 500);
+
+	// Global delegation for all quote CTA buttons
+	// This captures clicks on elements that might be added dynamically or
+	// where the script would otherwise need to be re-attached (Astro View Transitions)
+	function setupGlobalCtaDelegation() {
+		document.addEventListener('click', (e) => {
+			const target = e.target as HTMLElement;
+			const btn = target.closest('.quote-cta-button, [href="#contact"], [href="/#contact"]') as HTMLAnchorElement | HTMLButtonElement;
+			
+			if (btn) {
+				const href = btn.getAttribute('href');
+				// On intercepte si c'est une ancre interne vers contact, ou si le bouton n'a pas de href (bouton pur)
+				// ou s'il a explicitement la classe quote-cta-button
+				if (btn.classList.contains('quote-cta-button') || 
+					(href && (href === '#contact' || href === '/#contact' || href.endsWith('/#contact')))) {
+					
+					e.preventDefault();
+					e.stopPropagation();
+					
+					const tab = btn.getAttribute('data-tab') || 'quote';
+					const projectType = btn.getAttribute('data-project-type');
+					const message = btn.getAttribute('data-message');
+					const source = btn.getAttribute('data-source') || btn.innerText.trim() || 'Global Delegation';
+
+					window.dispatchEvent(new CustomEvent('open-contact', {
+						detail: {
+							tab,
+							projectType,
+							message,
+							source
+						}
+					}));
+				}
+			}
+		}, { capture: true }); // Capture phase to ensure we intercept before other listeners
+	}
+	
+	setupGlobalCtaDelegation();
+	
+	// External Trigger Support (for ProjectModal)
+	window.addEventListener('open-contact', (e: any) => {
+		const { tab, projectType, message, source } = e.detail || {};
+		
+		if (tab) setActiveTab(tab);
+		
+		if (projectType && projectTypeSelect) {
+			projectTypeSelect.value = projectType;
+			updateConditionalFields(projectType);
+		}
+		
+		if (message) {
+			const activeTextarea = modal.querySelector('.tab-panel.active textarea') as HTMLTextAreaElement;
+			if (activeTextarea) activeTextarea.value = message;
+		} else {
+			// Default messages if none provided
+			const activeTextarea = modal.querySelector('.tab-panel.active textarea') as HTMLTextAreaElement;
+			if (activeTextarea) {
+				if (tab === 'quote') {
+					activeTextarea.value = 'Je souhaite obtenir un devis gratuit pour mon projet.';
+				} else {
+					activeTextarea.value = ''; // Clear for quick contact or let it be
+				}
+			}
+		}
+
+		if (source) {
+			const quickSource = document.getElementById('quick-source-project') as HTMLInputElement;
+			const quoteSource = document.getElementById('quote-source-project') as HTMLInputElement;
+			if (quickSource) quickSource.value = source;
+			if (quoteSource) quoteSource.value = source;
+		}
+		
+		if (!modal.open) {
+			modal.showModal();
+		}
+	});
+
+	// Form Submission logic
+	modal?.querySelectorAll('form').forEach(form => {
+		form.addEventListener('submit', () => {
+			// We let the form submit naturally to Netlify's action URL
+		});
+	});
+</script>
+
+<style>
+	.floating-contact {
+		position: fixed;
+		bottom: 8rem; /* Remonté pour être au-dessus du footer (padding 4rem + contenu) */
+		right: 2rem;
+		z-index: 100;
+	}
+
+	@media (max-width: 50em) {
+		.floating-contact {
+			bottom: 5rem; /* Remonte le bouton sur mobile pour éviter la barre browser */
+			right: 1.5rem;
+		}
+	}
+
+	.fab {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.75rem 1.5rem;
+		background: var(--gradient-accent-orange);
+		color: white;
+		border: none;
+		border-radius: var(--radius-full);
+		box-shadow: var(--shadow-lg);
+		cursor: pointer;
+		transition: transform var(--theme-transition-slow), box-shadow var(--theme-transition);
+	}
+
+	.fab:hover {
+		transform: scale(1.05) translateY(-5px);
+		box-shadow: var(--glow-accent-strong);
+	}
+
+	.fab-text {
+		font-weight: 600;
+		font-size: var(--text-base);
+	}
+
+	@media (max-width: 50em) {
+		.fab-text {
+			display: block;
+			font-size: var(--text-xs);
+			max-width: 8ch;
+			line-height: 1;
+			text-align: left;
+		}
+		.fab {
+			padding: 0.75rem 1rem;
+		}
+	}
+
+	/* Modal styles */
+	.contact-modal {
+		display: none;
+		border: none;
+		padding: 0;
+		background: transparent;
+		max-width: 100vw;
+		max-height: 100vh;
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		inset: 0;
+		align-items: center;
+		justify-content: center;
+		z-index: 1000;
+	}
+
+	.contact-modal[open] {
+		display: flex;
+	}
+
+	.contact-modal::backdrop {
+		background: rgba(9, 11, 17, 0.6);
+		backdrop-filter: blur(8px);
+	}
+
+	.modal-container {
+		background: var(--gray-999);
+		width: 100%;
+		height: 100%;
+		max-width: 100%;
+		margin: 0;
+		border-radius: 0;
+		position: relative;
+		overflow-y: auto;
+		box-shadow: none;
+		border: none;
+		transition: transform var(--theme-transition-slow);
+	}
+
+	@media (min-width: 40em) {
+		.modal-container {
+			width: 95%;
+			height: auto;
+			max-height: 90vh;
+			max-width: 800px;
+			margin: 2rem auto;
+			border-radius: var(--radius-lg);
+			box-shadow: var(--shadow-lg);
+			border: 1px solid var(--gray-800);
+		}
+	}
+
+	.close-button {
+		position: sticky;
+		top: 1rem;
+		left: 1rem;
+		z-index: 10;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem 1rem;
+		border-radius: var(--radius-full);
+		border: 1px solid var(--gray-800);
+		background: var(--gray-999_40);
+		backdrop-filter: blur(4px);
+		color: var(--gray-200);
+		cursor: pointer;
+		font-weight: 500;
+		transition: all var(--theme-transition);
+		font-size: var(--text-sm);
+	}
+
+	@media (min-width: 40em) {
+		.close-button {
+			top: 1.5rem;
+			left: 1.5rem;
+		}
+	}
+
+	.close-button:hover {
+		background: var(--gray-900);
+		color: var(--gray-0);
+		border-color: var(--accent-regular);
+	}
+
+	.modal-content {
+		padding: 2rem;
+	}
+
+	.modal-header-text {
+		text-align: center;
+	}
+
+	.modal-title {
+		font-size: var(--text-3xl);
+		color: var(--gray-0);
+	}
+
+	.contact-tabs {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		background: var(--gray-900);
+		padding: 0.4rem;
+		border-radius: 99rem;
+		border: 1px solid var(--gray-800);
+	}
+
+	.tab-btn {
+		flex: 1;
+		padding: 0.6rem 1.2rem;
+		border: none;
+		background: transparent;
+		border-radius: 99rem;
+		color: var(--gray-300);
+		font-weight: 600;
+		cursor: pointer;
+		transition: all 0.2s ease;
+	}
+
+	.tab-btn.active {
+		background: var(--gray-999);
+		color: var(--accent-regular);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.tab-panel {
+		display: none;
+	}
+
+	.tab-panel.active {
+		display: block;
+		animation: fadeIn 0.3s ease-out;
+	}
+
+	@keyframes fadeIn {
+		from { opacity: 0; transform: translateY(10px); }
+		to { opacity: 1; transform: translateY(0); }
+	}
+
+	/* Form styles */
+	.contact-form {
+		margin-top: 2rem;
+	}
+
+	.form-grid {
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	@media (min-width: 40em) {
+		.form-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	.field {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	label {
+		font-size: var(--text-sm);
+		font-weight: 600;
+		color: var(--gray-200);
+	}
+
+	input, select, textarea {
+		padding: 0.8rem 1rem;
+		background: var(--gray-900);
+		border: 1px solid var(--gray-800);
+		border-radius: 0.5rem;
+		color: var(--gray-0);
+		font-family: inherit;
+		font-size: var(--text-base);
+		transition: border-color 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	input:focus, select:focus, textarea:focus {
+		outline: none;
+		border-color: var(--accent-regular);
+		box-shadow: 0 0 0 2px var(--accent-overlay);
+	}
+
+	.submit-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.8rem;
+		padding: 1rem 2rem;
+		background: var(--gradient-accent-orange);
+		color: white;
+		border: none;
+		border-radius: var(--radius-full);
+		font-size: var(--text-lg);
+		font-weight: 700;
+		cursor: pointer;
+		transition: transform var(--theme-transition), box-shadow var(--theme-transition);
+		margin-top: 1rem;
+	}
+
+	.submit-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--glow-accent);
+	}
+
+	.submit-btn:focus-visible {
+		outline: 3px solid var(--accent-regular);
+		outline-offset: 4px;
+	}
+
+	.hidden {
+		display: none;
+	}
+
+	@media (min-width: 50em) {
+		.modal-content {
+			padding: 4rem;
+		}
+	}
+</style>

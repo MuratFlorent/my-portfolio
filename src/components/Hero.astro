@@ -31,11 +31,19 @@ const { align = 'center', tagline, title } = Astro.props;
 	.title {
 		font-size: var(--text-3xl);
 		color: var(--gray-0);
+		line-height: 1.15;
+		letter-spacing: -0.015em;
+	}
+
+	.tagline {
+		font-size: var(--text-base);
+		color: var(--gray-300);
+		line-height: 1.5;
 	}
 
 	@media (min-width: 50em) {
 		.hero {
-			font-size: var(--text-xl);
+			font-size: var(--text-md);
 		}
 
 		.start {
@@ -47,6 +55,22 @@ const { align = 'center', tagline, title } = Astro.props;
 			margin-inline: unset;
 		}
 
+		.title {
+			font-size: var(--text-4xl);
+		}
+
+		.tagline {
+			font-size: var(--text-lg);
+		}
+	}
+
+	@media (min-width: 80em) {
+		.hero {
+			font-size: var(--text-lg);
+		}
+	}
+
+	@media (min-width: 100em) {
 		.title {
 			font-size: var(--text-5xl);
 		}
