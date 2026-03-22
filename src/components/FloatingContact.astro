@@ -152,16 +152,22 @@ import Icon from './Icon.astro';
 	const backToTop = document.getElementById('back-to-top');
 	const modal = document.getElementById('contact-modal') as HTMLDialogElement;
 
-	// Back to top logic
-	window.addEventListener('scroll', () => {
-		if (window.scrollY > 300) {
-			backToTop?.removeAttribute('hidden');
-			if (backToTop) backToTop.style.display = 'flex';
-		} else {
-			backToTop?.setAttribute('hidden', '');
-			if (backToTop) backToTop.style.display = 'none';
+	// Back to top logic with optimized scroll handling
+	let isBackToTopVisible = false;
+	const handleScroll = () => {
+		const shouldBeVisible = window.scrollY > 300;
+		if (shouldBeVisible !== isBackToTopVisible) {
+			isBackToTopVisible = shouldBeVisible;
+			if (isBackToTopVisible) {
+				backToTop?.removeAttribute('hidden');
+				if (backToTop) backToTop.style.display = 'flex';
+			} else {
+				backToTop?.setAttribute('hidden', '');
+				if (backToTop) backToTop.style.display = 'none';
+			}
 		}
-	});
+	};
+	window.addEventListener('scroll', handleScroll, { passive: true });
 
 	backToTop?.addEventListener('click', () => {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
