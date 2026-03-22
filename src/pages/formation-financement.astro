@@ -21,8 +21,8 @@ const { dedicatedPage, brand, messages } = afiContent;
 				<div class="section-shell">
 					<div class="stack gap-8">
 						<Hero
-							title={dedicatedPage.sections.find(s => s.type === 'hero')?.title}
-							tagline={dedicatedPage.sections.find(s => s.type === 'hero')?.text}
+							title={dedicatedPage.sections.find(s => s.type === 'hero')?.title ?? ''}
+							tagline={dedicatedPage.sections.find(s => s.type === 'hero')?.text ?? ''}
 							align="start"
 						>
 							<div class="brand-info">
@@ -290,7 +290,7 @@ const { dedicatedPage, brand, messages } = afiContent;
 		}
 
 		.lg\:flex-1 {
-			flex-1: 1;
+			flex: 1;
 		}
 
 		.lg\:align-start {

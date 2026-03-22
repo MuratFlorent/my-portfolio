@@ -56,8 +56,8 @@ const sections: Section[] = [
     document.querySelectorAll('.spy-link').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
+            const targetId = anchor.getAttribute('href');
+            const targetElement = targetId ? document.querySelector(targetId) : null;
             if (targetElement) {
                 targetElement.scrollIntoView({
                     behavior: 'smooth'
