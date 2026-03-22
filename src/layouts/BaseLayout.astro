@@ -30,14 +30,34 @@ const { title, description } = Astro.props;
 					"description": "Développement web sur mesure, SEO et automatisation",
 					"url": "https://lightdeveloper.fr",
 					"telephone": "+33682027290",
-					"areaServed": "France",
+					"areaServed": [
+						{
+							"@type": "City",
+							"name": "Nice"
+						},
+						{
+							"@type": "City",
+							"name": "Cannes"
+						},
+						{
+							"@type": "City",
+							"name": "Antibes"
+						},
+						{
+							"@type": "AdministrativeArea",
+							"name": "Alpes-Maritimes"
+						}
+					],
 					"founder": {
 						"@type": "Person",
 						"name": "Florent Murat"
 					},
 					"address": {
 						"@type": "PostalAddress",
-						"addressLocality": "Sud de la France",
+						"streetAddress": "Saint-Jeannet",
+						"addressLocality": "Saint-Jeannet",
+						"postalCode": "06640",
+						"addressRegion": "Provence-Alpes-Côte d'Azur",
 						"addressCountry": "FR"
 					}
 				}
