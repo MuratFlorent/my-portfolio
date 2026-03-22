@@ -29,7 +29,8 @@ const { href, class: className, id, ...rest } = Astro.props;
 		overflow: hidden;
 		background: var(--gradient-accent-orange);
 		box-shadow: var(--shadow-md);
-		white-space: nowrap;
+		white-space: normal;
+		word-break: break-word;
 		transition: transform var(--theme-transition), box-shadow var(--theme-transition);
 	}
 
