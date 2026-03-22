@@ -14,33 +14,33 @@ const description = "Découvrez l'approche de Florent Murat : une expertise tech
 	<div class="stack gap-20">
 		<main class="wrapper stack gap-16">
 			<Hero
-				title="Développer sur mesure, avec exigence et bienveillance"
-				tagline="Je conçois des solutions digitales adaptées aux besoins réels de chaque projet, avec une approche à la fois technique, humaine et progressive."
+				title="Construisons ensemble des outils web qui vous ressemblent"
+				tagline="Mon approche : allier une technique de pointe à un accompagnement humain, simple et pédagogique pour faire grandir votre projet."
 				align="start"
 			/>
 
 			<div class="content stack gap-16">
 				<section class="stack gap-4">
 					<div class="badge-accent">Parcours</div>
-					<h2>Un parcours technique devenu une approche plus humaine</h2>
+					<h2>Un parcours technique mis au service de votre projet</h2>
 					<p>
-						Je viens du développement web full stack, avec plusieurs années d’expérience sur des environnements e-commerce, plateformes sur mesure, outils métier et architectures basées notamment sur PHP, Symfony et Sylius. Au fil du temps, cette base technique s’est enrichie d’une conviction plus profonde : la qualité d’un projet ne dépend pas seulement de sa technologie, mais de la justesse de sa conception, de son usage et de la relation construite autour.
+						Après plus de 10 ans à concevoir des sites e-commerce et des plateformes complexes, j’ai acquis une conviction : la meilleure technologie ne sert à rien si elle n’est pas comprise et adaptée à ceux qui l’utilisent. Aujourd’hui, je mets cette expertise technique au service de vos besoins réels, avec une priorité : la clarté et l’efficacité.
 					</p>
 				</section>
 
 				<section class="stack gap-4">
 					<div class="badge-accent">Entrepreneuriat</div>
-					<h2>Le choix de l’entrepreneuriat</h2>
+					<h2>Pourquoi j'ai créé Light Developer</h2>
 					<p>
-						Après différentes expériences en entreprise, j’ai choisi de développer Light Developer pour retrouver une manière plus libre, plus directe et plus sur mesure d’accompagner les projets. Ce choix me permet de travailler au plus près des besoins réels, de proposer des réponses adaptées, et de garder une relation plus simple, plus claire et plus humaine avec les personnes que j’accompagne.
+						J'ai choisi l'indépendance pour travailler au plus proche de mes clients. Sans intermédiaire, nous échangeons directement sur vos problématiques. Cela me permet de vous proposer des solutions vraiment sur mesure, plus rapides à mettre en place et parfaitement alignées avec votre budget et vos objectifs.
 					</p>
 				</section>
 
 				<section class="stack gap-4">
 					<div class="badge-accent">Réalisations</div>
-					<h2>Ce que j’aime construire</h2>
+					<h2>Des solutions concrètes pour votre activité</h2>
 					<p>
-						J’aime développer des solutions utiles, lisibles et évolutives : sites web, refontes, modules spécifiques, automatisations, interfaces métier, outils orientés e-commerce ou réservation. Je peux travailler avec WordPress lorsqu’il est pertinent, mas aussi sur des approches plus sur mesure, full stack, no-code ou hybrides, selon le contexte du projet. Je ne cherche pas à imposer une technologie, mais à choisir la bonne réponse.
+						Qu’il s’agisse de créer votre premier site vitrine, de lancer une boutique en ligne (e-commerce), de mettre en place un système de réservation ou de créer un outil de gestion interne, je choisis l'outil le plus adapté. Mon but n'est pas de vous vendre une technologie complexe, mais de vous apporter la solution la plus simple et la plus performante pour votre business.
 					</p>
 				</section>
 
@@ -55,12 +55,12 @@ const description = "Découvrez l'approche de Florent Murat : une expertise tech
 
 					<div class="values-grid">
 						{[
-							{ icon: 'heart', label: 'Bienveillance' },
-							{ icon: 'sun', label: 'Clarté' },
-							{ icon: 'users', label: 'Sur mesure' },
-							{ icon: 'rocket-launch', label: 'Innovation utile' },
-							{ icon: 'graduation-cap', label: 'Autonomie' },
-							{ icon: 'chat-circle-dots', label: 'Présence / écoute' }
+							{ icon: 'heart', label: 'Écoute active' },
+							{ icon: 'sun', label: 'Zéro jargon' },
+							{ icon: 'users', label: 'Accompagnement' },
+							{ icon: 'rocket-launch', label: 'Efficacité' },
+							{ icon: 'graduation-cap', label: 'Votre autonomie' },
+							{ icon: 'chat-circle-dots', label: 'Disponibilité' }
 						].map((item) => (
 							<div class="value-card">
 								<Icon icon={item.icon as any} color="var(--accent-regular)" size="2rem" gradient />
@@ -74,8 +74,14 @@ const description = "Découvrez l'approche de Florent Murat : une expertise tech
 					<div class="badge-accent">Transmission</div>
 					<h2>Transmettre, former, rendre autonome</h2>
 					<p>
-						Au-delà du développement, j’aime aussi accompagner les personnes dans la compréhension de leurs outils. La formation et la transmission font partie intégrante de mon approche : aider à reprendre la main, à progresser, à gagner en autonomie, à mieux utiliser les outils du web et à intégrer de nouvelles pratiques, y compris avec l’aide de l’IA quand cela a du sens.
+						Au-delà du développement, j’aime aussi accompagner les personnes dans la compréhension de leurs outils. La formation, le financement et la transmission font partie intégrante de mon approche : aider à reprendre la main, à progresser, à gagner en autonomie, tout en facilitant l'accès à ces compétences grâce aux aides financières (CPF, OPCO).
 					</p>
+					<div class="cta-wrapper" style="margin-top: 1rem;">
+						<CallToAction href="/formation-financement">
+							Voir les formations & financements
+							<Icon icon="arrow-right" size="1.2em" />
+						</CallToAction>
+					</div>
 				</section>
 
 				<section class="stack gap-4">
@@ -108,8 +114,8 @@ const description = "Découvrez l'approche de Florent Murat : une expertise tech
 							Voir mes projets
 							<Icon icon="arrow-right" size="1.2em" />
 						</CallToAction>
-						<CallToAction href="/formation/">
-							Découvrir les formations
+						<CallToAction href="/formation-financement/">
+							Découvrir les formations & financements
 							<Icon icon="graduation-cap" size="1.2em" />
 						</CallToAction>
 					</div>

@@ -9,58 +9,12 @@ import Icon from './Icon.astro';
 			<div class="badge-accent mx-auto">Témoignages</div>
 			<h2>Avis clients</h2>
 			<p class="max-w-2xl mx-auto">La réussite de vos projets est ma meilleure récompense. Voici quelques retours d'expérience.</p>
-			<p class="preview-notice">Ces témoignages sont des exemples de preview. De vrais avis Google arriveront très prochainement !</p>
 		</header>
 
 		<div class="gallery">
-			<div class="testimonial-grid">
-				<article class="testimonial-card">
-					<div class="quote-icon">
-						<Icon icon="chat-circle-dots" size="2rem" gradient />
-					</div>
-					<p class="quote">"Florent a su comprendre les enjeux de notre projet avec une finesse rare. Son approche 'Light Developer' n'est pas qu'un mot, c'est une réalité dans la clarté qu'il apporte."</p>
-					<div class="author-info">
-						<div class="author-details">
-							<p class="name">Marie L.</p>
-							<p class="role">Directrice Marketing, Green Solutions</p>
-						</div>
-					</div>
-					<div class="project-tag">
-						<span>Refonte E-commerce & SEO</span>
-					</div>
-				</article>
-
-				<article class="testimonial-card">
-					<div class="quote-icon">
-						<Icon icon="chat-circle-dots" size="2rem" gradient />
-					</div>
-					<p class="quote">"Un développeur qui écoute vraiment, ça change tout. La formation qu'il a dispensée à mon équipe nous a permis d'être autonomes sur notre nouvel outil très rapidement."</p>
-					<div class="author-info">
-						<div class="author-details">
-							<p class="name">Thomas B.</p>
-							<p class="role">Fondateur, Artisan Digital</p>
-						</div>
-					</div>
-					<div class="project-tag">
-						<span>Formation & Accompagnement</span>
-					</div>
-				</article>
-
-				<article class="testimonial-card">
-					<div class="quote-icon">
-						<Icon icon="chat-circle-dots" size="2rem" gradient />
-					</div>
-					<p class="quote">"Rigueur technique et humanité. Les automatisations mises en place nous font gagner un temps précieux chaque jour. Je recommande vivement son expertise."</p>
-					<div class="author-info">
-						<div class="author-details">
-							<p class="name">Sophie D.</p>
-							<p class="role">Chef de projet, Innov'Art</p>
-						</div>
-					</div>
-					<div class="project-tag">
-						<span>Automatisation métier</span>
-					</div>
-				</article>
+			<div class="recovery-message">
+				<Icon icon="chat-circle-dots" size="3rem" gradient />
+				<p>Avis en cours de récupération, ça arrive :) ...</p>
 			</div>
 		</div>
 	</div>
@@ -105,96 +59,38 @@ import Icon from './Icon.astro';
 		opacity: 0.5;
 	}
 
-	.section-header {
-		margin-bottom: 0;
-	}
-
-	.testimonial-grid {
-		display: grid;
-		gap: 2rem;
-		grid-template-columns: 1fr;
-	}
-
-	@media (min-width: 50em) {
-		.testimonial-grid {
-			grid-template-columns: repeat(3, 1fr);
-			gap: 2.5rem;
-		}
-	}
-
-	.testimonial-card {
+	.recovery-message {
 		display: flex;
 		flex-direction: column;
-		padding: 3rem;
+		align-items: center;
+		justify-content: center;
+		gap: 1.5rem;
+		padding: 4rem 2rem;
 		background: var(--gray-999_40);
 		border: 1px solid var(--gray-800);
 		border-radius: 1.5rem;
-		box-shadow: var(--shadow-sm);
-		transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+		text-align: center;
+		color: var(--gray-200);
+		font-style: italic;
+		font-size: var(--text-lg);
 		backdrop-filter: blur(10px);
-		position: relative;
-		height: 100%;
+		animation: pulse 2s infinite ease-in-out;
 	}
 
-	.testimonial-card:hover {
-		transform: translateY(-10px);
-		box-shadow: var(--glow-accent);
-		border-color: var(--accent-regular);
-		background: var(--gray-999);
+	@keyframes pulse {
+		0% { opacity: 0.7; transform: scale(0.98); }
+		50% { opacity: 1; transform: scale(1); }
+		100% { opacity: 0.7; transform: scale(0.98); }
 	}
 
-	.quote-icon {
-		margin-bottom: 2rem;
-		opacity: 0.8;
+	@media (min-width: 50em) {
+		.recovery-message {
+			padding: 6rem 3rem;
+		}
 	}
 
-	.quote {
-		font-style: italic;
-		font-size: var(--text-md);
-		color: var(--gray-100);
-		line-height: 1.7;
-		margin-bottom: 2.5rem;
-		flex-grow: 1;
-		position: relative;
-	}
-
-	.author-info {
-		margin-bottom: 1.5rem;
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-	}
-
-	.name {
-		font-weight: 700;
-		color: var(--gray-0);
-		font-size: var(--text-base);
-		margin-bottom: 0.1rem;
-	}
-
-	.role {
-		font-size: var(--text-sm);
-		color: var(--gray-400);
-	}
-
-	.project-tag {
-		font-size: var(--text-xs);
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		color: var(--accent-regular);
-		font-weight: 700;
-		padding-top: 1.2rem;
-		border-top: 1px solid var(--gray-800);
-		margin-top: auto;
-	}
-
-	.preview-notice {
-		font-size: var(--text-sm);
-		color: var(--accent-regular);
-		font-style: italic;
-		margin-top: 1rem;
-		max-width: 40ch;
-		margin-inline: auto;
+	.section-header {
+		margin-bottom: 0;
 	}
 
 	.centered {

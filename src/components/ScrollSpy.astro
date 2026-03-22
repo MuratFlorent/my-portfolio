@@ -9,10 +9,11 @@ interface Section {
 
 const sections: Section[] = [
     { id: 'accueil', label: 'Accueil', icon: 'sun' },
+    { id: 'solutions', label: 'Solutions', icon: 'magic-wand' },
     { id: 'projets', label: 'Projets', icon: 'rocket-launch' },
     { id: 'univers', label: 'Approche', icon: 'heart' },
-    { id: 'faq', label: 'FAQ', icon: 'question' },
     { id: 'formation', label: 'Formation', icon: 'strategy' },
+    { id: 'faq', label: 'FAQ', icon: 'question' },
     { id: 'contact', label: 'Contact', icon: 'paper-plane-tilt' },
 ];
 ---
@@ -30,6 +31,10 @@ const sections: Section[] = [
     </ul>
 </nav>
 
+<div class="mobile-section-indicator" aria-hidden="true">
+    <span class="current-section">Accueil</span>
+</div>
+
 <script>
     const observerOptions = {
         root: null,
@@ -42,7 +47,16 @@ const sections: Section[] = [
             if (entry.isIntersecting) {
                 const id = entry.target.id;
                 document.querySelectorAll('.spy-link').forEach(link => {
-                    link.classList.toggle('active', link.getAttribute('data-section') === id);
+                    const isActive = link.getAttribute('data-section') === id;
+                    link.classList.toggle('active', isActive);
+                    
+                    if (isActive) {
+                        const label = link.querySelector('.spy-label')?.textContent;
+                        const mobileIndicator = document.querySelector('.mobile-section-indicator .current-section');
+                        if (mobileIndicator && label) {
+                            mobileIndicator.textContent = label;
+                        }
+                    }
                 });
             }
         });
@@ -142,5 +156,47 @@ const sections: Section[] = [
     .spy-link.active .spy-label {
         color: var(--accent-regular);
         font-weight: 700;
+    }
+
+    /* Mobile Section Indicator */
+    .mobile-section-indicator {
+        position: fixed;
+        top: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 90;
+        background: var(--gray-999_40);
+        backdrop-filter: blur(8px);
+        border: 1px solid var(--gray-800);
+        padding: 0.4rem 1rem;
+        border-radius: var(--radius-full);
+        box-shadow: var(--shadow-sm);
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        opacity: 0;
+    }
+
+    @media (max-width: 75em) {
+        .mobile-section-indicator {
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 50em) {
+        .mobile-section-indicator {
+            top: auto;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            transform: none;
+            padding: 0.3rem 0.8rem;
+        }
+    }
+
+    .current-section {
+        font-size: var(--text-xs);
+        font-weight: 700;
+        color: var(--accent-regular);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
     }
 </style>

@@ -12,7 +12,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             name="contact-rapide" 
             method="POST" 
             data-netlify="true" 
-            data-netlify-recaptcha="true"
             data-netlify-honeypot="bot-field"
             action="/merci"
         >
@@ -29,7 +28,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <label for="message-contact">Message</label>
             <textarea name="message" id="message-contact"></textarea>
             <input type="hidden" name="source" />
-            <div id="recaptcha-quick-static" data-netlify-recaptcha="true"></div>
         </form>
 
         <!-- Formulaire Demande de Devis -->
@@ -63,7 +61,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <select name="budget" id="budget-devis">
                 <option value="small">&lt; 1500€</option>
                 <option value="medium">1500€ - 5000€</option>
-                <option value="large">> 5000€</option>
+                <option value="large">&gt; 5000€</option>
                 <option value="unknown">Je ne sais pas encore</option>
             </select>
             <label for="siteUrl-devis">URL du site</label>
@@ -73,7 +71,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <label for="message-devis">Message</label>
             <textarea name="message" id="message-devis"></textarea>
             <input type="hidden" name="source" />
-            <div id="recaptcha-quote-static" data-netlify-recaptcha="true"></div>
+            <div data-netlify-recaptcha="true"></div>
         </form>
     </div>
 </BaseLayout>
