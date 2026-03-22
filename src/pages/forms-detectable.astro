@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Formulaires de contact">
+    <div class="wrapper">
+        <h1>Formulaires de contact (Détection Netlify)</h1>
+        <p>Cette page est utilisée pour permettre à Netlify de détecter les formulaires de contact présents dans les modales.</p>
+
+        <!-- Formulaire Contact Rapide -->
+        <form 
+            name="contact-rapide" 
+            method="POST" 
+            data-netlify="true" 
+            data-netlify-recaptcha="true"
+            netlify-honeypot="bot-field"
+            action="/merci"
+        >
+            <input type="hidden" name="form-name" value="contact-rapide" />
+            <label for="name-contact">Nom</label>
+            <input type="text" name="name" id="name-contact" />
+            <label for="email-contact">Email</label>
+            <input type="email" name="email" id="email-contact" />
+            <label for="activity-contact">Activité</label>
+            <input type="text" name="activity" id="activity-contact" />
+            <label for="message-contact">Message</label>
+            <textarea name="message" id="message-contact"></textarea>
+            <input type="hidden" name="source" />
+            <div data-netlify-recaptcha="true"></div>
+        </form>
+
+        <!-- Formulaire Demande de Devis -->
+        <form 
+            name="demande-devis" 
+            method="POST" 
+            data-netlify="true" 
+            data-netlify-recaptcha="true"
+            netlify-honeypot="bot-field"
+            action="/merci-devis"
+        >
+            <input type="hidden" name="form-name" value="demande-devis" />
+            <label for="name-devis">Nom</label>
+            <input type="text" name="name" id="name-devis" />
+            <label for="email-devis">Email</label>
+            <input type="email" name="email" id="email-devis" />
+            <label for="projectType-devis">Type de projet</label>
+            <select name="projectType" id="projectType-devis">
+                <option value="creation">Création de site web</option>
+                <option value="refonte">Amélioration / Refonte de site</option>
+                <option value="seo">Visibilité Google (SEO)</option>
+                <option value="ecommerce">Boutique en ligne (E-commerce)</option>
+                <option value="automation">Gain de temps (Automatisation)</option>
+                <option value="formation">Formation & Accompagnement</option>
+                <option value="autre">Autre projet sur mesure</option>
+            </select>
+            <label for="budget-devis">Budget</label>
+            <select name="budget" id="budget-devis">
+                <option value="small">&lt; 1500€</option>
+                <option value="medium">1500€ - 5000€</option>
+                <option value="large">> 5000€</option>
+                <option value="unknown">Je ne sais pas encore</option>
+            </select>
+            <label for="siteUrl-devis">URL du site</label>
+            <input type="url" name="siteUrl" id="siteUrl-devis" />
+            <label for="trainees-devis">Nombre de stagiaires</label>
+            <input type="number" name="trainees" id="trainees-devis" />
+            <label for="message-devis">Message</label>
+            <textarea name="message" id="message-devis"></textarea>
+            <input type="hidden" name="source" />
+            <div data-netlify-recaptcha="true"></div>
+        </form>
+    </div>
+</BaseLayout>
+
+<style>
+    .wrapper {
+        padding: 5rem 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    form {
+        display: none;
+    }
+</style>

@@ -9,7 +9,7 @@ interface Props {
 const { data, id } = Astro.props.project;
 ---
 
-<button 
+<div 
 	class="card" 
 	data-project-id={id}
 	data-project-data={JSON.stringify({
@@ -27,19 +27,27 @@ const { data, id } = Astro.props.project;
 		href: data.href,
 		slug: id
 	})}
+	role="button"
+	tabindex="0"
 >
 	<span class="card-image-container">
-		<img src={data.img} alt={data.img_alt || ''} loading="lazy" decoding="async" />
+		<img src={data.img} alt={data.img_alt || ''} loading="lazy" decoding="async" width="480" height="340" />
 		<span class="card-overlay">
 			<span class="tags-container">
-				{data.tags.slice(0, 3).map((tag) => (
+				{data.tags.some(tag => tag.toLowerCase().includes('seo') || tag.toLowerCase().includes('visibilité')) && (
+					<span class="tag tag-seo">
+						<Icon icon="strategy" size="1.2em" />
+						SEO & Visibilité
+					</span>
+				)}
+				{data.tags.filter(tag => !tag.toLowerCase().includes('seo') && !tag.toLowerCase().includes('visibilité')).slice(0, 2).map((tag) => (
 					<span class="tag">{tag}</span>
 				))}
 			</span>
 			<span class="details">
 				<span class="details-content">
-					<span class="category">{data.status === 'in_progress' ? 'En cours' : 'Projet terminé'}</span>
-					<h3 class="title">{data.title}</h3>
+					<span class="category">{data.status === 'in_progress' ? 'En cours' : (data.status === 'finish' ? 'Projet terminé' : '')}</span>
+					<span class="title">{data.title}</span>
 				</span>
 				<span class="open-icon">
 					<Icon icon="plus" size="1.2rem" />
@@ -47,7 +55,7 @@ const { data, id } = Astro.props.project;
 			</span>
 		</span>
 	</span>
-</button>
+</div>
 
 <script>
 	const cards = document.querySelectorAll('.card[data-project-id]');
@@ -97,11 +105,14 @@ const { data, id } = Astro.props.project;
 				}
 
 				if (modalGallery && data.gallery) {
-					modalGallery.innerHTML = data.gallery.slice(0, 3).map((img: string) => `
-						<div class="gallery-item">
-							<img src="${img}" alt="Capture d'écran du projet" loading="lazy" />
-						</div>
-					`).join('');
+					modalGallery.innerHTML = data.gallery.slice(0, 3).map((img: any) => {
+						const imgSrc = typeof img === 'string' ? img : img.src;
+						return `
+							<div class="gallery-item">
+								<img src="${imgSrc}" alt="Capture d'écran du projet" loading="lazy" />
+							</div>
+						`;
+					}).join('');
 				} else if (modalGallery) {
 					modalGallery.innerHTML = '';
 				}
@@ -112,6 +123,13 @@ const { data, id } = Astro.props.project;
 				}
 
 				modal.showModal();
+			}
+		});
+
+		card.addEventListener('keydown', (e) => {
+			if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') {
+				e.preventDefault();
+				(card as HTMLElement).click();
 			}
 		});
 	});
@@ -134,7 +152,12 @@ const { data, id } = Astro.props.project;
 					border-color 0.4s ease;
 		position: relative;
 		border: 1px solid var(--gray-800);
-		height: 100%; /* Important pour que toutes les cartes aient la même hauteur dans la grille */
+		user-select: none;
+	}
+
+	.card:focus-visible {
+		outline: 3px solid var(--accent-regular);
+		outline-offset: 4px;
 	}
 
 	:global(.grid-projets) .card {
@@ -250,6 +273,17 @@ const { data, id } = Astro.props.project;
 		letter-spacing: 0.05em;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 		white-space: nowrap;
+		display: flex;
+		align-items: center;
+		gap: 0.3rem;
+	}
+
+	.tag-seo {
+		background: var(--accent-regular);
+		border: 2px solid var(--accent-light);
+		box-shadow: 0 2px 10px rgba(var(--accent-regular-rgb), 0.4);
+		color: white;
+		z-index: 2;
 	}
 
 	.details {

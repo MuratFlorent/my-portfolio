@@ -32,8 +32,9 @@ import Icon from './Icon.astro';
 					name="contact-rapide" 
 					method="POST" 
 					data-netlify="true" 
+					data-netlify-recaptcha="true"
 					netlify-honeypot="bot-field"
-					action="/success"
+					action="/merci"
 					class="contact-form stack gap-4"
 				>
 					<input type="hidden" name="form-name" value="contact-rapide" />
@@ -72,8 +73,9 @@ import Icon from './Icon.astro';
 					name="demande-devis" 
 					method="POST" 
 					data-netlify="true" 
+					data-netlify-recaptcha="true"
 					netlify-honeypot="bot-field"
-					action="/success"
+					action="/merci-devis"
 					class="contact-form stack gap-6"
 				>
 					<input type="hidden" name="form-name" value="demande-devis" />
