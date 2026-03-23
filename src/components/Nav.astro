@@ -33,6 +33,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 					height="316"
 					src="/assets/logo/logo3.png"
 					loading="eager"
+					class="site-logo"
 				/>
 		</a>
 		<div class="menu-button-container">
@@ -205,6 +206,10 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 	.site-title img {
 		height: 3.5rem;
 		width: auto;
+	}
+
+	:root.theme-dark .site-logo {
+		filter: invert(1) brightness(2);
 	}
 
 	.menu-button {

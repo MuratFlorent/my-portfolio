@@ -1,7 +1,6 @@
 # Configuration des Notifications par Email - Netlify Forms
 
 Pour recevoir les leads de vos formulaires sur les adresses email suivantes :
-- `murat.light.developer@gmail.com`
 - `julienblondin.lightdeveloper@gmail.com`
 
 Veuillez suivre ces étapes dans votre interface Netlify :

@@ -51,4 +51,5 @@ export const iconPaths = {
 	phone: `<path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="m88 48 32 32-24 24a104.2 104.2 0 0 0 48 48l24-24 32 32-24 24a31.9 31.9 0 0 1-45.2 0L88 141.2A111.9 111.9 0 0 1 42.8 96a31.9 31.9 0 0 1 0-45.2Z"/>`,
 	plus: `<path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M40 128h176m-88-88v176"/>`,
 	'arrow-up': `<path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="m40 160 88-88 88 88m-88-88v128"/>`,
+	star: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M128 32l32 64 64 8-48 44 12 64-60-32-60 32 12-64-48-44 64-8z"/>`,
 };
