@@ -6,7 +6,7 @@ import Icon from './Icon.astro';
 <aside>
 	<h2>Prêt à lancer votre projet ?</h2>
 	<div class="roles">
-		<p><Icon icon="mail-box" color="var(--accent-regular)" size="2.5rem" gradient />julienblondin.lightdeveloper@gmail.com</p>
+		<p><Icon icon="mail-box" color="var(--accent-regular)" size="2.5rem" gradient /> julienblondin.lightdeveloper@gmail.com</p>
 		<p><Icon icon="phone-call" color="var(--accent-regular)" size="2.5rem" gradient /> 06 69 95 27 10 </p>
 	</div>
 	<CallToAction 
@@ -38,6 +38,12 @@ import Icon from './Icon.astro';
 		font-size: var(--text-xl);
 		text-align: center;
 		max-width: 15ch;
+	}
+
+	.roles p {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
 	}
 
 	@media (min-width: 50em) {

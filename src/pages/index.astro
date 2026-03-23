@@ -1394,6 +1394,7 @@ const projects = (await getCollection('work'))
 
 	.home-afi-img {
 		width: 100%;
+		max-width: 100%;
 		height: auto;
 		object-fit: cover;
 		display: block;
@@ -1411,7 +1412,7 @@ const projects = (await getCollection('work'))
 		}
 	}
 
-	@media (min-width: 64em) {
+	@media (min-width: 75em) {
 		.formation-grid {
 			grid-template-columns: repeat(3, 1fr);
 			gap: 2rem;
@@ -1461,7 +1462,7 @@ const projects = (await getCollection('work'))
 		}
 	}
 
-	@media (min-width: 64em) {
+	@media (min-width: 75em) {
 		.highlights-container {
 			grid-template-columns: repeat(4, 1fr);
 		}
