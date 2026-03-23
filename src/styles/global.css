@@ -308,6 +308,9 @@ h5 {
 .gap-10 {
 	gap: 2.5rem;
 }
+.gap-12 {
+	gap: 3rem;
+}
 .gap-15 {
 	gap: 3.75rem;
 }
@@ -333,6 +336,9 @@ h5 {
 	}
 	.lg\:gap-10 {
 		gap: 2.5rem;
+	}
+	.lg\:gap-12 {
+		gap: 3rem;
 	}
 	.lg\:gap-15 {
 		gap: 3.75rem;
