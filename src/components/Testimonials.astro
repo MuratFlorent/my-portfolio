@@ -1,5 +1,29 @@
 ---
 import Icon from './Icon.astro';
+
+const testimonials = [
+	{
+		name: 'Nathalie Mauduit',
+		role: 'Avis Google',
+		content: 'Super travail avec Florent, à l\'écoute, réactif et créatifs sont les maîtres mots de son travail.',
+		stars: 5,
+	},
+	{
+		name: 'Vanessa Guillot',
+		role: 'Avis Google',
+		content: 'Je recommande Florent les yeux fermés ! Il a créé mon site internet et le résultat est tout simplement parfait. Le design est moderne, clair et professionnel...',
+		stars: 5,
+	},
+	{
+		name: 'Nohé Flore',
+		role: 'Avis Google',
+		content: 'Un developer web et formateur à l\'écoute, bienveillant et patient. Il s\'est adapté intuitivement à l\'univers web dont je rêvais, et a amené de nombreux outils qui améliorent et fluidifient mon interface, et c\'est trop beau ! Merci beaucoup Florent ! 🌟',
+		stars: 5,
+	},
+];
+
+const featuredTestimonials = testimonials.slice(0, 3);
+const hasMoreTestimonials = testimonials.length > 3;
 ---
 
 <section id="testimonials" class="section testimonials">
@@ -11,16 +35,301 @@ import Icon from './Icon.astro';
 			<p class="max-w-2xl mx-auto">La réussite de vos projets est ma meilleure récompense. Voici quelques retours d'expérience.</p>
 		</header>
 
-		<div class="gallery">
-			<div class="recovery-message">
-				<Icon icon="chat-circle-dots" size="3rem" gradient />
-				<p>Avis en cours de récupération, ça arrive :) ...</p>
+		<div class="gallery-wrapper">
+			<div class="gallery-scroll-container" itemscope itemtype="https://schema.org/CreativeWorkSeries">
+				<meta itemprop="name" content="Services de Florent - Développement Web" />
+				<div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+					<meta itemprop="ratingValue" content="5" />
+					<meta itemprop="bestRating" content="5" />
+					<meta itemprop="ratingCount" content={testimonials.length.toString()} />
+				</div>
+
+				<div class="gallery">
+					{featuredTestimonials.map((testimonial) => (
+						<div class="testimonial-card" itemprop="review" itemscope itemtype="https://schema.org/Review">
+							<div class="stars" aria-label={`Note de ${testimonial.stars} sur 5`}>
+								{[...Array(testimonial.stars)].map(() => (
+									<Icon icon="star" size="1.2rem" gradient />
+								))}
+							</div>
+							<div itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+								<meta itemprop="ratingValue" content={testimonial.stars.toString()} />
+								<meta itemprop="bestRating" content="5" />
+							</div>
+							<p class="content" itemprop="reviewBody">"{testimonial.content}"</p>
+							<div class="footer">
+								<div class="info">
+									<p class="name" itemprop="author" itemscope itemtype="https://schema.org/Person">
+										<span itemprop="name">{testimonial.name}</span>
+									</p>
+									<p class="role">{testimonial.role}</p>
+								</div>
+							</div>
+						</div>
+					))}
+				</div>
 			</div>
+
+			{testimonials.length > 0 && (
+				<div class="view-all-wrapper">
+					<button id="open-all-testimonials" class="cta-button secondary glass-button">
+						Voir tous les avis
+						<Icon icon="arrow-right" size="1.2rem" />
+					</button>
+				</div>
+			)}
+
+			<div class="google-review-link-wrapper">
+				<a href="https://share.google/nX7ebqiP82ohpsclu" target="_blank" rel="noopener noreferrer" class="google-review-link">
+					<Icon icon="star" size="1rem" />
+					Voir plus d'avis sur Google
+				</a>
+			</div>
+
 		</div>
 	</div>
 </section>
 
+{testimonials.length > 0 && (
+<dialog id="all-testimonials-modal" class="testimonials-modal">
+	<div class="modal-container">
+		<header class="modal-header">
+			<div class="stack gap-2">
+				<h2 class="modal-title">Tous les avis clients</h2>
+				<p>Retrouvez l'ensemble des retours d'expérience.</p>
+			</div>
+			<button class="close-button" aria-label="Fermer la modale" data-close-modal>
+				<Icon icon="plus" size="1.5rem" />
+			</button>
+		</header>
+		
+		<div class="modal-content">
+			<div class="modal-grid">
+				{testimonials.map((testimonial) => (
+					<div class="testimonial-card-modal">
+						<div class="stars">
+							{[...Array(testimonial.stars)].map(() => (
+								<Icon icon="star" size="1rem" gradient />
+							))}
+						</div>
+						<p class="content">"{testimonial.content}"</p>
+						<div class="footer">
+							<div class="info">
+								<p class="name">{testimonial.name}</p>
+								<p class="role">{testimonial.role}</p>
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</div>
+</dialog>
+)}
+
+<script>
+	const container = document.querySelector('.gallery-scroll-container');
+	const openModalBtn = document.getElementById('open-all-testimonials');
+	const modal = document.getElementById('all-testimonials-modal') as HTMLDialogElement;
+	const closeModalBtn = modal?.querySelector('[data-close-modal]');
+
+	// Auto-slider discreet
+	if (container) {
+		const testimonialsCount = container.querySelectorAll('.testimonial-card').length;
+		
+		if (testimonialsCount > 3 || window.innerWidth < 800) {
+			let scrollPos = 0;
+			const scrollSpeed = 0.5; // pixels par frame pour un mouvement très lent
+			let isScrolling = true;
+
+	const autoScroll = () => {
+			if (!isScrolling) {
+				requestAnimationFrame(autoScroll);
+				return;
+			}
+			
+			scrollPos += scrollSpeed;
+			if (scrollPos >= container.scrollWidth - container.clientWidth) {
+				scrollPos = 0; // Reset au début pour un effet de boucle (simple)
+			}
+			container.scrollLeft = Math.floor(scrollPos);
+			requestAnimationFrame(autoScroll);
+		};
+
+			// Pause au survol
+			container.addEventListener('mouseenter', () => isScrolling = false);
+			container.addEventListener('mouseleave', () => isScrolling = true);
+			
+			// Démarrer l'auto-scroll
+			requestAnimationFrame(autoScroll);
+		}
+	}
+
+	if (openModalBtn && modal) {
+		openModalBtn.addEventListener('click', () => {
+			modal.showModal();
+			document.body.style.overflow = 'hidden';
+		});
+
+		closeModalBtn?.addEventListener('click', () => {
+			modal.close();
+		});
+
+		modal.addEventListener('close', () => {
+			document.body.style.overflow = '';
+		});
+
+		modal.addEventListener('click', (e) => {
+			if (e.target === modal) {
+				modal.close();
+			}
+		});
+	}
+</script>
+
 <style>
+	.gallery-wrapper {
+		position: relative;
+		width: 100%;
+	}
+
+	.gallery-scroll-container {
+		width: 100%;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		scrollbar-width: none; /* Firefox */
+		-ms-overflow-style: none;  /* IE and Edge */
+		padding: 1rem 0;
+		margin: 0;
+	}
+
+	.gallery-scroll-container::-webkit-scrollbar {
+		display: none; /* Chrome, Safari and Opera */
+	}
+
+	.gallery {
+		display: flex;
+		gap: 1rem;
+		width: max-content;
+		min-width: 100%;
+		padding: 0 1.5rem;
+	}
+
+	@media (min-width: 50em) {
+		.gallery {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			width: 100%;
+			gap: 1.5rem;
+			padding: 0;
+		}
+	}
+
+	.testimonial-card {
+		width: 80vw;
+		max-width: 320px;
+		flex-shrink: 0;
+		scroll-snap-align: center;
+		padding: 1.5rem;
+		background: var(--gray-999_40);
+		border: 1px solid var(--gray-800);
+		border-radius: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		backdrop-filter: blur(10px);
+		transition: transform 0.3s ease, border-color 0.3s ease;
+		height: 100%;
+	}
+
+	@media (min-width: 50em) {
+		.testimonial-card {
+			width: auto;
+			max-width: none;
+			scroll-snap-align: none;
+			padding: 2rem;
+			gap: 1.5rem;
+		}
+	}
+
+	.testimonial-card:hover {
+		transform: translateY(-5px);
+		border-color: var(--accent-regular);
+	}
+
+	.stars {
+		display: flex;
+		gap: 0.25rem;
+		color: var(--accent-regular);
+		filter: drop-shadow(0 0 2px rgba(var(--accent-dark-rgb), 0.3));
+	}
+
+	.content {
+		font-style: italic;
+		color: var(--gray-200);
+		line-height: 1.6;
+		flex-grow: 1;
+	}
+
+	.footer {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-top: auto;
+	}
+
+	.name {
+		font-weight: 700;
+		color: var(--gray-0);
+		margin: 0;
+	}
+
+	.role {
+		font-size: var(--text-sm);
+		color: var(--gray-400);
+		margin: 0;
+	}
+
+	.slider-controls {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+
+	@media (min-width: 50em) {
+		.slider-controls {
+			display: none;
+		}
+	}
+
+
+	.slider-button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 3rem;
+		height: 3rem;
+		border-radius: 50%;
+		background: var(--gray-999_40);
+		border: 1px solid var(--gray-800);
+		color: var(--gray-0);
+		cursor: pointer;
+		transition: all 0.2s ease;
+		backdrop-filter: blur(10px);
+	}
+
+	.slider-button:hover:not(:disabled) {
+		border-color: var(--accent-regular);
+		background: var(--accent-subtle-overlay);
+		color: var(--accent-regular);
+	}
+
+	.slider-button:disabled {
+		opacity: 0.3;
+		cursor: not-allowed;
+	}
+
 	.badge-accent {
 		display: inline-block;
 		padding: 0.4rem 1.25rem;
@@ -59,36 +368,6 @@ import Icon from './Icon.astro';
 		opacity: 0.5;
 	}
 
-	.recovery-message {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		gap: 1.5rem;
-		padding: 4rem 2rem;
-		background: var(--gray-999_40);
-		border: 1px solid var(--gray-800);
-		border-radius: 1.5rem;
-		text-align: center;
-		color: var(--gray-200);
-		font-style: italic;
-		font-size: var(--text-lg);
-		backdrop-filter: blur(10px);
-		animation: pulse 2s infinite ease-in-out;
-	}
-
-	@keyframes pulse {
-		0% { opacity: 0.7; transform: scale(0.98); }
-		50% { opacity: 1; transform: scale(1); }
-		100% { opacity: 0.7; transform: scale(0.98); }
-	}
-
-	@media (min-width: 50em) {
-		.recovery-message {
-			padding: 6rem 3rem;
-		}
-	}
-
 	.section-header {
 		margin-bottom: 0;
 	}
@@ -104,5 +383,202 @@ import Icon from './Icon.astro';
 
 	.max-w-2xl {
 		max-width: 65ch;
+	}
+
+	/* Bouton Voir tout */
+	.view-all-wrapper {
+		display: flex;
+		justify-content: center;
+		margin-top: 2rem;
+	}
+
+	@media (min-width: 50em) {
+		.view-all-wrapper {
+			margin-top: 3rem;
+		}
+	}
+
+	.glass-button {
+		position: relative;
+		overflow: hidden;
+		background: var(--gray-999_40);
+		border: 1px solid var(--gray-800);
+		backdrop-filter: blur(10px);
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+	}
+
+	.glass-button:hover {
+		transform: scale(1.05);
+		box-shadow: 0 8px 25px rgba(var(--accent-regular-rgb), 0.2);
+		border-color: var(--accent-regular);
+		background: var(--accent-subtle-overlay);
+	}
+
+	.google-review-link-wrapper {
+		display: flex;
+		justify-content: center;
+		margin-top: 1.5rem;
+	}
+
+	.google-review-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: var(--text-sm);
+		color: var(--gray-400);
+		text-decoration: none;
+		transition: color 0.2s ease;
+		padding: 0.5rem 1rem;
+		border-radius: var(--radius-sm);
+	}
+
+	.google-review-link:hover {
+		color: var(--accent-regular);
+	}
+
+	.cta-button {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.8rem 1.5rem;
+		border-radius: var(--radius-full);
+		font-weight: 600;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		text-decoration: none;
+		border: 1px solid transparent;
+	}
+
+	.cta-button.secondary {
+		background: var(--gray-999_40);
+		border-color: var(--gray-800);
+		color: var(--gray-0);
+		backdrop-filter: blur(10px);
+	}
+
+	.cta-button.secondary:hover {
+		border-color: var(--accent-regular);
+		background: var(--accent-subtle-overlay);
+		color: var(--accent-regular);
+	}
+
+	/* Modal Styles */
+	.testimonials-modal {
+		border: none;
+		background: transparent;
+		padding: 0;
+		max-width: 100vw;
+		max-height: 100vh;
+		width: 100%;
+		height: 100%;
+	}
+
+	.testimonials-modal::backdrop {
+		background: rgba(var(--gray-0-rgb), 0.8);
+		backdrop-filter: blur(8px);
+	}
+
+	.modal-container {
+		background: var(--gray-999);
+		width: 95%;
+		max-width: 1000px;
+		height: 90vh;
+		margin: 5vh auto;
+		border-radius: 2rem;
+		border: 1px solid var(--gray-800);
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+		box-shadow: var(--shadow-xl);
+	}
+
+	.modal-header {
+		padding: 2rem;
+		border-bottom: 1px solid var(--gray-800);
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		background: var(--gray-999_40);
+		backdrop-filter: blur(10px);
+	}
+
+	.modal-title {
+		font-size: var(--text-2xl);
+		color: var(--gray-0);
+	}
+
+	.close-button {
+		background: var(--gray-800);
+		border: none;
+		color: var(--gray-200);
+		width: 3rem;
+		height: 3rem;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		transform: rotate(45deg); /* Transform plus icon to x */
+	}
+
+	.close-button:hover {
+		background: var(--accent-regular);
+		color: white;
+		transform: rotate(135deg);
+	}
+
+	.modal-content {
+		flex: 1;
+		overflow-y: auto;
+		padding: 2rem;
+		scrollbar-width: thin;
+		scrollbar-color: var(--gray-800) transparent;
+	}
+
+	.modal-content::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	.modal-content::-webkit-scrollbar-thumb {
+		background-color: var(--gray-800);
+		border-radius: 10px;
+	}
+
+	.modal-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+
+	@media (min-width: 40em) {
+		.modal-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	.testimonial-card-modal {
+		padding: 1.5rem;
+		background: var(--gray-999);
+		border: 1px solid var(--gray-800);
+		border-radius: 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.testimonial-card-modal:hover {
+		border-color: var(--accent-regular);
+	}
+
+	.testimonial-card-modal .content {
+		font-size: var(--text-sm);
+		line-height: 1.5;
+	}
+
+	.testimonial-card-modal .name {
+		font-weight: 700;
+		color: var(--gray-0);
+		font-size: var(--text-base);
 	}
 </style>
