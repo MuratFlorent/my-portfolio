@@ -3,15 +3,21 @@ import Icon from './Icon.astro';
 
 const testimonials = [
 	{
-		name: 'Nathalie Mauduit',
+		name: 'Vanessa Guillot',
 		role: 'Avis Google',
-		content: 'Super travail avec Florent, à l\'écoute, réactif et créatifs sont les maîtres mots de son travail.',
+		content: 'Je recommande Florent les yeux fermés ! Il a créé mon site internet et le résultat est tout simplement parfait. Le design est moderne, clair et professionnel, et tout fonctionne parfaitement, notamment les moyens de paiement qui ont été mis en place de manière fluide et efficace.\n\nAu-delà de ses compétences techniques, Florent se distingue vraiment par sa réactivité et son côté humain. Il est toujours disponible, à l’écoute, et prend le temps de comprendre les besoins pour proposer des solutions adaptées. On se sent accompagné du début à la fin du projet, ce qui est très rassurant.\n\nC’est un vrai plaisir de travailler avec quelqu’un d’aussi impliqué et professionnel. Je referai appel à lui sans hésiter et je le recommande vivement à toute personne cherchant un webmaster de confiance ! 🤩',
 		stars: 5,
 	},
 	{
-		name: 'Vanessa Guillot',
+		name: 'Julien',
 		role: 'Avis Google',
-		content: 'Je recommande Florent les yeux fermés ! Il a créé mon site internet et le résultat est tout simplement parfait. Le design est moderne, clair et professionnel...',
+		content: 'Très satisfait de mon expérience avec Light Developer pour la création de mon site de location saisonnière.\n\nÉquipe à l’écoute, réactive et professionnelle. Le site est moderne, clair et correspond parfaitement à mes attentes.\n\nJe recommande sans hésiter !',
+		stars: 5,
+	},
+	{
+		name: 'Nathalie Mauduit',
+		role: 'Avis Google',
+		content: 'Super travail avec Florent, à l\'écoute, réactif et créatifs sont les maîtres mots de son travail.',
 		stars: 5,
 	},
 	{
@@ -24,7 +30,35 @@ const testimonials = [
 
 const featuredTestimonials = testimonials.slice(0, 3);
 const hasMoreTestimonials = testimonials.length > 3;
+
+// Données structurées JSON-LD pour les avis
+const schemaData = {
+	"@context": "https://schema.org",
+	"@type": "CreativeWorkSeries",
+	"name": "Services de Florent - Développement Web",
+	"aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingValue": "5",
+		"bestRating": "5",
+		"ratingCount": testimonials.length.toString(),
+	},
+	"review": testimonials.map((t) => ({
+		"@type": "Review",
+		"reviewRating": {
+			"@type": "Rating",
+			"ratingValue": t.stars.toString(),
+			"bestRating": "5",
+		},
+		"author": {
+			"@type": "Person",
+			"name": t.name,
+		},
+		"reviewBody": t.content,
+	})),
+};
 ---
+
+<script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
 
 <section id="testimonials" class="section testimonials">
 	<div class="testimonials-bg"></div>
@@ -36,31 +70,25 @@ const hasMoreTestimonials = testimonials.length > 3;
 		</header>
 
 		<div class="gallery-wrapper">
-			<div class="gallery-scroll-container" itemscope itemtype="https://schema.org/CreativeWorkSeries">
-				<meta itemprop="name" content="Services de Florent - Développement Web" />
-				<div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
-					<meta itemprop="ratingValue" content="5" />
-					<meta itemprop="bestRating" content="5" />
-					<meta itemprop="ratingCount" content={testimonials.length.toString()} />
-				</div>
-
+			<div class="gallery-scroll-container">
 				<div class="gallery">
 					{featuredTestimonials.map((testimonial) => (
-						<div class="testimonial-card" itemprop="review" itemscope itemtype="https://schema.org/Review">
+						<div class="testimonial-card">
 							<div class="stars" aria-label={`Note de ${testimonial.stars} sur 5`}>
 								{[...Array(testimonial.stars)].map(() => (
 									<Icon icon="star" size="1.2rem" gradient />
 								))}
 							</div>
-							<div itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-								<meta itemprop="ratingValue" content={testimonial.stars.toString()} />
-								<meta itemprop="bestRating" content="5" />
+							<div class="content-wrapper">
+								<p class="content">"{testimonial.content}"</p>
+								{testimonial.content.length > 150 && (
+									<button class="read-more-btn">Voir plus</button>
+								)}
 							</div>
-							<p class="content" itemprop="reviewBody">"{testimonial.content}"</p>
 							<div class="footer">
 								<div class="info">
-									<p class="name" itemprop="author" itemscope itemtype="https://schema.org/Person">
-										<span itemprop="name">{testimonial.name}</span>
+									<p class="name">
+										<span>{testimonial.name}</span>
 									</p>
 									<p class="role">{testimonial.role}</p>
 								</div>
@@ -112,7 +140,12 @@ const hasMoreTestimonials = testimonials.length > 3;
 								<Icon icon="star" size="1rem" gradient />
 							))}
 						</div>
-						<p class="content">"{testimonial.content}"</p>
+						<div class="content-wrapper">
+							<p class="content">"{testimonial.content}"</p>
+							{testimonial.content.length > 150 && (
+								<button class="read-more-btn">Voir plus</button>
+							)}
+						</div>
 						<div class="footer">
 							<div class="info">
 								<p class="name">{testimonial.name}</p>
@@ -185,6 +218,22 @@ const hasMoreTestimonials = testimonials.length > 3;
 			}
 		});
 	}
+
+	// Gestion des boutons "Voir plus"
+	document.querySelectorAll('.read-more-btn').forEach(btn => {
+		btn.addEventListener('click', (e) => {
+			const target = e.currentTarget as HTMLButtonElement;
+			const content = target.previousElementSibling as HTMLElement;
+			
+			if (content.classList.contains('expanded')) {
+				content.classList.remove('expanded');
+				target.textContent = 'Voir plus';
+			} else {
+				content.classList.add('expanded');
+				target.textContent = 'Voir moins';
+			}
+		});
+	});
 </script>
 
 <style>
@@ -264,11 +313,46 @@ const hasMoreTestimonials = testimonials.length > 3;
 		filter: drop-shadow(0 0 2px rgba(var(--accent-dark-rgb), 0.3));
 	}
 
+	.content-wrapper {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
 	.content {
 		font-style: italic;
 		color: var(--gray-200);
 		line-height: 1.6;
 		flex-grow: 1;
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		transition: all 0.3s ease;
+	}
+
+	.content.expanded {
+		-webkit-line-clamp: unset;
+		overflow: visible;
+	}
+
+	.read-more-btn {
+		background: none;
+		border: none;
+		color: var(--accent-regular);
+		font-size: var(--text-sm);
+		font-weight: 600;
+		cursor: pointer;
+		padding: 0;
+		text-align: left;
+		width: fit-content;
+		transition: color 0.2s ease;
+	}
+
+	.read-more-btn:hover {
+		color: var(--accent-light);
+		text-decoration: underline;
 	}
 
 	.footer {
