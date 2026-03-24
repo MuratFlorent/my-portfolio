@@ -78,9 +78,4 @@ const { variant } = Astro.props;
 			gap: 2rem;
 		}
 	}
-
-	/* If last row contains only one item, make it span all columns. */
-	.grid.small > :global(:last-child:nth-child(odd)) {
-		grid-column: 1 / -1;
-	}
 </style>

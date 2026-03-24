@@ -16,7 +16,7 @@ const description = "Découvrez l'approche de Florent Murat (Light Developer) : 
 			<Hero
 				title="Construisons ensemble des outils web qui vous ressemblent"
 				tagline="Mon approche : allier une technique de pointe à un accompagnement humain, simple et pédagogique pour faire grandir votre projet."
-				align="start"
+				align="center"
 			/>
 
 			<div class="content stack gap-16">
@@ -163,6 +163,7 @@ const description = "Découvrez l'approche de Florent Murat (Light Developer) : 
 	h2 {
 		font-size: var(--text-2xl);
 		color: var(--gray-0);
+		margin-bottom: 0.5rem;
 	}
 
 	.badge-accent {
@@ -177,7 +178,19 @@ const description = "Découvrez l'approche de Florent Murat (Light Developer) : 
 		letter-spacing: 0.05em;
 		width: fit-content;
 		margin-top: 1.5rem;
-		margin-bottom: 0.75rem;
+		margin-bottom: 1.5rem;
+		margin-inline: auto;
+	}
+
+	section {
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	section p {
+		max-width: 65ch;
 	}
 
 	.values-grid {
@@ -185,6 +198,7 @@ const description = "Découvrez l'approche de Florent Murat (Light Developer) : 
 		grid-template-columns: repeat(2, 1fr);
 		gap: 1.5rem;
 		margin-top: 1rem;
+		width: 100%;
 	}
 
 	@media (min-width: 40em) {
@@ -224,6 +238,9 @@ const description = "Découvrez l'approche de Florent Murat (Light Developer) : 
 		padding: 3rem;
 		text-align: center;
 		margin-top: 4rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 
 	.cta-content h2 {

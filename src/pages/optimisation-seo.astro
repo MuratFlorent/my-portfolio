@@ -5,8 +5,8 @@ import Hero from '../components/Hero.astro';
 import Icon from '../components/Icon.astro';
 import CallToAction from '../components/CallToAction.astro';
 
-const title = "SEO & GEO : Visibilité sur Google et IA | Light Developer";
-const description = "Dominez les moteurs de recherche et soyez cité par les IA. Optimisation SEO technique, contenu stratégique et GEO pour attirer plus de clients qualifiés.";
+const title = "Optimisation SEO & Stratégie de Visibilité Google | Light Developer";
+const description = "Booster votre visibilité sur Google avec une stratégie SEO & GEO efficace. Audit sémantique, mapping de mots-clés et optimisation technique pour attirer des clients.";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -29,9 +29,9 @@ const description = "Dominez les moteurs de recherche et soyez cité par les IA.
 					<div class="pilier">
 						<div class="icon-header">
 							<Icon icon="terminal" size="1.5rem" gradient />
-							<h3>SEO Technique</h3>
+							<h3>Audit & SEO Technique</h3>
 						</div>
-						<p>Structure du code, vitesse de chargement (Core Web Vitals), indexation et compatibilité mobile.</p>
+						<p>Analyse complète de votre site : vitesse, indexation et structure pour plaire à Google.</p>
 					</div>
 					<div class="pilier">
 						<div class="icon-header">
@@ -39,6 +39,13 @@ const description = "Dominez les moteurs de recherche et soyez cité par les IA.
 							<h3>Contenu & Mots-clés</h3>
 						</div>
 						<p>Audit sémantique et optimisation éditoriale pour répondre précisément aux questions de vos prospects.</p>
+					</div>
+					<div class="pilier">
+						<div class="icon-header">
+							<Icon icon="strategy" size="1.5rem" gradient />
+							<h3>Mapping SEO</h3>
+						</div>
+						<p>Planification stratégique des contenus et maillage interne pour couvrir vos thématiques clés (création, refonte, e-commerce).</p>
 					</div>
 					<div class="pilier">
 						<div class="icon-header">
@@ -128,16 +135,16 @@ const description = "Dominez les moteurs de recherche et soyez cité par les IA.
 		.content {
 			font-size: var(--text-lg);
 		}
-
+		
 		h2 {
 			font-size: var(--text-3xl);
 		}
-
+		
 		.piliers-grid {
-			grid-template-columns: repeat(3, 1fr);
+			grid-template-columns: repeat(2, 1fr);
 			gap: 2rem;
 		}
-
+		
 		.pilier {
 			padding: 2rem;
 		}
