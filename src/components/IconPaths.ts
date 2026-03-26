@@ -52,4 +52,5 @@ export const iconPaths = {
 	plus: `<path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M40 128h176m-88-88v176"/>`,
 	'arrow-up': `<path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="m40 160 88-88 88 88m-88-88v128"/>`,
 	star: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M128 32l32 64 64 8-48 44 12 64-60-32-60 32 12-64-48-44 64-8z"/>`,
+	copy: `<path d="M216,40H88a8,8,0,0,0-8,8V80H48a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H176a8,8,0,0,0,8-8V176h32a8,8,0,0,0,8-8V48A8,8,0,0,0,216,40ZM168,208H56V96H168Zm40-48H184V88a8,8,0,0,0-8-8H96V56H208Z"></path>`,
 };
