@@ -354,10 +354,14 @@ import Icon from './Icon.astro';
 			return;
 		}
 
+		// Utilisation de la clé publique de reCAPTCHA définie dans les variables d'environnement Astro
+		// Si non définie, on utilise la clé fournie par l'utilisateur ou la clé par défaut (qui peut être incorrecte)
+		const siteKey = (import.meta as any).env.PUBLIC_RECAPTCHA_SITE_KEY || '6Ld-96EqAAAAAAoA_K0f0Sg9zM5N5-j_p9s-8h8s'; 
+
 		const quickContainer = document.getElementById('quick-recaptcha');
 		if (quickContainer && quickWidgetId === null) {
 			quickWidgetId = (window as any).grecaptcha.render('quick-recaptcha', {
-				'sitekey': '6Ld-96EqAAAAAAoA_K0f0Sg9zM5N5-j_p9s-8h8s', // Site key standard pour Netlify
+				'sitekey': siteKey,
 				'theme': document.documentElement.classList.contains('theme-dark') ? 'dark' : 'light'
 			});
 		}
@@ -365,7 +369,7 @@ import Icon from './Icon.astro';
 		const quoteContainer = document.getElementById('quote-recaptcha');
 		if (quoteContainer && quoteWidgetId === null) {
 			quoteWidgetId = (window as any).grecaptcha.render('quote-recaptcha', {
-				'sitekey': '6Ld-96EqAAAAAAoA_K0f0Sg9zM5N5-j_p9s-8h8s', // Même clé pour les deux
+				'sitekey': siteKey,
 				'theme': document.documentElement.classList.contains('theme-dark') ? 'dark' : 'light'
 			});
 		}
