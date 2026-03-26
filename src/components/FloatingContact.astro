@@ -64,7 +64,7 @@ import Icon from './Icon.astro';
 						<label for="quick-message">Votre message</label>
 						<textarea id="quick-message" name="message" placeholder="Parlez-moi brièvement de votre besoin" required rows="3"></textarea>
 					</div>
-					<div id="shared-recaptcha" class="recaptcha-container"></div>
+					<div id="quick-recaptcha" class="recaptcha-container"></div>
 					<div class="form-feedback-message" hidden></div>
 					<button type="submit" class="submit-btn">
 						Envoyer mon message
@@ -79,7 +79,6 @@ import Icon from './Icon.astro';
 					name="demande-devis" 
 					method="POST" 
 					data-netlify="true" 
-					data-netlify-recaptcha="true"
 					data-netlify-honeypot="bot-field"
 					action="/merci-devis"
 					class="contact-form stack gap-6"
@@ -225,12 +224,6 @@ import Icon from './Icon.astro';
 		panels?.forEach(p => {
 			if (p.id === `${target}-contact-panel`) {
 				p.classList.add('active');
-				// Déplacer le reCAPTCHA partagé vers le formulaire actif pour assurer la validation Netlify
-				const sharedRecaptcha = document.getElementById('shared-recaptcha');
-				const submitBtn = p.querySelector('.submit-btn');
-				if (sharedRecaptcha && submitBtn && submitBtn.parentNode) {
-					submitBtn.parentNode.insertBefore(sharedRecaptcha, submitBtn);
-				}
 			} else {
 				p.classList.remove('active');
 			}
@@ -351,19 +344,19 @@ import Icon from './Icon.astro';
 	});
 
 	// reCAPTCHA Rendering logic
-	let sharedWidgetId: any = null;
+	let quickWidgetId: any = null;
 
 	function renderRecaptchas() {
 		if (!(window as any).grecaptcha || !(window as any).grecaptcha.render) {
 			return;
 		}
 
-		// Utilisation directe de la clé de site fournie par l'utilisateur
-		const siteKey = '6Ld29pgsAAAAAAPQHMdfa5lvrFZG7re2Tb_m1VvcX'; 
+		// Utilisation de la clé de site standard qui semblait fonctionner avant
+		const siteKey = '6Ld-96EqAAAAAAoA_K0f0Sg9zM5N5-j_p9s-8h8s'; 
 
-		const sharedContainer = document.getElementById('shared-recaptcha');
-		if (sharedContainer && sharedWidgetId === null) {
-			sharedWidgetId = (window as any).grecaptcha.render('shared-recaptcha', {
+		const quickContainer = document.getElementById('quick-recaptcha');
+		if (quickContainer && quickWidgetId === null) {
+			quickWidgetId = (window as any).grecaptcha.render('quick-recaptcha', {
 				'sitekey': siteKey,
 				'theme': document.documentElement.classList.contains('theme-dark') ? 'dark' : 'light'
 			});
@@ -385,10 +378,9 @@ import Icon from './Icon.astro';
 			const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
 			const feedbackMsg = form.querySelector('.form-feedback-message') as HTMLElement;
 			
-			// Vérification du reCAPTCHA si présent
-			const sharedRecaptcha = form.querySelector('#shared-recaptcha');
-			if (sharedRecaptcha && sharedWidgetId !== null) {
-				const recaptchaResponse = (window as any).grecaptcha.getResponse(sharedWidgetId);
+			// Vérification du reCAPTCHA seulement pour le formulaire de contact rapide
+			if (form.id === 'contact-rapide' && quickWidgetId !== null) {
+				const recaptchaResponse = (window as any).grecaptcha.getResponse(quickWidgetId);
 				
 				if (!recaptchaResponse) {
 					if (feedbackMsg) {
@@ -421,9 +413,9 @@ import Icon from './Icon.astro';
 						}
 						form.reset();
 						
-						// Reset reCAPTCHA if possible (Netlify/grecaptcha might need this)
-						if ((window as any).grecaptcha && sharedWidgetId !== null) {
-							(window as any).grecaptcha.reset(sharedWidgetId);
+						// Reset reCAPTCHA if possible
+						if (form.id === 'contact-rapide' && (window as any).grecaptcha && quickWidgetId !== null) {
+							(window as any).grecaptcha.reset(quickWidgetId);
 						}
 
 						// On attend un peu avant de fermer la modale pour que l'utilisateur lise le message
