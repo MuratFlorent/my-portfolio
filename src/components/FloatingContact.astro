@@ -354,9 +354,8 @@ import Icon from './Icon.astro';
 			return;
 		}
 
-		// Utilisation de la clé publique de reCAPTCHA définie dans les variables d'environnement Astro
-		// Si non définie, on utilise la clé fournie par l'utilisateur ou la clé par défaut (qui peut être incorrecte)
-		const siteKey = (import.meta as any).env.PUBLIC_RECAPTCHA_SITE_KEY || '6Ld-96EqAAAAAAoA_K0f0Sg9zM5N5-j_p9s-8h8s'; 
+		// Utilisation directe de la clé de site fournie par l'utilisateur
+		const siteKey = '6Ld29pgsAAAAAAPQHMdfa5lvrFZG7re2Tb_m1VvcX'; 
 
 		const quickContainer = document.getElementById('quick-recaptcha');
 		if (quickContainer && quickWidgetId === null) {
