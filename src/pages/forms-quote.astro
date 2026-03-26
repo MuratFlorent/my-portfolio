@@ -12,7 +12,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             name="demande-devis" 
             method="POST" 
             data-netlify="true" 
-            data-netlify-recaptcha="true"
             data-netlify-honeypot="bot-field"
             action="/merci-devis"
         >
@@ -48,7 +47,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <label for="message-devis">Message</label>
             <textarea name="message" id="message-devis"></textarea>
             <input type="hidden" name="source" />
-            <div data-netlify-recaptcha="true"></div>
         </form>
     </div>
 </BaseLayout>
