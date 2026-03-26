@@ -79,6 +79,7 @@ import Icon from './Icon.astro';
 					name="demande-devis" 
 					method="POST" 
 					data-netlify="true" 
+					data-netlify-recaptcha="true"
 					data-netlify-honeypot="bot-field"
 					action="/merci-devis"
 					class="contact-form stack gap-6"
@@ -140,6 +141,7 @@ import Icon from './Icon.astro';
 						<label for="quote-message">Détails de votre demande</label>
 						<textarea id="quote-message" name="message" placeholder="Dites-m'en plus sur votre projet..." required rows="4"></textarea>
 					</div>
+					<div id="quote-recaptcha" class="recaptcha-container"></div>
 					<div class="form-feedback-message" hidden></div>
 					<button type="submit" class="submit-btn">
 						Demander mon devis personnalisé
@@ -345,18 +347,27 @@ import Icon from './Icon.astro';
 
 	// reCAPTCHA Rendering logic
 	let quickWidgetId: any = null;
+	let quoteWidgetId: any = null;
 
 	function renderRecaptchas() {
 		if (!(window as any).grecaptcha || !(window as any).grecaptcha.render) {
 			return;
 		}
 
-		// Utilisation de la clé de site standard qui semblait fonctionner avant
-		const siteKey = '6Ld-96EqAAAAAAoA_K0f0Sg9zM5N5-j_p9s-8h8s'; 
+		// Utilisation de la nouvelle clé de site
+		const siteKey = '6Ld29pgsAAAAAAPQHMdfa5lvrFZG7re2Tb_m1VvcX'; 
 
 		const quickContainer = document.getElementById('quick-recaptcha');
 		if (quickContainer && quickWidgetId === null) {
 			quickWidgetId = (window as any).grecaptcha.render('quick-recaptcha', {
+				'sitekey': siteKey,
+				'theme': document.documentElement.classList.contains('theme-dark') ? 'dark' : 'light'
+			});
+		}
+
+		const quoteContainer = document.getElementById('quote-recaptcha');
+		if (quoteContainer && quoteWidgetId === null) {
+			quoteWidgetId = (window as any).grecaptcha.render('quote-recaptcha', {
 				'sitekey': siteKey,
 				'theme': document.documentElement.classList.contains('theme-dark') ? 'dark' : 'light'
 			});
@@ -378,9 +389,13 @@ import Icon from './Icon.astro';
 			const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
 			const feedbackMsg = form.querySelector('.form-feedback-message') as HTMLElement;
 			
-			// Vérification du reCAPTCHA seulement pour le formulaire de contact rapide
-			if (form.id === 'contact-rapide' && quickWidgetId !== null) {
-				const recaptchaResponse = (window as any).grecaptcha.getResponse(quickWidgetId);
+			// Vérification du reCAPTCHA selon le formulaire
+			let currentWidgetId = null;
+			if (form.id === 'contact-rapide') currentWidgetId = quickWidgetId;
+			else if (form.id === 'demande-devis') currentWidgetId = quoteWidgetId;
+
+			if (currentWidgetId !== null) {
+				const recaptchaResponse = (window as any).grecaptcha.getResponse(currentWidgetId);
 				
 				if (!recaptchaResponse) {
 					if (feedbackMsg) {
@@ -414,8 +429,12 @@ import Icon from './Icon.astro';
 						form.reset();
 						
 						// Reset reCAPTCHA if possible
-						if (form.id === 'contact-rapide' && (window as any).grecaptcha && quickWidgetId !== null) {
-							(window as any).grecaptcha.reset(quickWidgetId);
+						let successWidgetId = null;
+						if (form.id === 'contact-rapide') successWidgetId = quickWidgetId;
+						else if (form.id === 'demande-devis') successWidgetId = quoteWidgetId;
+
+						if (successWidgetId !== null && (window as any).grecaptcha) {
+							(window as any).grecaptcha.reset(successWidgetId);
 						}
 
 						// On attend un peu avant de fermer la modale pour que l'utilisateur lise le message
