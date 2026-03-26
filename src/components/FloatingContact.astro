@@ -35,6 +35,7 @@ import Icon from './Icon.astro';
 					name="contact-rapide" 
 					method="POST" 
 					data-netlify="true" 
+					data-netlify-recaptcha="true"
 					data-netlify-honeypot="bot-field"
 					action="/merci"
 					class="contact-form stack gap-4"
@@ -62,6 +63,7 @@ import Icon from './Icon.astro';
 						<label for="quick-message">Votre message</label>
 						<textarea id="quick-message" name="message" placeholder="Parlez-moi brièvement de votre besoin" required rows="3"></textarea>
 					</div>
+					<div data-netlify-recaptcha="true" class="recaptcha-container"></div>
 					<div class="form-feedback-message" hidden></div>
 					<button type="submit" class="submit-btn">
 						Envoyer mon message
@@ -340,10 +342,15 @@ import Icon from './Icon.astro';
 	});
 
 	// Form Submission logic
+	let isSubmitting = false;
+
 	modal?.querySelectorAll('form').forEach(form => {
 		form.addEventListener('submit', async (e) => {
 			e.preventDefault();
-			const formData = new FormData(form);
+
+			if (isSubmitting) return;
+			
+			const formData = new FormData(form as HTMLFormElement);
 			const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
 			const feedbackMsg = form.querySelector('.form-feedback-message') as HTMLElement;
 			
@@ -361,6 +368,7 @@ import Icon from './Icon.astro';
 			}
 
 			if (submitBtn) {
+				isSubmitting = true;
 				submitBtn.disabled = true;
 				const originalContent = submitBtn.innerHTML;
 				submitBtn.innerHTML = 'Envoi en cours...';
@@ -379,12 +387,20 @@ import Icon from './Icon.astro';
 							feedbackMsg.removeAttribute('hidden');
 						}
 						form.reset();
+						
+						// Reset reCAPTCHA if possible (Netlify/grecaptcha might need this)
+						if ((window as any).grecaptcha) {
+							(window as any).grecaptcha.reset();
+						}
+
 						// On attend un peu avant de fermer la modale pour que l'utilisateur lise le message
 						setTimeout(() => {
 							modal.close();
 							if (feedbackMsg) feedbackMsg.setAttribute('hidden', '');
+							isSubmitting = false;
 						}, 4000);
 					} else {
+						isSubmitting = false;
 						if (feedbackMsg) {
 							feedbackMsg.textContent = "Oups ! Une erreur est survenue lors de l'envoi. Veuillez réessayer ou me contacter par email directement.";
 							feedbackMsg.classList.add('error');
@@ -392,6 +408,7 @@ import Icon from './Icon.astro';
 						}
 					}
 				} catch (error) {
+					isSubmitting = false;
 					if (feedbackMsg) {
 						feedbackMsg.textContent = "Oups ! Une erreur est survenue lors de l'envoi. Veuillez réessayer ou me contacter par email directement.";
 						feedbackMsg.classList.add('error');
