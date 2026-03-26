@@ -117,7 +117,7 @@ import Icon from './Icon.astro';
 						<label for="quote-message">Détails de votre demande</label>
 						<textarea id="quote-message" name="message" placeholder="Dites-m'en plus sur votre projet..." required rows="4"></textarea>
 					</div>
-					<div id="quote-recaptcha" class="recaptcha-container"></div>
+					<div data-netlify-recaptcha="true"></div>
 					<div class="form-feedback-message" hidden></div>
 					<button type="submit" class="submit-btn">
 						Demander mon devis personnalisé
@@ -176,7 +176,6 @@ import Icon from './Icon.astro';
 		e.preventDefault();
 		e.stopPropagation();
 		modal.showModal();
-		renderRecaptchas();
 	});
 
 	closeBtn?.addEventListener('click', (e) => {
@@ -290,31 +289,8 @@ import Icon from './Icon.astro';
 		
 		if (!modal.open) {
 			modal.showModal();
-			renderRecaptchas();
 		}
 	});
-
-	// reCAPTCHA Rendering logic
-	let quoteWidgetId: any = null;
-
-	function renderRecaptchas() {
-		if (!(window as any).grecaptcha || !(window as any).grecaptcha.render) {
-			return;
-		}
-
-		// Restauration de l'ancienne clé qui fonctionnait
-		const siteKey = '6Ld-96EqAAAAAAoA_K0f0Sg9zM5N5-j_p9s-8h8s'; 
-
-		const quoteContainer = document.getElementById('quote-recaptcha');
-		if (quoteContainer && quoteWidgetId === null) {
-			quoteWidgetId = (window as any).grecaptcha.render('quote-recaptcha', {
-				'sitekey': siteKey,
-				'theme': document.documentElement.classList.contains('theme-dark') ? 'dark' : 'light'
-			});
-		}
-	}
-
-	window.addEventListener('recaptcha-ready', renderRecaptchas);
 
 	// Form Submission logic
 	let isSubmitting = false;
@@ -329,20 +305,6 @@ import Icon from './Icon.astro';
 			const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
 			const feedbackMsg = form.querySelector('.form-feedback-message') as HTMLElement;
 			
-			// Vérification du reCAPTCHA
-			if (quoteWidgetId !== null) {
-				const recaptchaResponse = (window as any).grecaptcha.getResponse(quoteWidgetId);
-				
-				if (!recaptchaResponse) {
-					if (feedbackMsg) {
-						feedbackMsg.textContent = "Veuillez cocher la case reCAPTCHA.";
-						feedbackMsg.classList.add('error');
-						feedbackMsg.removeAttribute('hidden');
-					}
-					return;
-				}
-			}
-
 			if (submitBtn) {
 				isSubmitting = true;
 				submitBtn.disabled = true;
@@ -364,11 +326,6 @@ import Icon from './Icon.astro';
 						}
 						form.reset();
 						
-						// Reset reCAPTCHA if possible
-						if (quoteWidgetId !== null && (window as any).grecaptcha) {
-							(window as any).grecaptcha.reset(quoteWidgetId);
-						}
-
 						// On attend un peu avant de fermer la modale pour que l'utilisateur lise le message
 						setTimeout(() => {
 							modal.close();
@@ -530,9 +487,30 @@ import Icon from './Icon.astro';
 		border-radius: 0;
 		position: relative;
 		overflow-y: auto;
+		scrollbar-width: thin;
+		scrollbar-color: var(--gray-700) transparent;
+		scroll-behavior: smooth;
 		box-shadow: none;
 		border: none;
 		transition: transform var(--theme-transition-slow);
+	}
+
+	.modal-container::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	.modal-container::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	.modal-container::-webkit-scrollbar-thumb {
+		background-color: var(--gray-700);
+		border-radius: 10px;
+		border: 2px solid var(--gray-999);
+	}
+
+	.modal-container::-webkit-scrollbar-thumb:hover {
+		background-color: var(--gray-600);
 	}
 
 	@media (min-width: 40em) {

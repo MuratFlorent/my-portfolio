@@ -78,6 +78,35 @@ const { title, description } = Astro.props;
 		</script>
 
 		<style>
+			html {
+				scroll-behavior: smooth;
+			}
+
+			/* Custom scrollbar for the entire site */
+			::-webkit-scrollbar {
+				width: 10px;
+			}
+
+			::-webkit-scrollbar-track {
+				background: var(--gray-999);
+			}
+
+			::-webkit-scrollbar-thumb {
+				background: var(--gray-700);
+				border-radius: 10px;
+				border: 2px solid var(--gray-999);
+			}
+
+			::-webkit-scrollbar-thumb:hover {
+				background: var(--gray-600);
+			}
+
+			/* For Firefox */
+			* {
+				scrollbar-width: thin;
+				scrollbar-color: var(--gray-700) transparent;
+			}
+
 			:root {
 				--_placeholder-bg: linear-gradient(transparent, transparent);
 				--bg-image-main: url('/assets/backgrounds/bg-main-light-800w.jpg');
