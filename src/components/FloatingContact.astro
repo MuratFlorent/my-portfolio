@@ -32,6 +32,7 @@ import Icon from './Icon.astro';
 
 			<div id="quick-contact-panel" class="tab-panel active">
 				<form 
+					id="contact-rapide"
 					name="contact-rapide" 
 					method="POST" 
 					data-netlify="true" 
@@ -63,7 +64,7 @@ import Icon from './Icon.astro';
 						<label for="quick-message">Votre message</label>
 						<textarea id="quick-message" name="message" placeholder="Parlez-moi brièvement de votre besoin" required rows="3"></textarea>
 					</div>
-					<div data-netlify-recaptcha="true" class="recaptcha-container"></div>
+					<div id="quick-recaptcha" class="recaptcha-container"></div>
 					<div class="form-feedback-message" hidden></div>
 					<button type="submit" class="submit-btn">
 						Envoyer mon message
@@ -74,6 +75,7 @@ import Icon from './Icon.astro';
 
 			<div id="quote-contact-panel" class="tab-panel">
 				<form 
+					id="demande-devis"
 					name="demande-devis" 
 					method="POST" 
 					data-netlify="true" 
@@ -139,7 +141,7 @@ import Icon from './Icon.astro';
 						<label for="quote-message">Détails de votre demande</label>
 						<textarea id="quote-message" name="message" placeholder="Dites-m'en plus sur votre projet..." required rows="4"></textarea>
 					</div>
-					<div data-netlify-recaptcha="true" class="recaptcha-container"></div>
+					<div id="quote-recaptcha" class="recaptcha-container"></div>
 					<div class="form-feedback-message" hidden></div>
 					<button type="submit" class="submit-btn">
 						Demander mon devis personnalisé
@@ -187,6 +189,7 @@ import Icon from './Icon.astro';
 		e.preventDefault();
 		e.stopPropagation();
 		modal.showModal();
+		renderRecaptchas();
 	});
 
 	closeBtn?.addEventListener('click', (e) => {
@@ -338,8 +341,37 @@ import Icon from './Icon.astro';
 		
 		if (!modal.open) {
 			modal.showModal();
+			renderRecaptchas();
 		}
 	});
+
+	// reCAPTCHA Rendering logic
+	let quickWidgetId: any = null;
+	let quoteWidgetId: any = null;
+
+	function renderRecaptchas() {
+		if (!(window as any).grecaptcha || !(window as any).grecaptcha.render) {
+			return;
+		}
+
+		const quickContainer = document.getElementById('quick-recaptcha');
+		if (quickContainer && quickWidgetId === null) {
+			quickWidgetId = (window as any).grecaptcha.render('quick-recaptcha', {
+				'sitekey': '6Ld-96EqAAAAAAoA_K0f0Sg9zM5N5-j_p9s-8h8s', // Site key standard pour Netlify
+				'theme': document.documentElement.classList.contains('theme-dark') ? 'dark' : 'light'
+			});
+		}
+
+		const quoteContainer = document.getElementById('quote-recaptcha');
+		if (quoteContainer && quoteWidgetId === null) {
+			quoteWidgetId = (window as any).grecaptcha.render('quote-recaptcha', {
+				'sitekey': '6Ld-96EqAAAAAAoA_K0f0Sg9zM5N5-j_p9s-8h8s', // Même clé pour les deux
+				'theme': document.documentElement.classList.contains('theme-dark') ? 'dark' : 'light'
+			});
+		}
+	}
+
+	window.addEventListener('recaptcha-ready', renderRecaptchas);
 
 	// Form Submission logic
 	let isSubmitting = false;
@@ -355,8 +387,10 @@ import Icon from './Icon.astro';
 			const feedbackMsg = form.querySelector('.form-feedback-message') as HTMLElement;
 			
 			// Vérification du reCAPTCHA si présent
-			if (form.hasAttribute('data-netlify-recaptcha')) {
-				const recaptchaResponse = formData.get('g-recaptcha-response');
+			if (form.querySelector('.recaptcha-container')) {
+				const widgetId = form.id === 'contact-rapide' ? quickWidgetId : quoteWidgetId;
+				const recaptchaResponse = (window as any).grecaptcha.getResponse(widgetId);
+				
 				if (!recaptchaResponse) {
 					if (feedbackMsg) {
 						feedbackMsg.textContent = "Veuillez cocher la case reCAPTCHA.";
@@ -390,7 +424,8 @@ import Icon from './Icon.astro';
 						
 						// Reset reCAPTCHA if possible (Netlify/grecaptcha might need this)
 						if ((window as any).grecaptcha) {
-							(window as any).grecaptcha.reset();
+							const widgetId = form.id === 'contact-rapide' ? quickWidgetId : quoteWidgetId;
+							(window as any).grecaptcha.reset(widgetId);
 						}
 
 						// On attend un peu avant de fermer la modale pour que l'utilisateur lise le message

@@ -61,9 +61,15 @@ const {
 
 	// Dynamic load of reCAPTCHA to avoid IDE "Missed locally stored library for HTTP link" warning
 	// while ensuring the official version is always used for security.
+	window.onRecaptchaLoad = () => {
+		window.recaptchaLoaded = true;
+		// Dispatch custom event to notify components that recaptcha is ready
+		window.dispatchEvent(new CustomEvent('recaptcha-ready'));
+	};
+
 	const loadRecaptcha = () => {
 		const script = document.createElement('script');
-		script.src = 'https://www.google.com/recaptcha/api.js';
+		script.src = 'https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit';
 		script.async = true;
 		script.defer = true;
 		document.head.appendChild(script);
