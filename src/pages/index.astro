@@ -88,7 +88,7 @@ const projects = (await getCollection('work'))
 						alt="Florent Murat - Développeur web freelance spécialisé en création de site sur mesure et SEO"
 						width="1365"
 						height="2048"
-						src="/assets/portrait2.jpeg"
+						src="/assets/new_portrait2.jpeg"
 						loading="eager"
 						decoding="async"
 					/>
@@ -520,16 +520,16 @@ const projects = (await getCollection('work'))
 		height: auto;
 		aspect-ratio: 1 / 1.1;
 		object-fit: cover;
-		object-position: center 15%;
-		transform: scale(1.15);
+		object-position: center center;
+		transform: scale(1);
 		transition: transform var(--theme-transition-slow);
 	}
 
 	@media (min-width: 30em) {
 		.hero-image-container img {
 			aspect-ratio: 5 / 4;
-			object-position: center 20%;
-			transform: scale(1.1);
+			object-position: center center;
+			transform: scale(1);
 		}
 	}
 
@@ -615,8 +615,8 @@ const projects = (await getCollection('work'))
 
 	.hero-image-container img {
 			aspect-ratio: 3 / 4;
-			object-position: center 25%;
-			transform: scale(1.1);
+			object-position: center center;
+			transform: scale(1);
 		}
 	}
 
