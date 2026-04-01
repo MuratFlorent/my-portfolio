@@ -374,5 +374,48 @@
       "custom_contact_page.png",
       "custom_footer_special_design_sur_mesure.png"
     ]
+  },
+  "hellorse": {
+    "clientName": "HelloRSE",
+    "role": "Développeur Full Stack",
+    "period": "2022 - 2023",
+    "stack": ["Symfony", "Sylius", "DevOps", "E-commerce"],
+    "description": "Développement et maintenance d’une plateforme e-commerce sous Sylius / Symfony, avec mise en place d’outils DevOps, CI/CD, GitLab, Ansible et participation à un environnement technique orienté performance et déploiement.",
+    "image": "/assets/hello-rse.jpg",
+    "type": "Expérience salariée"
+  },
+  "famileo": {
+    "clientName": "Famileo",
+    "role": "Développeur Full Stack",
+    "period": "2020 - 2022",
+    "stack": ["Symfony", "Sylius", "International", "E-commerce"],
+    "description": "Développement et évolution d’une boutique en ligne sous Symfony / Sylius, gestion des comptes utilisateurs et accompagnement du déploiement international dans un contexte produit structuré.",
+    "image": "/assets/VIGNETTE_FAMILEO.png",
+    "type": "Expérience salariée"
+  },
+  "tediber": {
+    "clientName": "Tediber",
+    "role": "Développeur back-end Symfony / Sylius",
+    "period": "2018 - 2020",
+    "stack": ["Symfony", "Sylius", "ERP", "Logistique"],
+    "description": "Création et migration d’un ERP logistique sous Symfony vers Sylius, avec développement de solutions e-commerce et gestion des commandes dans un cadre exigeant et orienté métier.",
+    "image": "/assets/logo-tediber.jpg",
+    "type": "Expérience salariée"
+  },
+  "vibressence": {
+    "clientName": "Vibressence",
+    "activity": "Sonothérapie",
+    "stack": ["Wix", "CSS", "JS"],
+    "description": "Refonte de la page d’accueil, amélioration du menu sticky, travail de design custom, optimisation SEO / GEO et accompagnement sur la visibilité et le référencement.",
+    "image": "/assets/collab/Vibressence.png",
+    "type": "Collaboration"
+  },
+  "atelier-arbre-bleu": {
+    "clientName": "Atelier Arbre Bleu",
+    "activity": "Architecte paysagiste",
+    "stack": ["Statamic", "SEO", "Refresh UX"],
+    "description": "Refonte ciblée de certaines pages, optimisation SEO, rafraîchissement global et nettoyage du projet pour améliorer la lisibilité et la présentation du site.",
+    "image": "/assets/collab/atelier_arbre_bleu.png",
+    "type": "Collaboration"
   }
 }
