@@ -175,6 +175,23 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 			const mediaQueries = window.matchMedia('(min-width: 50em)');
 			handleViewports(mediaQueries);
 			mediaQueries.addEventListener('change', handleViewports);
+
+			// Sticky scroll effect
+			const updateScroll = () => {
+				const nav = document.querySelector('nav');
+				const navContainer = document.querySelector('.nav-container');
+				if (nav && navContainer) {
+					if (window.scrollY > 0) {
+						nav.classList.add('scrolled');
+						navContainer.classList.add('scrolled');
+					} else {
+						nav.classList.remove('scrolled');
+						navContainer.classList.remove('scrolled');
+					}
+				}
+			};
+			window.addEventListener('scroll', updateScroll);
+			updateScroll();
 		}
 	}
 
@@ -187,10 +204,16 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 <style>
 	nav {
 		z-index: 9999;
-		position: relative;
+		width: 100%;
 		font-family: var(--font-brand), sans-serif;
 		font-weight: 500;
-		margin-bottom: 3.5rem;
+		padding-bottom: 3.5rem;
+		transition: padding var(--theme-transition);
+	}
+
+	nav.scrolled {
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
 	}
 
 	.menu-header {
@@ -198,17 +221,22 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 		justify-content: space-between;
 		gap: 0.5rem;
 		padding: 1.5rem;
+		transition: padding var(--theme-transition);
+	}
+
+	nav.scrolled .menu-header {
+		padding: 0.5rem 1.5rem;
 	}
 
 		.site-title img {
 			width: 160px;
 			height: auto;
+			transition: width var(--theme-transition);
 		}
 
-	.site-title img {
-		height: 3.5rem;
-		width: auto;
-	}
+		nav.scrolled .site-title img {
+			width: 130px;
+		}
 
 	:root.theme-dark .site-logo {
 		filter: invert(1) brightness(2);
@@ -262,6 +290,13 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 		padding: 2rem;
 		background-color: var(--gray-999);
 		border-bottom: 1px solid var(--gray-800);
+		transition: padding var(--theme-transition);
+	}
+
+	nav.scrolled .nav-items {
+		background-color: var(--gray-999_40);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
 	}
 
 	.link {
@@ -339,8 +374,12 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 			display: grid;
 			grid-template-columns: 1fr auto 1fr;
 			align-items: center;
-			padding: 2.5rem 5rem;
+			padding: 2.5rem 5rem 6rem;
 			gap: 1rem;
+		}
+
+		nav.scrolled {
+			padding: 0.75rem 5rem;
 		}
 
 		.menu-header {
@@ -364,6 +403,13 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 			padding: 0.5rem 0.5625rem;
 			background: radial-gradient(var(--gray-900), var(--gray-800) 150%);
 			box-shadow: var(--shadow-md);
+			transition: background-color var(--theme-transition), box-shadow var(--theme-transition);
+		}
+
+		nav.scrolled .nav-items {
+			background: var(--gray-999_40);
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
 		}
 
 		.nav-items::before {
@@ -373,6 +419,11 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 			background: var(--gradient-stroke);
 			border-radius: 999rem;
 			z-index: -1;
+			transition: opacity var(--theme-transition);
+		}
+
+		nav.scrolled .nav-items::before {
+			opacity: 0.5;
 		}
 
 		.link {
