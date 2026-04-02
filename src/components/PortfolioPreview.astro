@@ -52,6 +52,18 @@ const { data, id } = Astro.props.project;
 				<span class="open-icon">
 					<Icon icon="plus" size="1.2rem" />
 				</span>
+				{data.href && (
+					<a 
+						href={data.href} 
+						target="_blank" 
+						rel="noopener noreferrer" 
+						class="external-link"
+						aria-label={`Visiter le site de ${data.title}`}
+						onclick="event.stopPropagation()"
+					>
+						<Icon icon="arrow-right" size="1.2rem" />
+					</a>
+				)}
 			</span>
 		</span>
 	</span>
@@ -75,7 +87,8 @@ const { data, id } = Astro.props.project;
 				const modalResult = modal.querySelector('.modal-result');
 				const modalSolution = modal.querySelector('.modal-solution-content');
 				const modalGallery = modal.querySelector('.modal-gallery-grid');
-				const modalLink = modal.querySelector('.modal-project-link') as HTMLAnchorElement;
+ 			const modalLink = modal.querySelector('.modal-project-link') as HTMLAnchorElement;
+				const modalExternalLink = modal.querySelector('.modal-external-link') as HTMLAnchorElement;
 
 				if (modalImage) modalImage.src = data.img;
 				if (modalTitle) modalTitle.textContent = data.title;
@@ -120,6 +133,15 @@ const { data, id } = Astro.props.project;
 				if (modalLink) {
 					modalLink.href = `/work/${data.slug}`;
 					modalLink.style.display = 'flex';
+				}
+
+				if (modalExternalLink) {
+					if (data.href) {
+						modalExternalLink.href = data.href;
+						modalExternalLink.style.display = 'flex';
+					} else {
+						modalExternalLink.style.display = 'none';
+					}
 				}
 
 				modal.showModal();
@@ -333,6 +355,29 @@ const { data, id } = Astro.props.project;
 		box-shadow: 0 2px 10px rgba(var(--accent-regular-rgb), 0.4);
 	}
 
+	.external-link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2rem;
+		height: 2rem;
+		border-radius: 50%;
+		background: white;
+		color: var(--accent-regular);
+		transition: all 0.3s ease;
+		flex-shrink: 0;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+		text-decoration: none;
+		pointer-events: auto;
+	}
+
+	.external-link:hover {
+		transform: scale(1.1);
+		background: var(--accent-regular);
+		color: white;
+		box-shadow: 0 4px 15px rgba(var(--accent-regular-rgb), 0.6);
+	}
+
 	.card:hover .open-icon {
 		transform: rotate(90deg) scale(1.1);
 		background: var(--accent-light);
@@ -397,6 +442,11 @@ const { data, id } = Astro.props.project;
 		}
 
 		.open-icon {
+			width: 2.6rem;
+			height: 2.6rem;
+		}
+
+		.external-link {
 			width: 2.6rem;
 			height: 2.6rem;
 		}
