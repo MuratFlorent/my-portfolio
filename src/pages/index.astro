@@ -42,9 +42,17 @@ const projects = (await getCollection('work'))
 			<div class="section-shell">
    	<Hero
 					title="Donnez vie à vos projets web avec un accompagnement sur mesure"
-					tagline="Création de sites vitrines, e-commerce et outils personnalisés : je transforme vos idées en solutions concrètes pour booster votre activité et votre visibilité sur Google."
+					tagline="Création de sites vitrines, e-commerce et outils personnalisés."
 					align="start"
 				>
+					<div class="mobile-hero-image">
+						<img
+							alt="Florent Murat - Créateur site internet"
+							src="/assets/new_portrait2.jpeg"
+							loading="eager"
+							decoding="async"
+						/>
+					</div>
 					<div class="roles">
 						<Pill href="/approche" ariaLabel="Découvrir mon approche" class="expertise-pill">
 							<Icon icon="code" size="1.33em" /> Développeur web
@@ -83,7 +91,7 @@ const projects = (await getCollection('work'))
 					</div>
 				</Hero>
 
-   	<div class="hero-image-container">
+   	<div class="hero-image-container desktop-only">
 					<img
 						alt="Florent Murat - Créateur site internet Saint-Jeannet 06640 et Nice freelance spécialisé en SEO local"
 						width="3205"
@@ -413,6 +421,15 @@ const projects = (await getCollection('work'))
 		gap: 0.75rem;
 		width: 100%;
 		align-items: stretch;
+		margin-bottom: 2rem;
+	}
+
+	@media (max-width: 50em) {
+		.expertise-pill {
+			width: 100%;
+			justify-content: center;
+			padding: 1rem !important; /* Pills plus grandes sur mobile */
+		}
 	}
 
 	.expertise-pill {
@@ -481,9 +498,22 @@ const projects = (await getCollection('work'))
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 1rem;
+		gap: 1.25rem; /* Augmenter l'espace entre les CTAs principaux */
 		width: 100%;
-		margin-top: 1rem;
+		margin-top: 2rem;
+	}
+
+	@media (max-width: 50em) {
+		.hero-ctas {
+			order: -1; /* Place les boutons au-dessus des pills sur mobile */
+			margin-bottom: 2rem;
+		}
+		
+		.hero-ctas :global(.cta) {
+			width: 100%;
+			padding: 1.25rem; /* Rendre les boutons plus imposants */
+			font-size: 1.1rem;
+		}
 	}
 
 	@media (min-width: 30em) {
@@ -503,9 +533,33 @@ const projects = (await getCollection('work'))
 		margin-top: 2rem;
 	}
 
+	.desktop-only {
+		display: none;
+	}
+
+	.mobile-hero-image {
+		display: block;
+		margin: 1rem 0;
+		border-radius: 1rem;
+		overflow: hidden;
+		box-shadow: var(--shadow-sm);
+	}
+
+	.mobile-hero-image img {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+
 	@media (min-width: 50em) {
 		.hero-image-container {
 			margin-top: 0;
+		}
+		.desktop-only {
+			display: block;
+		}
+		.mobile-hero-image {
+			display: none;
 		}
 	}
 

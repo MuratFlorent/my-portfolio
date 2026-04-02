@@ -58,6 +58,10 @@ const { id } = Astro.props;
 					</section>
 
 					<div class="modal-cta stack gap-4">
+						<a href="" target="_blank" rel="noopener noreferrer" class="modal-external-link cta-button primary">
+							Visiter le site web
+							<Icon icon="arrow-right" size="1.2em" />
+						</a>
 						<a href="" class="modal-project-link cta-button secondary">
 							Voir l'étude de cas complète
 							<Icon icon="arrow-right" size="1.2em" />
@@ -353,6 +357,17 @@ const { id } = Astro.props;
 
 	.modal-cta {
 		margin-top: 1rem;
+	}
+
+	.modal-cta .cta-button.primary {
+		background: var(--accent-regular);
+		color: white;
+	}
+
+	.modal-cta .cta-button.primary:hover {
+		background: var(--accent-dark);
+		transform: translateY(-2px);
+		box-shadow: 0 4px 15px rgba(var(--accent-regular-rgb), 0.4);
 	}
 
 	.cta-button {

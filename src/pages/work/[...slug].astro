@@ -59,6 +59,14 @@ const galleryData = entry.data.gallery?.map((item) => {
 										{entry.data.tags.map((t) => <Pill>{t}</Pill>)}
 									</div>
 									<p class="description">{entry.data.description}</p>
+									{entry.data.href && (
+										<div class="project-cta-wrapper">
+											<a href={entry.data.href} target="_blank" rel="noopener noreferrer" class="project-external-link">
+												<Icon icon="rocket-launch" size="1.2em" />
+												Visiter le site web
+											</a>
+										</div>
+									)}
 								</div>
 							</Hero>
 
@@ -228,6 +236,31 @@ const galleryData = entry.data.gallery?.map((item) => {
 <style>
 	header {
 		padding-bottom: 1.5rem;
+	}
+
+	.project-cta-wrapper {
+		margin-top: 1.5rem;
+		display: flex;
+	}
+
+	.project-external-link {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.8rem 1.5rem;
+		background: var(--accent-regular);
+		color: white;
+		border-radius: 999rem;
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.3s ease;
+		box-shadow: 0 4px 15px rgba(var(--accent-regular-rgb), 0.3);
+	}
+
+	.project-external-link:hover {
+		background: var(--accent-dark);
+		transform: translateY(-2px);
+		box-shadow: 0 6px 20px rgba(var(--accent-regular-rgb), 0.4);
 	}
 
 	.back-link {
