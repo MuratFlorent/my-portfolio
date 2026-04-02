@@ -98,7 +98,9 @@ const { title, description } = Astro.props;
 		</head>
 	<body>
 		<div class="stack backgrounds">
-			<Nav />
+			<div class="nav-container scrolled-wrapper">
+				<Nav />
+			</div>
 			<slot />
 			<Footer />
 		</div>
@@ -194,6 +196,23 @@ const { title, description } = Astro.props;
 					--bg-image-subtle-2: url('/assets/backgrounds/bg-subtle-2-dark-1440w.jpg');
 					--bg-image-footer: url('/assets/backgrounds/bg-footer-dark-1440w.jpg');
 				}
+			}
+
+			.nav-container {
+				position: sticky;
+				top: 0;
+				z-index: 9999;
+				width: 100%;
+				transition: background-color var(--theme-transition), backdrop-filter var(--theme-transition), box-shadow var(--theme-transition), padding var(--theme-transition);
+				background-color: transparent;
+				height: fit-content;
+			}
+
+			.nav-container.scrolled {
+				background-color: var(--gray-999_40);
+				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+				box-shadow: var(--shadow-sm);
 			}
 
 			.backgrounds {

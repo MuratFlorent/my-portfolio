@@ -57,6 +57,14 @@ const collaborations = [
 		image: '/assets/collab/atelier_arbre_bleu.png'
 	}
 ];
+
+const extraDetails = {
+	'HelloRSE': "Dans le cadre de mon expérience chez HelloRSE, j'ai travaillé sur une plateforme e-commerce complexe basée sur Sylius. Mes missions incluaient le développement de nouvelles fonctionnalités back-end et front-end, l'optimisation des performances, et la mise en place de processus de déploiement continu avec GitLab CI et Ansible. J'ai également participé à la maintenance évolutive de la plateforme pour répondre aux besoins spécifiques du marché de la RSE.",
+	'Famileo': "Chez Famileo, j'ai intégré une équipe produit dynamique pour faire évoluer une boutique en ligne à fort trafic. Utilisant Symfony et Sylius, j'ai contribué au développement de fonctionnalités liées à la gestion des abonnements, au tunnel d'achat et à l'internationalisation du service. Le défi majeur était de maintenir une qualité de code élevée tout en assurant une livraison rapide de nouvelles fonctionnalités pour soutenir la croissance de l'entreprise.",
+	'Tediber': "Mon passage chez Tediber a été marqué par la migration d'un ERP interne vers une solution plus robuste basée sur Sylius. J'ai conçu des modules sur mesure pour la gestion des stocks, la logistique et le suivi des commandes. Cette expérience m'a permis d'approfondir mes connaissances sur les processus métier e-commerce et sur l'architecture des systèmes d'information complexes.",
+	'Vibressence': "Pour Vibressence, l'enjeu était de moderniser l'image de marque tout en conservant la simplicité de gestion de Wix. J'ai injecté du code personnalisé (Velo by Wix) pour améliorer l'expérience utilisateur, notamment sur le menu et la page d'accueil. Un travail approfondi sur le SEO local a été réalisé pour attirer une clientèle de proximité intéressée par la sonothérapie.",
+	'Atelier Arbre Bleu': "L'accompagnement de l'Atelier Arbre Bleu a porté sur la refonte de sections clés du site sous Statamic. L'objectif était de valoriser les projets de l'architecte paysagiste par une mise en page plus aérée et visuelle. J'ai également optimisé la structure technique du site pour un meilleur référencement naturel sur des mots-clés liés à l'aménagement paysager."
+};
 ---
 
 <BaseLayout
@@ -102,6 +110,7 @@ const collaborations = [
 										role={ref.role}
 										description={ref.description}
 										tags={ref.tags}
+										details={extraDetails[ref.title as keyof typeof extraDetails]}
 									/>
 								</li>
 							))
@@ -131,6 +140,7 @@ const collaborations = [
 										role=""
 										description={collab.description}
 										tags={collab.tags}
+										details={extraDetails[collab.title as keyof typeof extraDetails]}
 									/>
 								</li>
 							))

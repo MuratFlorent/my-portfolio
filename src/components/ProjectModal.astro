@@ -88,6 +88,19 @@ const { id } = Astro.props;
 			(modal as HTMLDialogElement).close();
 		});
 
+		modal.addEventListener('close', () => {
+			// Réinitialiser l'affichage des sections masquées pour les références
+			const resultEl = modal.querySelector('.modal-result');
+			const galleryEl = modal.querySelector('.modal-gallery-grid');
+			const caseStudyLink = modal.querySelector('.modal-project-link') as HTMLAnchorElement;
+			const modalGrid = modal.querySelector('.modal-grid') as HTMLElement;
+
+			if (resultEl) (resultEl.parentElement as HTMLElement).style.display = '';
+			if (galleryEl) (galleryEl.parentElement as HTMLElement).style.display = '';
+			if (caseStudyLink) caseStudyLink.style.display = '';
+			if (modalGrid) modalGrid.style.display = '';
+		});
+
 		modal.addEventListener('click', (e) => {
 			if (e.target === modal) {
 				(modal as HTMLDialogElement).close();
@@ -119,6 +132,65 @@ const { id } = Astro.props;
 				}
 			}));
 		});
+	});
+
+	// Gestion globale de l'ouverture pour les ReferenceCard
+	window.addEventListener('open-reference-modal', (e: any) => {
+		const data = e.detail;
+		const modal = document.querySelector('.project-modal') as HTMLDialogElement;
+		if (!modal) return;
+
+		// Remplir la modale avec les données de la référence
+		const titleEl = modal.querySelector('.modal-title');
+		const imageEl = modal.querySelector('.modal-image') as HTMLImageElement;
+		const statusEl = modal.querySelector('.modal-status');
+		const tagsEl = modal.querySelector('.modal-tags');
+		const descEl = modal.querySelector('.modal-description');
+		const solutionEl = modal.querySelector('.modal-solution-content');
+		const stackEl = modal.querySelector('.modal-stack-list');
+		const resultEl = modal.querySelector('.modal-result');
+		const galleryEl = modal.querySelector('.modal-gallery-grid');
+		const caseStudyLink = modal.querySelector('.modal-project-link') as HTMLAnchorElement;
+
+		if (titleEl) titleEl.textContent = data.title;
+		if (imageEl) {
+			imageEl.src = data.image;
+			imageEl.alt = data.title;
+		}
+		if (statusEl) statusEl.textContent = data.period || '';
+		
+		if (tagsEl) {
+			tagsEl.innerHTML = '';
+			data.tags.forEach((tag: string) => {
+				const span = document.createElement('span');
+				span.className = 'tag';
+				span.textContent = tag;
+				tagsEl.appendChild(span);
+			});
+		}
+
+		if (descEl) descEl.textContent = data.role ? `${data.role} : ${data.description}` : data.description;
+		
+		if (solutionEl) {
+			solutionEl.innerHTML = `<p>${data.details || data.description}</p>`;
+		}
+
+		if (stackEl) {
+			stackEl.innerHTML = '';
+			data.tags.forEach((tag: string) => {
+				const span = document.createElement('span');
+				span.className = 'tag';
+				span.textContent = tag;
+				stackEl.appendChild(span);
+			});
+		}
+
+		// Masquer les sections non pertinentes pour une simple référence
+		if (resultEl) (resultEl.parentElement as HTMLElement).style.display = 'none';
+		if (galleryEl) (galleryEl.parentElement as HTMLElement).style.display = 'none';
+		if (caseStudyLink) caseStudyLink.style.display = 'none';
+
+		modal.showModal();
 	});
 </script>
 

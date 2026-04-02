@@ -8,14 +8,28 @@ interface Props {
 	tags: string[];
 	description: string;
 	image: string;
+	details?: string; // Optionnel si on veut mettre encore plus de détails que la description courte
 }
 
-const { title, role, period, tags, description, image } = Astro.props;
+const { title, role, period, tags, description, image, details } = Astro.props;
 ---
 
-<div class="reference-card">
+<div 
+	class="reference-card" 
+	data-reference-card
+	data-title={title}
+	data-role={role}
+	data-period={period}
+	data-description={description}
+	data-details={details || description}
+	data-image={image}
+	data-tags={JSON.stringify(tags)}
+>
 	<div class="image-container">
 		<img src={image} alt={title} loading="lazy" decoding="async" />
+		<div class="overlay">
+			<span class="view-more">Voir les détails</span>
+		</div>
 	</div>
 	<div class="content stack gap-2">
 		<div class="header">
@@ -44,17 +58,20 @@ const { title, role, period, tags, description, image } = Astro.props;
 		overflow: hidden;
 		transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
 		height: 100%;
+		cursor: pointer;
 	}
 
 	.reference-card:hover {
 		transform: translateY(-4px);
 		border-color: var(--accent-light);
 		box-shadow: var(--shadow-md);
+		background: var(--gray-999);
 	}
 
 	.image-container {
 		height: 200px;
 		overflow: hidden;
+		position: relative;
 	}
 
 	.image-container img {
@@ -62,6 +79,31 @@ const { title, role, period, tags, description, image } = Astro.props;
 		height: 100%;
 		object-fit: cover;
 		transition: transform 0.5s ease;
+	}
+
+	.overlay {
+		position: absolute;
+		inset: 0;
+		background: rgba(var(--accent-dark-rgb), 0.5);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+		backdrop-filter: blur(2px);
+	}
+
+	.view-more {
+		color: white;
+		font-weight: 600;
+		font-size: var(--text-sm);
+		padding: 0.5rem 1rem;
+		border: 1px solid white;
+		border-radius: 99rem;
+	}
+
+	.reference-card:hover .overlay {
+		opacity: 1;
 	}
 
 	.reference-card:hover .image-container img {
@@ -133,3 +175,32 @@ const { title, role, period, tags, description, image } = Astro.props;
 		}
 	}
 </style>
+
+<script>
+	function initReferenceCards() {
+		const cards = document.querySelectorAll('[data-reference-card]');
+		cards.forEach(card => {
+			card.addEventListener('click', () => {
+				const data = {
+					title: (card as HTMLElement).dataset.title,
+					role: (card as HTMLElement).dataset.role,
+					period: (card as HTMLElement).dataset.period,
+					description: (card as HTMLElement).dataset.description,
+					details: (card as HTMLElement).dataset.details,
+					image: (card as HTMLElement).dataset.image,
+					tags: JSON.parse((card as HTMLElement).dataset.tags || '[]')
+				};
+
+				window.dispatchEvent(new CustomEvent('open-reference-modal', {
+					detail: data
+				}));
+			});
+		});
+	}
+
+	// Initialize on page load
+	initReferenceCards();
+
+	// Re-initialize when Astro swaps pages (if using View Transitions)
+	document.addEventListener('astro:after-swap', initReferenceCards);
+</script>
