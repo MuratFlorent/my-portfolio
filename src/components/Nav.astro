@@ -20,7 +20,9 @@ const textLinks: { label: string; href: string; class?: string; 'data-tab'?: str
 /** Icon links to social media — edit these with links to your profiles! */
 const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[] = [
 	{ label: 'GitHub', href: 'https://github.com/MuratFlorent', icon: 'github-logo' },
-	{ label: 'Linkedin', href: 'https://www.linkedin.com/in/florent-murat-a1962810b/', icon: 'linkedin-logo' }
+	{ label: 'Linkedin', href: 'https://www.linkedin.com/in/florent-murat-a1962810b/', icon: 'linkedin-logo' },
+	{ label: 'Facebook', href: 'https://www.facebook.com/LightDeveloper', icon: 'facebook-logo' },
+	{ label: 'Instagram', href: 'https://www.instagram.com/lightdeveloper06/', icon: 'instagram-logo' }
 ];
 ---
 
@@ -297,12 +299,33 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 		padding: var(--icon-padding);
 		text-decoration: none;
 		color: var(--accent-dark);
-		transition: color var(--theme-transition);
+		transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), color var(--theme-transition);
 	}
 
 	.social:hover,
 	.social:focus {
 		color: var(--accent-text-over);
+		transform: scale(1.2);
+	}
+
+	.social[href*="facebook"]:hover {
+		color: #1877F2;
+	}
+
+	.social[href*="instagram"]:hover {
+		color: #E4405F;
+	}
+
+	.social[href*="github"]:hover {
+		color: #333;
+	}
+
+	:root.theme-dark .social[href*="github"]:hover {
+		color: #fff;
+	}
+
+	.social[href*="linkedin"]:hover {
+		color: #0077B5;
 	}
 
 	.theme-toggle {
@@ -390,7 +413,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 		.socials {
 			display: flex;
 			justify-content: flex-end;
-			gap: 0;
+			gap: 0.5rem;
 		}
 	}
 	@media (forced-colors: active) {

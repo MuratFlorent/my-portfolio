@@ -16,8 +16,10 @@ const currentYear = new Date().getFullYear();
 	</div>
 	<div class="footer-links stack gap-4">
 		<p class="socials">
-			<a href="https://github.com/MuratFlorent"> GitHub</a>
-			<a href="https://www.linkedin.com/in/florent-murat-a1962810b/"> Linkedin</a>
+			<a href="https://www.facebook.com/LightDeveloper" title="Facebook"> <Icon icon="facebook-logo" size="1.2em" /></a>
+			<a href="https://www.instagram.com/lightdeveloper06/" title="Instagram"> <Icon icon="instagram-logo" size="1.2em" /></a>
+			<a href="https://github.com/MuratFlorent" title="GitHub"> <Icon icon="github-logo" size="1.2em" /></a>
+			<a href="https://www.linkedin.com/in/florent-murat-a1962810b/" title="LinkedIn"> <Icon icon="linkedin-logo" size="1.2em" /></a>
 		</p>
 		<p class="legal">
 			<a href="/mentions-legales">Mentions légales</a>
@@ -61,12 +63,30 @@ const currentYear = new Date().getFullYear();
 	footer a {
 		color: var(--gray-400);
 		text-decoration: none;
-		transition: color var(--theme-transition);
+		transition: color var(--theme-transition), transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		display: inline-block;
 	}
 
 	footer a:hover,
 	footer a:focus {
 		color: var(--accent-regular);
+		transform: translateY(-3px);
+	}
+
+	.socials a[href*="facebook"]:hover {
+		color: #1877F2;
+	}
+
+	.socials a[href*="instagram"]:hover {
+		color: #E4405F;
+	}
+
+	.socials a[href*="linkedin"]:hover {
+		color: #0077B5;
+	}
+
+	.socials a[href*="github"]:hover {
+		color: #fff;
 	}
 
 	.group {
