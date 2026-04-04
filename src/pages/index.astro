@@ -45,14 +45,6 @@ const projects = (await getCollection('work'))
 					tagline="Création de sites vitrines, e-commerce et outils personnalisés."
 					align="start"
 				>
-					<div class="mobile-hero-image">
-						<img
-							alt="Florent Murat - Créateur site internet"
-							src="/assets/new_portrait2.jpeg"
-							loading="eager"
-							decoding="async"
-						/>
-					</div>
 					<div class="roles">
 						<Pill href="/approche" ariaLabel="Découvrir mon approche" class="expertise-pill">
 							<Icon icon="code" size="1.33em" /> Développeur web
@@ -88,6 +80,15 @@ const projects = (await getCollection('work'))
 							Estimer mon projet
 							<Icon icon="paper-plane-tilt" size="1.2em" />
 						</CallToAction>
+					</div>
+
+					<div class="mobile-hero-image">
+						<img
+							alt="Florent Murat - Créateur site internet"
+							src="/assets/new_portrait2.jpeg"
+							loading="eager"
+							decoding="async"
+						/>
 					</div>
 				</Hero>
 
@@ -385,16 +386,66 @@ const projects = (await getCollection('work'))
 	}
 </script>
 	<style>
-		.hero {
-			display: flex;
-			flex-direction: column;
+	.hero {
+		display: flex;
+		flex-direction: column;
 		align-items: center;
-		gap: 2rem;
+		gap: 1rem;
 		text-align: center;
-		padding-top: 2rem !important;
+		padding-top: 0 !important;
+	}
+
+	/* Réduit l'espace au-dessus de la section Hero sur mobile */
+	.stack.gap-12 > #accueil.hero {
+		margin-top: -1rem;
+	}
+
+	.hero :global(.hero-header) {
+		display: contents; /* Permet aux enfants (title, tagline) d'être positionnés par le flex parent */
+	}
+
+	.hero :global(.title) {
+		order: 1;
+	}
+
+	.hero-ctas {
+		order: 2;
+	}
+
+	.mobile-hero-image {
+		order: 3;
+	}
+
+	.hero :global(.tagline) {
+		order: 4;
+		margin-top: -1.5rem; /* Rapproche le sous-titre de l'image */
+		font-style: italic;
+		opacity: 0.9;
+		font-size: var(--text-md); /* Un peu plus grand pour la lisibilité */
+	}
+
+	.roles {
+		order: 5;
+		gap: 0.5rem; /* Espace réduit entre les pills */
 	}
 
 	@media (min-width: 50em) {
+		.stack.gap-12 > #accueil.hero {
+			margin-top: 0;
+		}
+
+		.hero :global(.hero-header) {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.hero :global(.title),
+		.hero-ctas,
+		.mobile-hero-image,
+		.hero :global(.tagline),
+		.roles {
+			order: unset;
+		}
 		.hero .section-shell {
 			display: grid;
 			grid-template-columns: 6fr 4fr;
@@ -505,7 +556,6 @@ const projects = (await getCollection('work'))
 
 	@media (max-width: 50em) {
 		.hero-ctas {
-			order: -1; /* Place les boutons au-dessus des pills sur mobile */
 			margin-bottom: 2rem;
 		}
 		
