@@ -43,7 +43,7 @@ import Icon from './Icon.astro';
 					<Icon icon="mail-box" size="1.2em" />
 					<div class="option-details stack gap-1">
 						<span class="option-label">Email :</span>
-						<a href="mailto:julienblondin.lightdeveloper@gmail.com" class="option-value">julienblondin.lightdeveloper@gmail.com</a>
+								<a href="mailto:contact@lightdeveloper.fr" class="option-value">contact@lightdeveloper.fr</a>
 					</div>
 					<button type="button" class="copy-btn" id="copy-email-btn" title="Copier l'email" aria-label="Copier l'adresse email">
 						<Icon icon="copy" size="1.2em" />
@@ -151,7 +151,7 @@ import Icon from './Icon.astro';
 	const leaveBtn = document.getElementById('confirm-leave') as HTMLButtonElement;
 	const copyEmailBtn = document.getElementById('copy-email-btn');
 	copyEmailBtn?.addEventListener('click', () => {
- 	const email = "julienblondin.lightdeveloper@gmail.com";
+ 	const email = "contact@lightdeveloper.fr";
 		navigator.clipboard.writeText(email).then(() => {
 			const originalIcon = copyEmailBtn.innerHTML;
 			copyEmailBtn.innerHTML = `<span style="color: var(--accent-regular); font-size: 0.8em; font-weight: bold;">Copié !</span>`;
