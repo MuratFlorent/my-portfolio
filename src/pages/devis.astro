@@ -1,0 +1,388 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+
+const title = "Devis Gratuit | Light Developer - Votre projet web sur mesure";
+const description = "Demandez un devis gratuit pour votre projet de création de site web, refonte, SEO ou formation. Réponse rapide et accompagnement personnalisé.";
+---
+
+<BaseLayout title={title} description={description}>
+	<div class="stack gap-20 pt-20">
+		<main class="wrapper stack gap-8">
+			<header class="hero-header stack gap-4">
+				<h1 class="title">Lancez votre projet</h1>
+				<p class="tagline">Besoin d'un devis précis ou d'un simple échange ? Voici comment me joindre.</p>
+			</header>
+
+			<div class="content-grid">
+				<aside class="contact-info stack gap-8">
+					<div class="info-card stack gap-4">
+						<div class="icon-wrapper">
+							<Icon icon="mail-box" size="2rem" />
+						</div>
+						<div class="stack gap-2">
+							<span class="label">Par Email</span>
+							<a href="mailto:contact@lightdeveloper.fr" class="value">contact@lightdeveloper.fr</a>
+						</div>
+					</div>
+
+					<div class="info-card stack gap-4">
+						<div class="icon-wrapper">
+							<Icon icon="phone-call" size="2rem" />
+						</div>
+						<div class="stack gap-2">
+							<span class="label">Par Téléphone</span>
+							<a href="tel:+33669952710" class="value">06 69 95 27 10</a>
+						</div>
+					</div>
+
+					<div class="trust-note stack gap-2">
+						<Icon icon="strategy" size="1.2em" />
+						<p>Réponse garantie sous 24h à 48h ouvrées. Étude gratuite de votre besoin sans engagement.</p>
+					</div>
+				</aside>
+
+				<section class="form-container">
+					<div class="quote-panel">
+						<form 
+							id="demande-devis-page"
+							name="demande-devis" 
+							method="POST" 
+							data-netlify="true" 
+							data-netlify-recaptcha="true"
+							data-netlify-honeypot="bot-field"
+							action="/merci-devis"
+							class="contact-form stack gap-6"
+						>
+							<input type="hidden" name="form-name" value="demande-devis" />
+							<p class="hidden">
+								<label>Ne pas remplir si vous êtes humain : <input name="bot-field" /></label>
+							</p>
+							<input type="hidden" name="source" id="quote-source-project" value="Page Devis" />
+							
+							<div class="form-grid">
+								<div class="field">
+									<label for="quote-firstname">Prénom</label>
+									<input type="text" id="quote-firstname" name="firstname" placeholder="Votre prénom" required />
+								</div>
+								<div class="field">
+									<label for="quote-name">Nom</label>
+									<input type="text" id="quote-name" name="name" placeholder="Votre nom" required />
+								</div>
+							</div>
+							
+							<div class="form-grid">
+								<div class="field">
+									<label for="quote-email">Email</label>
+									<input type="email" id="quote-email" name="email" placeholder="votre@email.com" required />
+								</div>
+								<div class="field">
+									<label for="quote-phone">Téléphone</label>
+									<input type="tel" id="quote-phone" name="phone" placeholder="06 00 00 00 00" required />
+								</div>
+							</div>
+							
+							<div class="form-grid">
+								<div class="field">
+									<label for="project-type">Type de projet</label>
+									<select id="project-type" name="projectType" required>
+										<option value="" disabled selected>Sélectionnez un type de besoin</option>
+										<option value="creation">Création de site web</option>
+										<option value="refonte">Amélioration / Refonte de site</option>
+										<option value="seo">Visibilité Google (SEO)</option>
+										<option value="ecommerce">Boutique en ligne (E-commerce)</option>
+										<option value="automation">Gain de temps (Automatisation)</option>
+										<option value="formation">Formation & Accompagnement</option>
+										<option value="autre">Autre projet sur mesure</option>
+									</select>
+								</div>
+								<div class="field">
+									<label for="budget">Budget indicatif</label>
+									<select id="budget" name="budget">
+										<option value="small">&lt; 1500€</option>
+										<option value="medium">1500€ - 5000€</option>
+										<option value="large">> 5000€</option>
+										<option value="unknown">Je ne sais pas encore</option>
+									</select>
+								</div>
+							</div>
+
+							<div id="conditional-fields" class="stack gap-4">
+								<div class="field" data-condition="creation refonte ecommerce seo">
+									<label for="site-url">URL du site actuel (si existant)</label>
+									<input type="url" id="site-url" name="siteUrl" placeholder="https://..." />
+								</div>
+								<div class="field" data-condition="formation">
+									<label for="trainees">Nombre de personnes à former</label>
+									<input type="number" id="trainees" name="trainees" min="1" placeholder="1" />
+								</div>
+							</div>
+
+							<div class="field">
+								<label for="quote-message">Détails de votre demande</label>
+								<textarea id="quote-message" name="message" placeholder="Dites-m'en plus sur votre projet..." required rows="6"></textarea>
+							</div>
+							
+							<div data-netlify-recaptcha="true"></div>
+							
+							<div class="form-feedback-message" hidden></div>
+							
+							<button type="submit" class="submit-btn">
+								Demander mon devis personnalisé
+								<Icon icon="magic-wand" size="1.2em" />
+							</button>
+						</form>
+					</div>
+				</section>
+			</div>
+		</main>
+	</div>
+</BaseLayout>
+
+<script>
+	// Logic for conditional fields
+	const projectTypeSelect = document.getElementById('project-type') as HTMLSelectElement;
+	const conditionalFields = document.querySelectorAll('#conditional-fields .field[data-condition]');
+
+	const updateConditionalFields = () => {
+		const selectedValue = projectTypeSelect.value;
+		conditionalFields.forEach(field => {
+			const condition = (field as HTMLElement).dataset.condition;
+			if (condition?.includes(selectedValue)) {
+				(field as HTMLElement).style.display = 'flex';
+				field.querySelector('input')?.setAttribute('required', '');
+			} else {
+				(field as HTMLElement).style.display = 'none';
+				field.querySelector('input')?.removeAttribute('required');
+			}
+		});
+	};
+
+	projectTypeSelect?.addEventListener('change', updateConditionalFields);
+	updateConditionalFields();
+
+	// Form submission handling
+	const form = document.getElementById('demande-devis-page') as HTMLFormElement;
+	const feedbackMsg = form?.querySelector('.form-feedback-message') as HTMLElement;
+	const submitBtn = form?.querySelector('.submit-btn') as HTMLButtonElement;
+
+	form?.addEventListener('submit', async () => {
+		// On laisse Netlify gérer l'envoi classique si on veut la redirection /merci-devis
+		// Mais si on veut un message de succès sans changer de page, on utilise fetch
+		// Ici, l'action est /merci-devis, donc on peut laisser le comportement par défaut
+		// sauf si on veut de l'AJAX.
+		
+		/* 
+		e.preventDefault();
+		const formData = new FormData(form);
+		submitBtn.disabled = true;
+		submitBtn.innerHTML = 'Envoi en cours...';
+		
+		try {
+			const response = await fetch('/', {
+				method: 'POST',
+				body: formData,
+			});
+			if (response.ok) {
+				window.location.href = '/merci-devis';
+			} else {
+				throw new Error('Erreur lors de l\'envoi');
+			}
+		} catch (error) {
+			submitBtn.disabled = false;
+			submitBtn.innerHTML = 'Réessayer';
+			feedbackMsg.textContent = "Une erreur est survenue. Veuillez réessayer.";
+			feedbackMsg.classList.add('error');
+			feedbackMsg.removeAttribute('hidden');
+		}
+		*/
+	});
+</script>
+
+<style>
+	.hero-header {
+		text-align: center;
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
+	.title {
+		font-size: var(--text-4xl);
+		color: var(--gray-0);
+	}
+
+	.tagline {
+		font-size: var(--text-lg);
+		color: var(--gray-300);
+	}
+
+	.content-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 3rem;
+		margin-top: 2rem;
+	}
+
+	@media (min-width: 60em) {
+		.content-grid {
+			grid-template-columns: 1fr 2fr;
+			align-items: start;
+		}
+	}
+
+	.contact-info {
+		background: var(--gray-999_40);
+		padding: 2rem;
+		border-radius: var(--radius-lg);
+		border: 1px solid var(--gray-800);
+		backdrop-filter: blur(10px);
+	}
+
+	.info-card {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		padding: 1rem;
+		background: var(--gray-999);
+		border: 1px solid var(--gray-800);
+		border-radius: var(--radius-md);
+		transition: border-color var(--theme-transition);
+	}
+
+	.info-card:hover {
+		border-color: var(--accent-regular);
+	}
+
+	.icon-wrapper {
+		padding: 0.75rem;
+		background: var(--gradient-subtle);
+		border-radius: var(--radius-sm);
+		color: var(--accent-regular);
+	}
+
+	.label {
+		font-size: var(--text-sm);
+		color: var(--gray-400);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.value {
+		font-size: var(--text-md);
+		color: var(--gray-0);
+		font-weight: 500;
+		text-decoration: none;
+	}
+
+	.value:hover {
+		color: var(--accent-regular);
+	}
+
+	.trust-note {
+		flex-direction: row;
+		align-items: flex-start;
+		gap: 0.75rem;
+		padding: 1rem;
+		font-size: var(--text-sm);
+		color: var(--gray-400);
+		background: var(--gray-999_40);
+		border-radius: var(--radius-md);
+	}
+
+	.form-container {
+		background: var(--gray-999);
+		padding: 2rem;
+		border-radius: var(--radius-lg);
+		border: 1px solid var(--gray-800);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.contact-form {
+		width: 100%;
+	}
+
+	.form-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+
+	@media (min-width: 40em) {
+		.form-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	.field {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	label {
+		font-size: var(--text-sm);
+		font-weight: 500;
+		color: var(--gray-200);
+	}
+
+	input, select, textarea {
+		padding: 0.75rem 1rem;
+		background: var(--gray-999);
+		border: 1px solid var(--gray-800);
+		border-radius: var(--radius-sm);
+		color: var(--gray-200);
+		font-size: var(--text-base);
+		transition: all var(--theme-transition);
+	}
+
+	input:focus, select:focus, textarea:focus {
+		outline: none;
+		border-color: var(--accent-regular);
+		box-shadow: 0 0 0 2px var(--accent-light);
+	}
+
+	.submit-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+		padding: 1rem 2rem;
+		background: var(--gradient-accent-orange);
+		color: var(--gray-999);
+		border: none;
+		border-radius: var(--radius-full);
+		font-size: var(--text-lg);
+		font-weight: 600;
+		cursor: pointer;
+		transition: all var(--theme-transition);
+		box-shadow: var(--shadow-md);
+	}
+
+	.submit-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--glow-accent-strong);
+		filter: brightness(1.1);
+	}
+
+	.submit-btn:disabled {
+		opacity: 0.7;
+		cursor: not-allowed;
+	}
+
+	.form-feedback-message {
+		padding: 1rem;
+		border-radius: var(--radius-sm);
+		font-size: var(--text-sm);
+		text-align: center;
+	}
+
+	.form-feedback-message.error {
+		background: rgba(255, 0, 0, 0.1);
+		color: #ff4d4d;
+		border: 1px solid rgba(255, 0, 0, 0.2);
+	}
+
+	.hidden {
+		display: none;
+	}
+</style>

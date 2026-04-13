@@ -109,7 +109,7 @@ const description = "Découvrez l'approche de Florent Murat (Light Developer) : 
 					</div>
 					<div class="cta-buttons">
 						<CallToAction 
-							href="#contact" 
+							href="/devis" 
 							id="approche-contact-cta" 
 							class="quote-cta-button"
 							data-tab="quick"
@@ -134,21 +134,6 @@ const description = "Découvrez l'approche de Florent Murat (Light Developer) : 
 	</div>
 </BaseLayout>
 
-<script>
-	const approcheCta = document.getElementById('approche-contact-cta');
-	if (approcheCta) {
-		approcheCta.addEventListener('click', (e) => {
-			e.preventDefault();
-			window.dispatchEvent(new CustomEvent('open-contact', {
-				detail: {
-					tab: 'quote',
-					source: 'Page Approche',
-					message: 'Bonjour, j\'ai consulté votre approche et je souhaiterais discuter de mon projet avec vous.'
-				}
-			}));
-		});
-	}
-</script>
 
 <style>
 	.content {

@@ -80,12 +80,22 @@ import Icon from './Icon.astro';
 					<input type="hidden" name="source" id="quote-source-project" value="Direct" />
 					<div class="form-grid">
 						<div class="field">
-							<label for="quote-name">Nom complet</label>
+							<label for="quote-firstname">Prénom</label>
+							<input type="text" id="quote-firstname" name="firstname" placeholder="Votre prénom" required />
+						</div>
+						<div class="field">
+							<label for="quote-name">Nom</label>
 							<input type="text" id="quote-name" name="name" placeholder="Votre nom" required />
 						</div>
+					</div>
+					<div class="form-grid">
 						<div class="field">
 							<label for="quote-email">Email</label>
 							<input type="email" id="quote-email" name="email" placeholder="votre@email.com" required />
+						</div>
+						<div class="field">
+							<label for="quote-phone">Téléphone</label>
+							<input type="tel" id="quote-phone" name="phone" placeholder="06 00 00 00 00" required />
 						</div>
 					</div>
 					
@@ -264,8 +274,9 @@ import Icon from './Icon.astro';
 				const href = btn.getAttribute('href');
 				// On intercepte si c'est une ancre interne vers contact, ou si le bouton n'a pas de href (bouton pur)
 				// ou s'il a explicitement la classe quote-cta-button
-				if (btn.classList.contains('quote-cta-button') || 
-					(href && (href === '#contact' || href === '/#contact' || href.endsWith('/#contact')))) {
+				if ((btn.classList.contains('quote-cta-button') || 
+					(href && (href === '#contact' || href === '/#contact' || href.endsWith('/#contact')))) &&
+					!(href && (href === '/devis' || href.includes('/devis')))) {
 					
 					e.preventDefault();
 					e.stopPropagation();

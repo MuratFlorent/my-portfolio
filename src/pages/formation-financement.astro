@@ -121,18 +121,17 @@ const { dedicatedPage, brand, messages } = afiContent;
 								</p>
 							</div>
 						</div>
-						<div class="cta-wrapper">
+						<div class="cta-wrapper stack gap-4">
 							<CallToAction 
-								href="#contact" 
-								class="quote-cta-button"
-								data-tab="quote"
-								data-project-type="formation"
-								data-source="Page Formation"
-								data-message="Je souhaite obtenir des informations sur les formations et les possibilités de financement."
+								href="https://asso-formateur.fr/questionnaire-de-pre-formation-apprenant/" 
 							>
-								{dedicatedPage.sections.find(s => s.type === 'preform')?.ctaLabel}
+								Questionnaire de pré-formation
 								<Icon icon="paper-plane-tilt" size="1.2em" />
 							</CallToAction>
+							<a href="https://asso-formateur.fr/teachers/florent-murat/" class="afi-profile-link" target="_blank" rel="noopener">
+								<Icon icon="strategy" size="1.2em" />
+								Voir mon profil formateur sur l'AFI
+							</a>
 						</div>
 					</div>
 				</div>
@@ -181,6 +180,27 @@ const { dedicatedPage, brand, messages } = afiContent;
 
 	.afi-logo:hover {
 		filter: grayscale(0);
+	}
+
+	.afi-profile-link {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--gray-300);
+		text-decoration: none;
+		font-size: var(--text-sm);
+		transition: color var(--theme-transition);
+		justify-content: center;
+	}
+
+	.afi-profile-link:hover {
+		color: var(--accent-regular);
+	}
+
+	@media (min-width: 50em) {
+		.afi-profile-link {
+			justify-content: flex-start;
+		}
 	}
 
 	.hero-image-container {
